@@ -49,30 +49,27 @@ extension TabWebView: UIScrollViewDelegate {
             beginDragging()
         }
     }
-    
+    ///将要结束拖拽
     func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-//        print("将要结束拖拽")
         if let willEndDragging = self.scrollDelegates?.WillEndDragging {
             willEndDragging(velocity)
         }
     }
     
+    /// 结束拖拽
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-//        print("结束拖拽")
         if let endDragging = self.scrollDelegates?.EndDragging {
             endDragging()
         }
     }
-    
+    /// 开始减速
     func scrollViewWillBeginDecelerating(_ scrollView: UIScrollView) {
-//        print("开始减速")
         if let beginDecelerating = self.scrollDelegates?.BeginDecelerating {
             beginDecelerating()
         }
     }
-    
+    /// 停止减速
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-//        print("停止减速")
         if let endDecelerating = self.scrollDelegates?.EndDecelerating {
             endDecelerating()
         }
