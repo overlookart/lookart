@@ -86,6 +86,28 @@ class WebController: BaseViewController {
             print("web can go forward: \(forward)")
         })
         
+        web.navigationDelegates = (DecidePolicyNavigationAction:{(navigationAction) in
+            return WKNavigationActionPolicy.allow
+        }, DidStartNavigation:{(navigation) in
+            
+        }, DecidePolicyNavigationResponse:{(navigationResponse) in
+            return WKNavigationResponsePolicy.allow
+        }, DidCommitNavigation:{(navigation) in
+            
+        }, DidReceiveServerRedirect:{(navigation) in
+            
+        }, DidReceiveAuthChallenge:{
+            return (.rejectProtectionSpace,nil)
+        }, DidFinishNavigation:{(navigation) in
+            
+        }, DidFailNavigation:{(navigation, error) in
+            
+        }, DidFailProvisional:{(navigation, error) in
+            
+        }, DidTerminate:{
+            
+        })
+        
 //        web.loadweb(urlStr: "http://172.20.10.2:8080/")
 //        web.loadweb(urlStr: "https://github.com/matteocrippa/awesome-swift")
         let h5Path = Bundle.main.path(forResource: "test_html", ofType: "html")
