@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -17,41 +18,9 @@
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-            <subviews>
-                <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="JZ4-TZ-6Db">
-                    <rect key="frame" x="0.0" y="44" width="414" height="56"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="56" id="cBa-Mj-Qgu"/>
-                    </constraints>
-                    <textInputTraits key="textInputTraits"/>
-                    <scopeButtonTitles>
-                        <string>Title</string>
-                        <string>Title</string>
-                    </scopeButtonTitles>
-                </searchBar>
-                <tabBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dSy-rj-bQL">
-                    <rect key="frame" x="0.0" y="813" width="414" height="49"/>
-                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="49" id="Onx-hI-9l3"/>
-                    </constraints>
-                    <items>
-                        <tabBarItem systemItem="favorites" id="GVX-sN-J7R"/>
-                        <tabBarItem systemItem="more" id="dWS-5t-fLz"/>
-                    </items>
-                </tabBar>
-            </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-            <constraints>
-                <constraint firstItem="JZ4-TZ-6Db" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="IYa-Jm-Pzl"/>
-                <constraint firstItem="JZ4-TZ-6Db" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="W1U-xh-BF9"/>
-                <constraint firstItem="dSy-rj-bQL" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Wvr-f5-Fvz"/>
-                <constraint firstItem="dSy-rj-bQL" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="b7q-ya-Nan"/>
-                <constraint firstItem="JZ4-TZ-6Db" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="jwP-6G-jY7"/>
-                <constraint firstItem="dSy-rj-bQL" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="vfy-pq-d8j"/>
-            </constraints>
-            <point key="canvasLocation" x="84" y="56"/>
+            <point key="canvasLocation" x="82.608695652173921" y="55.580357142857139"/>
         </view>
     </objects>
     <resources>

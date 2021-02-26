@@ -20,7 +20,7 @@ class WebServer {
         return webServer
     }()
     func startServer() {
-        self.server.start(withPort: 8080, bonjourName: "GCD Web Server")
+        self.server.start(withPort: 8080, bonjourName: nil)
         print("Visit \(server.serverURL) in your web browser")
     }
 }

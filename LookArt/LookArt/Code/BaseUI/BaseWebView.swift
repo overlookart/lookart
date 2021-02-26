@@ -40,84 +40,42 @@ class BaseWebView: WKWebView {
     private var webCanGoBack: ((Bool) -> Void)?
     private var webCanGoForward: ((Bool) -> Void)?
     
-    /// 网页标题的监听
-    var webTitleObserve: (isObserve: Bool, webTitle: (String) -> Void)? {
+    var webObserves: (Title:((String) -> Void)?, Progress:((Float) -> Void)?, CanGoBack:((Bool) -> Void)?, CanGoForward:((Bool) -> Void)?)? {
         didSet {
-            if webTitleObserve?.isObserve ?? false {
-                if oldValue?.isObserve ?? false {
+            
+            if let webtitle = webObserves?.Title {
+                if let _ = webTitle {
                     self.removeObserver(self, forKeyPath: WebObserve.title.keyStr)
                 }
-                print("添加webtitle的监听")
+                webTitle = webtitle
                 self.addObserver(self, forKeyPath: WebObserve.title.keyStr, options: .new, context: nil)
-            }else{
-                if oldValue?.isObserve ?? false {
-                    self.removeObserver(self, forKeyPath: WebObserve.title.keyStr)
-                    print("移除webtitle的监听")
-                }
             }
-            webProgress = webProgressObserve?.webProgress
-        }
-    }
-    
-    /// 网页进度的监听
-    var webProgressObserve: (isObserve: Bool, webProgress: (Float) -> Void)? {
-        didSet {
-            if webProgressObserve?.isObserve ?? false {
-                if oldValue?.isObserve ?? false {
+            
+            if let webprogress = webObserves?.Progress {
+                if let _ = webProgress {
                     self.removeObserver(self, forKeyPath: WebObserve.progress.keyStr)
                 }
-                print("添加webProgress的监听")
+                webProgress = webprogress
                 self.addObserver(self, forKeyPath: WebObserve.progress.keyStr, options: .new, context: nil)
-            }else{
-                if oldValue?.isObserve ?? false {
-                    self.removeObserver(self, forKeyPath: WebObserve.progress.keyStr)
-                    print("移除webProgress的监听")
-                }
             }
-            webProgress = webProgressObserve?.webProgress
-        }
-    }
-    
-
-    /// 网页可以返回的监听
-    var webCanGoBackObserve: (isObserve: Bool, webCanGoBack: (Bool) -> Void)? {
-        didSet {
-            if webCanGoBackObserve?.isObserve ?? false {
-                if oldValue?.isObserve ?? false {
+            
+            if let webcangoback = webObserves?.CanGoBack {
+                if let _ = webCanGoBack {
                     self.removeObserver(self, forKeyPath: WebObserve.canGoBack.keyStr)
                 }
+                webCanGoBack = webcangoback
                 self.addObserver(self, forKeyPath: WebObserve.canGoBack.keyStr, options: .new, context: nil)
-                print("添加webCanGoBack的监听")
-            }else{
-                if oldValue?.isObserve ?? false {
-                    self.removeObserver(self, forKeyPath: WebObserve.canGoBack.keyStr)
-                    print("移除webCanGoBack的监听")
-                }
             }
-            webCanGoBack = webCanGoBackObserve?.webCanGoBack
-        }
-    }
-    
-    /// 网页可以前进的监听
-    var webCanGoForwardObserve: (isObserve: Bool, webCanGoForward: (Bool) -> Void)? {
-        didSet {
-            if webCanGoForwardObserve?.isObserve ?? false {
-                if oldValue?.isObserve ?? false {
+            
+            if let webcangoforward = webObserves?.CanGoForward {
+                if let _ = webCanGoForward {
                     self.removeObserver(self, forKeyPath: WebObserve.canGoForward.keyStr)
                 }
+                webCanGoForward = webcangoforward
                 self.addObserver(self, forKeyPath: WebObserve.canGoForward.keyStr, options: .new, context: nil)
-                print("添加webGoForward的监听")
-            }else{
-                if oldValue?.isObserve ?? false {
-                    self.removeObserver(self, forKeyPath: WebObserve.canGoForward.keyStr)
-                    print("移除webGoForward的监听")
-                }
             }
-            webCanGoForward = webCanGoForwardObserve?.webCanGoForward
         }
     }
-    
-    
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         if keyPath == WebObserve.progress.keyStr {
@@ -150,19 +108,19 @@ class BaseWebView: WKWebView {
     }
     
     deinit {
-        if webProgressObserve?.isObserve ?? false {
+        if let _ = webProgress {
             self.removeObserver(self, forKeyPath: WebObserve.progress.keyStr)
         }
         
-        if webTitleObserve?.isObserve ?? false {
+        if let _ = webTitle {
             self.removeObserver(self, forKeyPath: WebObserve.title.keyStr)
         }
         
-        if webCanGoBackObserve?.isObserve ?? false {
+        if let _ = webCanGoBack {
             self.removeObserver(self, forKeyPath: WebObserve.canGoBack.keyStr)
         }
         
-        if webCanGoForwardObserve?.isObserve ?? false {
+        if let _ = webCanGoForward {
             self.removeObserver(self, forKeyPath: WebObserve.canGoForward.keyStr)
         }
     }

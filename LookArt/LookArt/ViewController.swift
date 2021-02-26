@@ -6,7 +6,6 @@
 //
 
 import UIKit
-
 class ViewController: UIViewController {
 
     override func viewDidLoad() {
@@ -29,7 +28,19 @@ class ViewController: UIViewController {
     }
 
     @objc private func btnAction() {
-        self.present(WebController(), animated: true, completion: nil)
+        let webc = WebController()
+//        webc.modalPresentationStyle = .fullScreen
+        let navc = UINavigationController(rootViewController: webc)
+        
+        let nav = UINavigationController(navigationBarClass: WebSearchBar.self, toolbarClass: ToolBar.self)
+        nav.setViewControllers([webc], animated: false)
+        nav.modalPresentationStyle = .fullScreen
+//        nav.hidesBarsOnSwipe = true
+//        nav.hidesBarsOnTap = true
+//        nav.setToolbarHidden(false, animated: false)
+//        nav.isToolbarHidden = false
+        self.present(nav, animated: true, completion: nil)
+        
     }
 }
 

@@ -16,6 +16,12 @@ extension UIViewController {
         self.navigationController?.setNavigationBarHidden(!visible, animated: true)
     }
     
+    /// 控制底部工具栏的显示隐藏
+    /// - Parameter visible: true:显示,false:隐藏
+    func setToolBarVisible(Visible visible: Bool) {
+        self.navigationController?.setToolbarHidden(!visible, animated: true)
+    }
+    
     /// 设置NavigationBar的大标题显示方式
     /// - Parameter mode:显示方式
     @available(iOS 11.0, *)
@@ -23,7 +29,7 @@ extension UIViewController {
         self.navigationItem.largeTitleDisplayMode = mode
     }
     
-    /// 控制底部工具条的显示隐藏
+    /// 控制底部标签栏的显示隐藏
     /// - Parameter visible: true:显示导航条,false:隐藏导航条
     func setTabBarVisible(Visible visible : Bool) {
         self.hidesBottomBarWhenPushed = visible
