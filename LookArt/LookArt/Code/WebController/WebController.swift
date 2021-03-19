@@ -37,7 +37,6 @@ class WebController: BaseViewController {
             make.top.equalTo(0)
             make.bottom.equalTo(0)
         }
-        self.title = "URL"
 //        self.searchBar.autoresizingMask = [.flexibleWidth, .flexibleBottomMargin]
 //        view.addSubview(self.searchBar)
 //        searchBar.snp.makeConstraints { (make) in
@@ -47,12 +46,6 @@ class WebController: BaseViewController {
 //            make.height.equalTo(56)
 //        }
 //        searchBar.layoutGuides
-        
-
-//        let item9 = UIBarButtonItem(image: UIImage(systemName: "square.on.square"), style: .done, target: nil, action: nil)
-//        self.setToolbarItems([item9], animated: true)
-        
-        
         
         setToolBar()
  
@@ -78,6 +71,7 @@ class WebController: BaseViewController {
         
         web.webObserves = (Title:{(title) in
             print("web title: \(title)")
+            self.title = title
         },Progress:{(progress) in
             print("web load progress: \(progress)")
         },CanGoBack:{(back) in

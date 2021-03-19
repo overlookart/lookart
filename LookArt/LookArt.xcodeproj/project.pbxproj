@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		283F7B07260488860055FC7D /* TabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 283F7B05260488860055FC7D /* TabController.swift */; };
+		286FF9D125EA3A1100AC482A /* TabTestController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 286FF9D025EA3A1100AC482A /* TabTestController.swift */; };
+		286FF9D725EB239E00AC482A /* TabCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 286FF9D525EB239E00AC482A /* TabCell.swift */; };
+		286FF9D825EB239E00AC482A /* TabCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 286FF9D625EB239E00AC482A /* TabCell.xib */; };
+		286FF9DD25EB364200AC482A /* TabLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 286FF9DC25EB364200AC482A /* TabLayout.swift */; };
+		286FF9EC25F6316000AC482A /* TabLayoutAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 286FF9EB25F6316000AC482A /* TabLayoutAttributes.swift */; };
 		28BA172725D939E000861E62 /* ToolBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28BA172625D939E000861E62 /* ToolBar.swift */; };
 		28BA172C25DBEC3A00861E62 /* WebSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28BA172B25DBEC3A00861E62 /* WebSearchBar.swift */; };
 		28BA173425DCB8DB00861E62 /* UINavigationBar_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28BA173325DCB8DB00861E62 /* UINavigationBar_Extension.swift */; };
@@ -76,6 +82,12 @@
 		03C4276F12A968BE493CD376 /* Pods-LookArt.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LookArt.debug.xcconfig"; path = "Target Support Files/Pods-LookArt/Pods-LookArt.debug.xcconfig"; sourceTree = "<group>"; };
 		15EF7115A5E5522A72F64341 /* Pods-LookArt-LookArtUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LookArt-LookArtUITests.debug.xcconfig"; path = "Target Support Files/Pods-LookArt-LookArtUITests/Pods-LookArt-LookArtUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		19D9FF881B5D805F145F1BF3 /* Pods-LookArtTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LookArtTests.debug.xcconfig"; path = "Target Support Files/Pods-LookArtTests/Pods-LookArtTests.debug.xcconfig"; sourceTree = "<group>"; };
+		283F7B05260488860055FC7D /* TabController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabController.swift; sourceTree = "<group>"; };
+		286FF9D025EA3A1100AC482A /* TabTestController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabTestController.swift; sourceTree = "<group>"; };
+		286FF9D525EB239E00AC482A /* TabCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabCell.swift; sourceTree = "<group>"; };
+		286FF9D625EB239E00AC482A /* TabCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TabCell.xib; sourceTree = "<group>"; };
+		286FF9DC25EB364200AC482A /* TabLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabLayout.swift; sourceTree = "<group>"; };
+		286FF9EB25F6316000AC482A /* TabLayoutAttributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabLayoutAttributes.swift; sourceTree = "<group>"; };
 		28BA172625D939E000861E62 /* ToolBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolBar.swift; sourceTree = "<group>"; };
 		28BA172B25DBEC3A00861E62 /* WebSearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebSearchBar.swift; sourceTree = "<group>"; };
 		28BA173325DCB8DB00861E62 /* UINavigationBar_Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINavigationBar_Extension.swift; sourceTree = "<group>"; };
@@ -162,6 +174,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		286FF9CF25EA39AA00AC482A /* TabController */ = {
+			isa = PBXGroup;
+			children = (
+				286FF9D025EA3A1100AC482A /* TabTestController.swift */,
+				286FF9D525EB239E00AC482A /* TabCell.swift */,
+				286FF9D625EB239E00AC482A /* TabCell.xib */,
+				286FF9DC25EB364200AC482A /* TabLayout.swift */,
+				286FF9EB25F6316000AC482A /* TabLayoutAttributes.swift */,
+				283F7B05260488860055FC7D /* TabController.swift */,
+			);
+			path = TabController;
+			sourceTree = "<group>";
+		};
 		28D41CC625D403CA008696AC = {
 			isa = PBXGroup;
 			children = (
@@ -242,6 +267,7 @@
 		28D41D2225D41683008696AC /* Code */ = {
 			isa = PBXGroup;
 			children = (
+				286FF9CF25EA39AA00AC482A /* TabController */,
 				28E5A9B825D6466000750E3B /* WebConfig */,
 				28E5A99725D63A5D00750E3B /* BaseUI */,
 				28E5A97F25D63A3E00750E3B /* Extension */,
@@ -472,6 +498,7 @@
 				28D41D1625D40425008696AC /* user-script11.js in Resources */,
 				28D41D1A25D40425008696AC /* user-script3.js in Resources */,
 				28D41CDA25D403CA008696AC /* Main.storyboard in Resources */,
+				286FF9D825EB239E00AC482A /* TabCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -603,16 +630,21 @@
 				28E5A98C25D63A3E00750E3B /* UITextField_Extension.swift in Sources */,
 				28E5A9BA25D6468600750E3B /* WebConfig.swift in Sources */,
 				28E5A99325D63A3E00750E3B /* UIView_Extension.swift in Sources */,
+				286FF9EC25F6316000AC482A /* TabLayoutAttributes.swift in Sources */,
 				28E5A99225D63A3E00750E3B /* UINavigationController_Extension.swift in Sources */,
 				28D41CD725D403CA008696AC /* ViewController.swift in Sources */,
 				28BA172C25DBEC3A00861E62 /* WebSearchBar.swift in Sources */,
+				286FF9D725EB239E00AC482A /* TabCell.swift in Sources */,
 				28E5A98B25D63A3E00750E3B /* WKWebView_Extension.swift in Sources */,
+				283F7B07260488860055FC7D /* TabController.swift in Sources */,
 				28D41CD325D403CA008696AC /* AppDelegate.swift in Sources */,
 				28BA173425DCB8DB00861E62 /* UINavigationBar_Extension.swift in Sources */,
+				286FF9D125EA3A1100AC482A /* TabTestController.swift in Sources */,
 				28E5A98E25D63A3E00750E3B /* CollectionView_Extension.swift in Sources */,
 				28D41CD525D403CA008696AC /* SceneDelegate.swift in Sources */,
 				28E5A96C25D618B000750E3B /* WebServer.swift in Sources */,
 				28E5A99125D63A3E00750E3B /* UIViewController_Extension.swift in Sources */,
+				286FF9DD25EB364200AC482A /* TabLayout.swift in Sources */,
 				28E5A9AB25D63BE400750E3B /* TabWebView.swift in Sources */,
 				28E5A98D25D63A3E00750E3B /* UIApplication_Extension.swift in Sources */,
 				28E5A98A25D63A3E00750E3B /* String_Extension.swift in Sources */,

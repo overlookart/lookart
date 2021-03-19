@@ -17,16 +17,13 @@ class WebSearchBar: UINavigationBar {
     }
     */
     
-    private(set) var searchBar: UISearchBar
+    private(set) var searchBar: UISearchController
     
     override init(frame: CGRect) {
-        searchBar = UISearchBar(frame: CGRect.zero)
+        searchBar = UISearchController(searchResultsController: UIViewController())
         super.init(frame: frame)
-        let item = UINavigationItem(title: "URL")
-        self.setItems([item], animated: true)
-        
         self.preservesSuperviewLayoutMargins = true
-        self.layoutMargins = UIEdgeInsets(top: 10, left: 20, bottom: 10, right: 20)
+        self.layoutMargins = UIEdgeInsets(top: 30, left: 20, bottom: 10, right: 20)
     }
     
     
@@ -37,7 +34,7 @@ class WebSearchBar: UINavigationBar {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        self.topItem?.titleView = searchBar
+//        self.topItem?.titleView = searchBar.searchBar
     }
 }
 
