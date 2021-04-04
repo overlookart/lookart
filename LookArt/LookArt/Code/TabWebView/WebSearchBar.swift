@@ -17,16 +17,13 @@ class WebSearchBar: UINavigationBar {
     }
     */
     
-    private(set) var searchBar: UISearchController
-    
+    var searchVC = WebSearchController(searchResultsController: nil)
+    var searchItem = UINavigationItem(title: "hh");
     override init(frame: CGRect) {
-        searchBar = UISearchController(searchResultsController: UIViewController())
         super.init(frame: frame)
-        self.preservesSuperviewLayoutMargins = true
-        self.layoutMargins = UIEdgeInsets(top: 30, left: 20, bottom: 10, right: 20)
+        searchItem.titleView = searchVC.searchBar
+        self.setItems([searchItem], animated: false)
     }
-    
-    
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -34,7 +31,6 @@ class WebSearchBar: UINavigationBar {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-//        self.topItem?.titleView = searchBar.searchBar
     }
 }
 

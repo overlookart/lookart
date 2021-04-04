@@ -10,23 +10,29 @@ import UIKit
 class TabController: UIViewController {
     @IBAction func addTabAction(_ sender: Any) {
         addTab()
-        collectionView.insertItems(at: [IndexPath(item: children.count-1, section: 0)])
+        collectionView.insertItems(at: [IndexPath(item: webs.count-1, section: 0)])
+    }
+    @IBAction func completeAction(_ sender: Any) {
+        addChild(currectWeb)
+        view.addSubview(currectWeb.view)
     }
     @IBOutlet weak var collectionView: UICollectionView!
-    
+    private var webs: [WebNavigationController] = []
+    private var currectWeb: WebNavigationController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         collectionView.backgroundColor = UIColor.random
-
         registerCellClasses()
-        
-        addTab()
-        addTab()
         addTab()
         self.collectionView.setCollectionViewLayout(TabLayout(), animated: false)
         // Do any additional setup after loading the view.
+        if let firstweb = webs.first {
+            addChild(firstweb)
+            view.addSubview(firstweb.view)
+            currectWeb = firstweb
+        }
+        
     }
 
     private func registerCellClasses() {
@@ -34,11 +40,13 @@ class TabController: UIViewController {
     }
     
     private func addTab() {
-        let webc = WebController()
-        let nav = UINavigationController(navigationBarClass: WebSearchBar.self, toolbarClass: ToolBar.self)
-        nav.setViewControllers([webc], animated: false)
+        let nav = WebNavigationController()
         nav.modalPresentationStyle = .fullScreen
-        addChild(nav)
+        self.webs.append(nav)
+        nav.openTabManager = {
+            nav.view.removeFromSuperview()
+            nav.removeFromParent()
+        }
         
     }
 
@@ -69,7 +77,7 @@ extension TabController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return children.count
+        return webs.count
     }
     
     
@@ -80,12 +88,18 @@ extension TabController: UICollectionViewDataSource {
         cell.imgView.backgroundColor = UIColor.random
         cell.closeAction = {
             if let ide = collectionView.indexPath(for: cell) {
-                self.children[ide.item].removeFromParent()
+                self.webs.remove(at: ide.item)
                 self.collectionView.deleteItems(at: [ide])
             }
             
         }
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        currectWeb = webs[indexPath.row]
+        addChild(currectWeb)
+        view.addSubview(currectWeb.view)
     }
     
 }

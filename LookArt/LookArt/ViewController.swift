@@ -32,14 +32,14 @@ class ViewController: UIViewController {
 //        webc.modalPresentationStyle = .fullScreen
         let navc = UINavigationController(rootViewController: webc)
         
-        let nav = UINavigationController(navigationBarClass: WebSearchBar.self, toolbarClass: ToolBar.self)
-        nav.setViewControllers([webc], animated: false)
-        nav.modalPresentationStyle = .fullScreen
+        
+        navc.setViewControllers([webc], animated: false)
+        navc.modalPresentationStyle = .fullScreen
 //        nav.hidesBarsOnSwipe = true
 //        nav.hidesBarsOnTap = true
 //        nav.setToolbarHidden(false, animated: false)
 //        nav.isToolbarHidden = false
-        self.present(nav, animated: true, completion: nil)
+        self.present(navc, animated: true, completion: nil)
         
     }
 }

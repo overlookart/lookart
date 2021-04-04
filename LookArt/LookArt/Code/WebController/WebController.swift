@@ -14,7 +14,7 @@ class WebController: BaseViewController {
         return search
         
     }()
-    var toolbar: ToolBar?
+    
     let web: TabWebView = {
         let tabWebView = TabWebView(config: WebConfig())
         return tabWebView
@@ -22,31 +22,29 @@ class WebController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
-        
-        
         // Do any additional setup after loading the view.
         
+        
+        
         view.addSubview(self.web)
-//        self.setNavigationBarVisible(Visible: false)
+        self.setNavigationBarVisible(Visible: false)
         self.setToolBarVisible(Visible: true)
         web.snp.makeConstraints { (make) in
             make.trailing.equalTo(0)
             make.leading.equalTo(0)
-            make.top.equalTo(0)
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(49)
             make.bottom.equalTo(0)
         }
-//        self.searchBar.autoresizingMask = [.flexibleWidth, .flexibleBottomMargin]
-//        view.addSubview(self.searchBar)
-//        searchBar.snp.makeConstraints { (make) in
-//            make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
-//            make.left.equalTo(0)
-//            make.right.equalTo(0)
-//            make.height.equalTo(56)
-//        }
-//        searchBar.layoutGuides
         
+        view.addSubview(searchBar)
+        searchBar.snp.makeConstraints { (make) in
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
+            make.leading.equalTo(0)
+            make.trailing.equalTo(0)
+            make.bottom.equalTo(self.web.snp.top);
+        }
+    
+        self.definesPresentationContext = true
         setToolBar()
  
         web.scrollDelegates = (DidScroll:{
@@ -71,7 +69,7 @@ class WebController: BaseViewController {
         
         web.webObserves = (Title:{(title) in
             print("web title: \(title)")
-            self.title = title
+//            self.title = title
         },Progress:{(progress) in
             print("web load progress: \(progress)")
         },CanGoBack:{(back) in
@@ -110,10 +108,8 @@ class WebController: BaseViewController {
 
     
     private func setToolBar() {
-        if let toolbar = self.navigationController?.toolbar as? ToolBar {
-            toolbar.setupItems()
-            self.setToolbarItems(toolbar.items, animated: true)
-            toolbar.backBtnItem.isEnabled = false
+        if let webNavigation = self.navigationController as? WebNavigationController {
+            webNavigation.setToolBar(webController: self)
         }
     }
     
