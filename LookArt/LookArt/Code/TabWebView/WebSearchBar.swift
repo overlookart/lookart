@@ -18,7 +18,7 @@ class WebSearchBar: UINavigationBar {
     */
     
     var searchVC = WebSearchController(searchResultsController: nil)
-    var searchItem = UINavigationItem(title: "hh");
+    var searchItem = UINavigationItem(title: "");
     override init(frame: CGRect) {
         super.init(frame: frame)
         searchItem.titleView = searchVC.searchBar
@@ -27,10 +27,6 @@ class WebSearchBar: UINavigationBar {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
     }
 }
 

@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import SnapKit
 import WebKit
 class WebController: BaseViewController {
     let searchBar: WebSearchBar = {
@@ -36,6 +35,23 @@ class WebController: BaseViewController {
             make.bottom.equalTo(0)
         }
         
+        let favo = PersonalFavoritesController()
+        addChild(favo)
+        view.addSubview(favo.view)
+        favo.view.snp.makeConstraints { (make) in
+            make.top.equalTo(self.web.snp.top).offset(7)
+            make.leading.equalTo(self.web.snp.leading)
+            make.trailing.equalTo(self.web.snp.trailing)
+            make.bottom.equalTo(self.web.snp.bottom)
+        }
+        
+        favo.openWebSiteAction = { urlStr in
+            favo.removeFromParent()
+            favo.view.removeFromSuperview()
+            
+            self.web.loadweb(urlStr: urlStr)
+        }
+        
         view.addSubview(searchBar)
         searchBar.snp.makeConstraints { (make) in
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
@@ -47,6 +63,11 @@ class WebController: BaseViewController {
         self.definesPresentationContext = true
         setToolBar()
  
+        
+        
+        
+        
+        
         web.scrollDelegates = (DidScroll:{
             if self.web.scrollContentOffset.y < self.web.scrollBeginDragOffset.y {
                 return
@@ -102,8 +123,8 @@ class WebController: BaseViewController {
         
 //        web.loadweb(urlStr: "http://172.20.10.2:8080/")
 //        web.loadweb(urlStr: "https://github.com/matteocrippa/awesome-swift")
-        let h5Path = Bundle.main.path(forResource: "test_html", ofType: "html")
-        web.loadFile(fileUrl: URL(fileURLWithPath: h5Path!))
+//        let h5Path = Bundle.main.path(forResource: "test_html", ofType: "html")
+//        web.loadFile(fileUrl: URL(fileURLWithPath: h5Path!))
     }
 
     

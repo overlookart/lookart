@@ -7,7 +7,8 @@
 
 import UIKit
 
-class WebSearchController: UISearchController {    
+class WebSearchController: UISearchController {
+    
     override init(searchResultsController: UIViewController?) {
         super.init(searchResultsController: searchResultsController)
         self.searchBar.searchBarStyle = .default

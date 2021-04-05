@@ -11,6 +11,7 @@ target 'LookArt' do
   pod 'SnapKit', '~> 5.0.0'
   pod 'RxSwift', '~> 6.1.0'
   pod 'RxCocoa', '~> 6.1.0'
+  pod 'SwiftyJSON', '~> 4.0'
   target 'LookArtTests' do
     inherit! :search_paths
     # Pods for testing

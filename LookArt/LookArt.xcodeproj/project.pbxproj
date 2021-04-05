@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2836663D261A8DFB0094D707 /* PersonalFavoritesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2836663B261A8DFB0094D707 /* PersonalFavoritesController.swift */; };
+		2836663E261A8DFB0094D707 /* PersonalFavoritesController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2836663C261A8DFB0094D707 /* PersonalFavoritesController.xib */; };
+		28366644261A91E40094D707 /* PersonalFavoriteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28366642261A91E40094D707 /* PersonalFavoriteCell.swift */; };
+		28366645261A91E40094D707 /* PersonalFavoriteCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28366643261A91E40094D707 /* PersonalFavoriteCell.xib */; };
+		2836664B261A94BB0094D707 /* Importlibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2836664A261A94BB0094D707 /* Importlibrary.swift */; };
+		28366653261AD0F30094D707 /* PersonalFavoritesVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28366652261AD0F30094D707 /* PersonalFavoritesVM.swift */; };
+		28366658261AD4E70094D707 /* WebSiteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28366657261AD4E70094D707 /* WebSiteModel.swift */; };
 		283F7B07260488860055FC7D /* TabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 283F7B05260488860055FC7D /* TabController.swift */; };
 		28554D932609C357006CB16A /* WebNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28554D922609C357006CB16A /* WebNavigationController.swift */; };
 		286FF9D725EB239E00AC482A /* TabCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 286FF9D525EB239E00AC482A /* TabCell.swift */; };
@@ -83,6 +90,13 @@
 		03C4276F12A968BE493CD376 /* Pods-LookArt.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LookArt.debug.xcconfig"; path = "Target Support Files/Pods-LookArt/Pods-LookArt.debug.xcconfig"; sourceTree = "<group>"; };
 		15EF7115A5E5522A72F64341 /* Pods-LookArt-LookArtUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LookArt-LookArtUITests.debug.xcconfig"; path = "Target Support Files/Pods-LookArt-LookArtUITests/Pods-LookArt-LookArtUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		19D9FF881B5D805F145F1BF3 /* Pods-LookArtTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LookArtTests.debug.xcconfig"; path = "Target Support Files/Pods-LookArtTests/Pods-LookArtTests.debug.xcconfig"; sourceTree = "<group>"; };
+		2836663B261A8DFB0094D707 /* PersonalFavoritesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalFavoritesController.swift; sourceTree = "<group>"; };
+		2836663C261A8DFB0094D707 /* PersonalFavoritesController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PersonalFavoritesController.xib; sourceTree = "<group>"; };
+		28366642261A91E40094D707 /* PersonalFavoriteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalFavoriteCell.swift; sourceTree = "<group>"; };
+		28366643261A91E40094D707 /* PersonalFavoriteCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PersonalFavoriteCell.xib; sourceTree = "<group>"; };
+		2836664A261A94BB0094D707 /* Importlibrary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Importlibrary.swift; sourceTree = "<group>"; };
+		28366652261AD0F30094D707 /* PersonalFavoritesVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalFavoritesVM.swift; sourceTree = "<group>"; };
+		28366657261AD4E70094D707 /* WebSiteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebSiteModel.swift; sourceTree = "<group>"; };
 		283F7B05260488860055FC7D /* TabController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabController.swift; sourceTree = "<group>"; };
 		28554D922609C357006CB16A /* WebNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebNavigationController.swift; sourceTree = "<group>"; };
 		286FF9D525EB239E00AC482A /* TabCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabCell.swift; sourceTree = "<group>"; };
@@ -176,6 +190,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2836663A261A8D7D0094D707 /* PersonalFavorites */ = {
+			isa = PBXGroup;
+			children = (
+				2836663B261A8DFB0094D707 /* PersonalFavoritesController.swift */,
+				2836663C261A8DFB0094D707 /* PersonalFavoritesController.xib */,
+				28366642261A91E40094D707 /* PersonalFavoriteCell.swift */,
+				28366643261A91E40094D707 /* PersonalFavoriteCell.xib */,
+				28366652261AD0F30094D707 /* PersonalFavoritesVM.swift */,
+				28366657261AD4E70094D707 /* WebSiteModel.swift */,
+			);
+			path = PersonalFavorites;
+			sourceTree = "<group>";
+		};
+		28366649261A94140094D707 /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				2836664A261A94BB0094D707 /* Importlibrary.swift */,
+			);
+			path = Config;
+			sourceTree = "<group>";
+		};
 		286FF9CF25EA39AA00AC482A /* TabController */ = {
 			isa = PBXGroup;
 			children = (
@@ -268,6 +303,8 @@
 		28D41D2225D41683008696AC /* Code */ = {
 			isa = PBXGroup;
 			children = (
+				28366649261A94140094D707 /* Config */,
+				2836663A261A8D7D0094D707 /* PersonalFavorites */,
 				286FF9CF25EA39AA00AC482A /* TabController */,
 				28E5A9B825D6466000750E3B /* WebConfig */,
 				28E5A99725D63A5D00750E3B /* BaseUI */,
@@ -487,6 +524,7 @@
 				28D41D1725D40425008696AC /* user-script12.js in Resources */,
 				28D41D1B25D40425008696AC /* user-script10.js in Resources */,
 				28D41D1925D40425008696AC /* user-script6.js in Resources */,
+				28366645261A91E40094D707 /* PersonalFavoriteCell.xib in Resources */,
 				28D41D1525D40425008696AC /* user-script4.js in Resources */,
 				28E5A9A625D63B2B00750E3B /* WebController.xib in Resources */,
 				28D41D1325D40425008696AC /* user-script2.js in Resources */,
@@ -503,6 +541,7 @@
 				28D41D1A25D40425008696AC /* user-script3.js in Resources */,
 				28D41CDA25D403CA008696AC /* Main.storyboard in Resources */,
 				286FF9D825EB239E00AC482A /* TabCell.xib in Resources */,
+				2836663E261A8DFB0094D707 /* PersonalFavoritesController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -637,6 +676,7 @@
 				286FF9EC25F6316000AC482A /* TabLayoutAttributes.swift in Sources */,
 				28E5A99225D63A3E00750E3B /* UINavigationController_Extension.swift in Sources */,
 				28D41CD725D403CA008696AC /* ViewController.swift in Sources */,
+				28366653261AD0F30094D707 /* PersonalFavoritesVM.swift in Sources */,
 				28BA172C25DBEC3A00861E62 /* WebSearchBar.swift in Sources */,
 				286FF9D725EB239E00AC482A /* TabCell.swift in Sources */,
 				28E5A98B25D63A3E00750E3B /* WKWebView_Extension.swift in Sources */,
@@ -657,8 +697,12 @@
 				28B6AB9026194863008F73B2 /* WebSearchController.swift in Sources */,
 				28E5A99F25D63A5D00750E3B /* BaseView.swift in Sources */,
 				28554D932609C357006CB16A /* WebNavigationController.swift in Sources */,
+				2836663D261A8DFB0094D707 /* PersonalFavoritesController.swift in Sources */,
+				28366658261AD4E70094D707 /* WebSiteModel.swift in Sources */,
 				28E5A99C25D63A5D00750E3B /* BaseWebView.swift in Sources */,
 				28E5A99025D63A3E00750E3B /* FileManager_Extension.swift in Sources */,
+				2836664B261A94BB0094D707 /* Importlibrary.swift in Sources */,
+				28366644261A91E40094D707 /* PersonalFavoriteCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

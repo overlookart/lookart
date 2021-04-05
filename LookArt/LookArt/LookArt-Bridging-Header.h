@@ -11,6 +11,5 @@
 
 #endif /* LookArt_Bridging_Header_h */
 
-
 #import <GCDWebServer/GCDWebServer.h>
 #import <GCDWebServer/GCDWebServerDataResponse.h>
