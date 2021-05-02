@@ -7,7 +7,9 @@
 
 import UIKit
 import WebKit
+import RxSwift
 class WebController: BaseViewController {
+    let disposeBag = DisposeBag()
     let searchBar: WebSearchBar = {
         let search = WebSearchBar(frame: .zero)
         return search
@@ -88,6 +90,7 @@ class WebController: BaseViewController {
             
         })
         
+        /*
         web.webObserves = (Title:{(title) in
             print("web title: \(title)")
 //            self.title = title
@@ -97,8 +100,35 @@ class WebController: BaseViewController {
             print("web can go back: \(back)")
         },CanGoForward:{(forward) in
             print("web can go forward: \(forward)")
-        })
+        })*/
+        web.rx.title.subscribe(onNext: { (title) in
+            print("web title: \(String(describing: title))")
+        }).disposed(by: disposeBag)
+
+        web.rx.url.subscribe(onNext: {(url) in
+            print("web url: \(String(describing: url))")
+        }).disposed(by: disposeBag)
+
+        web.rx.progress.subscribe(onNext: { (progress) in
+            print("web progress: \(progress)")
+        }).disposed(by: disposeBag)
+
         
+        web.rx.decidePolicyForNavigationAction.subscribe { (webview, action, handler) in
+            print("webview_rx:是否允许导航")
+            handler(.allow)
+        } .disposed(by: disposeBag)
+        web.rx.didStartProvisionalNavigation.subscribe { (webview, navigation) in
+            print("webview_rx:开始加载")
+        }.disposed(by: disposeBag)
+        web.rx.decidePolicyForNavigationResponse.subscribe { (webview, navigationResponse, decisionHandler) in
+            print("webview_rx:收到响应后是否允许导航")
+            decisionHandler(.allow)
+        }.disposed(by: disposeBag)
+
+        
+        
+        /*
         web.navigationDelegates = (DecidePolicyNavigationAction:{(navigationAction) in
             return WKNavigationActionPolicy.allow
         }, DidStartNavigation:{(navigation) in
@@ -119,7 +149,7 @@ class WebController: BaseViewController {
             
         }, DidTerminate:{
             
-        })
+        })*/
         
 //        web.loadweb(urlStr: "http://172.20.10.2:8080/")
 //        web.loadweb(urlStr: "https://github.com/matteocrippa/awesome-swift")

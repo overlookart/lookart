@@ -27,8 +27,6 @@ class PersonalFavoritesController: BaseViewController {
             self.openWebSiteAction?(websitemodel.url)
         }).disposed(by: disposeBag)
         
-        
-        
     }
 
 
@@ -43,3 +41,29 @@ class PersonalFavoritesController: BaseViewController {
     */
 
 }
+
+
+extension PersonalFavoritesController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, contextMenuConfigurationForItemAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
+        let action1 = UIAction(title: "Action1", image: nil, identifier: .none, discoverabilityTitle: nil, attributes: .destructive, state: .mixed) { (action) in
+            
+        }
+        let action2 = UIAction(title: "Action2", image: nil, identifier: .none, discoverabilityTitle: nil, attributes: .destructive, state: .on) { (action) in
+            
+        }
+        let contextMenu = UIContextMenuConfiguration(identifier: nil) { () -> UIViewController? in
+            return PersonalFavoritesController()
+        } actionProvider: { (elements) -> UIMenu? in
+            return UIMenu(title: "ac", image: nil, identifier: .about, options: .destructive, children: [action1,action2])
+        }
+
+        return contextMenu
+    }
+}
+
+extension PersonalFavoritesController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 50, height: 50)
+    }
+}
+

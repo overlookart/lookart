@@ -14,6 +14,9 @@
 		2836664B261A94BB0094D707 /* Importlibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2836664A261A94BB0094D707 /* Importlibrary.swift */; };
 		28366653261AD0F30094D707 /* PersonalFavoritesVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28366652261AD0F30094D707 /* PersonalFavoritesVM.swift */; };
 		28366658261AD4E70094D707 /* WebSiteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28366657261AD4E70094D707 /* WebSiteModel.swift */; };
+		2836666B261C9A480094D707 /* UICollectionView_Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2836666A261C9A480094D707 /* UICollectionView_Rx.swift */; };
+		2836668A2631C6390094D707 /* WKWebview_Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 283666892631C6390094D707 /* WKWebview_Rx.swift */; };
+		2836668F263D87FC0094D707 /* Extension_Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2836668E263D87FC0094D707 /* Extension_Rx.swift */; };
 		283F7B07260488860055FC7D /* TabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 283F7B05260488860055FC7D /* TabController.swift */; };
 		28554D932609C357006CB16A /* WebNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28554D922609C357006CB16A /* WebNavigationController.swift */; };
 		286FF9D725EB239E00AC482A /* TabCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 286FF9D525EB239E00AC482A /* TabCell.swift */; };
@@ -97,6 +100,9 @@
 		2836664A261A94BB0094D707 /* Importlibrary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Importlibrary.swift; sourceTree = "<group>"; };
 		28366652261AD0F30094D707 /* PersonalFavoritesVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalFavoritesVM.swift; sourceTree = "<group>"; };
 		28366657261AD4E70094D707 /* WebSiteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebSiteModel.swift; sourceTree = "<group>"; };
+		2836666A261C9A480094D707 /* UICollectionView_Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionView_Rx.swift; sourceTree = "<group>"; };
+		283666892631C6390094D707 /* WKWebview_Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WKWebview_Rx.swift; sourceTree = "<group>"; };
+		2836668E263D87FC0094D707 /* Extension_Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension_Rx.swift; sourceTree = "<group>"; };
 		283F7B05260488860055FC7D /* TabController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabController.swift; sourceTree = "<group>"; };
 		28554D922609C357006CB16A /* WebNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebNavigationController.swift; sourceTree = "<group>"; };
 		286FF9D525EB239E00AC482A /* TabCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabCell.swift; sourceTree = "<group>"; };
@@ -209,6 +215,16 @@
 				2836664A261A94BB0094D707 /* Importlibrary.swift */,
 			);
 			path = Config;
+			sourceTree = "<group>";
+		};
+		28366669261C9A170094D707 /* Rx */ = {
+			isa = PBXGroup;
+			children = (
+				2836666A261C9A480094D707 /* UICollectionView_Rx.swift */,
+				283666892631C6390094D707 /* WKWebview_Rx.swift */,
+				2836668E263D87FC0094D707 /* Extension_Rx.swift */,
+			);
+			path = Rx;
 			sourceTree = "<group>";
 		};
 		286FF9CF25EA39AA00AC482A /* TabController */ = {
@@ -356,6 +372,7 @@
 		28E5A97F25D63A3E00750E3B /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				28366669261C9A170094D707 /* Rx */,
 				28E5A98025D63A3E00750E3B /* String_Extension.swift */,
 				28E5A98125D63A3E00750E3B /* WKWebView_Extension.swift */,
 				28E5A98225D63A3E00750E3B /* UITextField_Extension.swift */,
@@ -424,7 +441,7 @@
 				28D41CCB25D403CA008696AC /* Sources */,
 				28D41CCC25D403CA008696AC /* Frameworks */,
 				28D41CCD25D403CA008696AC /* Resources */,
-				11299C6602B989186E8C3258 /* [CP] Embed Pods Frameworks */,
+				11175C05886B5F100D63D684 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -462,7 +479,7 @@
 				28D41CEC25D403CB008696AC /* Sources */,
 				28D41CED25D403CB008696AC /* Frameworks */,
 				28D41CEE25D403CB008696AC /* Resources */,
-				676AE09EE549B585DCFD0388 /* [CP] Embed Pods Frameworks */,
+				26D51982B02D31F49264B631 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -562,7 +579,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		11299C6602B989186E8C3258 /* [CP] Embed Pods Frameworks */ = {
+		11175C05886B5F100D63D684 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -577,6 +594,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-LookArt/Pods-LookArt-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		26D51982B02D31F49264B631 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-LookArt-LookArtUITests/Pods-LookArt-LookArtUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-LookArt-LookArtUITests/Pods-LookArt-LookArtUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-LookArt-LookArtUITests/Pods-LookArt-LookArtUITests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		37D0CAFC71E43FF6600F6507 /* [CP] Check Pods Manifest.lock */ = {
@@ -599,23 +633,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		676AE09EE549B585DCFD0388 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-LookArt-LookArtUITests/Pods-LookArt-LookArtUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-LookArt-LookArtUITests/Pods-LookArt-LookArtUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-LookArt-LookArtUITests/Pods-LookArt-LookArtUITests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		7555ED472EBA9A4CEEAA7E31 /* [CP] Check Pods Manifest.lock */ = {
@@ -685,6 +702,8 @@
 				28BA173425DCB8DB00861E62 /* UINavigationBar_Extension.swift in Sources */,
 				28E5A98E25D63A3E00750E3B /* CollectionView_Extension.swift in Sources */,
 				28D41CD525D403CA008696AC /* SceneDelegate.swift in Sources */,
+				2836668F263D87FC0094D707 /* Extension_Rx.swift in Sources */,
+				2836666B261C9A480094D707 /* UICollectionView_Rx.swift in Sources */,
 				28E5A96C25D618B000750E3B /* WebServer.swift in Sources */,
 				28E5A99125D63A3E00750E3B /* UIViewController_Extension.swift in Sources */,
 				286FF9DD25EB364200AC482A /* TabLayout.swift in Sources */,
@@ -697,6 +716,7 @@
 				28B6AB9026194863008F73B2 /* WebSearchController.swift in Sources */,
 				28E5A99F25D63A5D00750E3B /* BaseView.swift in Sources */,
 				28554D932609C357006CB16A /* WebNavigationController.swift in Sources */,
+				2836668A2631C6390094D707 /* WKWebview_Rx.swift in Sources */,
 				2836663D261A8DFB0094D707 /* PersonalFavoritesController.swift in Sources */,
 				28366658261AD4E70094D707 /* WebSiteModel.swift in Sources */,
 				28E5A99C25D63A5D00750E3B /* BaseWebView.swift in Sources */,
