@@ -125,6 +125,9 @@ class WebController: BaseViewController {
             print("webview_rx:收到响应后是否允许导航")
             decisionHandler(.allow)
         }.disposed(by: disposeBag)
+        web.rx.didCommitNavigation.subscribe { (webview, navigation) in
+            print("webview_rx:开始接收内容")
+        }.disposed(by: disposeBag)
 
         
         

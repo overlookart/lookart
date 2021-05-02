@@ -89,6 +89,15 @@ extension Reactive where Base: WKWebView {
     }
     
     
+    var didCommitNavigation: ControlEvent<WKNavigationEvent> {
+        let event = navigationDelegate.methodInvoked(.didCommitNavigation).map { (args) -> WKNavigationEvent in
+            let view = try castOrThrow(WKWebView.self, args[0])
+            let navigation = try castOrThrow(WKNavigation.self, args[1])
+            return (view, navigation)
+        }
+        return ControlEvent(events: event)
+    }
+    
     public typealias WKNavigationFailEvent = (webView: WKWebView, navigation: WKNavigation, error: Error)
     public typealias ChallengeHandler = (URLSession.AuthChallengeDisposition, URLCredential?) -> Void
     public typealias WKNavigationChallengeEvent = (webView: WKWebView, challenge: URLAuthenticationChallenge, handler: ChallengeHandler)
@@ -108,4 +117,6 @@ extension Selector {
     static let didStartProvisionalNavigation = #selector(WKNavigationDelegate.webView(_:didStartProvisionalNavigation:))
     
     static let decidePolicyForNavigationResponse = #selector(WKNavigationDelegate.webView(_:decidePolicyFor:decisionHandler:) as ((WKNavigationDelegate) -> (WKWebView, WKNavigationResponse, @escaping(WKNavigationResponsePolicy) -> Void) -> Void)?)
+    
+    static let didCommitNavigation = #selector(WKNavigationDelegate.webView(_:didCommit:))
 }
