@@ -131,6 +131,24 @@ class WebController: BaseViewController {
         web.rx.didReceiveServerRedirect.subscribe { (webview, navigation) in
             print("webview_rx:服务器重定向")
         }.disposed(by: disposeBag)
+        web.rx.didReceiveChallenge.subscribe { (webview, challenge, completionHandler) in
+            print("webview_rx:需要响应身份验证")
+            completionHandler(.rejectProtectionSpace, nil)
+        }.disposed(by: disposeBag)
+        web.rx.didFinishNavigation.subscribe { (webview, navigation) in
+            print("webview_rx:加载完成")
+        }.disposed(by: disposeBag)
+        web.rx.didFailNavigation.subscribe { (webview, navigation, err) in
+            print("webview_rx:导航期间发生错误")
+        }.disposed(by: disposeBag)
+        web.rx.didFailProvisionalNavigation.subscribe { (webview, navigation, err) in
+            print("webview_rx:加载内容时发生错误")
+        }.disposed(by: disposeBag)
+        web.rx.didTerminateContentProcess.subscribe { (webview) in
+            print("webview_rx:内容终止")
+        }.disposed(by: disposeBag)
+
+
 
         
         
