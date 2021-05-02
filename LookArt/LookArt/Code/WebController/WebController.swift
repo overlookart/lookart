@@ -128,6 +128,9 @@ class WebController: BaseViewController {
         web.rx.didCommitNavigation.subscribe { (webview, navigation) in
             print("webview_rx:开始接收内容")
         }.disposed(by: disposeBag)
+        web.rx.didReceiveServerRedirect.subscribe { (webview, navigation) in
+            print("webview_rx:服务器重定向")
+        }.disposed(by: disposeBag)
 
         
         
