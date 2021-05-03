@@ -17,6 +17,7 @@
 		2836666B261C9A480094D707 /* UICollectionView_Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2836666A261C9A480094D707 /* UICollectionView_Rx.swift */; };
 		2836668A2631C6390094D707 /* WKWebview_Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 283666892631C6390094D707 /* WKWebview_Rx.swift */; };
 		2836668F263D87FC0094D707 /* Extension_Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2836668E263D87FC0094D707 /* Extension_Rx.swift */; };
+		2836669726402B5E0094D707 /* UIScreen_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2836669626402B5E0094D707 /* UIScreen_Extension.swift */; };
 		283F7B07260488860055FC7D /* TabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 283F7B05260488860055FC7D /* TabController.swift */; };
 		28554D932609C357006CB16A /* WebNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28554D922609C357006CB16A /* WebNavigationController.swift */; };
 		286FF9D725EB239E00AC482A /* TabCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 286FF9D525EB239E00AC482A /* TabCell.swift */; };
@@ -103,6 +104,7 @@
 		2836666A261C9A480094D707 /* UICollectionView_Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionView_Rx.swift; sourceTree = "<group>"; };
 		283666892631C6390094D707 /* WKWebview_Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WKWebview_Rx.swift; sourceTree = "<group>"; };
 		2836668E263D87FC0094D707 /* Extension_Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension_Rx.swift; sourceTree = "<group>"; };
+		2836669626402B5E0094D707 /* UIScreen_Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIScreen_Extension.swift; sourceTree = "<group>"; };
 		283F7B05260488860055FC7D /* TabController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabController.swift; sourceTree = "<group>"; };
 		28554D922609C357006CB16A /* WebNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebNavigationController.swift; sourceTree = "<group>"; };
 		286FF9D525EB239E00AC482A /* TabCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabCell.swift; sourceTree = "<group>"; };
@@ -374,6 +376,7 @@
 			children = (
 				28366669261C9A170094D707 /* Rx */,
 				28E5A98025D63A3E00750E3B /* String_Extension.swift */,
+				2836669626402B5E0094D707 /* UIScreen_Extension.swift */,
 				28E5A98125D63A3E00750E3B /* WKWebView_Extension.swift */,
 				28E5A98225D63A3E00750E3B /* UITextField_Extension.swift */,
 				28E5A98325D63A3E00750E3B /* UIApplication_Extension.swift */,
@@ -703,6 +706,7 @@
 				28E5A98E25D63A3E00750E3B /* CollectionView_Extension.swift in Sources */,
 				28D41CD525D403CA008696AC /* SceneDelegate.swift in Sources */,
 				2836668F263D87FC0094D707 /* Extension_Rx.swift in Sources */,
+				2836669726402B5E0094D707 /* UIScreen_Extension.swift in Sources */,
 				2836666B261C9A480094D707 /* UICollectionView_Rx.swift in Sources */,
 				28E5A96C25D618B000750E3B /* WebServer.swift in Sources */,
 				28E5A99125D63A3E00750E3B /* UIViewController_Extension.swift in Sources */,

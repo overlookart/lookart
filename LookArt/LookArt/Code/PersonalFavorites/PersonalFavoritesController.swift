@@ -11,15 +11,19 @@ import RxCocoa
 class PersonalFavoritesController: BaseViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
-    
+    var currentItemContextMenuIndex: IndexPath?
     let personalFavoriteMV = PersonalFavoritesVM()
     let disposeBag = DisposeBag()
-    
+    let testView: UIView = {
+        let view = UIView(frame: CGRect(x: 0, y: 0, width: 200, height: 100))
+        view.backgroundColor = UIColor.random
+        return view
+    }()
     var openWebSiteAction: ((String) -> Void)?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+//        self.view .addSubview(testView)
         // Do any additional setup after loading the view.
         self.collectionView.register(nibWithCellClass: PersonalFavoriteCell.self)
         personalFavoriteMV.bindDataSource(view: self.collectionView, disposeBag: disposeBag)
@@ -27,6 +31,8 @@ class PersonalFavoritesController: BaseViewController {
             self.openWebSiteAction?(websitemodel.url)
         }).disposed(by: disposeBag)
         
+        self.collectionView.rx.setDelegate(self).disposed(by: disposeBag)
+
     }
 
 
@@ -45,25 +51,59 @@ class PersonalFavoritesController: BaseViewController {
 
 extension PersonalFavoritesController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, contextMenuConfigurationForItemAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
-        let action1 = UIAction(title: "Action1", image: nil, identifier: .none, discoverabilityTitle: nil, attributes: .destructive, state: .mixed) { (action) in
+        self.currentItemContextMenuIndex = indexPath
+        let action1 = UIAction(title: "拷贝", image: UIImage(systemName: "doc.on.doc"), identifier: .none, discoverabilityTitle: nil, attributes: .init(rawValue: 0), state: .off) { (action) in
+        }
+        
+
+        let action2 = UIAction(title: "在新标签页中打开", image: UIImage(systemName: "plus.square.on.square"), identifier: .none, discoverabilityTitle: nil, attributes: .init(rawValue: 0), state: .off) { (action) in
             
         }
-        let action2 = UIAction(title: "Action2", image: nil, identifier: .none, discoverabilityTitle: nil, attributes: .destructive, state: .on) { (action) in
+        
+        let action3 = UIAction(title: "编辑", image: UIImage(systemName: "square.and.pencil"), identifier: .none, discoverabilityTitle: nil, attributes: .init(rawValue: 0), state: .off) { (action) in
             
         }
+        let action4 = UIAction(title: "删除", image: UIImage(systemName: "trash"), identifier: .none, discoverabilityTitle: nil, attributes: .destructive, state: .off) { (action) in
+            
+        }
+        
+        
         let contextMenu = UIContextMenuConfiguration(identifier: nil) { () -> UIViewController? in
             return PersonalFavoritesController()
         } actionProvider: { (elements) -> UIMenu? in
-            return UIMenu(title: "ac", image: nil, identifier: .about, options: .destructive, children: [action1,action2])
+            let menu = UIMenu(title: "", image: nil, identifier: .application, options: .displayInline, children: [action1,action2,action3,action4])
+            
+            return menu
         }
-
+        
         return contextMenu
     }
+    
+    func collectionView(_ collectionView: UICollectionView, previewForHighlightingContextMenuWithConfiguration configuration: UIContextMenuConfiguration) -> UITargetedPreview? {
+        guard let indexPath = self.currentItemContextMenuIndex, let item = collectionView.cellForItem(at: indexPath) as? PersonalFavoriteCell else {
+            return nil
+        }
+        let preview = UITargetedPreview(view: item.imgView)
+        return preview
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, previewForDismissingContextMenuWithConfiguration configuration: UIContextMenuConfiguration) -> UITargetedPreview? {
+        guard let indexPath = self.currentItemContextMenuIndex, let item = collectionView.cellForItem(at: indexPath) as? PersonalFavoriteCell else {
+            return nil
+        }
+        let preview = UITargetedPreview(view: item.imgView)
+        return preview
+    }
+    
 }
 
 extension PersonalFavoritesController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 50, height: 50)
+        let width = CGFloat.minimum(UIScreen.ScreenWidth(), UIScreen.ScreenHeight())
+        //92:140
+        let itemWidth = (width - 50) / 4
+        let itemHeight = itemWidth * 140 / 92
+        return CGSize(width: itemWidth, height: itemHeight)
     }
 }
 
