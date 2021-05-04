@@ -102,16 +102,30 @@ class WebController: BaseViewController {
             print("web can go forward: \(forward)")
         })*/
         web.rx.title.subscribe(onNext: { (title) in
-            print("web title: \(String(describing: title))")
+            print("webview_rx title: \(String(describing: title))")
         }).disposed(by: disposeBag)
 
         web.rx.url.subscribe(onNext: {(url) in
-            print("web url: \(String(describing: url))")
+            print("webview_rx url: \(String(describing: url))")
         }).disposed(by: disposeBag)
 
         web.rx.progress.subscribe(onNext: { (progress) in
-            print("web progress: \(progress)")
+            print("webview_rx progress: \(progress)")
         }).disposed(by: disposeBag)
+        web.rx.canGoBack.subscribe(onNext: { (can) in
+            print("webview_rx canGoBack: \(can)")
+            if let nvc = self.navigationController as? WebNavigationController{
+                nvc.backBtnItem.isEnabled = can
+            }
+        }).disposed(by: disposeBag)
+        web.rx.canGoForward.subscribe(onNext: { (can) in
+            print("webview_rx canGoForward: \(can)")
+            if let nvc = self.navigationController as? WebNavigationController{
+                nvc.forwardBtnItem.isEnabled = can
+            }
+        }).disposed(by: disposeBag)
+
+
 
         
         web.rx.decidePolicyForNavigationAction.subscribe { (webview, action, handler) in
@@ -174,6 +188,22 @@ class WebController: BaseViewController {
         }, DidTerminate:{
             
         })*/
+        
+        if let nvc = self.navigationController as? WebNavigationController {
+            nvc.backBtnItem.rx.tap.subscribe(onNext: {
+                self.web.goBack()
+            }).disposed(by: disposeBag)
+            nvc.forwardBtnItem.rx.tap.subscribe(onNext: {
+                self.web.goForward()
+            }).disposed(by: disposeBag)
+            nvc.actionBtnItem.rx.tap.subscribe(onNext: {
+                
+            }).disposed(by: disposeBag)
+            nvc.bookmarkBtnItem.rx.tap.subscribe(onNext: {
+                
+            }).disposed(by: disposeBag)
+            
+        }
         
 //        web.loadweb(urlStr: "http://172.20.10.2:8080/")
 //        web.loadweb(urlStr: "https://github.com/matteocrippa/awesome-swift")

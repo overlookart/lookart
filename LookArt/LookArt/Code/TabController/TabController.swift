@@ -43,11 +43,6 @@ class TabController: UIViewController {
         let nav = WebNavigationController()
         nav.modalPresentationStyle = .fullScreen
         self.webs.append(nav)
-        nav.openTabManager = {
-            nav.view.removeFromSuperview()
-            nav.removeFromParent()
-        }
-        
     }
 
     /*
