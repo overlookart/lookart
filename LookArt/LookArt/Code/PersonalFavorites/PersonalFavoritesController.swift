@@ -57,7 +57,8 @@ class PersonalFavoritesController: BaseViewController {
 extension PersonalFavoritesController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, contextMenuConfigurationForItemAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
         self.currentItemContextMenuIndex = indexPath
-        self.contextMenuPreview.center = point
+        let cell = collectionView.cellForItem(at: indexPath)
+        self.contextMenuPreview.center = cell?.center ?? point
         let width = CGFloat.minimum(UIScreen.ScreenWidth(), UIScreen.ScreenHeight()) - 20
         self.contextMenuPreview.size = CGSize(width: width, height: 150)
         self.view.addSubview(self.contextMenuPreview)
@@ -90,10 +91,7 @@ extension PersonalFavoritesController: UICollectionViewDelegate {
     }
     
     func collectionView(_ collectionView: UICollectionView, previewForHighlightingContextMenuWithConfiguration configuration: UIContextMenuConfiguration) -> UITargetedPreview? {
-        guard let indexPath = self.currentItemContextMenuIndex, let item = collectionView.cellForItem(at: indexPath) as? PersonalFavoriteCell else {
-            return nil
-        }
-        
+        // preview 要有完整的布局约束，否则旋转屏幕后有显示问题
         let preview = UITargetedPreview(view: self.contextMenuPreview)
         return preview
     }

@@ -14,46 +14,36 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="140"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j0u-fy-YSL">
+                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="j0u-fy-YSL">
                     <rect key="frame" x="0.0" y="0.0" width="414" height="40"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="轻点以显示预览" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LMX-p3-i9l">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="轻点以显示预览" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LMX-p3-i9l">
                             <rect key="frame" x="60" y="9.5" width="121.5" height="21"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="40" id="Hih-nY-zF5"/>
-                        <constraint firstItem="LMX-p3-i9l" firstAttribute="centerY" secondItem="j0u-fy-YSL" secondAttribute="centerY" id="caJ-Ia-By8"/>
-                        <constraint firstItem="LMX-p3-i9l" firstAttribute="leading" secondItem="j0u-fy-YSL" secondAttribute="leading" constant="60" id="twl-rC-XDb"/>
-                    </constraints>
                 </view>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="这是一个域名" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ATU-Zs-fqe">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="这是一个域名" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ATU-Zs-fqe">
                     <rect key="frame" x="20" y="55" width="104" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="这是一个网址" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lUD-6j-Lsr">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="这是一个网址" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lUD-6j-Lsr">
                     <rect key="frame" x="20" y="91" width="104" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
             <color key="backgroundColor" systemColor="systemGray4Color"/>
-            <constraints>
-                <constraint firstItem="lUD-6j-Lsr" firstAttribute="top" secondItem="ATU-Zs-fqe" secondAttribute="bottom" constant="15" id="1EL-5y-ve7"/>
-                <constraint firstItem="ATU-Zs-fqe" firstAttribute="top" secondItem="j0u-fy-YSL" secondAttribute="bottom" constant="15" id="659-6J-6Ew"/>
-                <constraint firstItem="j0u-fy-YSL" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="EAC-m0-21D"/>
-                <constraint firstItem="lUD-6j-Lsr" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="EsR-Ta-wNB"/>
-                <constraint firstItem="j0u-fy-YSL" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Fqe-yR-bw3"/>
-                <constraint firstItem="ATU-Zs-fqe" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="TMN-ki-tsf"/>
-                <constraint firstAttribute="trailing" secondItem="j0u-fy-YSL" secondAttribute="trailing" id="dgl-RP-97f"/>
-            </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="69.565217391304358" y="51.5625"/>
         </view>
