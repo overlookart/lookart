@@ -14,6 +14,12 @@ class PersonalFavoritesController: BaseViewController {
     var currentItemContextMenuIndex: IndexPath?
     let personalFavoriteMV = PersonalFavoritesVM()
     let disposeBag = DisposeBag()
+    
+    lazy var contextMenuPreview: ContextMenuPreview = {
+        let view = ContextMenuPreview.loadFromNib()
+        return view
+    }()
+    
     let testView: UIView = {
         let view = UIView(frame: CGRect(x: 0, y: 0, width: 200, height: 100))
         view.backgroundColor = UIColor.random
@@ -23,7 +29,6 @@ class PersonalFavoritesController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        self.view .addSubview(testView)
         // Do any additional setup after loading the view.
         self.collectionView.register(nibWithCellClass: PersonalFavoriteCell.self)
         personalFavoriteMV.bindDataSource(view: self.collectionView, disposeBag: disposeBag)
@@ -52,6 +57,11 @@ class PersonalFavoritesController: BaseViewController {
 extension PersonalFavoritesController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, contextMenuConfigurationForItemAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
         self.currentItemContextMenuIndex = indexPath
+        self.contextMenuPreview.center = point
+        let width = CGFloat.minimum(UIScreen.ScreenWidth(), UIScreen.ScreenHeight()) - 20
+        self.contextMenuPreview.size = CGSize(width: width, height: 150)
+        self.view.addSubview(self.contextMenuPreview)
+        self.view.sendSubviewToBack(self.contextMenuPreview)
         let action1 = UIAction(title: "拷贝", image: UIImage(systemName: "doc.on.doc"), identifier: .none, discoverabilityTitle: nil, attributes: .init(rawValue: 0), state: .off) { (action) in
         }
         
@@ -69,9 +79,9 @@ extension PersonalFavoritesController: UICollectionViewDelegate {
         
         
         let contextMenu = UIContextMenuConfiguration(identifier: nil) { () -> UIViewController? in
-            return PersonalFavoritesController()
+            return nil
         } actionProvider: { (elements) -> UIMenu? in
-            let menu = UIMenu(title: "", image: nil, identifier: .application, options: .displayInline, children: [action1,action2,action3,action4])
+            let menu = UIMenu(title: "", image: nil, identifier: .view, options: .displayInline, children: [action1,action2,action3,action4])
             
             return menu
         }
@@ -83,16 +93,27 @@ extension PersonalFavoritesController: UICollectionViewDelegate {
         guard let indexPath = self.currentItemContextMenuIndex, let item = collectionView.cellForItem(at: indexPath) as? PersonalFavoriteCell else {
             return nil
         }
-        let preview = UITargetedPreview(view: item.imgView)
+        
+        let preview = UITargetedPreview(view: self.contextMenuPreview)
         return preview
     }
     
     func collectionView(_ collectionView: UICollectionView, previewForDismissingContextMenuWithConfiguration configuration: UIContextMenuConfiguration) -> UITargetedPreview? {
-        guard let indexPath = self.currentItemContextMenuIndex, let item = collectionView.cellForItem(at: indexPath) as? PersonalFavoriteCell else {
-            return nil
-        }
-        let preview = UITargetedPreview(view: item.imgView)
+        let preview = UITargetedPreview(view: self.contextMenuPreview)
         return preview
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, willPerformPreviewActionForMenuWith configuration: UIContextMenuConfiguration, animator: UIContextMenuInteractionCommitAnimating) {
+        print("ContextMenu:点击预览")
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, willDisplayContextMenu configuration: UIContextMenuConfiguration, animator: UIContextMenuInteractionAnimating?) {
+        print("ContextMenu:将要展示")
+        
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, willEndContextMenuInteraction configuration: UIContextMenuConfiguration, animator: UIContextMenuInteractionAnimating?) {
+        print("ContextMenu:将要隐藏")
     }
     
 }

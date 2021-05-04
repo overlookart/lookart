@@ -18,6 +18,8 @@
 		2836668A2631C6390094D707 /* WKWebview_Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 283666892631C6390094D707 /* WKWebview_Rx.swift */; };
 		2836668F263D87FC0094D707 /* Extension_Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2836668E263D87FC0094D707 /* Extension_Rx.swift */; };
 		2836669726402B5E0094D707 /* UIScreen_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2836669626402B5E0094D707 /* UIScreen_Extension.swift */; };
+		283666AC264043640094D707 /* ContextMenuPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 283666AB264043640094D707 /* ContextMenuPreview.swift */; };
+		283666B12640438E0094D707 /* ContextMenuPreview.xib in Resources */ = {isa = PBXBuildFile; fileRef = 283666B02640438E0094D707 /* ContextMenuPreview.xib */; };
 		283F7B07260488860055FC7D /* TabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 283F7B05260488860055FC7D /* TabController.swift */; };
 		28554D932609C357006CB16A /* WebNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28554D922609C357006CB16A /* WebNavigationController.swift */; };
 		286FF9D725EB239E00AC482A /* TabCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 286FF9D525EB239E00AC482A /* TabCell.swift */; };
@@ -105,6 +107,8 @@
 		283666892631C6390094D707 /* WKWebview_Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WKWebview_Rx.swift; sourceTree = "<group>"; };
 		2836668E263D87FC0094D707 /* Extension_Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension_Rx.swift; sourceTree = "<group>"; };
 		2836669626402B5E0094D707 /* UIScreen_Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIScreen_Extension.swift; sourceTree = "<group>"; };
+		283666AB264043640094D707 /* ContextMenuPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContextMenuPreview.swift; sourceTree = "<group>"; };
+		283666B02640438E0094D707 /* ContextMenuPreview.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContextMenuPreview.xib; sourceTree = "<group>"; };
 		283F7B05260488860055FC7D /* TabController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabController.swift; sourceTree = "<group>"; };
 		28554D922609C357006CB16A /* WebNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebNavigationController.swift; sourceTree = "<group>"; };
 		286FF9D525EB239E00AC482A /* TabCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabCell.swift; sourceTree = "<group>"; };
@@ -207,6 +211,8 @@
 				28366643261A91E40094D707 /* PersonalFavoriteCell.xib */,
 				28366652261AD0F30094D707 /* PersonalFavoritesVM.swift */,
 				28366657261AD4E70094D707 /* WebSiteModel.swift */,
+				283666AB264043640094D707 /* ContextMenuPreview.swift */,
+				283666B02640438E0094D707 /* ContextMenuPreview.xib */,
 			);
 			path = PersonalFavorites;
 			sourceTree = "<group>";
@@ -552,6 +558,7 @@
 				28BA173A25DDF67300861E62 /* test_html.html in Resources */,
 				28D41D1C25D40425008696AC /* user-script1.js in Resources */,
 				28D41CDF25D403CB008696AC /* LaunchScreen.storyboard in Resources */,
+				283666B12640438E0094D707 /* ContextMenuPreview.xib in Resources */,
 				28D41CDC25D403CB008696AC /* Assets.xcassets in Resources */,
 				28D41D1425D40425008696AC /* user-script5.js in Resources */,
 				28D41D1D25D40425008696AC /* user-script7.js in Resources */,
@@ -724,6 +731,7 @@
 				2836663D261A8DFB0094D707 /* PersonalFavoritesController.swift in Sources */,
 				28366658261AD4E70094D707 /* WebSiteModel.swift in Sources */,
 				28E5A99C25D63A5D00750E3B /* BaseWebView.swift in Sources */,
+				283666AC264043640094D707 /* ContextMenuPreview.swift in Sources */,
 				28E5A99025D63A3E00750E3B /* FileManager_Extension.swift in Sources */,
 				2836664B261A94BB0094D707 /* Importlibrary.swift in Sources */,
 				28366644261A91E40094D707 /* PersonalFavoriteCell.swift in Sources */,
