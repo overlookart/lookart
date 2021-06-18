@@ -16,7 +16,7 @@ extension Reactive where Base: WKWebView {
         return self.observeWeakly(String.self, "title")
     }
     
-    public var loding: Observable<Bool> {
+    public var loading: Observable<Bool> {
         return self.observeWeakly(Bool.self, "loading").map{$0 ?? false}
     }
     

@@ -1,0 +1,4 @@
+*.lock
+LookArt/LookArt.xcodeproj/xcuserdata/caigou.xcuserdatad/xcschemes
+LookArt/LookArt.xcworkspace
+LookArt/Pods

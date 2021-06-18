@@ -111,6 +111,7 @@ class WebController: BaseViewController {
 
         web.rx.progress.subscribe(onNext: { (progress) in
             print("webview_rx progress: \(progress)")
+            self.searchBar.setProgress(progress: Float(progress))
         }).disposed(by: disposeBag)
         web.rx.canGoBack.subscribe(onNext: { (can) in
             print("webview_rx canGoBack: \(can)")
@@ -124,7 +125,9 @@ class WebController: BaseViewController {
                 nvc.forwardBtnItem.isEnabled = can
             }
         }).disposed(by: disposeBag)
-
+        web.rx.loading.subscribe(onNext: {(isloading) in
+            print("webview_rx 加载状态: \(isloading)")
+        }).disposed(by: disposeBag)
 
 
         
@@ -197,10 +200,12 @@ class WebController: BaseViewController {
                 self.web.goForward()
             }).disposed(by: disposeBag)
             nvc.actionBtnItem.rx.tap.subscribe(onNext: {
-                
+                let activity = UIActivityViewController(activityItems: [""], applicationActivities: [SettingActivity()]);
+//                activity.completionWithItemsHandler 
+                self.present(activity, animated: true, completion: nil)
             }).disposed(by: disposeBag)
             nvc.bookmarkBtnItem.rx.tap.subscribe(onNext: {
-                
+               
             }).disposed(by: disposeBag)
             
         }

@@ -73,6 +73,7 @@
 		4D83B2B8F766D19377B57113 /* Pods_LookArt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A0B664EED11C59CD47E75B5 /* Pods_LookArt.framework */; };
 		62EDA4100BFCEF62DAF0A938 /* Pods_LookArtTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA026852061FDC8D7AA97B31 /* Pods_LookArtTests.framework */; };
 		82475B963FC1B12832656815 /* Pods_LookArt_LookArtUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93554BAF47E3A1A1137CDD20 /* Pods_LookArt_LookArtUITests.framework */; };
+		E9DD1C29267CA2EA00586F26 /* SettingActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9DD1C28267CA2EA00586F26 /* SettingActivity.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -172,6 +173,7 @@
 		93554BAF47E3A1A1137CDD20 /* Pods_LookArt_LookArtUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LookArt_LookArtUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		95FDA7E5EB63CCCF4650403A /* Pods-LookArtTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LookArtTests.release.xcconfig"; path = "Target Support Files/Pods-LookArtTests/Pods-LookArtTests.release.xcconfig"; sourceTree = "<group>"; };
 		BA026852061FDC8D7AA97B31 /* Pods_LookArtTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LookArtTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E9DD1C28267CA2EA00586F26 /* SettingActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingActivity.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -327,6 +329,7 @@
 		28D41D2225D41683008696AC /* Code */ = {
 			isa = PBXGroup;
 			children = (
+				E9DD1C27267CA2B800586F26 /* Activity */,
 				28366649261A94140094D707 /* Config */,
 				2836663A261A8D7D0094D707 /* PersonalFavorites */,
 				286FF9CF25EA39AA00AC482A /* TabController */,
@@ -437,6 +440,14 @@
 				95FDA7E5EB63CCCF4650403A /* Pods-LookArtTests.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		E9DD1C27267CA2B800586F26 /* Activity */ = {
+			isa = PBXGroup;
+			children = (
+				E9DD1C28267CA2EA00586F26 /* SettingActivity.swift */,
+			);
+			path = Activity;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -698,6 +709,7 @@
 			files = (
 				28E5A98F25D63A3E00750E3B /* WKWebviewConfiguration_Extension.swift in Sources */,
 				28E5A98C25D63A3E00750E3B /* UITextField_Extension.swift in Sources */,
+				E9DD1C29267CA2EA00586F26 /* SettingActivity.swift in Sources */,
 				28E5A9BA25D6468600750E3B /* WebConfig.swift in Sources */,
 				28E5A99325D63A3E00750E3B /* UIView_Extension.swift in Sources */,
 				286FF9EC25F6316000AC482A /* TabLayoutAttributes.swift in Sources */,
