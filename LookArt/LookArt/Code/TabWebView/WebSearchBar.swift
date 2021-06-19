@@ -39,7 +39,14 @@ class WebSearchBar: UINavigationBar {
     }
     
     func setProgress(progress: Float) {
-        self.progress.progress = progress
+        self.progress.setProgress(progress, animated: true)
+        if progress >= 1 {
+            UIView.animate(withDuration: 0.3, delay: 0.3, options: UIView.AnimationOptions.curveEaseOut, animations: {
+                self.progress.alpha = 0.0
+            }) { (complet) in
+                self.progress.setProgress(0.0, animated: false)
+            }
+        }
     }
 }
 
