@@ -10,11 +10,17 @@ import WebKit
 import RxSwift
 class WebController: BaseViewController {
     let disposeBag = DisposeBag()
-    let searchBar: WebSearchBar = {
-        let search = WebSearchBar(frame: .zero)
+//    let searchBar: WebSearchBar = {
+//        let search = WebSearchBar(frame: .zero)
+//        return search
+//
+//    }()
+    
+    let searchBar: SearchBar = {
+        let search = SearchBar()
         return search
-        
     }()
+    
     
     let web: TabWebView = {
         let tabWebView = TabWebView(config: WebConfig())
@@ -56,7 +62,7 @@ class WebController: BaseViewController {
         
         view.addSubview(searchBar)
         searchBar.snp.makeConstraints { (make) in
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
+            make.top.equalTo(self.view)
             make.leading.equalTo(0)
             make.trailing.equalTo(0)
             make.bottom.equalTo(self.web.snp.top);
@@ -75,7 +81,8 @@ class WebController: BaseViewController {
                 return
             }
             let adjustedOffsetY = self.web.scrollContentOffset.y + self.web.scrollView.contentInset.top - self.web.scrollBeginDragOffset.y
-            let boundedOffset = min(max(adjustedOffsetY, 0), 56)
+            let boundedOffset = min(max(adjustedOffsetY, 0), self.web.y)
+            
             self.updateSearchBar(height: boundedOffset)
             
         },BeginDragging:{
@@ -226,12 +233,25 @@ class WebController: BaseViewController {
     
 
     func updateSearchBar(height: CGFloat) {
-//        let minHeight = min(height, 20)
-//        let perc = height / 56
-//        let f = self.navigationController?.navigationBar.frame
-//        self.navigationController?.navigationBar.setNeedsDisplay(CGRect(x: f?.origin.x ?? 0, y: f?.origin.y ?? 0, width: f?.width ?? 0, height: minHeight))
-
+        print("---",height)
+        let minHeight = min(height, 19)
+//        66 96 30
+//        49 30 19
+//        66 47 19
         
+//        self.searchBar.snp.updateConstraints { make in
+//            make.top.equalTo(self.view)
+//            make.leading.equalTo(0)
+//            make.trailing.equalTo(0)
+//            make.bottom.equalTo(self.web.snp.top);
+//        }
+
+        self.web.snp.updateConstraints { make in
+            make.trailing.equalTo(0)
+            make.leading.equalTo(0)
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(49)
+            make.bottom.equalTo(0)
+        }
     }
     
     /*
