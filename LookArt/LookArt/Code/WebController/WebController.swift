@@ -39,7 +39,7 @@ class WebController: BaseViewController {
         web.snp.makeConstraints { (make) in
             make.trailing.equalTo(0)
             make.leading.equalTo(0)
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(49)
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(SearchBarHeight)
             make.bottom.equalTo(0)
         }
         
@@ -78,12 +78,15 @@ class WebController: BaseViewController {
         
         web.scrollDelegates = (DidScroll:{
             if self.web.scrollContentOffset.y < self.web.scrollBeginDragOffset.y {
-                return
+                print("向上滑动");
+            }else{
+                print("向下滑动")
             }
-            let adjustedOffsetY = self.web.scrollContentOffset.y + self.web.scrollView.contentInset.top - self.web.scrollBeginDragOffset.y
-            let boundedOffset = min(max(adjustedOffsetY, 0), self.web.y)
             
-            self.updateSearchBar(height: boundedOffset)
+            let adjustedOffsetY = self.web.scrollContentOffset.y + self.web.scrollView.contentInset.top - self.web.scrollBeginDragOffset.y
+            let searchBarOffset = min(max(adjustedOffsetY, 0), 30)
+            print(adjustedOffsetY,"-----",searchBarOffset)
+            self.updateSearchBar(height: searchBarOffset)
             
         },BeginDragging:{
             
@@ -235,8 +238,13 @@ class WebController: BaseViewController {
     func updateSearchBar(height: CGFloat) {
         print("---",height)
         let minHeight = min(height, 19)
+        //search bar 最大高度 49
+        //search bar 最小高度 19
+        //navigition 最大高度 96
+        //navigation 最小高度 66
+        //iPhone X   顶部安全 47
 //        66 96 30
-//        49 30 19
+//        19 49 30
 //        66 47 19
         
 //        self.searchBar.snp.updateConstraints { make in
@@ -245,11 +253,11 @@ class WebController: BaseViewController {
 //            make.trailing.equalTo(0)
 //            make.bottom.equalTo(self.web.snp.top);
 //        }
-
+        self.searchBar.updateHeight(height: height);
         self.web.snp.updateConstraints { make in
             make.trailing.equalTo(0)
             make.leading.equalTo(0)
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(49)
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(SearchBarHeight-height)
             make.bottom.equalTo(0)
         }
     }

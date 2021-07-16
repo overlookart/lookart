@@ -77,4 +77,19 @@ class SearchBar: UIToolbar {
             }
         }
     }
+    
+    func updateHeight(height: CGFloat) {
+        var mrg: CGFloat = 8/3.0 * height;
+        mrg = mrg <= 10 ? 10 : mrg
+        var h: CGFloat = 36 - (16/30.0 * height);
+        h = h <= 20 ? 20 : h
+        self.searchTextField.snp.updateConstraints { make in
+            make.left.equalTo(mrg)
+            make.right.equalTo(-mrg)
+            make.bottom.equalTo(-10)
+            make.height.equalTo(h)
+        }
+        
+        self.searchTextField.alpha = 1/30*(30-height);
+    }
 }
