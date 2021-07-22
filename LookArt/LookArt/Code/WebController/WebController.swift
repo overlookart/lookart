@@ -117,6 +117,7 @@ class WebController: BaseViewController {
 
         web.rx.url.subscribe(onNext: {(url) in
             print("webview_rx url: \(String(describing: url))")
+            self.searchBar.updateHost(host: url?.host);
         }).disposed(by: disposeBag)
 
         web.rx.progress.subscribe(onNext: { (progress) in

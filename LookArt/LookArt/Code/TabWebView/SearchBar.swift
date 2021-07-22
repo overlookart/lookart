@@ -16,8 +16,12 @@ class SearchBar: UIToolbar {
         // Drawing code
     }
     */
-    
-    let searchTextField: UIView = {
+    // 网页域名
+    private var webHost: String = ""
+    // 是否折叠
+    private var isFold: Bool = false
+    // 圆角矩形背景视图
+    let rectView: UIView = {
         let textfield = UIView(frame: CGRect.zero);
         textfield.backgroundColor = UIColor.systemGray5
         textfield.cornerRadius = 8
@@ -26,6 +30,13 @@ class SearchBar: UIToolbar {
     let textLab: UILabel = {
         let lab = UILabel(text: "fdse", style: .body)
         return lab
+    }()
+    //刷新停止按钮
+    let refreshOrStopBtn: UIButton = {
+        let btn = UIButton(type: .custom)
+        btn.setImage(UIImage.init(systemName: "arrow.clockwise")?.withTintColor(UIColor.black, renderingMode: .alwaysOriginal), for: .normal)
+        btn.setImage(UIImage.init(systemName: "xmark")?.withTintColor(UIColor.black, renderingMode: .alwaysOriginal), for: .selected)
+        return btn
     }()
     // 进度条
     private let progressBar: UIProgressView = {
@@ -43,20 +54,28 @@ class SearchBar: UIToolbar {
     }
     
     private func makeUI(){
-        backgroundColor = UIColor.white
         self.isTranslucent = true;
         self.barStyle = .default;
         
-        self.addSubview(self.searchTextField)
-        self.searchTextField.snp.makeConstraints { make in
+        self.setShadowImage(UIImage.init(color: UIColor.systemRed, size: CGSize(width: 1, height: 1)), forToolbarPosition: .any)
+        
+        self.addSubview(self.rectView)
+        self.rectView.snp.makeConstraints { make in
             make.left.equalTo(10)
             make.right.equalTo(-10)
             make.bottom.equalTo(-10)
             make.height.equalTo(36)
         }
-        searchTextField.addSubview(self.textLab)
+        self.rectView.addSubview(self.refreshOrStopBtn)
+        self.refreshOrStopBtn.snp.makeConstraints { make in
+            make.top.equalTo(self.rectView).offset(5)
+            make.right.equalTo(self.rectView).offset(-5)
+            make.bottom.equalTo(self.rectView).offset(-5)
+            make.width.equalTo(self.rectView.snp.height).offset(-10)
+        }
+        self.addSubview(self.textLab)
         self.textLab.snp.makeConstraints { make in
-            make.center.equalTo(self.searchTextField)
+            make.center.equalTo(self.rectView)
         }
         self.addSubview(self.progressBar)
         self.progressBar.snp.makeConstraints { make in
@@ -67,6 +86,8 @@ class SearchBar: UIToolbar {
         }
     }
     
+    /// 设置进度条的值
+    /// - Parameter progress: 网页加载的进度
     func setProgress(progress: Float) {
         self.progressBar.setProgress(progress, animated: true)
         if progress >= 1 {
@@ -78,18 +99,25 @@ class SearchBar: UIToolbar {
         }
     }
     
+    /// 更新搜索 bar 的高度
+    /// - Parameter height: 高度
     func updateHeight(height: CGFloat) {
         var mrg: CGFloat = 8/3.0 * height;
         mrg = mrg <= 10 ? 10 : mrg
         var h: CGFloat = 36 - (16/30.0 * height);
         h = h <= 20 ? 20 : h
-        self.searchTextField.snp.updateConstraints { make in
+        self.rectView.snp.updateConstraints { make in
             make.left.equalTo(mrg)
             make.right.equalTo(-mrg)
             make.bottom.equalTo(-10)
             make.height.equalTo(h)
         }
-        
-        self.searchTextField.alpha = 1/30*(30-height);
+        self.rectView.alpha = 1/30*(30-height);
+    }
+    
+    
+    func updateHost(host: String?) {
+//        self.webHost = host;
+        self.textLab.text = host;
     }
 }
