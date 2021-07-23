@@ -14,7 +14,7 @@ class PersonalFavoriteCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        self.imgView.backgroundColor = UIColor.systemPink
+        self.imgView.backgroundColor = UIColor.systemGray6
         self.contentView.shadowColor = UIColor.black
         self.contentView.shadowOpacity = 0.5
         self.contentView.shadowOffset = CGSize(width: 0, height: 0)

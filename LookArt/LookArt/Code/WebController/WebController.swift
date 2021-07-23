@@ -10,11 +10,17 @@ import WebKit
 import RxSwift
 class WebController: BaseViewController {
     let disposeBag = DisposeBag()
-    let searchBar: WebSearchBar = {
-        let search = WebSearchBar(frame: .zero)
+//    let searchBar: WebSearchBar = {
+//        let search = WebSearchBar(frame: .zero)
+//        return search
+//
+//    }()
+    
+    let searchBar: SearchBar = {
+        let search = SearchBar()
         return search
-        
     }()
+    
     
     let web: TabWebView = {
         let tabWebView = TabWebView(config: WebConfig())
@@ -33,7 +39,7 @@ class WebController: BaseViewController {
         web.snp.makeConstraints { (make) in
             make.trailing.equalTo(0)
             make.leading.equalTo(0)
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(49)
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(SearchBarHeight)
             make.bottom.equalTo(0)
         }
         
@@ -56,7 +62,7 @@ class WebController: BaseViewController {
         
         view.addSubview(searchBar)
         searchBar.snp.makeConstraints { (make) in
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
+            make.top.equalTo(self.view)
             make.leading.equalTo(0)
             make.trailing.equalTo(0)
             make.bottom.equalTo(self.web.snp.top);
@@ -72,11 +78,15 @@ class WebController: BaseViewController {
         
         web.scrollDelegates = (DidScroll:{
             if self.web.scrollContentOffset.y < self.web.scrollBeginDragOffset.y {
-                return
+                print("向上滑动");
+            }else{
+                print("向下滑动")
             }
+            
             let adjustedOffsetY = self.web.scrollContentOffset.y + self.web.scrollView.contentInset.top - self.web.scrollBeginDragOffset.y
-            let boundedOffset = min(max(adjustedOffsetY, 0), 56)
-            self.updateSearchBar(height: boundedOffset)
+            let searchBarOffset = min(max(adjustedOffsetY, 0), 30)
+            print(adjustedOffsetY,"-----",searchBarOffset)
+            self.updateSearchBar(height: searchBarOffset)
             
         },BeginDragging:{
             
@@ -107,6 +117,7 @@ class WebController: BaseViewController {
 
         web.rx.url.subscribe(onNext: {(url) in
             print("webview_rx url: \(String(describing: url))")
+            self.searchBar.updateHost(host: url?.host);
         }).disposed(by: disposeBag)
 
         web.rx.progress.subscribe(onNext: { (progress) in
@@ -226,12 +237,30 @@ class WebController: BaseViewController {
     
 
     func updateSearchBar(height: CGFloat) {
-//        let minHeight = min(height, 20)
-//        let perc = height / 56
-//        let f = self.navigationController?.navigationBar.frame
-//        self.navigationController?.navigationBar.setNeedsDisplay(CGRect(x: f?.origin.x ?? 0, y: f?.origin.y ?? 0, width: f?.width ?? 0, height: minHeight))
-
+        print("---",height)
+        let minHeight = min(height, 19)
+        //search bar 最大高度 49
+        //search bar 最小高度 19
+        //navigition 最大高度 96
+        //navigation 最小高度 66
+        //iPhone X   顶部安全 47
+//        66 96 30
+//        19 49 30
+//        66 47 19
         
+//        self.searchBar.snp.updateConstraints { make in
+//            make.top.equalTo(self.view)
+//            make.leading.equalTo(0)
+//            make.trailing.equalTo(0)
+//            make.bottom.equalTo(self.web.snp.top);
+//        }
+        self.searchBar.updateHeight(height: height);
+        self.web.snp.updateConstraints { make in
+            make.trailing.equalTo(0)
+            make.leading.equalTo(0)
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(SearchBarHeight-height)
+            make.bottom.equalTo(0)
+        }
     }
     
     /*
