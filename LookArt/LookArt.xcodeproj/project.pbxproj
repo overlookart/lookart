@@ -31,6 +31,7 @@
 		28BA172C25DBEC3A00861E62 /* WebSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28BA172B25DBEC3A00861E62 /* WebSearchBar.swift */; };
 		28BA173425DCB8DB00861E62 /* UINavigationBar_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28BA173325DCB8DB00861E62 /* UINavigationBar_Extension.swift */; };
 		28BA173A25DDF67300861E62 /* test_html.html in Resources */ = {isa = PBXBuildFile; fileRef = 28BA173925DDF67300861E62 /* test_html.html */; };
+		28C6AD55267E12AE0041651C /* SearchBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28C6AD54267E12AE0041651C /* SearchBar.xib */; };
 		28D41CD325D403CA008696AC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D41CD225D403CA008696AC /* AppDelegate.swift */; };
 		28D41CD525D403CA008696AC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D41CD425D403CA008696AC /* SceneDelegate.swift */; };
 		28D41CD725D403CA008696AC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28D41CD625D403CA008696AC /* ViewController.swift */; };
@@ -121,6 +122,7 @@
 		28BA172B25DBEC3A00861E62 /* WebSearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebSearchBar.swift; sourceTree = "<group>"; };
 		28BA173325DCB8DB00861E62 /* UINavigationBar_Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINavigationBar_Extension.swift; sourceTree = "<group>"; };
 		28BA173925DDF67300861E62 /* test_html.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = test_html.html; sourceTree = "<group>"; };
+		28C6AD54267E12AE0041651C /* SearchBar.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchBar.xib; sourceTree = "<group>"; };
 		28D41CCF25D403CA008696AC /* LookArt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LookArt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		28D41CD225D403CA008696AC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		28D41CD425D403CA008696AC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -356,6 +358,7 @@
 			children = (
 				28E5A9AA25D63BE400750E3B /* TabWebView.swift */,
 				28BA172B25DBEC3A00861E62 /* WebSearchBar.swift */,
+				28C6AD54267E12AE0041651C /* SearchBar.xib */,
 			);
 			path = TabWebView;
 			sourceTree = "<group>";
@@ -567,6 +570,7 @@
 				28D41D1325D40425008696AC /* user-script2.js in Resources */,
 				28D41D1225D40425008696AC /* user-script9.js in Resources */,
 				28BA173A25DDF67300861E62 /* test_html.html in Resources */,
+				28C6AD55267E12AE0041651C /* SearchBar.xib in Resources */,
 				28D41D1C25D40425008696AC /* user-script1.js in Resources */,
 				28D41CDF25D403CB008696AC /* LaunchScreen.storyboard in Resources */,
 				283666B12640438E0094D707 /* ContextMenuPreview.xib in Resources */,
