@@ -6,14 +6,19 @@
 //
 
 import UIKit
-
+import PanModal
+import RxSwift
 class SettingViewController: BaseViewController {
-
+    @IBOutlet weak var tableView: UITableView!
+    let settingMV = SettingVM()
+    let disposeBag = DisposeBag()
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "设置"
         // Do any additional setup after loading the view.
-    
+        
+        self.tableView.register(nibWithCellClass: SettingViewCell.self)
+        settingMV.bindDataSource(view: self.tableView, disposeBag: self.disposeBag)
     }
 
 
@@ -27,4 +32,14 @@ class SettingViewController: BaseViewController {
     }
     */
 
+}
+
+extension SettingViewController: PanModalPresentable {
+    var panScrollable: UIScrollView? {
+        return nil
+    }
+    
+    var shortFormHeight: PanModalHeight{
+        return .contentHeight(300)
+    }
 }

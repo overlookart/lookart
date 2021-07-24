@@ -7,6 +7,9 @@
 
 import Foundation
 extension UIWindow {
+    
+    /// 获取根控制器
+    /// - Returns: vc?
     static func currentViewController() -> UIViewController? {
         var window: UIWindow?
         if #available(iOS 13, *) {

@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		282B7EBB26ABBF7F00C72A76 /* SettingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282B7EBA26ABBF7F00C72A76 /* SettingModel.swift */; };
+		282B7EBD26ABC17B00C72A76 /* SettingVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282B7EBC26ABC17B00C72A76 /* SettingVM.swift */; };
+		282B7EBF26ABC69800C72A76 /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282B7EBE26ABC69800C72A76 /* BaseTableViewCell.swift */; };
+		282B7EC226ABC6CC00C72A76 /* SettingViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282B7EC026ABC6CC00C72A76 /* SettingViewCell.swift */; };
+		282B7EC326ABC6CC00C72A76 /* SettingViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 282B7EC126ABC6CC00C72A76 /* SettingViewCell.xib */; };
+		282B7EC526AC0E5400C72A76 /* lookArt.js in Resources */ = {isa = PBXBuildFile; fileRef = 282B7EC426AC0E5300C72A76 /* lookArt.js */; };
+		282B7EC826AC10C700C72A76 /* WebScriptComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282B7EC726AC10C700C72A76 /* WebScriptComponent.swift */; };
+		282B7ECA26AC1A0200C72A76 /* WebConfigComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282B7EC926AC1A0200C72A76 /* WebConfigComponent.swift */; };
+		282B7ECC26AC223000C72A76 /* WKUserScript_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 282B7ECB26AC223000C72A76 /* WKUserScript_Extension.swift */; };
 		2836663D261A8DFB0094D707 /* PersonalFavoritesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2836663B261A8DFB0094D707 /* PersonalFavoritesController.swift */; };
 		2836663E261A8DFB0094D707 /* PersonalFavoritesController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2836663C261A8DFB0094D707 /* PersonalFavoritesController.xib */; };
 		28366644261A91E40094D707 /* PersonalFavoriteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28366642261A91E40094D707 /* PersonalFavoriteCell.swift */; };
@@ -104,6 +113,15 @@
 		03C4276F12A968BE493CD376 /* Pods-LookArt.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LookArt.debug.xcconfig"; path = "Target Support Files/Pods-LookArt/Pods-LookArt.debug.xcconfig"; sourceTree = "<group>"; };
 		15EF7115A5E5522A72F64341 /* Pods-LookArt-LookArtUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LookArt-LookArtUITests.debug.xcconfig"; path = "Target Support Files/Pods-LookArt-LookArtUITests/Pods-LookArt-LookArtUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		19D9FF881B5D805F145F1BF3 /* Pods-LookArtTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LookArtTests.debug.xcconfig"; path = "Target Support Files/Pods-LookArtTests/Pods-LookArtTests.debug.xcconfig"; sourceTree = "<group>"; };
+		282B7EBA26ABBF7F00C72A76 /* SettingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingModel.swift; sourceTree = "<group>"; };
+		282B7EBC26ABC17B00C72A76 /* SettingVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingVM.swift; sourceTree = "<group>"; };
+		282B7EBE26ABC69800C72A76 /* BaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
+		282B7EC026ABC6CC00C72A76 /* SettingViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewCell.swift; sourceTree = "<group>"; };
+		282B7EC126ABC6CC00C72A76 /* SettingViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingViewCell.xib; sourceTree = "<group>"; };
+		282B7EC426AC0E5300C72A76 /* lookArt.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = lookArt.js; sourceTree = "<group>"; };
+		282B7EC726AC10C700C72A76 /* WebScriptComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebScriptComponent.swift; sourceTree = "<group>"; };
+		282B7EC926AC1A0200C72A76 /* WebConfigComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebConfigComponent.swift; sourceTree = "<group>"; };
+		282B7ECB26AC223000C72A76 /* WKUserScript_Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WKUserScript_Extension.swift; sourceTree = "<group>"; };
 		2836663B261A8DFB0094D707 /* PersonalFavoritesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalFavoritesController.swift; sourceTree = "<group>"; };
 		2836663C261A8DFB0094D707 /* PersonalFavoritesController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PersonalFavoritesController.xib; sourceTree = "<group>"; };
 		28366642261A91E40094D707 /* PersonalFavoriteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalFavoriteCell.swift; sourceTree = "<group>"; };
@@ -218,6 +236,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		282B7EC626AC108400C72A76 /* WebComponent */ = {
+			isa = PBXGroup;
+			children = (
+				282B7EC726AC10C700C72A76 /* WebScriptComponent.swift */,
+				282B7EC926AC1A0200C72A76 /* WebConfigComponent.swift */,
+			);
+			path = WebComponent;
+			sourceTree = "<group>";
+		};
 		2836663A261A8D7D0094D707 /* PersonalFavorites */ = {
 			isa = PBXGroup;
 			children = (
@@ -269,6 +296,10 @@
 			children = (
 				288DF8D126AB806100767F15 /* SettingViewController.swift */,
 				288DF8D226AB806100767F15 /* SettingViewController.xib */,
+				282B7EBA26ABBF7F00C72A76 /* SettingModel.swift */,
+				282B7EBC26ABC17B00C72A76 /* SettingVM.swift */,
+				282B7EC026ABC6CC00C72A76 /* SettingViewCell.swift */,
+				282B7EC126ABC6CC00C72A76 /* SettingViewCell.xib */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -334,6 +365,7 @@
 			isa = PBXGroup;
 			children = (
 				28BA173925DDF67300861E62 /* test_html.html */,
+				282B7EC426AC0E5300C72A76 /* lookArt.js */,
 				28D41D1025D40425008696AC /* user-script1.js */,
 				28D41D0725D40425008696AC /* user-script2.js */,
 				28D41D0E25D40425008696AC /* user-script3.js */,
@@ -353,6 +385,7 @@
 		28D41D2225D41683008696AC /* Code */ = {
 			isa = PBXGroup;
 			children = (
+				282B7EC626AC108400C72A76 /* WebComponent */,
 				288DF8D026AB802E00767F15 /* Setting */,
 				E9DD1C27267CA2B800586F26 /* Activity */,
 				28366649261A94140094D707 /* Config */,
@@ -424,6 +457,7 @@
 				28BA173325DCB8DB00861E62 /* UINavigationBar_Extension.swift */,
 				288DF8CC26AB717D00767F15 /* UIActivity_Extension.swift */,
 				288DF8D526AB875F00767F15 /* UIWindow_Extension.swift */,
+				282B7ECB26AC223000C72A76 /* WKUserScript_Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -435,6 +469,7 @@
 				28E5A99925D63A5D00750E3B /* BaseViewController.swift */,
 				28E5A99A25D63A5D00750E3B /* BaseNavigationController.swift */,
 				28E5A99B25D63A5D00750E3B /* BaseView.swift */,
+				282B7EBE26ABC69800C72A76 /* BaseTableViewCell.swift */,
 			);
 			path = BaseUI;
 			sourceTree = "<group>";
@@ -594,12 +629,14 @@
 				28D41D1525D40425008696AC /* user-script4.js in Resources */,
 				28E5A9A625D63B2B00750E3B /* WebController.xib in Resources */,
 				28D41D1325D40425008696AC /* user-script2.js in Resources */,
+				282B7EC526AC0E5400C72A76 /* lookArt.js in Resources */,
 				28D41D1225D40425008696AC /* user-script9.js in Resources */,
 				28BA173A25DDF67300861E62 /* test_html.html in Resources */,
 				28D41D1C25D40425008696AC /* user-script1.js in Resources */,
 				28D41CDF25D403CB008696AC /* LaunchScreen.storyboard in Resources */,
 				283666B12640438E0094D707 /* ContextMenuPreview.xib in Resources */,
 				288DF8D426AB806100767F15 /* SettingViewController.xib in Resources */,
+				282B7EC326ABC6CC00C72A76 /* SettingViewCell.xib in Resources */,
 				28D41CDC25D403CB008696AC /* Assets.xcassets in Resources */,
 				28D41D1425D40425008696AC /* user-script5.js in Resources */,
 				28D41D1D25D40425008696AC /* user-script7.js in Resources */,
@@ -746,9 +783,13 @@
 				28E5A99325D63A3E00750E3B /* UIView_Extension.swift in Sources */,
 				286FF9EC25F6316000AC482A /* TabLayoutAttributes.swift in Sources */,
 				28E5A99225D63A3E00750E3B /* UINavigationController_Extension.swift in Sources */,
+				282B7EC226ABC6CC00C72A76 /* SettingViewCell.swift in Sources */,
 				28D41CD725D403CA008696AC /* ViewController.swift in Sources */,
 				28366653261AD0F30094D707 /* PersonalFavoritesVM.swift in Sources */,
+				282B7EBF26ABC69800C72A76 /* BaseTableViewCell.swift in Sources */,
+				282B7EBD26ABC17B00C72A76 /* SettingVM.swift in Sources */,
 				28BA172C25DBEC3A00861E62 /* WebSearchBar.swift in Sources */,
+				282B7EC826AC10C700C72A76 /* WebScriptComponent.swift in Sources */,
 				286FF9D725EB239E00AC482A /* TabCell.swift in Sources */,
 				288DF8D626AB875F00767F15 /* UIWindow_Extension.swift in Sources */,
 				28E5A98B25D63A3E00750E3B /* WKWebView_Extension.swift in Sources */,
@@ -757,6 +798,7 @@
 				28BA173425DCB8DB00861E62 /* UINavigationBar_Extension.swift in Sources */,
 				28E5A98E25D63A3E00750E3B /* CollectionView_Extension.swift in Sources */,
 				28D41CD525D403CA008696AC /* SceneDelegate.swift in Sources */,
+				282B7ECC26AC223000C72A76 /* WKUserScript_Extension.swift in Sources */,
 				2836668F263D87FC0094D707 /* Extension_Rx.swift in Sources */,
 				2836669726402B5E0094D707 /* UIScreen_Extension.swift in Sources */,
 				2836666B261C9A480094D707 /* UICollectionView_Rx.swift in Sources */,
@@ -765,11 +807,13 @@
 				E943FB5026A188B600B67C30 /* UIBaseConfig.swift in Sources */,
 				286FF9DD25EB364200AC482A /* TabLayout.swift in Sources */,
 				28E5A9AB25D63BE400750E3B /* TabWebView.swift in Sources */,
+				282B7EBB26ABBF7F00C72A76 /* SettingModel.swift in Sources */,
 				28E5A98D25D63A3E00750E3B /* UIApplication_Extension.swift in Sources */,
 				28E5A98A25D63A3E00750E3B /* String_Extension.swift in Sources */,
 				28E5A9A525D63B2B00750E3B /* WebController.swift in Sources */,
 				28E5A99D25D63A5D00750E3B /* BaseViewController.swift in Sources */,
 				28E5A99E25D63A5D00750E3B /* BaseNavigationController.swift in Sources */,
+				282B7ECA26AC1A0200C72A76 /* WebConfigComponent.swift in Sources */,
 				28B6AB9026194863008F73B2 /* WebSearchController.swift in Sources */,
 				28E5A99F25D63A5D00750E3B /* BaseView.swift in Sources */,
 				28554D932609C357006CB16A /* WebNavigationController.swift in Sources */,
