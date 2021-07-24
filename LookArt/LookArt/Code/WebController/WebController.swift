@@ -211,8 +211,7 @@ class WebController: BaseViewController {
                 self.web.goForward()
             }).disposed(by: disposeBag)
             nvc.actionBtnItem.rx.tap.subscribe(onNext: {
-                let activity = UIActivityViewController(activityItems: [""], applicationActivities: [SettingActivity()]);
-//                activity.completionWithItemsHandler 
+                let activity = LookArtActivityController(activityItems: []);
                 self.present(activity, animated: true, completion: nil)
             }).disposed(by: disposeBag)
             nvc.bookmarkBtnItem.rx.tap.subscribe(onNext: {

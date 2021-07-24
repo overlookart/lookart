@@ -26,6 +26,11 @@
 		286FF9D825EB239E00AC482A /* TabCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 286FF9D625EB239E00AC482A /* TabCell.xib */; };
 		286FF9DD25EB364200AC482A /* TabLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 286FF9DC25EB364200AC482A /* TabLayout.swift */; };
 		286FF9EC25F6316000AC482A /* TabLayoutAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 286FF9EB25F6316000AC482A /* TabLayoutAttributes.swift */; };
+		288DF8CD26AB717D00767F15 /* UIActivity_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288DF8CC26AB717D00767F15 /* UIActivity_Extension.swift */; };
+		288DF8CF26AB7B2200767F15 /* LookArtActivityController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288DF8CE26AB7B2200767F15 /* LookArtActivityController.swift */; };
+		288DF8D326AB806100767F15 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288DF8D126AB806100767F15 /* SettingViewController.swift */; };
+		288DF8D426AB806100767F15 /* SettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 288DF8D226AB806100767F15 /* SettingViewController.xib */; };
+		288DF8D626AB875F00767F15 /* UIWindow_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288DF8D526AB875F00767F15 /* UIWindow_Extension.swift */; };
 		28B6AB9026194863008F73B2 /* WebSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B6AB8E26194863008F73B2 /* WebSearchController.swift */; };
 		28B6AB9126194863008F73B2 /* WebSearchController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28B6AB8F26194863008F73B2 /* WebSearchController.xib */; };
 		28BA172C25DBEC3A00861E62 /* WebSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28BA172B25DBEC3A00861E62 /* WebSearchBar.swift */; };
@@ -118,6 +123,11 @@
 		286FF9D625EB239E00AC482A /* TabCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TabCell.xib; sourceTree = "<group>"; };
 		286FF9DC25EB364200AC482A /* TabLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabLayout.swift; sourceTree = "<group>"; };
 		286FF9EB25F6316000AC482A /* TabLayoutAttributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabLayoutAttributes.swift; sourceTree = "<group>"; };
+		288DF8CC26AB717D00767F15 /* UIActivity_Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIActivity_Extension.swift; sourceTree = "<group>"; };
+		288DF8CE26AB7B2200767F15 /* LookArtActivityController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LookArtActivityController.swift; sourceTree = "<group>"; };
+		288DF8D126AB806100767F15 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		288DF8D226AB806100767F15 /* SettingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingViewController.xib; sourceTree = "<group>"; };
+		288DF8D526AB875F00767F15 /* UIWindow_Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIWindow_Extension.swift; sourceTree = "<group>"; };
 		28B6AB8E26194863008F73B2 /* WebSearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebSearchController.swift; sourceTree = "<group>"; };
 		28B6AB8F26194863008F73B2 /* WebSearchController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WebSearchController.xib; sourceTree = "<group>"; };
 		28BA172B25DBEC3A00861E62 /* WebSearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebSearchBar.swift; sourceTree = "<group>"; };
@@ -254,6 +264,15 @@
 			path = TabController;
 			sourceTree = "<group>";
 		};
+		288DF8D026AB802E00767F15 /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				288DF8D126AB806100767F15 /* SettingViewController.swift */,
+				288DF8D226AB806100767F15 /* SettingViewController.xib */,
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
 		28D41CC625D403CA008696AC = {
 			isa = PBXGroup;
 			children = (
@@ -334,6 +353,7 @@
 		28D41D2225D41683008696AC /* Code */ = {
 			isa = PBXGroup;
 			children = (
+				288DF8D026AB802E00767F15 /* Setting */,
 				E9DD1C27267CA2B800586F26 /* Activity */,
 				28366649261A94140094D707 /* Config */,
 				2836663A261A8D7D0094D707 /* PersonalFavorites */,
@@ -402,6 +422,8 @@
 				28E5A98825D63A3E00750E3B /* UINavigationController_Extension.swift */,
 				28E5A98925D63A3E00750E3B /* UIView_Extension.swift */,
 				28BA173325DCB8DB00861E62 /* UINavigationBar_Extension.swift */,
+				288DF8CC26AB717D00767F15 /* UIActivity_Extension.swift */,
+				288DF8D526AB875F00767F15 /* UIWindow_Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -452,6 +474,7 @@
 			isa = PBXGroup;
 			children = (
 				E9DD1C28267CA2EA00586F26 /* SettingActivity.swift */,
+				288DF8CE26AB7B2200767F15 /* LookArtActivityController.swift */,
 			);
 			path = Activity;
 			sourceTree = "<group>";
@@ -576,6 +599,7 @@
 				28D41D1C25D40425008696AC /* user-script1.js in Resources */,
 				28D41CDF25D403CB008696AC /* LaunchScreen.storyboard in Resources */,
 				283666B12640438E0094D707 /* ContextMenuPreview.xib in Resources */,
+				288DF8D426AB806100767F15 /* SettingViewController.xib in Resources */,
 				28D41CDC25D403CB008696AC /* Assets.xcassets in Resources */,
 				28D41D1425D40425008696AC /* user-script5.js in Resources */,
 				28D41D1D25D40425008696AC /* user-script7.js in Resources */,
@@ -714,9 +738,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				28E5A98F25D63A3E00750E3B /* WKWebviewConfiguration_Extension.swift in Sources */,
+				288DF8CD26AB717D00767F15 /* UIActivity_Extension.swift in Sources */,
 				28E5A98C25D63A3E00750E3B /* UITextField_Extension.swift in Sources */,
 				E9DD1C29267CA2EA00586F26 /* SettingActivity.swift in Sources */,
 				28E5A9BA25D6468600750E3B /* WebConfig.swift in Sources */,
+				288DF8D326AB806100767F15 /* SettingViewController.swift in Sources */,
 				28E5A99325D63A3E00750E3B /* UIView_Extension.swift in Sources */,
 				286FF9EC25F6316000AC482A /* TabLayoutAttributes.swift in Sources */,
 				28E5A99225D63A3E00750E3B /* UINavigationController_Extension.swift in Sources */,
@@ -724,6 +750,7 @@
 				28366653261AD0F30094D707 /* PersonalFavoritesVM.swift in Sources */,
 				28BA172C25DBEC3A00861E62 /* WebSearchBar.swift in Sources */,
 				286FF9D725EB239E00AC482A /* TabCell.swift in Sources */,
+				288DF8D626AB875F00767F15 /* UIWindow_Extension.swift in Sources */,
 				28E5A98B25D63A3E00750E3B /* WKWebView_Extension.swift in Sources */,
 				283F7B07260488860055FC7D /* TabController.swift in Sources */,
 				28D41CD325D403CA008696AC /* AppDelegate.swift in Sources */,
@@ -751,6 +778,7 @@
 				E9DD1C2E2684173900586F26 /* SearchBar.swift in Sources */,
 				28366658261AD4E70094D707 /* WebSiteModel.swift in Sources */,
 				28E5A99C25D63A5D00750E3B /* BaseWebView.swift in Sources */,
+				288DF8CF26AB7B2200767F15 /* LookArtActivityController.swift in Sources */,
 				283666AC264043640094D707 /* ContextMenuPreview.swift in Sources */,
 				28E5A99025D63A3E00750E3B /* FileManager_Extension.swift in Sources */,
 				2836664B261A94BB0094D707 /* Importlibrary.swift in Sources */,
