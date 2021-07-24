@@ -40,4 +40,15 @@ extension UIApplication {
         }
         return nil
     }
+    
+    /// 加载本地文件
+    /// - Parameters:
+    ///   - fileName: 文件名
+    ///   - formatName: 格式名
+    /// - Returns: 文件中的 utf8字符
+    static func loadLocalFile(Name fileName: String, Format formatName: String) -> String? {
+        guard let filePath = Bundle.main.path(forResource: fileName, ofType: formatName) else { return nil }
+        guard let str = try? String(contentsOfFile: filePath, encoding: .utf8) else { return nil }
+        return str
+    }
 }

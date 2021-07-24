@@ -29,7 +29,7 @@ extension WKWebViewConfiguration {
     ///   - world: 关键词
     func addUserScript(script: String, injectionTime: WKUserScriptInjectionTime, forMainFrameOnly: Bool, world: String? = nil) {
         let userScript = WKUserScript(source: script, injectionTime: injectionTime, forMainFrameOnly: forMainFrameOnly)
-        userContentController.addUserScript(userScript)
+        addUserScript(script: userScript)
     }
     
     /// 添加用户脚本
@@ -39,10 +39,19 @@ extension WKWebViewConfiguration {
     ///   - forMainFrameOnly: 是否仅在主Document注入
     ///   - world: 关键词
     func addUserScript(fileName: String, injectionTime: WKUserScriptInjectionTime, forMainFrameOnly: Bool, world: String? = nil) {
-        guard let scriptPath = Bundle.main.path(forResource: fileName, ofType: "js") else {
-            print("no find the \(fileName) file");return  }
-        guard let scriptSource = try? String(contentsOfFile: scriptPath, encoding: .utf8) else { print("the \(fileName) no String");return }
-        self.addUserScript(script: scriptSource, injectionTime: injectionTime, forMainFrameOnly: forMainFrameOnly, world: world)
+        if let userScript = WKUserScript.localUserScript(fileName: fileName) {
+            addUserScript(script: userScript)
+        }else{
+            print("添加脚本失败：\(fileName)")
+        }
+    }
+    
+    func addUserScript(script: WKUserScript?) {
+        if let s = script {
+            userContentController.addUserScript(s)
+        }else{
+            print("添加脚本失败")
+        }
         
     }
     

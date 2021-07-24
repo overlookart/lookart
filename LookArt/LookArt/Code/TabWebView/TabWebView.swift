@@ -8,11 +8,11 @@
 import UIKit
 import WebKit
 class TabWebView: BaseWebView {
-
-    private let WebObserveTitle: String = "title"
-    private let WebObserveProgress: String = "estimatedProgress"
-    private let WebObserveBack: String = "canGoBack"
-    private let WebObserveForward: String = "canGoForward"
+    //配置组件
+    private(set) var configComponent: WebConfigComponent
+    //脚本组件
+    private(set) var scriptComponent: WebScriptComponent?
+    
     /// 开始拖动时的offset
     private(set) var scrollBeginDragOffset: CGPoint = CGPoint.zero
     /// 当前的offset
@@ -54,8 +54,20 @@ class TabWebView: BaseWebView {
     }
     */
     
-    init(config: WebConfig) {
+    
+    /// 初始化方法
+    /// - Parameters:
+    ///   - config: 配置组件
+    ///   - script: 脚本组件
+    init(config: WebConfigComponent, script: WebScriptComponent? = nil) {
+        self.configComponent = config
+        self.scriptComponent = script
         super.init(frame: CGRect.zero, configuration: config)
+        if let _ = self.scriptComponent {
+            //config script
+            self.scriptComponent?.scripts.append(LAUserScript(fileName: "lookArt", injectionTime: .atDocumentEnd, forMainFrameOnly: false, messageName: "lookArt"))
+            self.scriptComponent?.setupScripts(userContentController: self.configComponent.userContentController)
+        }
     }
     
     required init?(coder: NSCoder) {

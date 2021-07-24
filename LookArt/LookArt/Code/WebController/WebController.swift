@@ -22,10 +22,7 @@ class WebController: BaseViewController {
     }()
     
     
-    let web: TabWebView = {
-        let tabWebView = TabWebView(config: WebConfig())
-        return tabWebView
-    }()
+    let web: TabWebView = TabWebView(config: WebConfigComponent(), script: WebScriptComponent())
     
     override func viewDidLoad() {
         super.viewDidLoad()
