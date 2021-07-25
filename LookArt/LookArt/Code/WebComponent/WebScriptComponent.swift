@@ -33,9 +33,28 @@ extension WebScriptComponent: WKUIDelegate {
     
 }
 
-class LAUserScript: WKUserScript {
+
+// 脚本协议
+protocol WebScriptProtocol {
     // 脚本名称
+    var scriptName: String? {get}
+    // 作者名称
+    var authorName: String? {get}
+    // 版本号
+    var versionNum: String? {get}
+    // 脚本描述
+    var describe: String? {get}
+}
+
+class LAUserScript: WKUserScript, WebScriptProtocol {
     var scriptName: String?
+    
+    var authorName: String?
+    
+    var versionNum: String?
+    
+    var describe: String?
+    
     // js 发送 messageHandlers 的名称
     var messageName: String?
     
@@ -68,15 +87,6 @@ class LAUserScript: WKUserScript {
     }
 }
 
-// 脚本协议
-protocol WebScriptProtocol {
-    //1. 必须要有脚本String
-    var scriptStr: String {get}
-    //2. 必须要有脚本的全局变量
-    
-    //3. 必须要有脚本的消息名称
-    var messageName: String? {get}
-    //4. 脚本的全局变量函数
-}
+
 
 
