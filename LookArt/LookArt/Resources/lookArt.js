@@ -221,6 +221,114 @@
         }
     }
 
+    function w(e) {
+        var t = window.getComputedStyle(e, null);
+        if(rgb_200_regex.test(t.backgroundColor) || rgba_255_regex.test(t.backgroundColor)){
+            e.setAttribute("lookart_green",1);
+        }
+        
+    }
+
+    function R(e) {
+        if (e && e.nodeType!= Node.TEXT_NODE && e.nodeType != Node.COMMENT_NODE && !tag_key.test(e.tagName)) {
+            if("Night" == currentThemeName){
+                E(e);
+            }else if (isGreen){
+                w(e)
+            }
+        }
+    }
+
+    function C(e) {
+        if (e){
+            R(e);
+            var t = e.getElementsByTagName("*");
+            for (var o = 0; o < t.length; o++){
+                R(t[o]);
+            }
+        }
+    }
+
+    function A(e) {
+        window.setTimeout(C, 0, e.target);
+    }
+
+    /**
+     * 
+     * @param {*} e 
+     * @returns 
+     */
+    function _(e) {
+        if(!e || e.nodeType == Node.TEXT_NODE || e.nodeType == Node.COMMENT_NODE){
+            return null;
+        }
+        if(tag_sub.test(e.tagName)){
+            return null;
+        }
+        var t = window.getComputedStyle(e, null);
+        if (t){
+            return function(e){
+                var t = parseInt(e.width, 0);
+                var o = parseInt(e.height, 0);
+                var n = rgba_0_Regex.test(e.backgroundColor);
+                var a = false;
+                if(rgb_200_regex.test(e.borderColor) || rgb_160_regex.test(e.borderColor)){
+                    a = true;
+                }
+                var i = false;
+                var r = false;
+                var d = false;
+                if("" !== e.backgroundImage && "none" !== e.backgroundImage){
+                    var m = e.backgroundImage;
+                    if(-1 == m.indexOf("url(") && color_key_regex.test(m)){
+                        i = true;
+                    }else{
+                        var c = e.backgroundRepeat;
+                        if("no-repeat" != c && "repeat" == c && (width_08 < t)){
+                            r = true;
+                        }
+                    }
+                }else{
+                    if(n && rgb_200_regex.test(e.backgroundColor) && !rgba_255_regex.test(e.backgroundColor)){
+                        d = true;
+                    }
+                }
+                var u = "";
+                if (n){
+                    if (i){
+                        u = u + " TakeNightModeReplaceBgLinear";
+                    }else{
+                        
+                        if (r) {
+                            u = u + " TakeNightDarkBgImage TakeNightModeTransBg";
+                        }else{
+                            u = u + " TakeNightModeTransBg";
+                        } 
+                    }
+                }
+            }
+        }else{
+            return null;
+        }
+    }
+
+    function E(e){
+        if(e && !e.hasAttribute("TakeTheme")){
+            e.setAttribute("TakeTheme", "");
+        }
+    }
+
+    function B() {
+        if (d) {
+            window.clearTimeout(d);
+            document.addEventListener("DOMNodeInserted", A, false);
+            var e = document.body ? document.body : document.getElementsByTagName("*");
+            for (var t = 0; t < e.length; t++){
+                
+            }
+        }
+    }
+
     /**
      * 
      * @param {String} themeName 主题名称
@@ -238,7 +346,7 @@
                     e.appendChild(themeStyleElement);
                     e.addEventListener("DOMNodeRemoved", M, false);
                 })();
-
+                I(B)
             }
         }else{
 
