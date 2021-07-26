@@ -49,21 +49,21 @@
      * /b 匹配一个单词边界，也就是指单词和空格间的位置
      */
 
-    // 匹配透明颜色
+    // 匹配透明颜色 (g)
     var rgba_0_Regex = /rgba\(\s*?\d+?\s*?,\s*?\d+?\s*?,\s*?\d+?\s*?,\s*?0\s*?\)/i;
-    // 匹配 rgb 值为200以上的颜色
+    // 匹配 rgb 值为200以上的颜色 (l)
     var rgb_200_regex = /rgb\(\s*?2\d{2}\s*?,\s*?2\d{2}\s*?,\s*?2\d{2}\s*?\)/i;
-    // 匹配 rgb 值为160以上的颜色
+    // 匹配 rgb 值为160以上的颜色 (s)
     var rgb_160_regex = /rgb\(\s*?1(6|7|8|9)\d\s*?,\s*?1(6|7|8|9)\d\s*?,\s*?1(6|7|8|9)\d\s*?\)/i;
-    // 匹配 rgb 值为255 白色
+    // 匹配 rgb 值为255 白色 (T)
     var rgba_255_regex = /rgba\(\s*?255\s*?\,\s*?255\s*?\,\s*?255\s*?\,/i;
-    // 匹配颜色关键词
+    // 匹配颜色关键词 (h)
     var color_key_regex = /rgb|-webkit-gradient/i;
-    // 0.8倍的窗口宽度
+    // 0.8倍的窗口宽度 (p)
     var width_08 = .8 * window.innerWidth;
-    // 匹配标签 CANVAS, IMG, IFRAME, BR, SCRIPT, NOSCRIPT, STYLE, META, LINK, TITLE
+    // 匹配标签 (a) CANVAS, IMG, IFRAME, BR, SCRIPT, NOSCRIPT, STYLE, META, LINK, TITLE
     var tag_key = /\bCANVAS\b|\bIMG\b|\bIFRAME\b|\bBR\b|\bSCRIPT\b|\bNOSCRIPT\b|\bSTYLE\b|\bMETA\b|\bLINK\b|\bTITLE\b/;
-    //
+    // (m)
     var tag_sub = /\bCANVAS\b|\bIMG\b|\bIFRAME\b|\bBR\b|\bSCRIPT\b/;
     // 当前主题名称 (i)
     var currentThemeName = 'Normal';
@@ -76,7 +76,9 @@
 
     //
     var d = null;
-    var t = null;
+    // html元素 (t) 标签为style id:take_theme_id
+    var themeStyleElement  = null;
+    // 可能为 某个节点
     var n = null;
     
     /**
@@ -131,12 +133,26 @@
     }
 
     /**
-     * 清空元素背景色 (D)
+     * 清空元素背景色 (D())
      * @param {*} e 
      */
     function clearElementBGColor(element) {
         if (element) {
             element.style.backgroundColor = null;
+        }
+    }
+
+    /**
+     * 为... 附加 新的style
+     * @param {*} e 
+     * @param {*} t 
+     */
+    function x(e, t) {
+        if (e) {
+            var o = e.getAttribute("style");
+            if (o.indexOf(t) == false) {
+                e.setAttribute("style", o + t);
+            }
         }
     }
 
@@ -148,6 +164,7 @@
                 f(isGreen ? "Green" : "Normal")
             }
         }
+
         (function(e){
             var t = document.getElementsByTagName("html");
             var o = null;
@@ -155,12 +172,25 @@
                 o = t[0];
                 clearElementBGColor(o);
                 clearElementBGColor(document.body);
-                //-------- x() 
+                var test =  c ? "background-color:#000000 !important;" : "background-color:#121212 !important;";
+                var test1 = r ? test : "background-color:#212121 !important;";
+                x(o, test1);
+                x(document.body, test1);
             }else if (isGreen){
-                var n;
-                //--------- x()
+                var n = "background-color:#d1efd6 !important;";
+                x(o, n);
+                x(document.body, n);
             }
-        })()
+        })(window.lookArt.isNightMode = e);
+
+        if (document.head) {
+            t();
+        }else{
+            window.setTimeout(function(){
+                t();
+            }, 0);
+        }
+
     }
 
     function O(e) {
@@ -199,13 +229,13 @@
         width_08 = .8 * window.innerWidth;
         if (currentThemeName != themeName) {
             y();
-            if(t == null){
-                t = document.createElement("style");
-                t.id = "take_theme_id";
+            if(themeStyleElement == null){
+                themeStyleElement = document.createElement("style");
+                themeStyleElement.id = "take_theme_id";
                 N();
                 (function(){
                     var e = document.head ? document.head : document.documentElement;
-                    e.appendChild(t);
+                    e.appendChild(themeStyleElement);
                     e.addEventListener("DOMNodeRemoved", M, false);
                 })();
 
