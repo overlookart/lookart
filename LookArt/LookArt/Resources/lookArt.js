@@ -174,7 +174,7 @@
 
     /**
      * 
-     * @param {function} t 
+     * @param {Function} t 
      */
     function I(t) {
         if(/interactive|complete/.test(document.readyState)){
@@ -187,7 +187,7 @@
                     document.removeEventListener("readystatechange", e, false);
                 }
             },false);
-
+            O(t);
         }
     }
 
