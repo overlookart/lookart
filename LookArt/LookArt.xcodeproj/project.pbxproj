@@ -31,6 +31,7 @@
 		283666B12640438E0094D707 /* ContextMenuPreview.xib in Resources */ = {isa = PBXBuildFile; fileRef = 283666B02640438E0094D707 /* ContextMenuPreview.xib */; };
 		283F7B07260488860055FC7D /* TabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 283F7B05260488860055FC7D /* TabController.swift */; };
 		28554D932609C357006CB16A /* WebNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28554D922609C357006CB16A /* WebNavigationController.swift */; };
+		286967EF26B0590400956BA1 /* test_1.js in Resources */ = {isa = PBXBuildFile; fileRef = 286967EE26B0590400956BA1 /* test_1.js */; };
 		286FF9D725EB239E00AC482A /* TabCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 286FF9D525EB239E00AC482A /* TabCell.swift */; };
 		286FF9D825EB239E00AC482A /* TabCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 286FF9D625EB239E00AC482A /* TabCell.xib */; };
 		286FF9DD25EB364200AC482A /* TabLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 286FF9DC25EB364200AC482A /* TabLayout.swift */; };
@@ -137,6 +138,7 @@
 		283666B02640438E0094D707 /* ContextMenuPreview.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContextMenuPreview.xib; sourceTree = "<group>"; };
 		283F7B05260488860055FC7D /* TabController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabController.swift; sourceTree = "<group>"; };
 		28554D922609C357006CB16A /* WebNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebNavigationController.swift; sourceTree = "<group>"; };
+		286967EE26B0590400956BA1 /* test_1.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = test_1.js; sourceTree = "<group>"; };
 		286FF9D525EB239E00AC482A /* TabCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabCell.swift; sourceTree = "<group>"; };
 		286FF9D625EB239E00AC482A /* TabCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TabCell.xib; sourceTree = "<group>"; };
 		286FF9DC25EB364200AC482A /* TabLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabLayout.swift; sourceTree = "<group>"; };
@@ -366,6 +368,7 @@
 			children = (
 				28BA173925DDF67300861E62 /* test_html.html */,
 				282B7EC426AC0E5300C72A76 /* lookArt.js */,
+				286967EE26B0590400956BA1 /* test_1.js */,
 				28D41D1025D40425008696AC /* user-script1.js */,
 				28D41D0725D40425008696AC /* user-script2.js */,
 				28D41D0E25D40425008696AC /* user-script3.js */,
@@ -644,6 +647,7 @@
 				28D41D1825D40425008696AC /* user-script8.js in Resources */,
 				28D41D1625D40425008696AC /* user-script11.js in Resources */,
 				28D41D1A25D40425008696AC /* user-script3.js in Resources */,
+				286967EF26B0590400956BA1 /* test_1.js in Resources */,
 				28D41CDA25D403CA008696AC /* Main.storyboard in Resources */,
 				286FF9D825EB239E00AC482A /* TabCell.xib in Resources */,
 				2836663E261A8DFB0094D707 /* PersonalFavoritesController.xib in Resources */,

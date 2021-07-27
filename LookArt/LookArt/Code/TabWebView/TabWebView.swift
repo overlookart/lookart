@@ -65,7 +65,7 @@ class TabWebView: BaseWebView {
         super.init(frame: CGRect.zero, configuration: config)
         if let _ = self.scriptComponent {
             //config script
-            self.scriptComponent?.scripts.append(LAUserScript(fileName: "lookArt", injectionTime: .atDocumentStart, forMainFrameOnly: false, messageName: "lookArt"))
+            self.scriptComponent?.scripts.append(LAUserScript(fileName: "test_1", injectionTime: .atDocumentStart, forMainFrameOnly: false, messageName: "lookArt"))
             self.scriptComponent?.setupScripts(userContentController: self.configComponent.userContentController)
         }
     }

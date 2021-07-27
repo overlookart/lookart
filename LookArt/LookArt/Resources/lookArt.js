@@ -99,6 +99,7 @@
      * 将 n 节点从父节点上移除
      */
     function y() {
+        console.log("function y() 移除节点 n");
         if (n && n.parentNode) {
             n.parentNode.removeChild(n)
         }
@@ -122,37 +123,31 @@
         }
     }
 
-    function M(e) {
-        if (e.target && "take_theme_id" == e.target.id) {
-            setTimeout(function(){
-                if("Night" == currentThemeName){
-                    var p = document.head ? document.head : document.documentElement;
-                    p.appendChild(t);
-                }
-            }, 1)
-        }
-    }
+    
 
     /**
      * 清空元素背景色 (D())
-     * @param {*} e 
+     * @param {Element} element 
      */
     function clearElementBGColor(element) {
+        console.log("function clearElementBGColor 为标签",element.tagName,"清空背景色");
         if (element) {
             element.style.backgroundColor = null;
         }
     }
 
     /**
-     * 为... 附加 新的style
-     * @param {*} e 
-     * @param {*} t 
+     * 为 element 附加 新的style (x(e,t))
+     * @param {Element} element 
+     * @param {String} styleStr 
      */
-    function x(e, t) {
-        if (e) {
-            var o = e.getAttribute("style") ? e.getAttribute("style") : "";
-            if (-1 == o.indexOf(t)) {
-                e.setAttribute("style", o + t);
+    function addStyleForElement(element, styleStr) {
+        console.log("function addStyleForElement为标签",element.tagName,"添加样式：",styleStr);
+        if (element) {
+            var elementStyle = element.getAttribute("style");
+            elementStyle = elementStyle ? elementStyle : "";
+            if (-1 == elementStyle.indexOf(styleStr)) {
+                element.setAttribute("style", elementStyle + styleStr);
             }
         }
     }
@@ -180,12 +175,12 @@
                 clearElementBGColor(document.body);
                 var test =  c ? "background-color:#000000 !important;" : "background-color:#121212 !important;";
                 var test1 = r ? test : "background-color:#212121 !important;";
-                x(o, test1);
-                x(document.body, test1);
+                addStyleForElement(o, test1);
+                addStyleForElement(document.body, test1);
             }else if (isGreen){
                 var n = "background-color:#d1efd6 !important;";
-                x(o, n);
-                x(document.body, n);
+                addStyleForElement(o, n);
+                addStyleForElement(document.body, n);
             }
         })(window.lookArt.isNightMode = e); // 修改了 lookArt.isNightMode
 
@@ -385,6 +380,36 @@
         }
     }
 
+    //event listener function
+
+    /**
+     * 监听 DOMNodeRemoved 的回调方法 (M())
+     * @param {MutationEvent} event 
+     */
+    function domNodeRemoved(event) {
+        console.log("function domNodeRemoved 收到 DOM 移除 Node的回调",e.target);
+        if (event.target && "take_theme_id" == event.target.id) {
+            setTimeout(function(){
+                if("Night" == currentThemeName){
+                    var p = document.head ? document.head : document.documentElement;
+                    p.appendChild(themeStyleElement);
+                }
+            }, 1)
+        }
+    }
+
+    function v() {
+        if (d) {
+            window.clearTimeout(d);
+            n.innerText = "body,[alook__green]{background-color: #d1efd6!important}";
+            document.addEventListener("DOMNodeInserted", A, false);
+        }
+        var e = (document.body ? document.body : document).getElementsByTagName("*");
+        for (var t = 0; t < e.length; t++){
+            w(e[t]);
+        }
+    }
+
     /**
      * 
      * @param {String} themeName 主题名称
@@ -402,21 +427,37 @@
                 (function(){
                     var e = document.head ? document.head : document.documentElement;
                     e.appendChild(themeStyleElement);
-                    e.addEventListener("DOMNodeRemoved", M, false);
+                    e.addEventListener("DOMNodeRemoved", domNodeRemoved, false);
                 })();
                 I(B);
             }else{
                 if ("Night" == currentThemeName) {
                     (function(){
-                        document.head.removeEventListener("DOMNodeRemoved", M);
-                        document.documentElement.removeEventListener("DOMNodeRemoved", M);
+                        document.head.removeEventListener("DOMNodeRemoved", domNodeRemoved);
+                        document.documentElement.removeEventListener("DOMNodeRemoved", domNodeRemoved);
                         var e = document.getElementById("take_theme_id");
                         if (e && e.parentNode) {
+                            console.log("function f() 移除节点")
                             e.parentNode.removeChild(e);
                         }
                     })();
                     if (document.body && document.body.clientWidth) {
                         I(L);
+                    }
+                    if ("Green" == e){
+                        if(!n){
+                            n = document.createElement("style");
+                            n.innerText = "*{background-color: #d1efd6!important}";
+                            (document.head ? document.head : document.documentElement).appendChild(n);
+                            I(v);
+                        }else{
+                            y();
+                            currentThemeName = e;
+                        }
+                    }else{
+                        if("Night" == e){
+                            N();
+                        }
                     }
                 }
             }

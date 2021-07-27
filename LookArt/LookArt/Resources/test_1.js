@@ -2,25 +2,32 @@
     "use strict";
     function o() {
         try {
-            return window.self === window.top
+            return window.self === window.top;
         } catch (e) {
-            return !1
+            return false;
         }
     }
     window.__firefox__ || (window.__firefox__ = {}),
-    window.__firefox__.isNightMode = !1;
-    var g = /rgba\(\s*?\d+?\s*?,\s*?\d+?\s*?,\s*?\d+?\s*?,\s*?0\s*?\)/i,
-        l = /rgb\(\s*?2\d{2}\s*?,\s*?2\d{2}\s*?,\s*?2\d{2}\s*?\)/i,
-        s = /rgb\(\s*?1(6|7|8|9)\d\s*?,\s*?1(6|7|8|9)\d\s*?,\s*?1(6|7|8|9)\d\s*?\)/i,
-        T = /rgba\(255\, 255\, 255\,/i,
-        h = /rgb|-webkit-gradient/i,
-        d = null,
-        p = .8 * window.innerWidth,
+    window.__firefox__.isNightMode = false;
+    // 匹配透明颜色 (g)
+    var rgba_0_Regex = /rgba\(\s*?\d+?\s*?,\s*?\d+?\s*?,\s*?\d+?\s*?,\s*?0\s*?\)/i;
+    // 匹配 rgb 值为200以上的颜色 (l)
+    var rgb_200_regex = /rgb\(\s*?2\d{2}\s*?,\s*?2\d{2}\s*?,\s*?2\d{2}\s*?\)/i;
+    // 匹配 rgb 值为160以上的颜色 (s)
+    var rgb_160_regex = /rgb\(\s*?1(6|7|8|9)\d\s*?,\s*?1(6|7|8|9)\d\s*?,\s*?1(6|7|8|9)\d\s*?\)/i;
+    // 匹配 rgb 值为255 白色 (T)
+    var rgba_255_regex = /rgba\(255\, 255\, 255\,/i;
+    // 匹配颜色关键词 (h)
+    var color_key_regex = /rgb|-webkit-gradient/i;
+    // 0.8倍的窗口宽度 (p)
+    var width_08 = .8 * window.innerWidth;
+    // 当前主题名称 (i)
+    var currentThemeName = "Normal";
+    var d = null,
         t = null,
         n = null,
         a = /\bCANVAS\b|\bIMG\b|\bIFRAME\b|\bBR\b|\bSCRIPT\b|\bNOSCRIPT\b|\bSTYLE\b|\bMETA\b|\bLINK\b|\bTITLE\b/,
         m = /\bCANVAS\b|\bIMG\b|\bIFRAME\b|\bBR\b|\bSCRIPT\b/,
-        i = "Normal",
         r = !1,
         c = !1,
         u = !1,
@@ -29,17 +36,17 @@
         return e.split(t).join(o)
     }
     function f(e) {
-        p = .8 * window.innerWidth,
-        i != e ? ("Night" == e ? (y(), null == t && ((t = document.createElement("style")).id = "take_theme_id"), N(), function() {
+        width_08 = .8 * window.innerWidth,
+        currentThemeName != e ? ("Night" == e ? (y(), null == t && ((t = document.createElement("style")).id = "take_theme_id"), N(), function() {
             var e = document.head ? document.head : document.documentElement;
             e.appendChild(t),
             e.addEventListener("DOMNodeRemoved", M, !1)
-        }(), I(B)) : ("Night" == i && (function() {
+        }(), I(B)) : ("Night" == currentThemeName && (function() {
             document.head.removeEventListener("DOMNodeRemoved", M),
             document.documentElement.removeEventListener("DOMNodeRemoved", M);
             var e = document.getElementById("take_theme_id");
             e && e.parentNode && e.parentNode.removeChild(e)
-        }(), document.body && document.body.clientWidth && I(L)), "Green" == e ? (null == n && (n = document.createElement("style")), n.innerText = "*{background-color: #d1efd6!important}", (document.head ? document.head : document.documentElement).appendChild(n), I(v)) : y()), i = e) : "Night" == e && N()
+        }(), document.body && document.body.clientWidth && I(L)), "Green" == e ? (null == n && (n = document.createElement("style")), n.innerText = "*{background-color: #d1efd6!important}", (document.head ? document.head : document.documentElement).appendChild(n), I(v)) : y()), currentThemeName = e) : "Night" == e && N()
     }
     function N() {
         if (null != t) {
@@ -60,11 +67,11 @@
     }
     function w(e) {
         var t = window.getComputedStyle(e, null);
-        (l.test(t.backgroundColor) || T.test(t.backgroundColor)) && e.setAttribute("alook__green", 1)
+        (rgb_200_regex.test(t.backgroundColor) || rgba_255_regex.test(t.backgroundColor)) && e.setAttribute("alook__green", 1)
     }
     function M(e) {
         e.target && "take_theme_id" == e.target.id && window.setTimeout(function() {
-            "Night" == i && (document.head ? document.head : document.documentElement).appendChild(t)
+            "Night" == currentThemeName && (document.head ? document.head : document.documentElement).appendChild(t)
         }, 1)
     }
     function _(e) {
@@ -76,25 +83,25 @@
         return t ? function(e) {
             var t = parseInt(e.width, 0),
                 o = parseInt(e.height, 0),
-                n = g.test(e.backgroundColor),
+                n = rgba_0_Regex.test(e.backgroundColor),
                 a = !1;
-            (l.test(e.borderColor) || s.test(e.borderColor)) && (a = !0);
+            (rgb_200_regex.test(e.borderColor) || rgb_160_regex.test(e.borderColor)) && (a = !0);
             var i = !1,
                 r = !1,
                 d = !1;
             if ("" !== e.backgroundImage && "none" !== e.backgroundImage) {
                 var m = e.backgroundImage;
-                if (-1 == m.indexOf("url(") && h.test(m))
+                if (-1 == m.indexOf("url(") && color_key_regex.test(m))
                     i = !0;
                 else {
                     var c = e.backgroundRepeat;
-                    "no-repeat" != c && "repeat" == c && (p < t || 100 < o) && (r = !0)
+                    "no-repeat" != c && "repeat" == c && (width_08 < t || 100 < o) && (r = !0)
                 }
             } else
-                n && !l.test(e.backgroundColor) && !T.test(e.backgroundColor) || (d = !0);
+                n && !rgb_200_regex.test(e.backgroundColor) && !rgba_255_regex.test(e.backgroundColor) || (d = !0);
             var u = "";
             n ? u = i ? u + " TakeNightModeReplaceBgLinear" : r ? u + " TakeNightDarkBgImage TakeNightModeTransBg" : u + " TakeNightModeTransBg" : i ? u += " TakeNightModeReplaceBgLinear" : r && (u += " TakeNightModeBackground");
-            d && (-1 != location.host.indexOf("google.com") && location.search && -1 != location.search.indexOf("tbm=isch") ? u += " TakeNightModeTransBg" : t < p && o < 100 && "visible" == e.visibility ? u += "TakeNightModeReplaceBgColorLight" : u += " TakeNightModeReplaceBgColor");
+            d && (-1 != location.host.indexOf("google.com") && location.search && -1 != location.search.indexOf("tbm=isch") ? u += " TakeNightModeTransBg" : t < width_08 && o < 100 && "visible" == e.visibility ? u += "TakeNightModeReplaceBgColorLight" : u += " TakeNightModeReplaceBgColor");
             return a && (u += " TakeNightModeReplaceBorder"), u
         }(t) : null
     }
@@ -117,7 +124,7 @@
                 R(t[o])
     }
     function R(e) {
-        e && e.nodeType != Node.TEXT_NODE && e.nodeType != Node.COMMENT_NODE && !a.test(e.tagName) && ("Night" == i ? E(e) : b && w(e))
+        e && e.nodeType != Node.TEXT_NODE && e.nodeType != Node.COMMENT_NODE && !a.test(e.tagName) && ("Night" == currentThemeName ? E(e) : b && w(e))
     }
     function A(e) {
         window.setTimeout(C, 0, e.target)
