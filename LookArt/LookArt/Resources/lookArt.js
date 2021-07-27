@@ -5,7 +5,7 @@
 //1.命名空间(namespace)
 //把变量放到匿名立即执行函数里，让变量锁死在函数作用域里
 (function() {
-    if (window.lookArt) {
+    if (!window.lookArt) {
         //为 window 定义 lookArt 属性
         Object.defineProperty(window, "lookArt", {
             //该属性能否被修改/删除 默认false，true时可以被修改/删除
@@ -16,7 +16,8 @@
             writable: false,
             //
             value: {
-                enabled: false
+                enabled: false,
+                isNightMode: true
             }
         });
     }
@@ -29,14 +30,14 @@
 })();
 
 (function(){
+    console.log("主题脚本---开始");
     function o(){
         try {
             return window.self === window.top;
         } catch (e) {
-            return false
+            return false;
         }
     }
-    window.lookArt.isNightMode = false
     /**
      * 正则表达式
      * 调试地址：https://projects.verou.me/regexplained/
@@ -104,10 +105,10 @@
     }
 
     /**
-     * 为 t 设置样式属性
+     * 为 themeStyleElement 设置样式属性
      */
     function N() {
-        if (t) {
+        if (themeStyleElement) {
             var e = "[TakeTheme][TakeNightModeTransBg]{background-color: transparent !important}.black_border{border: 1px solid rgba(0, 0, 0,0.2)}#bg_sheep{background-image: none !important}#bg_cow{background-image: none !important}[TakeTheme][TakeNightDarkBgImage]{filter: brightness(62%)!important}[TakeTheme][TakeNightModeReplaceBgColor]{background:#212121!important}[TakeTheme][TakeNightModeReplaceBgColorLight]{background:#181818!important}[TakeTheme][TakeNightModeBackground]{background:#212121!important;color:#868686!important}[TakeTheme][TakeNightModeReplaceBgLinear]{background:rgba(40,40,40,.6)!important}[TakeTheme][TakeNightModeReplaceBorder]{border-color:#45484c!important}:not([TakeTheme]){border-color:#212121!important;background-color:#212121!important}*{text-shadow:none!important;box-shadow:none!important}:after,:before{-webkit-filter:brightness(0.4)}body,html{background:#212121!important;color:#868686!important}abbr,address,article,aside,b,bdi,bdo,blockquote,br,caption,cite,code,col,colgroup,data,datalist,dc,dd,dfn,dl,dt,em,fieldset,figcaption,figure,footer,form,h1,h2,h3,h4,h5,h6,header,hr,i,kbd,keygen,label,legend,li,main,mark,meter,nav,ol,optgroup,option,output,p,pre,progress,q,rp,rt,ruby,s,samp,section,small,span,strong,sub,sup,table,tbody,td,textarea,tfoot,th,thead,time,tr,u,ul,var,wbr{background-color:none;color:#868686!important}textarea{background-color:#212121!important}div,div[TakeTheme]{color:#868686!important}[TakeTheme]{color:#868686!important}a,a *,a[TakeTheme]{color:#6d97d5 !important}a[TakeTheme]:visited,a[TakeTheme]:visited [TakeTheme],a[TakeTheme]:visited div[TakeTheme],a:visited,a:visited *{color:#bd8cff!important}button:not([TakeNightModeTransBg]):not([TakeTheme]),div:not([TakeNightModeTransBg]):not([TakeTheme]),input:not([TakeNightModeTransBg]):not([TakeTheme]),select:not([TakeNightModeTransBg]):not([TakeTheme]){background:#212121!important}button[TakeThemeActionDone]:not([TakeNightModeTransBg]):not([TakeNightModeReplaceBgLinear]):not([TakeNightModeBackground]),div[TakeThemeActionDone]:not([TakeNightModeTransBg]):not([TakeNightModeReplaceBgLinear]):not([TakeNightModeBackground]),input[TakeThemeActionDone]:not([TakeNightModeTransBg]):not([TakeNightModeReplaceBgLinear]):not([TakeNightModeBackground]),select[TakeThemeActionDone]:not([TakeNightModeTransBg]):not([TakeNightModeReplaceBgLinear]):not([TakeNightModeBackground]){background-color:#212121!important}input[type=date],input[type=date] *,input[type=datetime-local],input[type=datetime-local] *,input[type=month],input[type=month] *,input[type=time],input[type=time] *,select,select *{color:#fff!important}button,input:not([type=button]):not([type=submit]):not([type=reset]):not([type=image]):not([type=file]):not([type=date]):not([type=datetime-local]):not([type=month]):not([type=time]),input[type=button],input[type=file],input[type=image],input[type=reset],input[type=submit]{color:#FFFFFF!important;border-color:#45484c!important}";
             if(r){
                 e = k(e, "212121", c ? "000000" : "121212");
@@ -117,7 +118,7 @@
             }else{
                 e = 'input[type="image"]{filter: brightness(62%)!important}img{filter: brightness(62%)!important}' + e;
             }
-            t.innerText = e;
+            themeStyleElement.innerText = e;
         }
     }
 
@@ -149,13 +150,17 @@
      */
     function x(e, t) {
         if (e) {
-            var o = e.getAttribute("style");
-            if (o.indexOf(t) == false) {
+            var o = e.getAttribute("style") ? e.getAttribute("style") : "";
+            if (-1 == o.indexOf(t)) {
                 e.setAttribute("style", o + t);
             }
         }
     }
 
+    /**
+     * 
+     * @param {*} e 
+     */
     function e(e) {
         function t() {
             if (window.lookArt.isNightMode) {
@@ -164,8 +169,9 @@
                 f(isGreen ? "Green" : "Normal")
             }
         }
-
+        console.log("function e 参数:",e);
         (function(e){
+            console.log("function e 匿名函数 参数:",e);
             var t = document.getElementsByTagName("html");
             var o = null;
             if (t && t.length > 0, e) {
@@ -181,7 +187,7 @@
                 x(o, n);
                 x(document.body, n);
             }
-        })(window.lookArt.isNightMode = e);
+        })(window.lookArt.isNightMode = e); // 修改了 lookArt.isNightMode
 
         if (document.head) {
             t();
@@ -305,8 +311,30 @@
                             u = u + " TakeNightModeTransBg";
                         } 
                     }
+                }else{
+                    if (i) {
+                        u = u + " TakeNightModeReplaceBgLinear";
+                    }else{
+                        if (r) {
+                            u = u + "TakeNightModeBackground";
+                        }
+                    }
                 }
-            }
+
+                if (d && -1 != location.host.indexOf("google.com") && -1 != location.search.indexOf("tbm=isch")){
+                    u = u + " TakeNightModeTransBg";
+                }else{
+                    if (t < width_08 && o < 100 && "visible" == e.visiblity) {
+                        u = u + "TakeNightModeReplaceBgColorLight";
+                    }else{
+                        u = u + "TakeNightModeReplaceBgColor"
+                    }
+                }
+                if (a) {
+                    u = u + " TakeNightModeReplaceBorder";
+                }
+                return u;
+            }(t);
         }else{
             return null;
         }
@@ -327,6 +355,34 @@
                 
             }
         }
+    }   
+
+    function L(){
+        if (d) {
+            window.clearTimeout(d);
+        }
+        document.removeEventListener("DOMNodeInserted", A, false);
+        var e = /takenightmode[\s\S]*?\b/g;
+        var t = document.getElementsByTagName("*");
+        for (var o = 0; o < t.length; o++){
+            var n = t[o];
+            if (n && n.nodeType != Node.TEXT_NODE && n.nodeType != Node.COMMENT_NODE) {
+                if (tag_sub.test(n.tagName)) {
+                    continue;
+                }
+                if (n.hasAttribute("TakeTheme")) {
+                    n.removeAttribute("TakeTheme");
+                    n.removeAttribute("TakeThemeActionDone");
+                    var a = n.getAttributeNames();
+                    for(var i = 0; i < a.length; i++){
+                        var r = a[i].match(e);
+                        if (r && 0 < r.length) {
+                            n.removeAttribute(a[i]);
+                        }
+                    }
+                }
+            }
+        }
     }
 
     /**
@@ -336,20 +392,78 @@
     function f(themeName) {
         width_08 = .8 * window.innerWidth;
         if (currentThemeName != themeName) {
-            y();
-            if(themeStyleElement == null){
-                themeStyleElement = document.createElement("style");
-                themeStyleElement.id = "take_theme_id";
+            if ("Night" == themeName) {
+                y();
+                if(themeStyleElement == null){
+                    themeStyleElement = document.createElement("style");
+                    themeStyleElement.id = "take_theme_id";
+                }
                 N();
                 (function(){
                     var e = document.head ? document.head : document.documentElement;
                     e.appendChild(themeStyleElement);
                     e.addEventListener("DOMNodeRemoved", M, false);
                 })();
-                I(B)
+                I(B);
+            }else{
+                if ("Night" == currentThemeName) {
+                    (function(){
+                        document.head.removeEventListener("DOMNodeRemoved", M);
+                        document.documentElement.removeEventListener("DOMNodeRemoved", M);
+                        var e = document.getElementById("take_theme_id");
+                        if (e && e.parentNode) {
+                            e.parentNode.removeChild(e);
+                        }
+                    })();
+                    if (document.body && document.body.clientWidth) {
+                        I(L);
+                    }
+                }
             }
         }else{
-
+            if ("Night" == themeName) {
+                N();
+            }
         }
     }
+    function S() {
+        try {
+            // t 为 字符串数组， t[0] 为控制是否为夜间模式
+            var t = window.prompt("_ThemeConfig_").split("==");
+        } catch (e) {
+            t = ["true", "", "", ""];
+        }
+        console.log("theme config", t);
+        r = "true" == t[1];
+        b = "true" == t[2];
+        c = "true" == t[3];
+        e("true" == t[0]);
+    }
+    if (o()) {
+        console.log("a----------");
+        window.lookArt.forceUpdateTheme = function () {
+            S();
+            (function () {
+                if (o()) {
+                    var e = window.frames;
+                    for (var t = 0; t < e.length; t++){
+                        var nn = e[t];
+                        console.log("window frame:",nn);
+                        nn.postMessage('{"alookUpdateTheme":1}', "*");
+                    }
+                }
+            })()
+        }
+    }else{
+        console.log("b----------");
+        window.addEventListener("message", function (e) {
+            console.log("message event listener", e);
+            if ("string" == typeof e.data && -1 != e.data.indexOf("alookUpdateTheme")) {
+                console.log("")
+                S();
+            }
+        }, false);
+        S();
+    }
+    console.log("主题脚本---结束");
 })()
