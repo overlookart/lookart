@@ -1,4 +1,5 @@
 !function() {
+    console.log("主题脚本---开始");
     "use strict";
     function o() {
         try {
@@ -23,15 +24,17 @@
     var width_08 = .8 * window.innerWidth;
     // 当前主题名称 (i)
     var currentThemeName = "Normal";
+    // r b c 客户端的主题配置
+    var r = false;
+    var b = false;
+    var c = false;
+
     var d = null,
         t = null,
         n = null,
         a = /\bCANVAS\b|\bIMG\b|\bIFRAME\b|\bBR\b|\bSCRIPT\b|\bNOSCRIPT\b|\bSTYLE\b|\bMETA\b|\bLINK\b|\bTITLE\b/,
         m = /\bCANVAS\b|\bIMG\b|\bIFRAME\b|\bBR\b|\bSCRIPT\b/,
-        r = !1,
-        c = !1,
         u = !1,
-        b = !1;
     function k(e, t, o) {
         return e.split(t).join(o)
     }
@@ -185,8 +188,13 @@
             t()
         }, 0)
     }
+    
+    /**
+     * 获取客户端的主题配置
+     */
     function S() {
         try {
+            // t 为 字符串数组， t[0] 为控制是否为夜间模式
             var t = window.prompt("_ThemeConfig_").split("==")
         } catch (e) {
             t = ["true", "", "", ""]
@@ -196,15 +204,21 @@
         c = "true" == t[3],
         e("true" == t[0])
     }
-    o() ? window.__firefox__.forceUpdateTheme = function() {
-        S(),
-        function() {
-            if (o())
-                for (var e = window.frames, t = 0; t < e.length; t++)
-                    e[t].postMessage('{"alookUpdateTheme":1}', "*")
-        }()
-    } : window.addEventListener("message", function(e) {
-        "string" == typeof e.data && -1 != e.data.indexOf("alookUpdateTheme") && S()
-    }, !1),
-    S()
+
+    if (o()) {
+        window.__firefox__.forceUpdateTheme = function() {
+            S(),
+            function() {
+                if (o())
+                    for (var e = window.frames, t = 0; t < e.length; t++)
+                        e[t].postMessage('{"alookUpdateTheme":1}', "*")
+            }()
+        }
+    }else{
+        window.addEventListener("message", function(e) {
+            "string" == typeof e.data && -1 != e.data.indexOf("alookUpdateTheme") && S()
+        }, !1);
+    }
+    S();
+    console.log("主题脚本---结束");
 }();
