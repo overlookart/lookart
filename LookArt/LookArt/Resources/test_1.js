@@ -20,6 +20,11 @@
     var rgba_255_regex = /rgba\(255\, 255\, 255\,/i;
     // 匹配颜色关键词 (h)
     var color_key_regex = /rgb|-webkit-gradient/i;
+    // 匹配标签 (a) CANVAS, IMG, IFRAME, BR, SCRIPT, NOSCRIPT, STYLE, META, LINK, TITLE
+    var tag_key = /\bCANVAS\b|\bIMG\b|\bIFRAME\b|\bBR\b|\bSCRIPT\b|\bNOSCRIPT\b|\bSTYLE\b|\bMETA\b|\bLINK\b|\bTITLE\b/;
+    // (m)
+    var tag_sub = /\bCANVAS\b|\bIMG\b|\bIFRAME\b|\bBR\b|\bSCRIPT\b/;
+
     // 0.8倍的窗口宽度 (p)
     var width_08 = .8 * window.innerWidth;
     // 当前主题名称 (i)
@@ -32,9 +37,7 @@
     var d = null,
         t = null,
         n = null,
-        a = /\bCANVAS\b|\bIMG\b|\bIFRAME\b|\bBR\b|\bSCRIPT\b|\bNOSCRIPT\b|\bSTYLE\b|\bMETA\b|\bLINK\b|\bTITLE\b/,
-        m = /\bCANVAS\b|\bIMG\b|\bIFRAME\b|\bBR\b|\bSCRIPT\b/,
-        u = !1,
+        u = false;
     function k(e, t, o) {
         return e.split(t).join(o)
     }
@@ -80,7 +83,7 @@
     function _(e) {
         if (!e || e.nodeType == Node.TEXT_NODE || e.nodeType == Node.COMMENT_NODE)
             return null;
-        if (m.test(e.tagName))
+        if (tag_sub.test(e.tagName))
             return null;
         var t = window.getComputedStyle(e, null);
         return t ? function(e) {
@@ -127,7 +130,7 @@
                 R(t[o])
     }
     function R(e) {
-        e && e.nodeType != Node.TEXT_NODE && e.nodeType != Node.COMMENT_NODE && !a.test(e.tagName) && ("Night" == currentThemeName ? E(e) : b && w(e))
+        e && e.nodeType != Node.TEXT_NODE && e.nodeType != Node.COMMENT_NODE && !tag_key.test(e.tagName) && ("Night" == currentThemeName ? E(e) : b && w(e))
     }
     function A(e) {
         window.setTimeout(C, 0, e.target)
@@ -138,7 +141,7 @@
         for (var e = /takenightmode[\s\S]*?\b/g, t = document.getElementsByTagName("*"), o = 0; o < t.length; ++o) {
             var n = t[o];
             if (n && n.nodeType != Node.TEXT_NODE && n.nodeType != Node.COMMENT_NODE) {
-                if (m.test(n.tagName))
+                if (tag_sub.test(n.tagName))
                     continue;
                 if (n.hasAttribute("TakeTheme")) {
                     n.removeAttribute("TakeTheme"),
@@ -190,24 +193,26 @@
     }
     
     /**
-     * 获取客户端的主题配置
+     * 获取客户端的主题配置 S()
      */
-    function S() {
+    function clientThemeConfig() {
         try {
             // t 为 字符串数组， t[0] 为控制是否为夜间模式
             var t = window.prompt("_ThemeConfig_").split("==")
         } catch (e) {
             t = ["true", "", "", ""]
         }
-        r = "true" == t[1],
-        b = "true" == t[2],
-        c = "true" == t[3],
-        e("true" == t[0])
+        console.log('获取客户端主题配置', t);
+        r = "true" == t[1];
+        b = "true" == t[2];
+        c = "true" == t[3];
+        var isNight = "true" == t[0];
+        e(isNight);
     }
 
     if (o()) {
         window.__firefox__.forceUpdateTheme = function() {
-            S(),
+            clientThemeConfig(),
             function() {
                 if (o())
                     for (var e = window.frames, t = 0; t < e.length; t++)
@@ -216,9 +221,11 @@
         }
     }else{
         window.addEventListener("message", function(e) {
-            "string" == typeof e.data && -1 != e.data.indexOf("alookUpdateTheme") && S()
-        }, !1);
+            console.log('收到 message>>>>',e.data);
+            "string" == typeof e.data && -1 != e.data.indexOf("alookUpdateTheme") && clientThemeConfig()
+        }, false);
     }
-    S();
+    clientThemeConfig();
+    
     console.log("主题脚本---结束");
 }();
