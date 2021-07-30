@@ -35,7 +35,8 @@
     var currentThemeName = "Normal";
     // r b c 客户端的主题配置
     var r = false;
-    var b = false;
+    // 是否为绿色主题
+    var isGreen = false;
     var c = false;
 
     var d = null,
@@ -134,7 +135,7 @@
                 R(t[o])
     }
     function R(e) {
-        e && e.nodeType != Node.TEXT_NODE && e.nodeType != Node.COMMENT_NODE && !tag_key.test(e.tagName) && ("Night" == currentThemeName ? E(e) : b && w(e))
+        e && e.nodeType != Node.TEXT_NODE && e.nodeType != Node.COMMENT_NODE && !tag_key.test(e.tagName) && ("Night" == currentThemeName ? E(e) : isGreen && w(e))
     }
     function A(e) {
         window.setTimeout(C, 0, e.target)
@@ -177,7 +178,7 @@
     }
     function e(e) {
         function t() {
-            window.__firefox__.isNightMode ? f("Night") : f(b ? "Green" : "Normal")
+            window.__firefox__.isNightMode ? f("Night") : f(isGreen ? "Green" : "Normal")
         }
         (function(e) {
             var t = document.getElementsByTagName("html"),
@@ -185,7 +186,7 @@
             if (t && 0 < t.length && (o = t[0]), D(o), D(document.body), e)
                 x(o, n = r ? c ? "background-color:#000000 !important;" : "background-color:#121212 !important;" : "background-color:#212121 !important;"),
                 x(document.body, n);
-            else if (b) {
+            else if (isGreen) {
                 var n;
                 x(o, n = "background-color:#d1efd6 !important;"),
                 x(document.body, n)
@@ -201,14 +202,14 @@
      */
     function clientThemeConfig() {
         try {
-            // t 为 字符串数组， t[0] 为控制是否为夜间模式
-            var t = window.prompt("_ThemeConfig_").split("==")
+            // t 为 字符串数组， t[0] 为控制是否为夜间模式 t[]
+            var t = window.prompt("_ThemeConfig_").split("==");
         } catch (e) {
-            t = ["", "", "true", ""]
+            t = ["", "", "true", ""];
         }
         console.log('获取客户端主题配置', t);
         r = "true" == t[1];
-        b = "true" == t[2];
+        isGreen = "true" == t[2];
         c = "true" == t[3];
         var isNight = "true" == t[0];
         e(isNight);
