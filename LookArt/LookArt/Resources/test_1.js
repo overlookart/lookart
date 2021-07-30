@@ -212,20 +212,25 @@
 
     if (o()) {
         window.__firefox__.forceUpdateTheme = function() {
-            clientThemeConfig(),
-            function() {
-                if (o())
-                    for (var e = window.frames, t = 0; t < e.length; t++)
-                        e[t].postMessage('{"alookUpdateTheme":1}', "*")
-            }()
+            clientThemeConfig();
+            if (o()){
+                var frams = window.frames;
+                console.log('遍历 frams ',frams.length);
+                for (t = 0; t < frams.length; t++){
+                    console.log('为 fram 发送 message');
+                    frams[t].postMessage('{"alookUpdateTheme":1}', "*");
+                }  
+            }
         }
     }else{
-        window.addEventListener("message", function(e) {
-            console.log('收到 message>>>>',e.data);
-            "string" == typeof e.data && -1 != e.data.indexOf("alookUpdateTheme") && clientThemeConfig()
+        console.log('为 window 添加 message 监听')
+        window.addEventListener("message", function(event) {
+            console.log('收到 message>>>>',event.data);
+            if ("string" == typeof(event.data) && -1 != event.data.indexOf("alookUpdateTheme")) {
+                clientThemeConfig();
+            }
         }, false);
     }
     clientThemeConfig();
-    
     console.log("主题脚本---结束");
 }();
