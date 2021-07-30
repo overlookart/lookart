@@ -1,7 +1,11 @@
 !function() {
     console.log("主题脚本---开始");
     "use strict";
-    function o() {
+    /**
+     * 当前窗口是否为最顶层的窗口 o()
+     * @returns isTop
+     */
+    function isTopWindow() {
         try {
             return window.self === window.top;
         } catch (e) {
@@ -200,7 +204,7 @@
             // t 为 字符串数组， t[0] 为控制是否为夜间模式
             var t = window.prompt("_ThemeConfig_").split("==")
         } catch (e) {
-            t = ["true", "", "", ""]
+            t = ["", "", "true", ""]
         }
         console.log('获取客户端主题配置', t);
         r = "true" == t[1];
@@ -210,10 +214,10 @@
         e(isNight);
     }
 
-    if (o()) {
+    if (isTopWindow()) {
         window.__firefox__.forceUpdateTheme = function() {
             clientThemeConfig();
-            if (o()){
+            if (isTopWindow()){
                 var frams = window.frames;
                 console.log('遍历 frams ',frams.length);
                 for (t = 0; t < frams.length; t++){
