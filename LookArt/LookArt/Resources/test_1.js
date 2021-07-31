@@ -2,7 +2,7 @@
  * @Author: 丫丫的刀了 
  * @Date: 2021-07-31 06:51:27 
  * @Last Modified by: 丫丫的刀了
- * @Last Modified time: 2021-07-31 08:26:10
+ * @Last Modified time: 2021-07-31 21:26:42
  */
 
 !function() {
@@ -35,21 +35,28 @@
     var tag_key = /\bCANVAS\b|\bIMG\b|\bIFRAME\b|\bBR\b|\bSCRIPT\b|\bNOSCRIPT\b|\bSTYLE\b|\bMETA\b|\bLINK\b|\bTITLE\b/;
     // (m)
     var tag_sub = /\bCANVAS\b|\bIMG\b|\bIFRAME\b|\bBR\b|\bSCRIPT\b/;
-
+    /**
+     * document 加载结束正则
+     */
+    var loaded_regex = /interactive|complete/;
     // 0.8倍的窗口宽度 (p)
     var width_08 = .8 * window.innerWidth;
     // 当前主题名称 (i)
     var currentThemeName = "Normal";
     // r b c 客户端的主题配置
     var r = false;
-    // 是否为绿色主题
-    var isGreen = false;
+    /**
+     * 是否为绿色主题 b
+     */
+    var isGreen = false; 
     var c = false;
-
+    /**
+     * document 是否加载结束 u
+     */
+    var isLoaded = false;
     var d = null,
         t = null,
-        n = null,
-        u = false;
+        n = null;
     function k(e, t, o) {
         return e.split(t).join(o)
     }
@@ -59,12 +66,12 @@
             var e = document.head ? document.head : document.documentElement;
             e.appendChild(t),
             e.addEventListener("DOMNodeRemoved", M, !1)
-        }(), I(B)) : ("Night" == currentThemeName && (function() {
+        }(), loadStateEventHandle(B)) : ("Night" == currentThemeName && (function() {
             document.head.removeEventListener("DOMNodeRemoved", M),
             document.documentElement.removeEventListener("DOMNodeRemoved", M);
             var e = document.getElementById("take_theme_id");
             e && e.parentNode && e.parentNode.removeChild(e)
-        }(), document.body && document.body.clientWidth && I(L)), "Green" == e ? (null == n && (n = document.createElement("style")), n.innerText = "*{background-color: #d1efd6!important}", (document.head ? document.head : document.documentElement).appendChild(n), I(v)) : y()), currentThemeName = e) : "Night" == e && N()
+        }(), document.body && document.body.clientWidth && loadStateEventHandle(L)), "Green" == e ? (null == n && (n = document.createElement("style")), n.innerText = "*{background-color: #d1efd6!important}", (document.head ? document.head : document.documentElement).appendChild(n), loadStateEventHandle(v)) : y()), currentThemeName = e) : "Night" == e && N()
     }
     function N() {
         if (null != t) {
@@ -166,13 +173,43 @@
             }
         }
     }
-    function O(e) {
-        /interactive|complete/.test(document.readyState) ? u || (e(), u = !0) : window.setTimeout(O, 500, e)
+    /**
+     * document 加载结束计时器 O(e)
+     * @param {Function} func 
+     */
+    function documentLoadedTimer(func) {
+        if(loaded_regex.test(document.readyState)){
+            isLoaded = true;
+            func();
+            console.log('document 加载计时器：加载结束');
+        }else{
+            console.log('document 加载计时器：启用');
+            window.setTimeout(documentLoadedTimer, 500, func);
+        }
     }
-    function I(t) {
-        /interactive|complete/.test(document.readyState) ? window.setTimeout(t, 0) : (document.addEventListener("readystatechange", function e() {
-            "complete" == document.readyState && (u || (t(), u = !0), document.removeEventListener("readystatechange", e, !1))
-        }, !1), O(t))
+    /**
+     * document 加载状态事件处理 I(t)
+     * @param {Function} func 
+     * loadStateEventHandle
+     */
+    function loadStateEventHandle(func) {
+        if(loaded_regex.test(document.readyState)){
+            console.log('document 加载结束');
+            window.setTimeout(func, 0);
+        }else{
+            console.log('document 正在加载');
+            document.addEventListener("readystatechange", function e(){
+                if("complete" == document.readyState){
+                    console.log('document 加载完成');
+                    func();
+                    isLoaded = true;
+                    document.removeEventListener("readystatechange", e, false);
+                }else if("interactive" == document.readyState){
+                    console.log('document 加载结束');
+                }
+            }, false);
+            documentLoadedTimer(func);
+        }
     }
 
     /**
