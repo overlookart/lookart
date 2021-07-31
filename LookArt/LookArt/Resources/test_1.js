@@ -1,3 +1,10 @@
+/*
+ * @Author: 丫丫的刀了 
+ * @Date: 2021-07-31 06:51:27 
+ * @Last Modified by: 丫丫的刀了
+ * @Last Modified time: 2021-07-31 08:10:20
+ */
+
 !function() {
     console.log("主题脚本---开始");
     "use strict";
@@ -173,28 +180,54 @@
             -1 == (o = o || "").indexOf(t) && e.setAttribute("style", o + t)
         }
     }
-    function D(e) {
-        e && (e.style.backgroundColor = null)
-    }
-    function e(e) {
-        function t() {
-            window.__firefox__.isNightMode ? f("Night") : f(isGreen ? "Green" : "Normal")
+
+    /**
+     * 清除元素的背景色 D(e)
+     * @param {Element} element 
+     */
+    function clearElementBgColor(element) {
+        if (element) {
+            element.style.backgroundColor = null;
         }
-        (function(e) {
-            var t = document.getElementsByTagName("html"),
-                o = null;
-            if (t && 0 < t.length && (o = t[0]), D(o), D(document.body), e)
-                x(o, n = r ? c ? "background-color:#000000 !important;" : "background-color:#121212 !important;" : "background-color:#212121 !important;"),
-                x(document.body, n);
-            else if (isGreen) {
-                var n;
-                x(o, n = "background-color:#d1efd6 !important;"),
-                x(document.body, n)
+    }
+    /**
+     * 更新主题 e(e)
+     * @param {Boolean} isNight 是否为夜间主题
+     */
+    function updateTheme(isNight) {
+        console.log('------->更新主题样式');
+        function t() {
+            if (window.__firefox__.isNightMode) {
+                f("Night");
+            }else{
+                f(isGreen ?  "Green" : "Normal");
             }
-        })(window.__firefox__.isNightMode = e),
-        document.head ? t() : window.setTimeout(function() {
-            t()
-        }, 0)
+        }
+        
+        window.__firefox__.isNightMode = isNight;
+        var htmlElements = document.getElementsByTagName('html');
+        var subHtmElement = null;
+        if (htmlElements && 0 < htmlElements.length){
+            subHtmElement = htmlElements[0];
+            clearElementBgColor(subHtmElement);
+            clearElementBgColor(document.body);
+            if (isNight) {
+                var bgColorStyle = r ? c ? "background-color:#000000 !important;" : "background-color:#121212 !important;" : "background-color:#212121 !important;";
+                x(subHtmElement, bgColorStyle);
+                x(document.body, bgColorStyle);
+            }else if (isGreen){
+                var bgColorStyle = "background-color:#d1efd6 !important;";
+                x(subHtmElement, bgColorStyle);
+                x(document.body, bgColorStyle);
+            }
+        }
+        if (document.head) {
+            t();
+        }else{
+            window.setTimeout(function(){
+                t();
+            }, 0)
+        }
     }
     
     /**
@@ -205,14 +238,14 @@
             // t 为 字符串数组， t[0] 为控制是否为夜间模式 t[]
             var t = window.prompt("_ThemeConfig_").split("==");
         } catch (e) {
-            t = ["", "", "true", ""];
+            t = ["true", "", "", ""];
         }
         console.log('获取客户端主题配置', t);
         r = "true" == t[1];
         isGreen = "true" == t[2];
         c = "true" == t[3];
         var isNight = "true" == t[0];
-        e(isNight);
+        updateTheme(isNight);
     }
 
     if (isTopWindow()) {
@@ -222,7 +255,7 @@
                 var frams = window.frames;
                 console.log('遍历 frams ',frams.length);
                 for (t = 0; t < frams.length; t++){
-                    console.log('为 fram 发送 message');
+                    console.log('为 fram 发送更新主题的 message');
                     frams[t].postMessage('{"alookUpdateTheme":1}', "*");
                 }  
             }
