@@ -2,7 +2,7 @@
  * @Author: 丫丫的刀了 
  * @Date: 2021-07-31 06:51:27 
  * @Last Modified by: 丫丫的刀了
- * @Last Modified time: 2021-07-31 08:10:20
+ * @Last Modified time: 2021-07-31 08:26:10
  */
 
 !function() {
@@ -174,10 +174,19 @@
             "complete" == document.readyState && (u || (t(), u = !0), document.removeEventListener("readystatechange", e, !1))
         }, !1), O(t))
     }
-    function x(e, t) {
-        if (e) {
-            var o = e.getAttribute("style");
-            -1 == (o = o || "").indexOf(t) && e.setAttribute("style", o + t)
+
+    /**
+     * 为元素附加样式属性 x(e,t)
+     * @param {Element} element 
+     * @param {String} styleStr 
+     */
+    function addStyleForElement(element, styleStr) {
+        if (element) {
+            var o = element.getAttribute("style");
+            var oldStyle = o ? o : "";
+            if (-1 == oldStyle.indexOf(styleStr)) {
+                element.setAttribute("style", oldStyle + styleStr);
+            }
         }
     }
 
@@ -213,12 +222,12 @@
             clearElementBgColor(document.body);
             if (isNight) {
                 var bgColorStyle = r ? c ? "background-color:#000000 !important;" : "background-color:#121212 !important;" : "background-color:#212121 !important;";
-                x(subHtmElement, bgColorStyle);
-                x(document.body, bgColorStyle);
+                addStyleForElement(subHtmElement, bgColorStyle);
+                addStyleForElement(document.body, bgColorStyle);
             }else if (isGreen){
                 var bgColorStyle = "background-color:#d1efd6 !important;";
-                x(subHtmElement, bgColorStyle);
-                x(document.body, bgColorStyle);
+                addStyleForElement(subHtmElement, bgColorStyle);
+                addStyleForElement(document.body, bgColorStyle);
             }
         }
         if (document.head) {
