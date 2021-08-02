@@ -2,7 +2,7 @@
  * @Author: 丫丫的刀了 
  * @Date: 2021-07-31 06:51:27 
  * @Last Modified by: 丫丫的刀了
- * @Last Modified time: 2021-07-31 21:26:42
+ * @Last Modified time: 2021-08-01 09:32:45
  */
 
 !function() {
@@ -60,9 +60,31 @@
     function k(e, t, o) {
         return e.split(t).join(o)
     }
-    function f(e) {
-        width_08 = .8 * window.innerWidth,
-        currentThemeName != e ? ("Night" == e ? (y(), null == t && ((t = document.createElement("style")).id = "take_theme_id"), N(), function() {
+    /**
+     * 
+     * @param {String} themeName 主题名称 
+     */
+    function f(themeName) {
+        width_08 = .8 * window.innerWidth;
+        if(currentThemeName != themeName){
+            if("Night" == themeName){
+                y();
+                if(null == t){
+                    t = document.createElement("style");
+                    t.id = "take_theme_id";
+                }
+                N();
+                var docElement = document.head ? document.head : document.documentElement;
+                docElement.appendChild(t);
+                docElement.addEventListener("DOMNodeRemoved", M, false);
+                loadStateEventHandle(B);
+            }else{
+
+            }
+        }else{
+
+        }
+        currentThemeName != themeName ? ("Night" == themeName ? (y(), null == t && ((t = document.createElement("style")).id = "take_theme_id"), N(), function() {
             var e = document.head ? document.head : document.documentElement;
             e.appendChild(t),
             e.addEventListener("DOMNodeRemoved", M, !1)
@@ -71,7 +93,7 @@
             document.documentElement.removeEventListener("DOMNodeRemoved", M);
             var e = document.getElementById("take_theme_id");
             e && e.parentNode && e.parentNode.removeChild(e)
-        }(), document.body && document.body.clientWidth && loadStateEventHandle(L)), "Green" == e ? (null == n && (n = document.createElement("style")), n.innerText = "*{background-color: #d1efd6!important}", (document.head ? document.head : document.documentElement).appendChild(n), loadStateEventHandle(v)) : y()), currentThemeName = e) : "Night" == e && N()
+        }(), document.body && document.body.clientWidth && loadStateEventHandle(L)), "Green" == themeName ? (null == n && (n = document.createElement("style")), n.innerText = "*{background-color: #d1efd6!important}", (document.head ? document.head : document.documentElement).appendChild(n), loadStateEventHandle(v)) : y()), currentThemeName = themeName) : "Night" == themeName && N()
     }
     function N() {
         if (null != t) {
@@ -281,7 +303,7 @@
      */
     function clientThemeConfig() {
         try {
-            // t 为 字符串数组， t[0] 为控制是否为夜间模式 t[]
+            // t 为 字符串数组， t[0] 为控制是否为夜间模式 t[2] 是否为绿色主题
             var t = window.prompt("_ThemeConfig_").split("==");
         } catch (e) {
             t = ["true", "", "", ""];
