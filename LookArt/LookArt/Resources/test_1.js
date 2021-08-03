@@ -1,8 +1,8 @@
 /*
  * @Author: 丫丫的刀了 
  * @Date: 2021-07-31 06:51:27 
- * @Last Modified by: 丫丫的刀了
- * @Last Modified time: 2021-08-01 09:32:45
+ * @Last Modified by: mikey.zhaopeng
+ * @Last Modified time: 2021-08-03 11:19:43
  */
 
 !function() {
@@ -54,9 +54,13 @@
      * document 是否加载结束 u
      */
     var isLoaded = false;
+
+    /**
+     * 绿色主题 style element
+     */
+    var greenStyleElement = null;
     var d = null,
-        t = null,
-        n = null;
+        t = null;
     function k(e, t, o) {
         return e.split(t).join(o)
     }
@@ -65,10 +69,12 @@
      * @param {String} themeName 主题名称 
      */
     function f(themeName) {
+        console.log('主题---------', themeName);
         width_08 = .8 * window.innerWidth;
+        
         if(currentThemeName != themeName){
             if("Night" == themeName){
-                y();
+                removeGreenStyleElement();
                 if(null == t){
                     t = document.createElement("style");
                     t.id = "take_theme_id";
@@ -79,21 +85,47 @@
                 docElement.addEventListener("DOMNodeRemoved", M, false);
                 loadStateEventHandle(B);
             }else{
-
+                if ("Night" == currentThemeName) {
+                    (function() {
+                        docElement.head.removeEventListener("DOMNodeRemoved", M);
+                        docElement.documentElement.removeEventListener("DOMNodeRemoved", M);
+                        var e = docElement.getElementById("take_theme_id");
+                        if (e && e.parentNode){
+                            e.parentNode.removeChild(e);
+                        }
+                    })();
+                    if (document.body && document.body.clientWidth){
+                        loadStateEventHandle(L);
+                    }
+                }
+                if ("Green" == themeName){
+                    if (null == greenStyleElement){
+                        greenStyleElement = document.createElement("style");
+                    }
+                    greenStyleElement.innerText = "*{background-color: #d1efd6!important}";
+                    (document.head ? document.head : document.documentElement).appendChild(greenStyleElement);
+                    loadStateEventHandle(v);
+                }else{
+                    removeGreenStyleElement();
+                }
             }
+            currentThemeName = themeName;
         }else{
-
+            if("Night" == themeName){
+                N();
+            }
         }
-        currentThemeName != themeName ? ("Night" == themeName ? (y(), null == t && ((t = document.createElement("style")).id = "take_theme_id"), N(), function() {
-            var e = document.head ? document.head : document.documentElement;
-            e.appendChild(t),
-            e.addEventListener("DOMNodeRemoved", M, !1)
-        }(), loadStateEventHandle(B)) : ("Night" == currentThemeName && (function() {
-            document.head.removeEventListener("DOMNodeRemoved", M),
-            document.documentElement.removeEventListener("DOMNodeRemoved", M);
-            var e = document.getElementById("take_theme_id");
-            e && e.parentNode && e.parentNode.removeChild(e)
-        }(), document.body && document.body.clientWidth && loadStateEventHandle(L)), "Green" == themeName ? (null == n && (n = document.createElement("style")), n.innerText = "*{background-color: #d1efd6!important}", (document.head ? document.head : document.documentElement).appendChild(n), loadStateEventHandle(v)) : y()), currentThemeName = themeName) : "Night" == themeName && N()
+        
+        // currentThemeName != themeName ? ("Night" == themeName ? (y(), null == t && ((t = document.createElement("style")).id = "take_theme_id"), N(), function() {
+        //     var e = document.head ? document.head : document.documentElement;
+        //     e.appendChild(t),
+        //     e.addEventListener("DOMNodeRemoved", M, !1)
+        // }(), loadStateEventHandle(B),console.log("3----3----3")) : ("Night" == currentThemeName && (function() {
+        //     document.head.removeEventListener("DOMNodeRemoved", M),
+        //     document.documentElement.removeEventListener("DOMNodeRemoved", M);
+        //     var e = document.getElementById("take_theme_id");
+        //     e && e.parentNode && e.parentNode.removeChild(e)
+        // }(), document.body && document.body.clientWidth && loadStateEventHandle(L)), "Green" == themeName ? (null == n && (n = document.createElement("style")), n.innerText = "*{background-color: #d1efd6!important}", (document.head ? document.head : document.documentElement).appendChild(n), loadStateEventHandle(v)) : y()), currentThemeName = themeName) : "Night" == themeName && N()
     }
     function N() {
         if (null != t) {
@@ -102,12 +134,15 @@
             t.innerText = e
         }
     }
-    function y() {
-        n && n.parentNode && n.parentNode.removeChild(n)
+    /**
+     * 移除绿色 style element
+     */
+    function removeGreenStyleElement() {
+        greenStyleElement && greenStyleElement.parentNode && greenStyleElement.parentNode.removeChild(greenStyleElement)
     }
     function v() {
         d && window.clearTimeout(d),
-        n.innerText = "body,[alook__green]{background-color: #d1efd6!important}",
+        greenStyleElement.innerText = "body,[alook__green]{background-color: #d1efd6!important}",
         document.addEventListener("DOMNodeInserted", A, !1);
         for (var e = (document.body ? document.body : document).getElementsByTagName("*"), t = 0; t < e.length; t++)
             w(e[t])
@@ -306,7 +341,7 @@
             // t 为 字符串数组， t[0] 为控制是否为夜间模式 t[2] 是否为绿色主题
             var t = window.prompt("_ThemeConfig_").split("==");
         } catch (e) {
-            t = ["true", "", "", ""];
+            t = ["", "", "true", ""];
         }
         console.log('获取客户端主题配置', t);
         r = "true" == t[1];
