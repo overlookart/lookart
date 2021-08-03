@@ -1,8 +1,8 @@
 /*
  * @Author: 丫丫的刀了 
  * @Date: 2021-07-31 06:51:27 
- * @Last Modified by: mikey.zhaopeng
- * @Last Modified time: 2021-08-03 11:19:43
+ * @Last Modified by: 丫丫的刀了
+ * @Last Modified time: 2021-08-03 11:35:25
  */
 
 !function() {
@@ -59,8 +59,7 @@
      * 绿色主题 style element
      */
     var greenStyleElement = null;
-    var d = null,
-        t = null;
+    var t = null;
     function k(e, t, o) {
         return e.split(t).join(o)
     }
@@ -141,7 +140,6 @@
         greenStyleElement && greenStyleElement.parentNode && greenStyleElement.parentNode.removeChild(greenStyleElement)
     }
     function v() {
-        d && window.clearTimeout(d),
         greenStyleElement.innerText = "body,[alook__green]{background-color: #d1efd6!important}",
         document.addEventListener("DOMNodeInserted", A, !1);
         for (var e = (document.body ? document.body : document).getElementsByTagName("*"), t = 0; t < e.length; t++)
@@ -188,7 +186,6 @@
         }(t) : null
     }
     function B() {
-        d && window.clearTimeout(d),
         document.addEventListener("DOMNodeInserted", A, !1);
         for (var e = (document.body ? document.body : document).getElementsByTagName("*"), t = 0; t < e.length; t++)
             E(e[t])
@@ -212,7 +209,6 @@
         window.setTimeout(C, 0, e.target)
     }
     function L() {
-        d && window.clearTimeout(d),
         document.removeEventListener("DOMNodeInserted", A, !1);
         for (var e = /takenightmode[\s\S]*?\b/g, t = document.getElementsByTagName("*"), o = 0; o < t.length; ++o) {
             var n = t[o];
