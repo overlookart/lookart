@@ -2,7 +2,7 @@
  * @Author: 丫丫的刀了 
  * @Date: 2021-07-31 06:51:27 
  * @Last Modified by: 丫丫的刀了
- * @Last Modified time: 2021-08-03 11:35:25
+ * @Last Modified time: 2021-08-04 10:22:46
  */
 
 !function() {
@@ -21,19 +21,42 @@
     }
     window.__firefox__ || (window.__firefox__ = {}),
     window.__firefox__.isNightMode = false;
-    // 匹配透明颜色 (g)
+    
+    /**
+     * 匹配透明颜色 (g)
+     */
     var rgba_0_Regex = /rgba\(\s*?\d+?\s*?,\s*?\d+?\s*?,\s*?\d+?\s*?,\s*?0\s*?\)/i;
-    // 匹配 rgb 值为200以上的颜色 (l)
+    
+    /**
+     * 匹配 rgb 值为200以上的颜色 (l)
+     */
     var rgb_200_regex = /rgb\(\s*?2\d{2}\s*?,\s*?2\d{2}\s*?,\s*?2\d{2}\s*?\)/i;
-    // 匹配 rgb 值为160以上的颜色 (s)
+    
+    /**
+     * 匹配 rgb 值为160以上的颜色 (s)
+     */
     var rgb_160_regex = /rgb\(\s*?1(6|7|8|9)\d\s*?,\s*?1(6|7|8|9)\d\s*?,\s*?1(6|7|8|9)\d\s*?\)/i;
-    // 匹配 rgb 值为255 白色 (T)
+    
+    /**
+     * 匹配 rgb 值为255 白色 (T)
+     */
     var rgba_255_regex = /rgba\(255\, 255\, 255\,/i;
-    // 匹配颜色关键词 (h)
+    
+    /**
+     * 匹配颜色关键词 (h)
+     */
     var color_key_regex = /rgb|-webkit-gradient/i;
-    // 匹配标签 (a) CANVAS, IMG, IFRAME, BR, SCRIPT, NOSCRIPT, STYLE, META, LINK, TITLE
+    
+    /**
+     * 匹配标签 (a)
+     * canvas, img, iframe, br, script, noscript, style, meta, link, title
+     */
     var tag_key = /\bCANVAS\b|\bIMG\b|\bIFRAME\b|\bBR\b|\bSCRIPT\b|\bNOSCRIPT\b|\bSTYLE\b|\bMETA\b|\bLINK\b|\bTITLE\b/;
     // (m)
+    /**
+     * 匹配标签 (m)
+     * canvas, img, iframe, br, script
+     */
     var tag_sub = /\bCANVAS\b|\bIMG\b|\bIFRAME\b|\bBR\b|\bSCRIPT\b/;
     /**
      * document 加载结束正则
@@ -60,6 +83,22 @@
      */
     var greenStyleElement = null;
     var t = null;
+
+    /**
+     * 颜色灰度
+     * @param {*} r 
+     * @param {*} g 
+     * @param {*} b 
+     */
+    function colorLuma(r, g, b) {
+        if(r*0.299 + g*0.578 + b*0.114 >= 192){ 
+            //浅色
+        }else{  
+            //深色
+        }
+    }
+
+
     function k(e, t, o) {
         return e.split(t).join(o)
     }
@@ -141,14 +180,30 @@
     }
     function v() {
         greenStyleElement.innerText = "body,[alook__green]{background-color: #d1efd6!important}",
-        document.addEventListener("DOMNodeInserted", A, !1);
-        for (var e = (document.body ? document.body : document).getElementsByTagName("*"), t = 0; t < e.length; t++)
-            w(e[t])
+        document.addEventListener("DOMNodeInserted", A, false);
+        var e = (document.body ? document.body : document).getElementsByTagName("*")
+        console.log('开始遍历 document 中的所有 element, 配置绿色主题属性');
+        for (var t = 0; t < e.length; t++){
+            addGreenAttributeForElement(e[t])
+        }
     }
-    function w(e) {
-        var t = window.getComputedStyle(e, null);
-        (rgb_200_regex.test(t.backgroundColor) || rgba_255_regex.test(t.backgroundColor)) && e.setAttribute("alook__green", 1)
+
+    /**
+     * 为浅色背景的元素添加绿色主题属性 w(e)
+     * @param {Element} element 
+     */
+    function addGreenAttributeForElement(element) {
+        //获取指定元素的 CSS 样式
+        var elementStyle = window.getComputedStyle(element, null);
+        // 背景色 rgb 值为200以上 或 rgba 为白色
+        if (rgb_200_regex.test(elementStyle.backgroundColor) || rgba_255_regex.test(elementStyle.backgroundColor)){
+            console.log('元素的背景色 rgb200 或 rgb255');
+            //添加 绿色属性
+            element.setAttribute("alook__green", 1);
+            console.log('添加 绿色属性: alook__green', element);
+        }
     }
+
     function M(e) {
         e.target && "take_theme_id" == e.target.id && window.setTimeout(function() {
             "Night" == currentThemeName && (document.head ? document.head : document.documentElement).appendChild(t)
@@ -203,7 +258,7 @@
                 R(t[o])
     }
     function R(e) {
-        e && e.nodeType != Node.TEXT_NODE && e.nodeType != Node.COMMENT_NODE && !tag_key.test(e.tagName) && ("Night" == currentThemeName ? E(e) : isGreen && w(e))
+        e && e.nodeType != Node.TEXT_NODE && e.nodeType != Node.COMMENT_NODE && !tag_key.test(e.tagName) && ("Night" == currentThemeName ? E(e) : isGreen && addGreenAttributeForElement(e))
     }
     function A(e) {
         window.setTimeout(C, 0, e.target)
