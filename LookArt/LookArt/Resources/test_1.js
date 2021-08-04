@@ -2,7 +2,7 @@
  * @Author: 丫丫的刀了 
  * @Date: 2021-07-31 06:51:27 
  * @Last Modified by: 丫丫的刀了
- * @Last Modified time: 2021-08-04 10:22:46
+ * @Last Modified time: 2021-08-04 11:46:36
  */
 
 !function() {
@@ -142,7 +142,7 @@
                     }
                     greenStyleElement.innerText = "*{background-color: #d1efd6!important}";
                     (document.head ? document.head : document.documentElement).appendChild(greenStyleElement);
-                    loadStateEventHandle(v);
+                    loadStateEventHandle(loadedGreenHandle);
                 }else{
                     removeGreenStyleElement();
                 }
@@ -176,15 +176,26 @@
      * 移除绿色 style element
      */
     function removeGreenStyleElement() {
-        greenStyleElement && greenStyleElement.parentNode && greenStyleElement.parentNode.removeChild(greenStyleElement)
+        console.log('移除绿色 style Element');
+        if (greenStyleElement && greenStyleElement.parentNode){
+            greenStyleElement.parentNode.removeChild(greenStyleElement)
+        }
     }
-    function v() {
+    /**
+     * document 加载结束后的绿色主题处理方法
+     */
+    function loadedGreenHandle() {
+        //设置标签起始位置到终止位置的全部文本信息
+        console.log('加载结束,设置绿色主题 Style 元素的样式');
         greenStyleElement.innerText = "body,[alook__green]{background-color: #d1efd6!important}",
-        document.addEventListener("DOMNodeInserted", A, false);
-        var e = (document.body ? document.body : document).getElementsByTagName("*")
+        console.log(greenStyleElement);
+        //添加插入子节点事件的监听
+        document.addEventListener("DOMNodeInserted", insertedNodeHandle, false);
+        //获取 document 的所有元素
+        var allElements = (document.body ? document.body : document).getElementsByTagName("*")
         console.log('开始遍历 document 中的所有 element, 配置绿色主题属性');
-        for (var t = 0; t < e.length; t++){
-            addGreenAttributeForElement(e[t])
+        for (var t = 0; t < allElements.length; t++){
+            addGreenAttributeForElement(allElements[t]);
         }
     }
 
@@ -241,7 +252,7 @@
         }(t) : null
     }
     function B() {
-        document.addEventListener("DOMNodeInserted", A, !1);
+        document.addEventListener("DOMNodeInserted", insertedNodeHandle, !1);
         for (var e = (document.body ? document.body : document).getElementsByTagName("*"), t = 0; t < e.length; t++)
             E(e[t])
     }
@@ -260,11 +271,16 @@
     function R(e) {
         e && e.nodeType != Node.TEXT_NODE && e.nodeType != Node.COMMENT_NODE && !tag_key.test(e.tagName) && ("Night" == currentThemeName ? E(e) : isGreen && addGreenAttributeForElement(e))
     }
-    function A(e) {
+    /**
+     * 插入节点监听事件处理
+     * @param {*} e 
+     * insertedNodeHandle
+     */
+    function insertedNodeHandle(e) {
         window.setTimeout(C, 0, e.target)
     }
     function L() {
-        document.removeEventListener("DOMNodeInserted", A, !1);
+        document.removeEventListener("DOMNodeInserted", insertedNodeHandle, !1);
         for (var e = /takenightmode[\s\S]*?\b/g, t = document.getElementsByTagName("*"), o = 0; o < t.length; ++o) {
             var n = t[o];
             if (n && n.nodeType != Node.TEXT_NODE && n.nodeType != Node.COMMENT_NODE) {
