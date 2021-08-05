@@ -2,7 +2,7 @@
  * @Author: 丫丫的刀了 
  * @Date: 2021-07-31 06:51:27 
  * @Last Modified by: 丫丫的刀了
- * @Last Modified time: 2021-08-04 11:46:36
+ * @Last Modified time: 2021-08-05 11:16:07
  */
 
 !function() {
@@ -263,21 +263,55 @@
             for (var o = t.split(" "), n = 0; n < o.length; n++)
                 0 < o[n].length && e.setAttribute(o[n], "")
     }
-    function C(e) {
-        if (e && (R(e), e.getElementsByTagName))
-            for (var t = e.getElementsByTagName("*"), o = 0; o < t.length; o++)
-                R(t[o])
+    /**
+     * 为 元素及其子元素设置主题属性
+     * @param {*} element dom 元素 
+     * timeoutHandle
+     */
+    function C(element) {
+        if(element){
+            R(element);
+            if(element.getElementsByTagName){
+                var elements = element.getElementsByTagName("*");
+                for (var i = 0; i < elements.length; i ++){
+                    R(elements[i]);
+                }
+            }
+        }
+        // if (e && (R(e), e.getElementsByTagName))
+        //     for (var t = e.getElementsByTagName("*"), o = 0; o < t.length; o++)
+        //         R(t[o])
     }
-    function R(e) {
-        e && e.nodeType != Node.TEXT_NODE && e.nodeType != Node.COMMENT_NODE && !tag_key.test(e.tagName) && ("Night" == currentThemeName ? E(e) : isGreen && addGreenAttributeForElement(e))
+    
+    /**
+     * 设置 dom 元素的主题属性
+     * @param {*} element dom 元素
+     */
+    function R(element) {
+        // 如果 dom元素节点类型不为文字类型, 不为 Comment 节点, 且标签为canvas, img, iframe, br, script, noscript, style, meta, link, title
+        if (element && element.nodeType != Node.TEXT_NODE && element.nodeType != Node.COMMENT_NODE && !tag_key.test(element.tagName)){
+            console.log(element.tagName);
+            if ("Night" == currentThemeName){
+                //夜间主题
+                E(element);
+            }else{
+                if(isGreen){
+                    //绿色主题
+                    addGreenAttributeForElement(element);
+                }
+            }
+        }
+        // e && e.nodeType != Node.TEXT_NODE && e.nodeType != Node.COMMENT_NODE && !tag_key.test(e.tagName) && ("Night" == currentThemeName ? E(e) : isGreen && addGreenAttributeForElement(e))
     }
     /**
-     * 插入节点监听事件处理
-     * @param {*} e 
-     * insertedNodeHandle
+     * 插入节点监听事件处理 A(e)
+     * @param {*} event 
      */
-    function insertedNodeHandle(e) {
-        window.setTimeout(C, 0, e.target)
+    function insertedNodeHandle(event) {
+        //事件的目标节点
+        var targetNode = event.target;
+        console.log("document 插入新的节点", targetNode);
+        C(targetNode);
     }
     function L() {
         document.removeEventListener("DOMNodeInserted", insertedNodeHandle, !1);
