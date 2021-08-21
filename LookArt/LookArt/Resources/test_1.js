@@ -2,7 +2,7 @@
  * @Author: 丫丫的刀了 
  * @Date: 2021-07-31 06:51:27 
  * @Last Modified by: 丫丫的刀了
- * @Last Modified time: 2021-08-05 11:16:07
+ * @Last Modified time: 2021-08-21 08:55:50
  */
 
 !function() {
@@ -98,9 +98,15 @@
         }
     }
 
-
-    function k(e, t, o) {
-        return e.split(t).join(o)
+    /**
+     * 替换 String 中的某些字符 k(e, t, o)
+     * @param {String} str 原字符串 
+     * @param {String} subStr 被替换的字符串 
+     * @param {String} useStr 用来替换的字符串 
+     * @returns 替换完成的字符串
+     */
+    function replaceString(str, subStr, useStr) {
+        return str.split(subStr).join(useStr);
     }
     /**
      * 
@@ -168,7 +174,7 @@
     function N() {
         if (null != t) {
             var e = "[TakeTheme][TakeNightModeTransBg]{background-color: transparent !important}.black_border{border: 1px solid rgba(0, 0, 0,0.2)}#bg_sheep{background-image: none !important}#bg_cow{background-image: none !important}[TakeTheme][TakeNightDarkBgImage]{filter: brightness(62%)!important}[TakeTheme][TakeNightModeReplaceBgColor]{background:#212121!important}[TakeTheme][TakeNightModeReplaceBgColorLight]{background:#181818!important}[TakeTheme][TakeNightModeBackground]{background:#212121!important;color:#868686!important}[TakeTheme][TakeNightModeReplaceBgLinear]{background:rgba(40,40,40,.6)!important}[TakeTheme][TakeNightModeReplaceBorder]{border-color:#45484c!important}:not([TakeTheme]){border-color:#212121!important;background-color:#212121!important}*{text-shadow:none!important;box-shadow:none!important}:after,:before{-webkit-filter:brightness(0.4)}body,html{background:#212121!important;color:#868686!important}abbr,address,article,aside,b,bdi,bdo,blockquote,br,caption,cite,code,col,colgroup,data,datalist,dc,dd,dfn,dl,dt,em,fieldset,figcaption,figure,footer,form,h1,h2,h3,h4,h5,h6,header,hr,i,kbd,keygen,label,legend,li,main,mark,meter,nav,ol,optgroup,option,output,p,pre,progress,q,rp,rt,ruby,s,samp,section,small,span,strong,sub,sup,table,tbody,td,textarea,tfoot,th,thead,time,tr,u,ul,var,wbr{background-color:none;color:#868686!important}textarea{background-color:#212121!important}div,div[TakeTheme]{color:#868686!important}[TakeTheme]{color:#868686!important}a,a *,a[TakeTheme]{color:#6d97d5 !important}a[TakeTheme]:visited,a[TakeTheme]:visited [TakeTheme],a[TakeTheme]:visited div[TakeTheme],a:visited,a:visited *{color:#bd8cff!important}button:not([TakeNightModeTransBg]):not([TakeTheme]),div:not([TakeNightModeTransBg]):not([TakeTheme]),input:not([TakeNightModeTransBg]):not([TakeTheme]),select:not([TakeNightModeTransBg]):not([TakeTheme]){background:#212121!important}button[TakeThemeActionDone]:not([TakeNightModeTransBg]):not([TakeNightModeReplaceBgLinear]):not([TakeNightModeBackground]),div[TakeThemeActionDone]:not([TakeNightModeTransBg]):not([TakeNightModeReplaceBgLinear]):not([TakeNightModeBackground]),input[TakeThemeActionDone]:not([TakeNightModeTransBg]):not([TakeNightModeReplaceBgLinear]):not([TakeNightModeBackground]),select[TakeThemeActionDone]:not([TakeNightModeTransBg]):not([TakeNightModeReplaceBgLinear]):not([TakeNightModeBackground]){background-color:#212121!important}input[type=date],input[type=date] *,input[type=datetime-local],input[type=datetime-local] *,input[type=month],input[type=month] *,input[type=time],input[type=time] *,select,select *{color:#fff!important}button,input:not([type=button]):not([type=submit]):not([type=reset]):not([type=image]):not([type=file]):not([type=date]):not([type=datetime-local]):not([type=month]):not([type=time]),input[type=button],input[type=file],input[type=image],input[type=reset],input[type=submit]{color:#FFFFFF!important;border-color:#45484c!important}";
-            e = r ? k(e = k(e = k(e = k(e, "212121", c ? "000000" : "121212"), "868686", "b0b0b0"), "486599", "6d97d5"), "181818", "212121") : 'input[type="image"]{filter: brightness(62%)!important}img{filter: brightness(62%)!important}' + e,
+            e = r ? replaceString(e = replaceString(e = replaceString(e = replaceString(e, "212121", c ? "000000" : "121212"), "868686", "b0b0b0"), "486599", "6d97d5"), "181818", "212121") : 'input[type="image"]{filter: brightness(62%)!important}img{filter: brightness(62%)!important}' + e,
             t.innerText = e
         }
     }
@@ -442,7 +448,7 @@
             // t 为 字符串数组， t[0] 为控制是否为夜间模式 t[2] 是否为绿色主题
             var t = window.prompt("_ThemeConfig_").split("==");
         } catch (e) {
-            t = ["", "", "true", ""];
+            t = ["true", "", "", ""];
         }
         console.log('获取客户端主题配置', t);
         r = "true" == t[1];
