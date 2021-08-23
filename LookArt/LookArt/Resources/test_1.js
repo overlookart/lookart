@@ -2,7 +2,7 @@
  * @Author: 丫丫的刀了 
  * @Date: 2021-07-31 06:51:27 
  * @Last Modified by: 丫丫的刀了
- * @Last Modified time: 2021-08-23 09:26:32
+ * @Last Modified time: 2021-08-23 12:02:06
  */
 
 !function() {
@@ -67,12 +67,18 @@
     // 当前主题名称 (i)
     var currentThemeName = "Normal";
     // r b c 客户端的主题配置
-    var r = false;
+    /**
+     * 是否为深夜主题 r
+     */
+    var isNigthDark = false;
     /**
      * 是否为绿色主题 b
      */
     var isGreen = false; 
-    var c = false;
+    /**
+     * 是否为深色主题 c
+     */
+    var isDark = false;
     /**
      * document 是否加载结束 u
      */
@@ -84,7 +90,7 @@
     var greenStyleElement = null;
 
     /**
-     * 暗色主题 style element
+     * 暗色主题 style element t
      */
     var nightStyleElement = null;
 
@@ -126,7 +132,7 @@
                     nightStyleElement = document.createElement("style");
                     nightStyleElement.id = "take_theme_id";
                 }
-                N();
+                setupNightStyle();
                 var docElement = document.head ? document.head : document.documentElement;
                 docElement.appendChild(nightStyleElement);
                 docElement.addEventListener("DOMNodeRemoved", M, false);
@@ -159,7 +165,7 @@
             currentThemeName = themeName;
         }else{
             if("Night" == themeName){
-                N();
+                setupNightStyle();
             }
         }
         
@@ -174,11 +180,63 @@
         //     e && e.parentNode && e.parentNode.removeChild(e)
         // }(), document.body && document.body.clientWidth && loadStateEventHandle(L)), "Green" == themeName ? (null == n && (n = document.createElement("style")), n.innerText = "*{background-color: #d1efd6!important}", (document.head ? document.head : document.documentElement).appendChild(n), loadStateEventHandle(v)) : y()), currentThemeName = themeName) : "Night" == themeName && N()
     }
-    function N() {
+
+    /**
+     * 重设暗色主题样式 N()
+     */
+    function setupNightStyle() {
+        // var e = "[TakeTheme][TakeNightModeTransBg]{background-color: transparent !important}.black_border{border: 1px solid rgba(0, 0, 0,0.2)}#bg_sheep{background-image: none !important}#bg_cow{background-image: none !important}[TakeTheme][TakeNightDarkBgImage]{filter: brightness(62%)!important}[TakeTheme][TakeNightModeReplaceBgColor]{background:#212121!important}[TakeTheme][TakeNightModeReplaceBgColorLight]{background:#181818!important}[TakeTheme][TakeNightModeBackground]{background:#212121!important;color:#868686!important}[TakeTheme][TakeNightModeReplaceBgLinear]{background:rgba(40,40,40,.6)!important}[TakeTheme][TakeNightModeReplaceBorder]{border-color:#45484c!important}:not([TakeTheme]){border-color:#212121!important;background-color:#212121!important}*{text-shadow:none!important;box-shadow:none!important}:after,:before{-webkit-filter:brightness(0.4)}body,html{background:#212121!important;color:#868686!important}abbr,address,article,aside,b,bdi,bdo,blockquote,br,caption,cite,code,col,colgroup,data,datalist,dc,dd,dfn,dl,dt,em,fieldset,figcaption,figure,footer,form,h1,h2,h3,h4,h5,h6,header,hr,i,kbd,keygen,label,legend,li,main,mark,meter,nav,ol,optgroup,option,output,p,pre,progress,q,rp,rt,ruby,s,samp,section,small,span,strong,sub,sup,table,tbody,td,textarea,tfoot,th,thead,time,tr,u,ul,var,wbr{background-color:none;color:#868686!important}textarea{background-color:#212121!important}div,div[TakeTheme]{color:#868686!important}[TakeTheme]{color:#868686!important}a,a *,a[TakeTheme]{color:#6d97d5 !important}a[TakeTheme]:visited,a[TakeTheme]:visited [TakeTheme],a[TakeTheme]:visited div[TakeTheme],a:visited,a:visited *{color:#bd8cff!important}button:not([TakeNightModeTransBg]):not([TakeTheme]),div:not([TakeNightModeTransBg]):not([TakeTheme]),input:not([TakeNightModeTransBg]):not([TakeTheme]),select:not([TakeNightModeTransBg]):not([TakeTheme]){background:#212121!important}button[TakeThemeActionDone]:not([TakeNightModeTransBg]):not([TakeNightModeReplaceBgLinear]):not([TakeNightModeBackground]),div[TakeThemeActionDone]:not([TakeNightModeTransBg]):not([TakeNightModeReplaceBgLinear]):not([TakeNightModeBackground]),input[TakeThemeActionDone]:not([TakeNightModeTransBg]):not([TakeNightModeReplaceBgLinear]):not([TakeNightModeBackground]),select[TakeThemeActionDone]:not([TakeNightModeTransBg]):not([TakeNightModeReplaceBgLinear]):not([TakeNightModeBackground]){background-color:#212121!important}input[type=date],input[type=date] *,input[type=datetime-local],input[type=datetime-local] *,input[type=month],input[type=month] *,input[type=time],input[type=time] *,select,select *{color:#fff!important}button,input:not([type=button]):not([type=submit]):not([type=reset]):not([type=image]):not([type=file]):not([type=date]):not([type=datetime-local]):not([type=month]):not([type=time]),input[type=button],input[type=file],input[type=image],input[type=reset],input[type=submit]{color:#FFFFFF!important;border-color:#45484c!important}";
         if (null != nightStyleElement) {
-            var e = "[TakeTheme][TakeNightModeTransBg]{background-color: transparent !important}.black_border{border: 1px solid rgba(0, 0, 0,0.2)}#bg_sheep{background-image: none !important}#bg_cow{background-image: none !important}[TakeTheme][TakeNightDarkBgImage]{filter: brightness(62%)!important}[TakeTheme][TakeNightModeReplaceBgColor]{background:#212121!important}[TakeTheme][TakeNightModeReplaceBgColorLight]{background:#181818!important}[TakeTheme][TakeNightModeBackground]{background:#212121!important;color:#868686!important}[TakeTheme][TakeNightModeReplaceBgLinear]{background:rgba(40,40,40,.6)!important}[TakeTheme][TakeNightModeReplaceBorder]{border-color:#45484c!important}:not([TakeTheme]){border-color:#212121!important;background-color:#212121!important}*{text-shadow:none!important;box-shadow:none!important}:after,:before{-webkit-filter:brightness(0.4)}body,html{background:#212121!important;color:#868686!important}abbr,address,article,aside,b,bdi,bdo,blockquote,br,caption,cite,code,col,colgroup,data,datalist,dc,dd,dfn,dl,dt,em,fieldset,figcaption,figure,footer,form,h1,h2,h3,h4,h5,h6,header,hr,i,kbd,keygen,label,legend,li,main,mark,meter,nav,ol,optgroup,option,output,p,pre,progress,q,rp,rt,ruby,s,samp,section,small,span,strong,sub,sup,table,tbody,td,textarea,tfoot,th,thead,time,tr,u,ul,var,wbr{background-color:none;color:#868686!important}textarea{background-color:#212121!important}div,div[TakeTheme]{color:#868686!important}[TakeTheme]{color:#868686!important}a,a *,a[TakeTheme]{color:#6d97d5 !important}a[TakeTheme]:visited,a[TakeTheme]:visited [TakeTheme],a[TakeTheme]:visited div[TakeTheme],a:visited,a:visited *{color:#bd8cff!important}button:not([TakeNightModeTransBg]):not([TakeTheme]),div:not([TakeNightModeTransBg]):not([TakeTheme]),input:not([TakeNightModeTransBg]):not([TakeTheme]),select:not([TakeNightModeTransBg]):not([TakeTheme]){background:#212121!important}button[TakeThemeActionDone]:not([TakeNightModeTransBg]):not([TakeNightModeReplaceBgLinear]):not([TakeNightModeBackground]),div[TakeThemeActionDone]:not([TakeNightModeTransBg]):not([TakeNightModeReplaceBgLinear]):not([TakeNightModeBackground]),input[TakeThemeActionDone]:not([TakeNightModeTransBg]):not([TakeNightModeReplaceBgLinear]):not([TakeNightModeBackground]),select[TakeThemeActionDone]:not([TakeNightModeTransBg]):not([TakeNightModeReplaceBgLinear]):not([TakeNightModeBackground]){background-color:#212121!important}input[type=date],input[type=date] *,input[type=datetime-local],input[type=datetime-local] *,input[type=month],input[type=month] *,input[type=time],input[type=time] *,select,select *{color:#fff!important}button,input:not([type=button]):not([type=submit]):not([type=reset]):not([type=image]):not([type=file]):not([type=date]):not([type=datetime-local]):not([type=month]):not([type=time]),input[type=button],input[type=file],input[type=image],input[type=reset],input[type=submit]{color:#FFFFFF!important;border-color:#45484c!important}";
-            e = r ? replaceString(e = replaceString(e = replaceString(e = replaceString(e, "212121", c ? "000000" : "121212"), "868686", "b0b0b0"), "486599", "6d97d5"), "181818", "212121") : 'input[type="image"]{filter: brightness(62%)!important}img{filter: brightness(62%)!important}' + e,
-            nightStyleElement.innerText = e
+            var nightStyle = "[TakeTheme][TakeNightModeTransBg]{background-color: transparent !important}.black_border{border: 1px solid rgba(0, 0, 0,0.2)}" + 
+                             "#bg_sheep{background-image: none !important}" + 
+                             "#bg_cow{background-image: none !important}" + 
+                             "[TakeTheme][TakeNightDarkBgImage]{filter: brightness(62%)!important}" + 
+                             "[TakeTheme][TakeNightModeReplaceBgColor]{background:#212121!important}" + 
+                             "[TakeTheme][TakeNightModeReplaceBgColorLight]{background:#181818!important}" + 
+                             "[TakeTheme][TakeNightModeBackground]{background:#212121!important;color:#868686!important}" + 
+                             "[TakeTheme][TakeNightModeReplaceBgLinear]{background:rgba(40,40,40,.6)!important}" + 
+                             "[TakeTheme][TakeNightModeReplaceBorder]{border-color:#45484c!important}" + 
+                             ":not([TakeTheme]){border-color:#212121!important;background-color:#212121!important}" + 
+                             "*{text-shadow:none!important;box-shadow:none!important}" + 
+                             ":after,:before{-webkit-filter:brightness(0.4)}" + 
+                             "body,html{background:#212121!important;color:#868686!important}" + 
+                             "abbr,address,article,aside," + 
+                             "b,bdi,bdo,blockquote,br," + 
+                             "caption,cite,code,col,colgroup," + 
+                             "data,datalist,dc,dd,dfn,dl,dt," + 
+                             "em,fieldset,figcaption,figure,footer,form," + 
+                             "h1,h2,h3,h4,h5,h6,header,hr," + 
+                             "i,kbd,keygen,label,legend,li,main,mark,meter,nav," + 
+                             "ol,optgroup,option,output,p,pre,progress,q,rp,rt,ruby," + 
+                             "s,samp,section,small,span,strong,sub,sup," + 
+                             "table,tbody,td,textarea,tfoot,th,thead,time,tr,u,ul,var,wbr" + 
+                             "{background-color:none;color:#868686!important}" + 
+                             "textarea{background-color:#212121!important}" + 
+                             "div,div[TakeTheme]{color:#868686!important}" + 
+                             "[TakeTheme]{color:#868686!important}" + 
+                             "a,a *,a[TakeTheme]{color:#6d97d5 !important}a[TakeTheme]:visited,a[TakeTheme]:visited [TakeTheme],a[TakeTheme]:visited " + 
+                             "div[TakeTheme],a:visited,a:visited *{color:#bd8cff!important}" + 
+                             "button:not([TakeNightModeTransBg]):not([TakeTheme])," + 
+                             "div:not([TakeNightModeTransBg]):not([TakeTheme])," + 
+                             "input:not([TakeNightModeTransBg]):not([TakeTheme])," + 
+                             "select:not([TakeNightModeTransBg]):not([TakeTheme]){background:#212121!important}" + 
+                             "button[TakeThemeActionDone]:not([TakeNightModeTransBg]):not([TakeNightModeReplaceBgLinear]):not([TakeNightModeBackground])," + 
+                             "div[TakeThemeActionDone]:not([TakeNightModeTransBg]):not([TakeNightModeReplaceBgLinear]):not([TakeNightModeBackground])," + 
+                             "input[TakeThemeActionDone]:not([TakeNightModeTransBg]):not([TakeNightModeReplaceBgLinear]):not([TakeNightModeBackground])," + 
+                             "select[TakeThemeActionDone]:not([TakeNightModeTransBg]):not([TakeNightModeReplaceBgLinear]):not([TakeNightModeBackground]){background-color:#212121!important}" + 
+                             "input[type=date],input[type=date] *,input[type=datetime-local],input[type=datetime-local] *,input[type=month],input[type=month] *,input[type=time],input[type=time] *," + 
+                             "select *{color:#fff!important}button,input:not([type=button]):not([type=submit]):not([type=reset]):not([type=image]):not([type=file]):not([type=date]):not([type=datetime-local]):not([type=month]):not([type=time])," + 
+                             "input[type=button],input[type=file],input[type=image],input[type=reset],input[type=submit]{color:#FFFFFF!important;border-color:#45484c!important}";
+            if (isNigthDark) {
+                nightStyle = replaceString(nightStyle, "212121", isDark ? "000000" : "121212");
+                nightStyle = replaceString(nightStyle, "868686", "b0b0b0");
+                nightStyle = replaceString(nightStyle, "486599", "6d97d5");
+                nightStyle = replaceString(nightStyle, "181818", "212121");
+            }else{
+                nightStyle = 'input[type="image"]{filter: brightness(62%)!important}img{filter: brightness(62%)!important}' + nightStyle;
+            }
+            nightStyleElement.innerText = nightStyle;
+            console.log("重设暗色主题样式", nightStyleElement);
         }
     }
     /**
@@ -319,7 +377,7 @@
     function insertedNodeHandle(event) {
         //事件的目标节点
         var targetNode = event.target;
-        console.log("document 插入新的节点", targetNode);
+        // console.log("document 插入新的节点", targetNode);
         C(targetNode);
     }
     function L() {
@@ -425,7 +483,7 @@
             clearElementBgColor(subHtmElement);
             clearElementBgColor(document.body);
             if (isNight) {
-                var bgColorStyle = r ? c ? "background-color:#000000 !important;" : "background-color:#121212 !important;" : "background-color:#212121 !important;";
+                var bgColorStyle = isNigthDark ? isDark ? "background-color:#000000 !important;" : "background-color:#121212 !important;" : "background-color:#212121 !important;";
                 addStyleForElement(subHtmElement, bgColorStyle);
                 addStyleForElement(document.body, bgColorStyle);
             }else if (isGreen){
@@ -448,15 +506,15 @@
      */
     function clientThemeConfig() {
         try {
-            // t 为 字符串数组， t[0] 为控制是否为夜间模式 t[2] 是否为绿色主题
+            // t 为 字符串数组， t[0]控制是否为夜间模式 t[1]控制是否为深夜模式 t[2]控制是否为绿色主题  t[3]控制是否为深色主题
             var t = window.prompt("_ThemeConfig_").split("==");
         } catch (e) {
-            t = ["true", "", "", ""];
+            t = ["true", "true", "", "true"];
         }
         console.log('获取客户端主题配置', t);
-        r = "true" == t[1];
+        isNigthDark = "true" == t[1];
         isGreen = "true" == t[2];
-        c = "true" == t[3];
+        isDark = "true" == t[3];
         var isNight = "true" == t[0];
         updateTheme(isNight);
     }
