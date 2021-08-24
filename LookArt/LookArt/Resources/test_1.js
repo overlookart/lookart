@@ -2,7 +2,7 @@
  * @Author: 丫丫的刀了 
  * @Date: 2021-07-31 06:51:27 
  * @Last Modified by: 丫丫的刀了
- * @Last Modified time: 2021-08-23 12:02:06
+ * @Last Modified time: 2021-08-24 10:15:20
  */
 
 !function() {
@@ -292,6 +292,7 @@
             return null;
         if (tag_sub.test(e.tagName))
             return null;
+        //方法用于获取指定元素的 CSS 样式
         var t = window.getComputedStyle(e, null);
         return t ? function(e) {
             var t = parseInt(e.width, 0),
@@ -321,14 +322,30 @@
     function B() {
         document.addEventListener("DOMNodeInserted", insertedNodeHandle, !1);
         for (var e = (document.body ? document.body : document).getElementsByTagName("*"), t = 0; t < e.length; t++)
-            E(e[t])
+            setupTakeTheme(e[t])
     }
-    function E(e) {
-        e && !e.hasAttribute("TakeTheme") && e.setAttribute("TakeTheme", "");
-        var t = _(e);
-        if (t && 0 < t.length && e.tagName && "svg" != e.tagName.toLowerCase())
-            for (var o = t.split(" "), n = 0; n < o.length; n++)
-                0 < o[n].length && e.setAttribute(o[n], "")
+
+    /**
+     * 为元素设置主题属性 E(e)
+     * @param {Element} element 
+     */
+    function setupTakeTheme(element) {
+        if(element && !element.hasAttribute("TakeTheme")){
+            element.setAttribute("TakeTheme", "");
+        }
+        var t = _(element);
+        if (t && 0 < t.length && element.tagName && "svg" != element.tagName.toLowerCase()) {
+            for (var o = t.split(" "), n = 0; n < o.length; n++){
+                if (0 < o[n].length) {
+                    element.setAttribute(o[n], "");
+                }
+            }
+        }
+        // e && !e.hasAttribute("TakeTheme") && e.setAttribute("TakeTheme", "");
+        // var t = _(e);
+        // if (t && 0 < t.length && e.tagName && "svg" != e.tagName.toLowerCase())
+        //     for (var o = t.split(" "), n = 0; n < o.length; n++)
+        //         0 < o[n].length && e.setAttribute(o[n], "")
     }
     /**
      * 为 元素及其子元素设置主题属性
@@ -360,7 +377,7 @@
             console.log(element.tagName);
             if ("Night" == currentThemeName){
                 //夜间主题
-                E(element);
+                setupTakeTheme(element);
             }else{
                 if(isGreen){
                     //绿色主题
