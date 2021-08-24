@@ -2,7 +2,7 @@
  * @Author: 丫丫的刀了 
  * @Date: 2021-07-31 06:51:27 
  * @Last Modified by: 丫丫的刀了
- * @Last Modified time: 2021-08-24 10:15:20
+ * @Last Modified time: 2021-08-24 10:50:14
  */
 
 !function() {
@@ -135,13 +135,13 @@
                 setupNightStyle();
                 var docElement = document.head ? document.head : document.documentElement;
                 docElement.appendChild(nightStyleElement);
-                docElement.addEventListener("DOMNodeRemoved", M, false);
+                docElement.addEventListener("DOMNodeRemoved", removedNodeHandle, false);
                 loadStateEventHandle(B);
             }else{
                 if ("Night" == currentThemeName) {
                     (function() {
-                        docElement.head.removeEventListener("DOMNodeRemoved", M);
-                        docElement.documentElement.removeEventListener("DOMNodeRemoved", M);
+                        docElement.head.removeEventListener("DOMNodeRemoved", removedNodeHandle);
+                        docElement.documentElement.removeEventListener("DOMNodeRemoved", removedNodeHandle);
                         var e = docElement.getElementById("take_theme_id");
                         if (e && e.parentNode){
                             e.parentNode.removeChild(e);
@@ -282,11 +282,23 @@
         }
     }
 
-    function M(e) {
-        e.target && "take_theme_id" == e.target.id && window.setTimeout(function() {
+    /**
+     * 移除节点监听事件处理 M(e)
+     * @param {*} event 
+     */
+    function removedNodeHandle(event) {
+        if(event.target && "take_theme_id" == event.target.id){
+            window.setTimeout(function(){
+                if("Night" == currentThemeName){
+                    (document.head ? document.head : document.documentElement).appendChild(nightStyleElement);
+                }
+            },1);
+        }
+        event.target && "take_theme_id" == event.target.id && window.setTimeout(function() {
             "Night" == currentThemeName && (document.head ? document.head : document.documentElement).appendChild(nightStyleElement)
         }, 1)
     }
+    
     function _(e) {
         if (!e || e.nodeType == Node.TEXT_NODE || e.nodeType == Node.COMMENT_NODE)
             return null;
