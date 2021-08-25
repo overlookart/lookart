@@ -2,7 +2,7 @@
  * @Author: 丫丫的刀了 
  * @Date: 2021-07-31 06:51:27 
  * @Last Modified by: 丫丫的刀了
- * @Last Modified time: 2021-08-25 10:02:13
+ * @Last Modified time: 2021-08-25 10:29:41
  */
 
 !function() {
@@ -331,14 +331,14 @@
     function B() {
         document.addEventListener("DOMNodeInserted", insertedNodeHandle, !1);
         for (var e = (document.body ? document.body : document).getElementsByTagName("*"), t = 0; t < e.length; t++)
-            setupTakeTheme(e[t])
+            setupTakeThemeAttribute(e[t])
     }
 
     /**
-     * 为元素设置主题属性 E(e)
+     * 为元素设置主题属性(TakeTheme) E(e)
      * @param {Element} element 
      */
-    function setupTakeTheme(element) {
+    function setupTakeThemeAttribute(element) {
         if(element && !element.hasAttribute("TakeTheme")){
             element.setAttribute("TakeTheme", "");
         }
@@ -358,27 +358,27 @@
      */
     function C(element) {
         if(element){
-            R(element);
+            setupThemeAttribute(element);
             if(element.getElementsByTagName){
                 var elements = element.getElementsByTagName("*");
                 for (var i = 0; i < elements.length; i ++){
-                    R(elements[i]);
+                    setupThemeAttribute(elements[i]);
                 }
             }
         }
     }
     
     /**
-     * 设置 dom 主题元素的主题属性
+     * 为dom 元素设置主题属性 R(e)
      * @param {*} element dom 元素
      */
-    function R(element) {
+    function setupThemeAttribute(element) {
         // 如果 dom元素节点类型不为文字类型, 不为 Comment 节点, 且标签为canvas, img, iframe, br, script, noscript, style, meta, link, title
         if (element && element.nodeType != Node.TEXT_NODE && element.nodeType != Node.COMMENT_NODE && !tag_key.test(element.tagName)){
             console.log(element.tagName);
             if ("Night" == currentThemeName){
                 //夜间主题
-                setupTakeTheme(element);
+                setupTakeThemeAttribute(element);
             }else{
                 if(isGreen){
                     //绿色主题
