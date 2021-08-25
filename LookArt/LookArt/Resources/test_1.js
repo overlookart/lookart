@@ -2,7 +2,7 @@
  * @Author: 丫丫的刀了 
  * @Date: 2021-07-31 06:51:27 
  * @Last Modified by: 丫丫的刀了
- * @Last Modified time: 2021-08-25 10:29:41
+ * @Last Modified time: 2021-08-25 10:58:44
  */
 
 !function() {
@@ -351,22 +351,7 @@
             }
         }
     }
-    /**
-     * 为 元素及其子元素设置主题属性
-     * @param {*} element dom 元素 
-     * timeoutHandle
-     */
-    function C(element) {
-        if(element){
-            setupThemeAttribute(element);
-            if(element.getElementsByTagName){
-                var elements = element.getElementsByTagName("*");
-                for (var i = 0; i < elements.length; i ++){
-                    setupThemeAttribute(elements[i]);
-                }
-            }
-        }
-    }
+    
     
     /**
      * 为dom 元素设置主题属性 R(e)
@@ -388,6 +373,24 @@
         }
         // e && e.nodeType != Node.TEXT_NODE && e.nodeType != Node.COMMENT_NODE && !tag_key.test(e.tagName) && ("Night" == currentThemeName ? E(e) : isGreen && addGreenAttributeForElement(e))
     }
+
+
+    /**
+     * 为 元素及其子元素做属性处理 C(e)
+     * @param {*} element dom 元素 
+     */
+     function attributeHandle(element) {
+        if(element){
+            setupThemeAttribute(element);
+            if(element.getElementsByTagName){
+                var elements = element.getElementsByTagName("*");
+                for (var i = 0; i < elements.length; i ++){
+                    setupThemeAttribute(elements[i]);
+                }
+            }
+        }
+    }
+
     /**
      * 插入节点监听事件处理 A(e)
      * @param {*} event 
@@ -396,8 +399,9 @@
         //事件的目标节点
         var targetNode = event.target;
         // console.log("document 插入新的节点", targetNode);
-        C(targetNode);
+        attributeHandle(targetNode);
     }
+    
     function L() {
         document.removeEventListener("DOMNodeInserted", insertedNodeHandle, !1);
         for (var e = /takenightmode[\s\S]*?\b/g, t = document.getElementsByTagName("*"), o = 0; o < t.length; ++o) {
@@ -527,7 +531,7 @@
             // t 为 字符串数组， t[0]控制是否为夜间模式 t[1]控制是否为深夜模式 t[2]控制是否为绿色主题  t[3]控制是否为深色主题
             var t = window.prompt("_ThemeConfig_").split("==");
         } catch (e) {
-            t = ["true", "true", "", "true"];
+            t = ["", "", "true", ""];
         }
         console.log('获取客户端主题配置', t);
         isNigthDark = "true" == t[1];
