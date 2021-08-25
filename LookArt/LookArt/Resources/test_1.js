@@ -2,7 +2,7 @@
  * @Author: 丫丫的刀了 
  * @Date: 2021-07-31 06:51:27 
  * @Last Modified by: 丫丫的刀了
- * @Last Modified time: 2021-08-25 10:58:44
+ * @Last Modified time: 2021-08-25 12:00:08
  */
 
 !function() {
@@ -402,19 +402,25 @@
         attributeHandle(targetNode);
     }
     
+    /**
+     * 移除 TakeTheme 属性
+     */
     function L() {
-        document.removeEventListener("DOMNodeInserted", insertedNodeHandle, !1);
-        for (var e = /takenightmode[\s\S]*?\b/g, t = document.getElementsByTagName("*"), o = 0; o < t.length; ++o) {
-            var n = t[o];
-            if (n && n.nodeType != Node.TEXT_NODE && n.nodeType != Node.COMMENT_NODE) {
-                if (tag_sub.test(n.tagName))
+        //移除 插入元素节点的监听事件
+        document.removeEventListener("DOMNodeInserted", insertedNodeHandle, false);
+        for (var domElements = document.getElementsByTagName("*"), o = 0; o < domElements.length; ++o) {
+            var nightAttributeRegex = /takenightmode[\s\S]*?\b/g;
+            var element = domElements[o];
+            if (element && element.nodeType != Node.TEXT_NODE && element.nodeType != Node.COMMENT_NODE) {
+                if (tag_sub.test(element.tagName)){
                     continue;
-                if (n.hasAttribute("TakeTheme")) {
-                    n.removeAttribute("TakeTheme"),
-                    n.removeAttribute("TakeThemeActionDone");
-                    for (var a = n.getAttributeNames(), i = 0; i < a.length; i++) {
-                        var r = a[i].match(e);
-                        r && 0 < r.length && n.removeAttribute(a[i])
+                }
+                if (element.hasAttribute("TakeTheme")) {
+                    element.removeAttribute("TakeTheme"),
+                    element.removeAttribute("TakeThemeActionDone");
+                    for (var a = element.getAttributeNames(), i = 0; i < a.length; i++) {
+                        var r = a[i].match(nightAttributeRegex);
+                        r && 0 < r.length && element.removeAttribute(a[i])
                     }
                 }
             }
