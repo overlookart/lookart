@@ -2,7 +2,7 @@
  * @Author: 丫丫的刀了 
  * @Date: 2021-07-31 06:51:27 
  * @Last Modified by: 丫丫的刀了
- * @Last Modified time: 2021-08-24 10:50:14
+ * @Last Modified time: 2021-08-25 10:02:13
  */
 
 !function() {
@@ -292,11 +292,8 @@
                 if("Night" == currentThemeName){
                     (document.head ? document.head : document.documentElement).appendChild(nightStyleElement);
                 }
-            },1);
+            }, true);
         }
-        event.target && "take_theme_id" == event.target.id && window.setTimeout(function() {
-            "Night" == currentThemeName && (document.head ? document.head : document.documentElement).appendChild(nightStyleElement)
-        }, 1)
     }
     
     function _(e) {
@@ -353,11 +350,6 @@
                 }
             }
         }
-        // e && !e.hasAttribute("TakeTheme") && e.setAttribute("TakeTheme", "");
-        // var t = _(e);
-        // if (t && 0 < t.length && e.tagName && "svg" != e.tagName.toLowerCase())
-        //     for (var o = t.split(" "), n = 0; n < o.length; n++)
-        //         0 < o[n].length && e.setAttribute(o[n], "")
     }
     /**
      * 为 元素及其子元素设置主题属性
@@ -374,13 +366,10 @@
                 }
             }
         }
-        // if (e && (R(e), e.getElementsByTagName))
-        //     for (var t = e.getElementsByTagName("*"), o = 0; o < t.length; o++)
-        //         R(t[o])
     }
     
     /**
-     * 设置 dom 元素的主题属性
+     * 设置 dom 主题元素的主题属性
      * @param {*} element dom 元素
      */
     function R(element) {
