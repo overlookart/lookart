@@ -75,9 +75,9 @@ class WebController: BaseViewController {
         
         web.scrollDelegates = (DidScroll:{
             if self.web.scrollContentOffset.y < self.web.scrollBeginDragOffset.y {
-                print("向上滑动");
+                print("向下滑动");
             }else{
-                print("向下滑动")
+                print("向上滑动")
             }
             
             let adjustedOffsetY = self.web.scrollContentOffset.y + self.web.scrollView.contentInset.top - self.web.scrollBeginDragOffset.y
@@ -234,7 +234,6 @@ class WebController: BaseViewController {
 
     func updateSearchBar(height: CGFloat) {
         print("---",height)
-        let minHeight = min(height, 19)
         //search bar 最大高度 49
         //search bar 最小高度 19
         //navigition 最大高度 96
@@ -250,13 +249,16 @@ class WebController: BaseViewController {
 //            make.trailing.equalTo(0)
 //            make.bottom.equalTo(self.web.snp.top);
 //        }
-        self.searchBar.updateHeight(height: height);
-        self.web.snp.updateConstraints { make in
-            make.trailing.equalTo(0)
-            make.leading.equalTo(0)
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(SearchBarHeight-height)
-            make.bottom.equalTo(0)
+        if (self.searchBar.isFold && height != 30) || (!self.searchBar.isFold && height != 0) {
+            self.searchBar.updateHeight(height: height);
+            self.web.snp.updateConstraints { make in
+                make.trailing.equalTo(0)
+                make.leading.equalTo(0)
+                make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(SearchBarHeight-height)
+                make.bottom.equalTo(0)
+            }
         }
+        
     }
     
     /*
