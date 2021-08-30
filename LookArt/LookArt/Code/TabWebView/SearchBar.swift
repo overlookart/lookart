@@ -39,7 +39,7 @@ class SearchBar: UIToolbar {
         return btn
     }()
     // 进度条
-    private let progressBar: UIProgressView = {
+    let progressBar: UIProgressView = {
         let progress = UIProgressView(progressViewStyle: .bar)
         progress.progress = 0
         return progress

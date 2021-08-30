@@ -20,8 +20,8 @@ extension Reactive where Base: WKWebView {
         return self.observeWeakly(Bool.self, "loading").map{$0 ?? false}
     }
     
-    public var progress: Observable<Double> {
-        return self.observeWeakly(Double.self, "estimatedProgress").map { $0 ?? 0.0 }
+    public var progress: Observable<Float> {
+        return self.observeWeakly(Float.self, "estimatedProgress").map { $0 ?? 0.0 }
     }
     
     public var url: Observable<URL?> {

@@ -19,7 +19,7 @@ class WebSearchBar: UINavigationBar {
     
     var searchVC = WebSearchController(searchResultsController: nil)
     var searchItem = UINavigationItem(title: "");
-    private let progress: UIProgressView = UIProgressView(progressViewStyle: .bar)
+    let progress: UIProgressView = UIProgressView(progressViewStyle: .bar)
     override init(frame: CGRect) {
         super.init(frame: frame)
         searchItem.titleView = searchVC.searchBar
@@ -31,6 +31,9 @@ class WebSearchBar: UINavigationBar {
             make.right.equalTo(0)
             make.height.equalTo(2)
         }
+//        progress.rx.progress
+        let f: Float = 0.2;
+        
         self.setItems([searchItem], animated: false)
     }
     
