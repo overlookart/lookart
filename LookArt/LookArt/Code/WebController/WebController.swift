@@ -117,10 +117,6 @@ class WebController: BaseViewController {
             self.searchBar.updateHost(host: url?.host);
         }).disposed(by: disposeBag)
 
-//        web.rx.progress.subscribe(onNext: { (progress) in
-//            print("webview_rx progress: \(progress)")
-//            self.searchBar.setProgress(progress: progress)
-//        }).disposed(by: disposeBag)
         web.rx.progress.bind(to: self.searchBar.progressBar.rx.progress).disposed(by: disposeBag)
         web.rx.canGoBack.subscribe(onNext: { (can) in
             print("webview_rx canGoBack: \(can)")
