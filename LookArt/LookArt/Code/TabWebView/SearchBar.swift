@@ -19,7 +19,7 @@ class SearchBar: UIToolbar {
     // 网页域名
     private var webHost: String = ""
     // 是否折叠
-    private var isFold: Bool = false
+    private(set) var isFold: Bool = false
     // 圆角矩形背景视图
     let rectView: UIView = {
         let textfield = UIView(frame: CGRect.zero);
@@ -102,6 +102,11 @@ class SearchBar: UIToolbar {
     /// 更新搜索 bar 的高度
     /// - Parameter height: 高度
     func updateHeight(height: CGFloat) {
+        if height == 0 {
+            self.isFold = false
+        }else if height == 30{
+            self.isFold = true
+        }
         var mrg: CGFloat = 8/3.0 * height;
         mrg = mrg <= 10 ? 10 : mrg
         var h: CGFloat = 36 - (16/30.0 * height);
