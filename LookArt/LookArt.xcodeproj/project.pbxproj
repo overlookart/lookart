@@ -88,6 +88,7 @@
 		4D83B2B8F766D19377B57113 /* Pods_LookArt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A0B664EED11C59CD47E75B5 /* Pods_LookArt.framework */; };
 		62EDA4100BFCEF62DAF0A938 /* Pods_LookArtTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA026852061FDC8D7AA97B31 /* Pods_LookArtTests.framework */; };
 		82475B963FC1B12832656815 /* Pods_LookArt_LookArtUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93554BAF47E3A1A1137CDD20 /* Pods_LookArt_LookArtUITests.framework */; };
+		E92D2C0726E1BAA90011B81D /* WebToolBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92D2C0626E1BAA90011B81D /* WebToolBar.swift */; };
 		E943FB5026A188B600B67C30 /* UIBaseConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = E943FB4F26A188B600B67C30 /* UIBaseConfig.swift */; };
 		E955AAF226DCE051005FE4EF /* UIProgressView_Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = E955AAF126DCE051005FE4EF /* UIProgressView_Rx.swift */; };
 		E9DD1C29267CA2EA00586F26 /* SettingActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9DD1C28267CA2EA00586F26 /* SettingActivity.swift */; };
@@ -206,6 +207,7 @@
 		93554BAF47E3A1A1137CDD20 /* Pods_LookArt_LookArtUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LookArt_LookArtUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		95FDA7E5EB63CCCF4650403A /* Pods-LookArtTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LookArtTests.release.xcconfig"; path = "Target Support Files/Pods-LookArtTests/Pods-LookArtTests.release.xcconfig"; sourceTree = "<group>"; };
 		BA026852061FDC8D7AA97B31 /* Pods_LookArtTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LookArtTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E92D2C0626E1BAA90011B81D /* WebToolBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebToolBar.swift; sourceTree = "<group>"; };
 		E943FB4F26A188B600B67C30 /* UIBaseConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIBaseConfig.swift; sourceTree = "<group>"; };
 		E955AAF126DCE051005FE4EF /* UIProgressView_Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIProgressView_Rx.swift; sourceTree = "<group>"; };
 		E9DD1C28267CA2EA00586F26 /* SettingActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingActivity.swift; sourceTree = "<group>"; };
@@ -421,6 +423,7 @@
 				28E5A9AA25D63BE400750E3B /* TabWebView.swift */,
 				28BA172B25DBEC3A00861E62 /* WebSearchBar.swift */,
 				E9DD1C2D2684173900586F26 /* SearchBar.swift */,
+				E92D2C0626E1BAA90011B81D /* WebToolBar.swift */,
 			);
 			path = TabWebView;
 			sourceTree = "<group>";
@@ -822,6 +825,7 @@
 				28E5A99D25D63A5D00750E3B /* BaseViewController.swift in Sources */,
 				28E5A99E25D63A5D00750E3B /* BaseNavigationController.swift in Sources */,
 				282B7ECA26AC1A0200C72A76 /* WebConfigComponent.swift in Sources */,
+				E92D2C0726E1BAA90011B81D /* WebToolBar.swift in Sources */,
 				28B6AB9026194863008F73B2 /* WebSearchController.swift in Sources */,
 				28E5A99F25D63A5D00750E3B /* BaseView.swift in Sources */,
 				28554D932609C357006CB16A /* WebNavigationController.swift in Sources */,
