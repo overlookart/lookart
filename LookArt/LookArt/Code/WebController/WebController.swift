@@ -16,20 +16,17 @@ class WebController: BaseViewController {
         return search
     }()
     
-    
     let web: TabWebView = TabWebView(config: WebConfigComponent(), script: WebScriptComponent())
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        
-        
-        view.addSubview(self.web)
         self.setNavigationBarVisible(Visible: true)
         self.setToolBarVisible(Visible: true)
-        self.hidesBarsOnTap(Hide: true)
+//        self.hidesBarsOnTap(Hide: true)
         self.hidesBarsOnSwipe(Hide: true)
+        view.addSubview(self.web)
         web.snp.makeConstraints { (make) in
             make.trailing.equalTo(0)
             make.leading.equalTo(0)
@@ -114,18 +111,13 @@ class WebController: BaseViewController {
         }).disposed(by: disposeBag)
 
         web.rx.progress.bind(to: self.searchBar.progressBar.rx.progress).disposed(by: disposeBag)
-        web.rx.canGoBack.subscribe(onNext: { (can) in
-            print("webview_rx canGoBack: \(can)")
-            if let nvc = self.navigationController as? WebNavigationController{
-//                nvc.backBtnItem.isEnabled = can
-            }
-        }).disposed(by: disposeBag)
-        web.rx.canGoForward.subscribe(onNext: { (can) in
-            print("webview_rx canGoForward: \(can)")
-            if let nvc = self.navigationController as? WebNavigationController{
-//                nvc.forwardBtnItem.isEnabled = can
-            }
-        }).disposed(by: disposeBag)
+       
+        if let webtoolBar = self.navigationController?.toolbar as? WebToolBar {
+            print("绑定前进/后退")
+            web.rx.canGoBack.bind(to: webtoolBar.rx.canBack).disposed(by: disposeBag)
+            web.rx.canGoForward.bind(to: webtoolBar.rx.canForward).disposed(by: disposeBag)
+        }
+        
         web.rx.loading.subscribe(onNext: {(isloading) in
             print("webview_rx 加载状态: \(isloading)")
         }).disposed(by: disposeBag)
