@@ -10,11 +10,6 @@ import WebKit
 import RxSwift
 class WebController: BaseViewController {
     let disposeBag = DisposeBag()
-//    let searchBar: WebSearchBar = {
-//        let search = WebSearchBar(frame: .zero)
-//        return search
-//
-//    }()
     
     let searchBar: SearchBar = {
         let search = SearchBar()
@@ -31,8 +26,10 @@ class WebController: BaseViewController {
         
         
         view.addSubview(self.web)
-        self.setNavigationBarVisible(Visible: false)
+        self.setNavigationBarVisible(Visible: true)
         self.setToolBarVisible(Visible: true)
+        self.hidesBarsOnTap(Hide: true)
+        self.hidesBarsOnSwipe(Hide: true)
         web.snp.makeConstraints { (make) in
             make.trailing.equalTo(0)
             make.leading.equalTo(0)
@@ -66,7 +63,6 @@ class WebController: BaseViewController {
         }
     
         self.definesPresentationContext = true
-        setToolBar()
  
         
         
@@ -121,13 +117,13 @@ class WebController: BaseViewController {
         web.rx.canGoBack.subscribe(onNext: { (can) in
             print("webview_rx canGoBack: \(can)")
             if let nvc = self.navigationController as? WebNavigationController{
-                nvc.backBtnItem.isEnabled = can
+//                nvc.backBtnItem.isEnabled = can
             }
         }).disposed(by: disposeBag)
         web.rx.canGoForward.subscribe(onNext: { (can) in
             print("webview_rx canGoForward: \(can)")
             if let nvc = self.navigationController as? WebNavigationController{
-                nvc.forwardBtnItem.isEnabled = can
+//                nvc.forwardBtnItem.isEnabled = can
             }
         }).disposed(by: disposeBag)
         web.rx.loading.subscribe(onNext: {(isloading) in
@@ -198,19 +194,19 @@ class WebController: BaseViewController {
         })*/
         
         if let nvc = self.navigationController as? WebNavigationController {
-            nvc.backBtnItem.rx.tap.subscribe(onNext: {
-                self.web.goBack()
-            }).disposed(by: disposeBag)
-            nvc.forwardBtnItem.rx.tap.subscribe(onNext: {
-                self.web.goForward()
-            }).disposed(by: disposeBag)
-            nvc.actionBtnItem.rx.tap.subscribe(onNext: {
-                let activity = LookArtActivityController(activityItems: []);
-                self.present(activity, animated: true, completion: nil)
-            }).disposed(by: disposeBag)
-            nvc.bookmarkBtnItem.rx.tap.subscribe(onNext: {
-               
-            }).disposed(by: disposeBag)
+//            nvc.backBtnItem.rx.tap.subscribe(onNext: {
+//                self.web.goBack()
+//            }).disposed(by: disposeBag)
+//            nvc.forwardBtnItem.rx.tap.subscribe(onNext: {
+//                self.web.goForward()
+//            }).disposed(by: disposeBag)
+//            nvc.actionBtnItem.rx.tap.subscribe(onNext: {
+//                let activity = LookArtActivityController(activityItems: []);
+//                self.present(activity, animated: true, completion: nil)
+//            }).disposed(by: disposeBag)
+//            nvc.bookmarkBtnItem.rx.tap.subscribe(onNext: {
+//
+//            }).disposed(by: disposeBag)
             
         }
         
@@ -218,13 +214,6 @@ class WebController: BaseViewController {
 //        web.loadweb(urlStr: "https://github.com/matteocrippa/awesome-swift")
 //        let h5Path = Bundle.main.path(forResource: "test_html", ofType: "html")
 //        web.loadFile(fileUrl: URL(fileURLWithPath: h5Path!))
-    }
-
-    
-    private func setToolBar() {
-        if let webNavigation = self.navigationController as? WebNavigationController {
-            webNavigation.setToolBar(webController: self)
-        }
     }
     
     
