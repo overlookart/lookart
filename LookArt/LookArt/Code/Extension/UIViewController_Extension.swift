@@ -22,6 +22,20 @@ extension UIViewController {
         self.navigationController?.setToolbarHidden(!visible, animated: true)
     }
     
+    
+    /// 点击时 导航控制器的导航栏和工具栏是否隐藏
+    /// - Parameter isHide: 是否隐藏
+    func hidesBarsOnTap(Hide isHide: Bool) {
+        self.navigationController?.hidesBarsOnTap = isHide
+    }
+    
+    
+    /// 滑动时 导航控制器的导航栏和工具栏是否隐藏(向上滑动)/显示(向下滑动)
+    /// - Parameter isHide: 是否隐藏
+    func hidesBarsOnSwipe(Hide isHide: Bool) {
+        self.navigationController?.hidesBarsOnSwipe = isHide
+    }
+    
     /// 设置NavigationBar的大标题显示方式
     /// - Parameter mode:显示方式
     @available(iOS 11.0, *)
