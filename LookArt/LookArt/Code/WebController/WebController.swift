@@ -16,10 +16,7 @@ class WebController: BaseViewController {
 //
 //    }()
     
-    let searchBar: SearchBar = {
-        let search = SearchBar()
-        return search
-    }()
+    let searchBar: SearchBar = SearchBar()
     
     
     let web: TabWebView = TabWebView(config: WebConfigComponent(), script: WebScriptComponent())
@@ -80,7 +77,9 @@ class WebController: BaseViewController {
                 print("向上滑动")
             }
             
-            let adjustedOffsetY = self.web.scrollContentOffset.y + self.web.scrollView.contentInset.top - self.web.scrollBeginDragOffset.y
+            var adjustedOffsetY = self.web.scrollContentOffset.y -  self.web.scrollBeginDragOffset.y
+            adjustedOffsetY = abs(adjustedOffsetY)
+            adjustedOffsetY = min(adjustedOffsetY, 30)
             let searchBarOffset = min(max(adjustedOffsetY, 0), 30)
             print(adjustedOffsetY,"-----",searchBarOffset)
             self.updateSearchBar(height: searchBarOffset)
