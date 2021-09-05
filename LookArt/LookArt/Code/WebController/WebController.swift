@@ -11,23 +11,25 @@ import RxSwift
 class WebController: BaseViewController {
     let disposeBag = DisposeBag()
     
-    let searchBar: SearchBar = SearchBar()
+//    let searchBar: SearchBar = SearchBar()
     
     let web: TabWebView = TabWebView(config: WebConfigComponent(), script: WebScriptComponent())
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        
+        //显示导航栏
         self.setNavigationBarVisible(Visible: true)
+        //显示工具栏
         self.setToolBarVisible(Visible: true)
 //        self.hidesBarsOnTap(Hide: true)
+        //滑动时显示隐藏
         self.hidesBarsOnSwipe(Hide: true)
         view.addSubview(self.web)
         web.snp.makeConstraints { (make) in
             make.trailing.equalTo(0)
             make.leading.equalTo(0)
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(SearchBarHeight)
+            make.top.equalTo(0)
             make.bottom.equalTo(0)
         }
         
@@ -48,46 +50,8 @@ class WebController: BaseViewController {
             self.web.loadweb(urlStr: urlStr)
         }
         
-        view.addSubview(searchBar)
-        searchBar.snp.makeConstraints { (make) in
-            make.top.equalTo(self.view)
-            make.leading.equalTo(0)
-            make.trailing.equalTo(0)
-            make.bottom.equalTo(self.web.snp.top);
-        }
     
         self.definesPresentationContext = true
- 
-        
-        
-        
-        
-        
-        web.scrollDelegates = (DidScroll:{
-            if self.web.scrollContentOffset.y < self.web.scrollBeginDragOffset.y {
-                print("向下滑动");
-            }else{
-                print("向上滑动")
-            }
-            
-            var adjustedOffsetY = self.web.scrollContentOffset.y -  self.web.scrollBeginDragOffset.y
-            adjustedOffsetY = abs(adjustedOffsetY)
-            adjustedOffsetY = min(adjustedOffsetY, 30)
-            let searchBarOffset = min(max(adjustedOffsetY, 0), 30)
-            print(adjustedOffsetY,"-----",searchBarOffset)
-            self.updateSearchBar(height: searchBarOffset)
-            
-        },BeginDragging:{
-            
-        },WillEndDragging:{ (velocity) in
-            
-        },EndDragging:{
-            
-        },BeginDecelerating:{
-            
-        },EndDecelerating:{
-            
-        })
         
         /*
         web.webObserves = (Title:{(title) in
@@ -106,15 +70,16 @@ class WebController: BaseViewController {
 
         web.rx.url.subscribe(onNext: {(url) in
             print("webview_rx url: \(String(describing: url))")
-            self.searchBar.updateHost(host: url?.host);
+//            self.searchBar.updateHost(host: url?.host);
         }).disposed(by: disposeBag)
 
-        web.rx.progress.bind(to: self.searchBar.progressBar.rx.progress).disposed(by: disposeBag)
-       
+        if let searchBar = self.navigationController?.navigationBar as? WebSearchBar {
+            web.rx.progress.bind(to: searchBar.progressBar.rx.progress).disposed(by: disposeBag)
+        }
         if let webtoolBar = self.navigationController?.toolbar as? WebToolBar {
             print("绑定前进/后退")
-            web.rx.canGoBack.bind(to: webtoolBar.rx.canBack).disposed(by: disposeBag)
-            web.rx.canGoForward.bind(to: webtoolBar.rx.canForward).disposed(by: disposeBag)
+            web.rx.canGoBack.bind(to: webtoolBar.canBack).disposed(by: disposeBag)
+            web.rx.canGoForward.bind(to: webtoolBar.canForward).disposed(by: disposeBag)
         }
         
         web.rx.loading.subscribe(onNext: {(isloading) in
@@ -125,6 +90,9 @@ class WebController: BaseViewController {
         
         web.rx.decidePolicyForNavigationAction.subscribe { (webview, action, handler) in
             print("webview_rx:是否允许导航")
+            //开始导航时 导航栏与工具栏显示
+            self.setNavigationBarVisible(Visible: true)
+            self.setToolBarVisible(Visible: true)
             handler(.allow)
         } .disposed(by: disposeBag)
         web.rx.didStartProvisionalNavigation.subscribe { (webview, navigation) in
@@ -226,15 +194,15 @@ class WebController: BaseViewController {
 //            make.trailing.equalTo(0)
 //            make.bottom.equalTo(self.web.snp.top);
 //        }
-        if (self.searchBar.isFold && height != 30) || (!self.searchBar.isFold && height != 0) {
-            self.searchBar.updateHeight(height: height);
-            self.web.snp.updateConstraints { make in
-                make.trailing.equalTo(0)
-                make.leading.equalTo(0)
-                make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(SearchBarHeight-height)
-                make.bottom.equalTo(0)
-            }
-        }
+//        if (self.searchBar.isFold && height != 30) || (!self.searchBar.isFold && height != 0) {
+//            self.searchBar.updateHeight(height: height);
+//            self.web.snp.updateConstraints { make in
+//                make.trailing.equalTo(0)
+//                make.leading.equalTo(0)
+//                make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(SearchBarHeight-height)
+//                make.bottom.equalTo(0)
+//            }
+//        }
         
     }
     

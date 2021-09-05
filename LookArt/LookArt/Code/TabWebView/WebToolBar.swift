@@ -60,16 +60,14 @@ class WebToolBar: UIToolbar {
     }
 }
 
-extension Reactive  where Base: WebToolBar {
+extension WebToolBar {
     var canBack: Binder<Bool> {
-        return Binder(self.base) { webtoolBar, canback in
-            print(canback)
+        return Binder(self) { webtoolBar, canback in
             webtoolBar.backBtnItem.isEnabled = canback
         }
     }
-    
     var canForward: Binder<Bool> {
-        return Binder(self.base) { webtoolBar, canforward in
+        return Binder(self) { webtoolBar, canforward in
             webtoolBar.forwardBtnItem.isEnabled = canforward
         }
     }
