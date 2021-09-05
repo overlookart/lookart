@@ -36,9 +36,6 @@ class WebToolBar: UIToolbar {
         print("创建 工具栏",self);
 //        self.setItems(items, animated: false)
         self.allItems = [self.backBtnItem, createFlexibleSpaceItem(), self.forwardBtnItem, createFlexibleSpaceItem(), self.actionBtnItem, createFlexibleSpaceItem(), self.bookmarkBtnItem, createFlexibleSpaceItem(), self.tabmarkBtnItem]
-        self.backBtnItem.isEnabled = false
-        self.forwardBtnItem.isEnabled = false
-        
     }
     
     required init?(coder: NSCoder) {

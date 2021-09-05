@@ -18,12 +18,21 @@ class WebSearchBar: UINavigationBar {
     */
     
     var searchVC = WebSearchController(searchResultsController: nil)
-    var searchItem = UINavigationItem(title: "");
+    let refreshOrStopBtn: UIButton = {
+        let btn = UIButton(type: .custom)
+        btn.setImage(UIImage.init(systemName: "arrow.clockwise")?.withTintColor(UIColor.black, renderingMode: .alwaysOriginal), for: .normal)
+        btn.setImage(UIImage.init(systemName: "xmark")?.withTintColor(UIColor.black, renderingMode: .alwaysOriginal), for: .selected)
+        return btn
+    }()
+    let rightActionItem: UIBarButtonItem!
     let progressBar: UIProgressView = UIProgressView(progressViewStyle: .bar)
     override init(frame: CGRect) {
+        rightActionItem = UIBarButtonItem(customView: self.refreshOrStopBtn)
         super.init(frame: frame)
+        
 //        searchItem.titleView = searchVC.searchBar
 //        searchItem.titleView?.addSubview(progress);
+        self.barTintColor = UIColor.random
         self.addSubview(progressBar)
         progressBar.snp.makeConstraints { make in
             make.bottom.equalTo(0)
