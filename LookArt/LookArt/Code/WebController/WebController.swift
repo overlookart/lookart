@@ -74,7 +74,7 @@ class WebController: BaseViewController {
         }).disposed(by: disposeBag)
 
         if let searchBar = self.navigationController?.navigationBar as? WebSearchBar {
-            web.rx.progress.bind(to: searchBar.progressBar.rx.progress).disposed(by: disposeBag)
+            web.rx.progress.bind(to: searchBar.progress).disposed(by: disposeBag)
         }
         
         if let webtoolBar = self.navigationController?.toolbar as? WebToolBar {
