@@ -15,7 +15,6 @@ class WebNavigationController: BaseNavigationController {
         super.init(navigationBarClass: WebSearchBar.self, toolbarClass: WebToolBar.self)
         self.setViewControllers([self.webController], animated: false)
         
-        
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -33,8 +32,8 @@ class WebNavigationController: BaseNavigationController {
         if let toolbar = self.toolbar as? WebToolBar {
             webController.setToolbarItems(toolbar.items, animated: false)
         }
+        //配置导航栏
         if let searchBar = self.navigationBar as? WebSearchBar {
-            searchBar.topItem?.setRightBarButton(searchBar.rightActionItem, animated: true)
             print("search bar item",searchBar.topItem ?? "没有")
         }
     }

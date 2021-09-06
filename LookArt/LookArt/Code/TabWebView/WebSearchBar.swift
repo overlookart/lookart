@@ -28,11 +28,13 @@ class WebSearchBar: UINavigationBar {
     let refreshBtn: UIButton = {
         let btn = UIButton(type: .custom)
         btn.setImage(UIImage(systemName: "arrow.clockwise")?.withTintColor(UIColor.black, renderingMode: .alwaysOriginal), for: .normal)
+        btn.setImage(UIImage(systemName: "arrow.clockwise")?.withTintColor(UIColor.gray, renderingMode: .alwaysOriginal), for: .highlighted)
         return btn
     }()
     let stoploadBtn: UIButton = {
         let btn = UIButton(type: .custom)
         btn.setImage(UIImage(systemName: "xmark")?.withTintColor(UIColor.black, renderingMode: .alwaysOriginal), for: .normal)
+        btn.setImage(UIImage(systemName: "xmark")?.withTintColor(UIColor.gray, renderingMode: .alwaysOriginal), for: .highlighted)
         return btn
     }()
     let refreshItem: UIBarButtonItem!
@@ -55,8 +57,6 @@ class WebSearchBar: UINavigationBar {
             make.right.equalTo(0)
             make.height.equalTo(2)
         }
-        
-//        self.setItems([searchItem], animated: false)
     }
     
     required init?(coder: NSCoder) {
@@ -66,6 +66,16 @@ class WebSearchBar: UINavigationBar {
 extension WebSearchBar {
     var progress: Binder<Float> {
         return self.progressBar.rx.progress
+    }
+    
+    var loading: Binder<Bool> {
+        return Binder(self) { searchBar, loading in
+            if loading {
+                searchBar.topItem?.setRightBarButton(searchBar.stoploadItem, animated: true)
+            }else{
+                searchBar.topItem?.setRightBarButton(searchBar.refreshItem, animated: true)
+            }
+        }
     }
 }
 

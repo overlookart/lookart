@@ -73,8 +73,14 @@ class WebController: BaseViewController {
 //            self.searchBar.updateHost(host: url?.host);
         }).disposed(by: disposeBag)
 
+        web.rx.backForwardList.subscribe(onNext: {list in
+            print("web list \(String(describing: list))")
+        }).disposed(by: disposeBag)
+
         if let searchBar = self.navigationController?.navigationBar as? WebSearchBar {
             web.rx.progress.bind(to: searchBar.progress).disposed(by: disposeBag)
+            web.rx.loading.bind(to: searchBar.loading).disposed(by: disposeBag)
+    
         }
         
         if let webtoolBar = self.navigationController?.toolbar as? WebToolBar {

@@ -35,6 +35,14 @@ extension Reactive where Base: WKWebView {
     public var canGoForward: Observable<Bool> {
         return self.observeWeakly(Bool.self, "canGoForward").map { $0 ?? false }
     }
+    public var backItemList: ControlProperty<[WKBackForwardListItem]?> {
+        backForwardList
+    }
+    public var backForwardList: ControlProperty<[WKBackForwardListItem]> {
+        return base.rx.controlPropertyWithDefaultEvents{
+            
+        }
+    }
 }
 
 
