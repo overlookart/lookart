@@ -72,13 +72,6 @@ class WebController: BaseViewController {
             print("webview_rx url: \(String(describing: url))")
 //            self.searchBar.updateHost(host: url?.host);
         }).disposed(by: disposeBag)
-        
-
-        if let searchBar = self.navigationController?.navigationBar as? WebSearchBar {
-            web.rx.progress.bind(to: searchBar.progress).disposed(by: disposeBag)
-            web.rx.loading.bind(to: searchBar.loading).disposed(by: disposeBag)
-    
-        }
 
 
         
@@ -146,22 +139,7 @@ class WebController: BaseViewController {
             
         })*/
         
-        if let nvc = self.navigationController as? WebNavigationController {
-//            nvc.backBtnItem.rx.tap.subscribe(onNext: {
-//                self.web.goBack()
-//            }).disposed(by: disposeBag)
-//            nvc.forwardBtnItem.rx.tap.subscribe(onNext: {
-//                self.web.goForward()
-//            }).disposed(by: disposeBag)
-//            nvc.actionBtnItem.rx.tap.subscribe(onNext: {
-//                let activity = LookArtActivityController(activityItems: []);
-//                self.present(activity, animated: true, completion: nil)
-//            }).disposed(by: disposeBag)
-//            nvc.bookmarkBtnItem.rx.tap.subscribe(onNext: {
-//
-//            }).disposed(by: disposeBag)
-            
-        }
+        
         
 //        web.loadweb(urlStr: "http://172.20.10.2:8080/")
 //        web.loadweb(urlStr: "https://github.com/matteocrippa/awesome-swift")
@@ -169,7 +147,17 @@ class WebController: BaseViewController {
 //        web.loadFile(fileUrl: URL(fileURLWithPath: h5Path!))
     }
     
+    func gotoBack() {
+        if self.web.canGoBack {
+            self.web.goBack()
+        }
+    }
     
+    func gotoForward() {
+        if self.web.canGoForward {
+            self.web.goForward()
+        }
+    }
 
     func updateSearchBar(height: CGFloat) {
         print("---",height)

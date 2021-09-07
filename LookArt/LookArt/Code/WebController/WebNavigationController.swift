@@ -50,16 +50,20 @@ class WebNavigationController: BaseNavigationController {
             webController.web.rx.canGoBack.bind(to: toolbar.canBack).disposed(by: disposeBag)
             webController.web.rx.canGoForward.bind(to: toolbar.canForward).disposed(by: disposeBag)
         }
+        if let searchBar = self.navigationBar as? WebSearchBar {
+            webController.web.rx.progress.bind(to: searchBar.progress).disposed(by: disposeBag)
+            webController.web.rx.loading.bind(to: searchBar.loading).disposed(by: disposeBag)
+        }
     }
     
     private func bindAction() {
         if let toolbar = self.toolbar as? WebToolBar {
             toolbar.backBtnItem.rx.tap.subscribe(onNext: { [self] in
-                webController.web.goBack()
+                webController.gotoBack()
             }).disposed(by: disposeBag)
             
             toolbar.forwardBtnItem.rx.tap.subscribe(onNext: { [self] in
-                webController.web.goForward()
+                webController.gotoForward()
             }).disposed(by: disposeBag)
             
             toolbar.actionBtnItem.rx.tap.subscribe(onNext: {
