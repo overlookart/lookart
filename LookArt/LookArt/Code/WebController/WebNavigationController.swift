@@ -10,7 +10,7 @@ import RxSwift
 import RxCocoa
 class WebNavigationController: BaseNavigationController {
     private(set) var webController = WebController()
-    
+    let disposeBag = DisposeBag()
     init() {
         super.init(navigationBarClass: WebSearchBar.self, toolbarClass: WebToolBar.self)
         self.setViewControllers([self.webController], animated: false)
@@ -25,6 +25,8 @@ class WebNavigationController: BaseNavigationController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         setupUI()
+        bindWeb()
+        bindAction()
     }
     
     private func setupUI(){
@@ -43,6 +45,38 @@ class WebNavigationController: BaseNavigationController {
         self.removeFromParent()
     }
     
+    private func bindWeb() {
+        if let toolbar = self.toolbar as? WebToolBar {
+            webController.web.rx.canGoBack.bind(to: toolbar.canBack).disposed(by: disposeBag)
+            webController.web.rx.canGoForward.bind(to: toolbar.canForward).disposed(by: disposeBag)
+        }
+    }
+    
+    private func bindAction() {
+        if let toolbar = self.toolbar as? WebToolBar {
+            toolbar.backBtnItem.rx.tap.subscribe(onNext: { [self] in
+                webController.web.goBack()
+            }).disposed(by: disposeBag)
+            
+            toolbar.forwardBtnItem.rx.tap.subscribe(onNext: { [self] in
+                webController.web.goForward()
+            }).disposed(by: disposeBag)
+            
+            toolbar.actionBtnItem.rx.tap.subscribe(onNext: {
+                let activity = LookArtActivityController(activityItems: []);
+                self.present(activity, animated: true, completion: nil)
+            }).disposed(by: disposeBag)
+            
+            toolbar.bookmarkBtnItem.rx.tap.subscribe(onNext: {
+                
+            }).disposed(by: disposeBag)
+            
+            toolbar.tabmarkBtnItem.rx.tap.subscribe(onNext: {
+                
+            }).disposed(by: disposeBag)
+        }
+    }
+    
     /*
     // MARK: - Navigation
 
@@ -53,4 +87,8 @@ class WebNavigationController: BaseNavigationController {
     }
     */
 
+}
+
+extension WebNavigationController {
+    
 }

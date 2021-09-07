@@ -72,41 +72,13 @@ class WebController: BaseViewController {
             print("webview_rx url: \(String(describing: url))")
 //            self.searchBar.updateHost(host: url?.host);
         }).disposed(by: disposeBag)
-
-        web.rx.backForwardList.subscribe(onNext: {list in
-            print("web list \(String(describing: list))")
-        }).disposed(by: disposeBag)
+        
 
         if let searchBar = self.navigationController?.navigationBar as? WebSearchBar {
             web.rx.progress.bind(to: searchBar.progress).disposed(by: disposeBag)
             web.rx.loading.bind(to: searchBar.loading).disposed(by: disposeBag)
     
         }
-        
-        if let webtoolBar = self.navigationController?.toolbar as? WebToolBar {
-            web.rx.canGoBack.bind(to: webtoolBar.canBack).disposed(by: disposeBag)
-            web.rx.canGoForward.bind(to: webtoolBar.canForward).disposed(by: disposeBag)
-            webtoolBar.backBtnItem.rx.tap.subscribe(onNext: {
-                self.web.goBack()
-            }).disposed(by: disposeBag)
-            webtoolBar.forwardBtnItem.rx.tap.subscribe(onNext: {
-                self.web.goForward()
-            }).disposed(by: disposeBag)
-            webtoolBar.actionBtnItem.rx.tap.subscribe(onNext: {
-                let activity = LookArtActivityController(activityItems: []);
-                self.present(activity, animated: true, completion: nil)
-            }).disposed(by: disposeBag)
-            webtoolBar.bookmarkBtnItem.rx.tap.subscribe(onNext: {
-                
-            }).disposed(by: disposeBag)
-            webtoolBar.tabmarkBtnItem.rx.tap.subscribe(onNext: {
-                
-            }).disposed(by: disposeBag)
-        }
-        
-        web.rx.loading.subscribe(onNext: {(isloading) in
-            print("webview_rx 加载状态: \(isloading)")
-        }).disposed(by: disposeBag)
 
 
         
