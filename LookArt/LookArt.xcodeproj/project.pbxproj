@@ -89,6 +89,7 @@
 		62EDA4100BFCEF62DAF0A938 /* Pods_LookArtTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA026852061FDC8D7AA97B31 /* Pods_LookArtTests.framework */; };
 		82475B963FC1B12832656815 /* Pods_LookArt_LookArtUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93554BAF47E3A1A1137CDD20 /* Pods_LookArt_LookArtUITests.framework */; };
 		E92D2C0726E1BAA90011B81D /* WebToolBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92D2C0626E1BAA90011B81D /* WebToolBar.swift */; };
+		E92D2C0926E99AA00011B81D /* BaseProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92D2C0826E99AA00011B81D /* BaseProgressView.swift */; };
 		E943FB5026A188B600B67C30 /* UIBaseConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = E943FB4F26A188B600B67C30 /* UIBaseConfig.swift */; };
 		E955AAF226DCE051005FE4EF /* UIProgressView_Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = E955AAF126DCE051005FE4EF /* UIProgressView_Rx.swift */; };
 		E9DD1C29267CA2EA00586F26 /* SettingActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9DD1C28267CA2EA00586F26 /* SettingActivity.swift */; };
@@ -208,6 +209,7 @@
 		95FDA7E5EB63CCCF4650403A /* Pods-LookArtTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LookArtTests.release.xcconfig"; path = "Target Support Files/Pods-LookArtTests/Pods-LookArtTests.release.xcconfig"; sourceTree = "<group>"; };
 		BA026852061FDC8D7AA97B31 /* Pods_LookArtTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LookArtTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E92D2C0626E1BAA90011B81D /* WebToolBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebToolBar.swift; sourceTree = "<group>"; };
+		E92D2C0826E99AA00011B81D /* BaseProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseProgressView.swift; sourceTree = "<group>"; };
 		E943FB4F26A188B600B67C30 /* UIBaseConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIBaseConfig.swift; sourceTree = "<group>"; };
 		E955AAF126DCE051005FE4EF /* UIProgressView_Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIProgressView_Rx.swift; sourceTree = "<group>"; };
 		E9DD1C28267CA2EA00586F26 /* SettingActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingActivity.swift; sourceTree = "<group>"; };
@@ -479,6 +481,7 @@
 				28E5A99A25D63A5D00750E3B /* BaseNavigationController.swift */,
 				28E5A99B25D63A5D00750E3B /* BaseView.swift */,
 				282B7EBE26ABC69800C72A76 /* BaseTableViewCell.swift */,
+				E92D2C0826E99AA00011B81D /* BaseProgressView.swift */,
 			);
 			path = BaseUI;
 			sourceTree = "<group>";
@@ -788,6 +791,7 @@
 				288DF8CD26AB717D00767F15 /* UIActivity_Extension.swift in Sources */,
 				28E5A98C25D63A3E00750E3B /* UITextField_Extension.swift in Sources */,
 				E9DD1C29267CA2EA00586F26 /* SettingActivity.swift in Sources */,
+				E92D2C0926E99AA00011B81D /* BaseProgressView.swift in Sources */,
 				28E5A9BA25D6468600750E3B /* WebConfig.swift in Sources */,
 				288DF8D326AB806100767F15 /* SettingViewController.swift in Sources */,
 				28E5A99325D63A3E00750E3B /* UIView_Extension.swift in Sources */,

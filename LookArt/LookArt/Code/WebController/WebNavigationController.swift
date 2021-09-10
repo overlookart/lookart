@@ -79,6 +79,15 @@ class WebNavigationController: BaseNavigationController {
                 
             }).disposed(by: disposeBag)
         }
+        if let searchbar = self.navigationBar as? WebSearchBar {
+            searchbar.refreshBtn.rx.tap.subscribe(onNext: { [self] in
+                webController.refresh()
+            }).disposed(by: disposeBag)
+            searchbar.stoploadBtn.rx.tap.subscribe(onNext: { [self] in
+                webController.stopload()
+                print("\\\\\\web 是否加载",webController.web.isLoading)
+            }).disposed(by: disposeBag)
+        }
     }
     
     /*

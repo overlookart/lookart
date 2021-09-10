@@ -40,7 +40,7 @@ class WebSearchBar: UINavigationBar {
     let refreshItem: UIBarButtonItem!
     let stoploadItem: UIBarButtonItem!
     let rightActionItem: UIBarButtonItem!
-    let progressBar: UIProgressView = UIProgressView(progressViewStyle: .bar)
+    let progressBar: BaseProgressView = BaseProgressView(progressViewStyle: .bar)
     override init(frame: CGRect) {
         refreshItem = UIBarButtonItem(customView: refreshBtn)
         stoploadItem = UIBarButtonItem(customView: stoploadBtn)

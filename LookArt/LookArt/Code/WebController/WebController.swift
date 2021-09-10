@@ -29,8 +29,8 @@ class WebController: BaseViewController {
         web.snp.makeConstraints { (make) in
             make.trailing.equalTo(0)
             make.leading.equalTo(0)
-            make.top.equalTo(0)
-            make.bottom.equalTo(0)
+            make.top.equalTo(view.snp.top)
+            make.bottom.equalTo(view.snp.bottom)
         }
         
         let favo = PersonalFavoritesController()
@@ -156,9 +156,21 @@ class WebController: BaseViewController {
     func gotoForward() {
         if self.web.canGoForward {
             self.web.goForward()
+            
         }
     }
-
+    
+    
+    /// 刷新页面
+    func refresh() {
+        self.web.reload()
+    }
+    
+    /// 停止加载
+    func stopload() {
+        self.web.stopLoading()
+    }
+    
     func updateSearchBar(height: CGFloat) {
         print("---",height)
         //search bar 最大高度 49
