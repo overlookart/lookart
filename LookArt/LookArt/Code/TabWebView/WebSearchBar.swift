@@ -19,18 +19,18 @@ class WebSearchBar: UINavigationBar {
     */
     
     var searchVC = WebSearchController(searchResultsController: nil)
-    let refreshOrStopBtn: UIButton = {
-        let btn = UIButton(type: .custom)
-        btn.setImage(UIImage.init(systemName: "arrow.clockwise")?.withTintColor(UIColor.black, renderingMode: .alwaysOriginal), for: .normal)
-        btn.setImage(UIImage.init(systemName: "xmark")?.withTintColor(UIColor.black, renderingMode: .alwaysOriginal), for: .selected)
-        return btn
-    }()
+    
+    private let backgroundView: UIView = UIView()
+    
+    /// 刷新按钮
     let refreshBtn: UIButton = {
         let btn = UIButton(type: .custom)
         btn.setImage(UIImage(systemName: "arrow.clockwise")?.withTintColor(UIColor.black, renderingMode: .alwaysOriginal), for: .normal)
         btn.setImage(UIImage(systemName: "arrow.clockwise")?.withTintColor(UIColor.gray, renderingMode: .alwaysOriginal), for: .highlighted)
         return btn
     }()
+    
+    /// 停止加载按钮
     let stoploadBtn: UIButton = {
         let btn = UIButton(type: .custom)
         btn.setImage(UIImage(systemName: "xmark")?.withTintColor(UIColor.black, renderingMode: .alwaysOriginal), for: .normal)
@@ -39,12 +39,13 @@ class WebSearchBar: UINavigationBar {
     }()
     let refreshItem: UIBarButtonItem!
     let stoploadItem: UIBarButtonItem!
-    let rightActionItem: UIBarButtonItem!
+    
+    
+    /// 加载进度条
     let progressBar: BaseProgressView = BaseProgressView(progressViewStyle: .bar)
     override init(frame: CGRect) {
         refreshItem = UIBarButtonItem(customView: refreshBtn)
         stoploadItem = UIBarButtonItem(customView: stoploadBtn)
-        rightActionItem = UIBarButtonItem(customView: self.refreshOrStopBtn)
         super.init(frame: frame)
         
 //        searchItem.titleView = searchVC.searchBar
@@ -57,6 +58,15 @@ class WebSearchBar: UINavigationBar {
             make.right.equalTo(0)
             make.height.equalTo(2)
         }
+//        self.addSubview(backgroundView);
+//        backgroundView.snp.makeConstraints { make in
+//            make.left.equalTo(self)
+//            make.right.equalTo(self)
+//            make.top.equalTo(self)
+//            make.bottom.equalTo(self)
+//        }
+//        backgroundView.backgroundColor = UIColor.random
+        self.sendSubviewToBack(backgroundView)
     }
     
     required init?(coder: NSCoder) {
@@ -64,17 +74,35 @@ class WebSearchBar: UINavigationBar {
     }
 }
 extension WebSearchBar {
+    
+    /// 绑定web的加载进度
     var progress: Binder<Float> {
         return self.progressBar.rx.progress
     }
     
+    /// 绑定web的加载状态
     var loading: Binder<Bool> {
         return Binder(self) { searchBar, loading in
-            if loading {
+            if loading { //如果加载中 显示停止加载按钮
                 searchBar.topItem?.setRightBarButton(searchBar.stoploadItem, animated: true)
-            }else{
+            }else{ //非加载中 显示刷新按钮
                 searchBar.topItem?.setRightBarButton(searchBar.refreshItem, animated: true)
             }
+        }
+    }
+    
+    
+    /// 绑定web的标题
+    var title: Binder<String> {
+        return Binder(self) { searchBar, title in
+            
+        }
+    }
+    
+    /// 绑定web的url
+    var urlStr: Binder<String> {
+        return Binder(self) { searchBar, urlStr in
+            
         }
     }
 }

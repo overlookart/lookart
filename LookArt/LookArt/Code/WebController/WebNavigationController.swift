@@ -51,8 +51,12 @@ class WebNavigationController: BaseNavigationController {
             webController.web.rx.canGoForward.bind(to: toolbar.canForward).disposed(by: disposeBag)
         }
         if let searchBar = self.navigationBar as? WebSearchBar {
+            //绑定网页的加载进度
             webController.web.rx.progress.bind(to: searchBar.progress).disposed(by: disposeBag)
+            //绑定网页的加载状态
             webController.web.rx.loading.bind(to: searchBar.loading).disposed(by: disposeBag)
+            //绑定网页的标题
+            webController.web.rx.title.bind(to: searchBar.title).disposed(by: disposeBag)
         }
     }
     
