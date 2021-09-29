@@ -12,8 +12,8 @@ import WebKit
 
 /// WKWebView Observer Property 监听 wkwebview 属性
 extension Reactive where Base: WKWebView {
-    public var title: Observable<String?> {
-        return self.observeWeakly(String.self, "title")
+    public var title: Observable<String> {
+        return self.observeWeakly(String.self, "title").map{$0 ?? ""}
     }
     
     public var loading: Observable<Bool> {
