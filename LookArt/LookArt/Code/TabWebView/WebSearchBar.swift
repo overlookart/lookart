@@ -39,18 +39,16 @@ class WebSearchBar: UINavigationBar {
     }()
     let refreshItem: UIBarButtonItem!
     let stoploadItem: UIBarButtonItem!
-    
+    let titleItem: UILabel!
     
     /// 加载进度条
     let progressBar: BaseProgressView = BaseProgressView(progressViewStyle: .bar)
     override init(frame: CGRect) {
         refreshItem = UIBarButtonItem(customView: refreshBtn)
         stoploadItem = UIBarButtonItem(customView: stoploadBtn)
+        titleItem = UILabel.init(frame: CGRect(x: 0, y: 0, width: 500, height: 40))
+        titleItem.textAlignment = .center
         super.init(frame: frame)
-        
-//        searchItem.titleView = searchVC.searchBar
-//        searchItem.titleView?.addSubview(progress);
-//        self.barTintColor = UIColor.random
         self.addSubview(progressBar)
         progressBar.snp.makeConstraints { make in
             make.bottom.equalTo(0)
@@ -58,15 +56,11 @@ class WebSearchBar: UINavigationBar {
             make.right.equalTo(0)
             make.height.equalTo(2)
         }
-//        self.addSubview(backgroundView);
-//        backgroundView.snp.makeConstraints { make in
-//            make.left.equalTo(self)
-//            make.right.equalTo(self)
-//            make.top.equalTo(self)
-//            make.bottom.equalTo(self)
-//        }
-//        backgroundView.backgroundColor = UIColor.random
-        self.sendSubviewToBack(backgroundView)
+    }
+    
+    /// 设置标题视图
+    func setTitleView(){
+        self.topItem?.titleView = self.titleItem
     }
     
     required init?(coder: NSCoder) {
@@ -95,7 +89,7 @@ extension WebSearchBar {
     /// 绑定web的标题
     var title: Binder<String> {
         return Binder(self) { searchBar, title in
-            
+            searchBar.titleItem.text = title
         }
     }
     
@@ -105,6 +99,7 @@ extension WebSearchBar {
             
         }
     }
+    
 }
 
 
