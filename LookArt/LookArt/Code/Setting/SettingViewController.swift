@@ -19,6 +19,12 @@ class SettingViewController: BaseViewController {
         
         self.tableView.register(nibWithCellClass: SettingViewCell.self)
         settingMV.bindDataSource(view: self.tableView, disposeBag: self.disposeBag)
+        self.tableView.rx.modelSelected(SettingModel.self).subscribe(onNext: {settingModel in
+            if settingModel.title == "主题" {
+                self.navigationController?.pushViewController(ThemeViewController(), animated: true)
+            }
+        }).disposed(by: disposeBag)
+
     }
 
 

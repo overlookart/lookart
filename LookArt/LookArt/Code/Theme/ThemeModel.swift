@@ -1,0 +1,12 @@
+//
+//  ThemeModel.swift
+//  LookArt
+//
+//  Created by CaiGou on 2021/10/11.
+//
+
+import Foundation
+struct ThemeModel: Equatable, Hashable {
+    var title: String
+    var name: String
+}

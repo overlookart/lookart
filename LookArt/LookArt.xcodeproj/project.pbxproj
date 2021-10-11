@@ -88,6 +88,12 @@
 		4D83B2B8F766D19377B57113 /* Pods_LookArt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A0B664EED11C59CD47E75B5 /* Pods_LookArt.framework */; };
 		62EDA4100BFCEF62DAF0A938 /* Pods_LookArtTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA026852061FDC8D7AA97B31 /* Pods_LookArtTests.framework */; };
 		82475B963FC1B12832656815 /* Pods_LookArt_LookArtUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93554BAF47E3A1A1137CDD20 /* Pods_LookArt_LookArtUITests.framework */; };
+		E918B5092714122100B72381 /* ThemeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E918B5072714122100B72381 /* ThemeViewController.swift */; };
+		E918B50C271413BE00B72381 /* ThemeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E918B50B271413BE00B72381 /* ThemeModel.swift */; };
+		E918B50E271415A500B72381 /* ThemeVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = E918B50D271415A500B72381 /* ThemeVM.swift */; };
+		E918B511271415E500B72381 /* ThemeViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E918B50F271415E500B72381 /* ThemeViewCell.swift */; };
+		E918B512271415E500B72381 /* ThemeViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E918B510271415E500B72381 /* ThemeViewCell.xib */; };
+		E918B51427141D1200B72381 /* ThemeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E918B51327141D1200B72381 /* ThemeViewController.xib */; };
 		E92D2C0726E1BAA90011B81D /* WebToolBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92D2C0626E1BAA90011B81D /* WebToolBar.swift */; };
 		E92D2C0926E99AA00011B81D /* BaseProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92D2C0826E99AA00011B81D /* BaseProgressView.swift */; };
 		E943FB5026A188B600B67C30 /* UIBaseConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = E943FB4F26A188B600B67C30 /* UIBaseConfig.swift */; };
@@ -208,6 +214,12 @@
 		93554BAF47E3A1A1137CDD20 /* Pods_LookArt_LookArtUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LookArt_LookArtUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		95FDA7E5EB63CCCF4650403A /* Pods-LookArtTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LookArtTests.release.xcconfig"; path = "Target Support Files/Pods-LookArtTests/Pods-LookArtTests.release.xcconfig"; sourceTree = "<group>"; };
 		BA026852061FDC8D7AA97B31 /* Pods_LookArtTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LookArtTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E918B5072714122100B72381 /* ThemeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeViewController.swift; sourceTree = "<group>"; };
+		E918B50B271413BE00B72381 /* ThemeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeModel.swift; sourceTree = "<group>"; };
+		E918B50D271415A500B72381 /* ThemeVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeVM.swift; sourceTree = "<group>"; };
+		E918B50F271415E500B72381 /* ThemeViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeViewCell.swift; sourceTree = "<group>"; };
+		E918B510271415E500B72381 /* ThemeViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ThemeViewCell.xib; sourceTree = "<group>"; };
+		E918B51327141D1200B72381 /* ThemeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ThemeViewController.xib; sourceTree = "<group>"; };
 		E92D2C0626E1BAA90011B81D /* WebToolBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebToolBar.swift; sourceTree = "<group>"; };
 		E92D2C0826E99AA00011B81D /* BaseProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseProgressView.swift; sourceTree = "<group>"; };
 		E943FB4F26A188B600B67C30 /* UIBaseConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIBaseConfig.swift; sourceTree = "<group>"; };
@@ -395,6 +407,7 @@
 		28D41D2225D41683008696AC /* Code */ = {
 			isa = PBXGroup;
 			children = (
+				E918B506271411D900B72381 /* Theme */,
 				282B7EC626AC108400C72A76 /* WebComponent */,
 				288DF8D026AB802E00767F15 /* Setting */,
 				E9DD1C27267CA2B800586F26 /* Activity */,
@@ -515,6 +528,19 @@
 				95FDA7E5EB63CCCF4650403A /* Pods-LookArtTests.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		E918B506271411D900B72381 /* Theme */ = {
+			isa = PBXGroup;
+			children = (
+				E918B5072714122100B72381 /* ThemeViewController.swift */,
+				E918B51327141D1200B72381 /* ThemeViewController.xib */,
+				E918B50B271413BE00B72381 /* ThemeModel.swift */,
+				E918B50D271415A500B72381 /* ThemeVM.swift */,
+				E918B50F271415E500B72381 /* ThemeViewCell.swift */,
+				E918B510271415E500B72381 /* ThemeViewCell.xib */,
+			);
+			path = Theme;
 			sourceTree = "<group>";
 		};
 		E9DD1C27267CA2B800586F26 /* Activity */ = {
@@ -638,6 +664,7 @@
 				28D41D1B25D40425008696AC /* user-script10.js in Resources */,
 				28D41D1925D40425008696AC /* user-script6.js in Resources */,
 				28366645261A91E40094D707 /* PersonalFavoriteCell.xib in Resources */,
+				E918B512271415E500B72381 /* ThemeViewCell.xib in Resources */,
 				28D41D1525D40425008696AC /* user-script4.js in Resources */,
 				28E5A9A625D63B2B00750E3B /* WebController.xib in Resources */,
 				28D41D1325D40425008696AC /* user-script2.js in Resources */,
@@ -651,6 +678,7 @@
 				282B7EC326ABC6CC00C72A76 /* SettingViewCell.xib in Resources */,
 				28D41CDC25D403CB008696AC /* Assets.xcassets in Resources */,
 				28D41D1425D40425008696AC /* user-script5.js in Resources */,
+				E918B51427141D1200B72381 /* ThemeViewController.xib in Resources */,
 				28D41D1D25D40425008696AC /* user-script7.js in Resources */,
 				28B6AB9126194863008F73B2 /* WebSearchController.xib in Resources */,
 				28D41D1825D40425008696AC /* user-script8.js in Resources */,
@@ -799,9 +827,11 @@
 				28E5A99225D63A3E00750E3B /* UINavigationController_Extension.swift in Sources */,
 				282B7EC226ABC6CC00C72A76 /* SettingViewCell.swift in Sources */,
 				28D41CD725D403CA008696AC /* ViewController.swift in Sources */,
+				E918B511271415E500B72381 /* ThemeViewCell.swift in Sources */,
 				28366653261AD0F30094D707 /* PersonalFavoritesVM.swift in Sources */,
 				282B7EBF26ABC69800C72A76 /* BaseTableViewCell.swift in Sources */,
 				282B7EBD26ABC17B00C72A76 /* SettingVM.swift in Sources */,
+				E918B50C271413BE00B72381 /* ThemeModel.swift in Sources */,
 				28BA172C25DBEC3A00861E62 /* WebSearchBar.swift in Sources */,
 				282B7EC826AC10C700C72A76 /* WebScriptComponent.swift in Sources */,
 				286FF9D725EB239E00AC482A /* TabCell.swift in Sources */,
@@ -833,11 +863,13 @@
 				28B6AB9026194863008F73B2 /* WebSearchController.swift in Sources */,
 				28E5A99F25D63A5D00750E3B /* BaseView.swift in Sources */,
 				28554D932609C357006CB16A /* WebNavigationController.swift in Sources */,
+				E918B50E271415A500B72381 /* ThemeVM.swift in Sources */,
 				2836668A2631C6390094D707 /* WKWebview_Rx.swift in Sources */,
 				2836663D261A8DFB0094D707 /* PersonalFavoritesController.swift in Sources */,
 				E9DD1C2E2684173900586F26 /* SearchBar.swift in Sources */,
 				28366658261AD4E70094D707 /* WebSiteModel.swift in Sources */,
 				28E5A99C25D63A5D00750E3B /* BaseWebView.swift in Sources */,
+				E918B5092714122100B72381 /* ThemeViewController.swift in Sources */,
 				288DF8CF26AB7B2200767F15 /* LookArtActivityController.swift in Sources */,
 				283666AC264043640094D707 /* ContextMenuPreview.swift in Sources */,
 				28E5A99025D63A3E00750E3B /* FileManager_Extension.swift in Sources */,
