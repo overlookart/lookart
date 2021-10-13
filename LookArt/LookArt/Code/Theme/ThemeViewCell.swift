@@ -27,12 +27,12 @@ class ThemeViewCell: UITableViewCell {
     ///   - animated: 是否有动画
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
+        // Configure the view for the selected state
         if selected {
             self.accessoryType = .checkmark
         }else{
             self.accessoryType = .none
         }
-        // Configure the view for the selected state
     }
     
 }
