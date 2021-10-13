@@ -20,8 +20,9 @@ class ThemeViewController: UIViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
-        
-        self.tableView.register(cellWithClass: ThemeViewCell.self)
+        // 注册 nib 单元格
+        self.tableView.register(nibWithCellClass: ThemeViewCell.self)
+        // 绑定数据源
         themeVM.bindDataSource(view: self.tableView, disposeBag: self.disposeBag)
         
     }
