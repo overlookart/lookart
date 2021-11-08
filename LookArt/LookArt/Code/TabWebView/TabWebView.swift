@@ -219,3 +219,74 @@ extension TabWebView: WKNavigationDelegate {
         didTerminate()
     }
 }
+
+
+extension TabWebView: WKUIDelegate {
+    
+    //MARK: - 创建/关闭 webview
+    
+    /// 创建 webview
+    /// - Parameters:
+    ///   - webView: 调用委托方法的 WebView
+    ///   - configuration: 创建新 Webview 时要使用的配置
+    ///   - navigationAction: 导致创建新 Webview 的导航操作
+    ///   - windowFeatures: 网页请求的窗口功能
+    /// - Returns: 必须使用指定的配置创建返回的 Web 视图 WebKit 在返回的 Web 视图中加载请求
+    func webView(_ webView: WKWebView, createWebViewWith configuration: WKWebViewConfiguration, for navigationAction: WKNavigationAction, windowFeatures: WKWindowFeatures) -> WKWebView? {
+        print("创建 webview")
+        return nil
+    }
+    
+    /// 通知您的应用 DOM 窗口已成功关闭
+    /// - Parameter webView: 调用委托方法的 WebView
+    /// 您的应用程序应该从视图层次结构中删除 Web 视图并根据需要更新 UI
+    /// 例如通过关闭包含的浏览器选项卡或窗口
+    func webViewDidClose(_ webView: WKWebView) {
+        
+    }
+    
+    //MARK: - 显示UI
+    /**
+     Web 视图用户界面委托实现此协议以控制新窗口的打开，
+     增强用户单击元素时显示的默认菜单项的行为，
+     并执行其他与用户界面相关的任务。
+     这些方法可以作为处理 JavaScript 或其他插件内容的结果被调用。
+     默认的 Web 视图实现假设每个 Web 视图有一个窗口，
+     因此非常规用户界面可能会实现用户界面委托
+     */
+    /// 显示包含指定消息的 JavaScript 警报面板
+    /// - Parameters:
+    ///   - webView: 调用委托方法的 WebView
+    ///   - message: 要显示的消息
+    ///   - frame: 有关其 JavaScript 进程发起此调用的框架的信息
+    ///   - completionHandler: 关闭警报面板后调用的完成处理程序
+    func webView(_ webView: WKWebView, runJavaScriptAlertPanelWithMessage message: String, initiatedByFrame frame: WKFrameInfo, completionHandler: @escaping () -> Void) {
+        
+    }
+    
+    /// 显示带有指定消息的 JavaScript 确认面板
+    /// - Parameters:
+    ///   - webView: 调用委托方法的 WebView
+    ///   - message: 在确认面板中显示的消息
+    ///   - frame: 其 JavaScript 发起此调用的 Web 框架
+    ///   - completionHandler: 在确认面板被解除后调用的完成处理程序。 如果用户选择 OK 则传递 true，如果用户选择 Cancel 则传递 false
+    func webView(_ webView: WKWebView, runJavaScriptConfirmPanelWithMessage message: String, initiatedByFrame frame: WKFrameInfo, completionHandler: @escaping (Bool) -> Void) {
+        
+    }
+    
+    /// 显示 JavaScript 文本输入面板
+    /// - Parameters:
+    ///   - webView: 调用委托方法的 WebView
+    ///   - prompt: 要显示的消息
+    ///   - defaultText: 要在文本输入字段中显示的初始文本
+    ///   - frame: 有关其 JavaScript 进程发起此调用的框架的信息
+    ///   - completionHandler: 在文本输入面板被关闭后调用的完成处理程序。 如果用户选择 OK，则传递输入的文本，否则 nil
+    func webView(_ webView: WKWebView, runJavaScriptTextInputPanelWithPrompt prompt: String, defaultText: String?, initiatedByFrame frame: WKFrameInfo, completionHandler: @escaping (String?) -> Void) {
+        
+    }
+    
+//    @available(iOS 15.0.0, *)
+//    func webView(_ webView: WKWebView, runJavaScriptAlertPanelWithMessage message: String, initiatedByFrame frame: WKFrameInfo) async {
+//
+//    }
+}
