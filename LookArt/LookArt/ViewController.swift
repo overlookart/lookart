@@ -12,7 +12,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        WebServer.share.startServer()
+        WebServer.share.start()
         
         let btn = UIButton(frame: CGRect.zero)
         btn.setTitle("webServer", for: .normal)

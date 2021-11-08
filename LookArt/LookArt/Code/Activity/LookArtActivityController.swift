@@ -10,9 +10,10 @@ import UIKit
 class LookArtActivityController: UIActivityViewController {
     
     private let setting = SettingActivity()
+    private let develop = DevelopeActivity()
     
     init(activityItems: [Any]) {
-        super.init(activityItems: activityItems, applicationActivities: [setting])
+        super.init(activityItems: activityItems, applicationActivities: [setting,develop])
     }
     
     override func viewDidLoad() {
@@ -22,8 +23,11 @@ class LookArtActivityController: UIActivityViewController {
         setting.finishHandler = {
             let setNav = BaseNavigationController(rootViewController: SettingViewController())
             UIWindow.currentViewController()?.present(setNav, animated: true, completion: nil)
-            print("设置--完成")
-            
+        }
+        
+        develop.finishHandler = {
+            let setNav = BaseNavigationController(rootViewController: DevelopViewController())
+            UIWindow.currentViewController()?.present(setNav, animated: true, completion: nil)
         }
     }
     

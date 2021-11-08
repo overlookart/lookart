@@ -9,4 +9,5 @@ import Foundation
 
 extension UIActivity.ActivityType {
     public static let lookartSetting = UIActivity.ActivityType(rawValue: "com.lookart.setting")
+    public static let lookartDevelop = UIActivity.ActivityType(rawValue: "com.lookart.develope")
 }

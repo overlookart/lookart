@@ -88,6 +88,9 @@
 		4D83B2B8F766D19377B57113 /* Pods_LookArt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A0B664EED11C59CD47E75B5 /* Pods_LookArt.framework */; };
 		62EDA4100BFCEF62DAF0A938 /* Pods_LookArtTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BA026852061FDC8D7AA97B31 /* Pods_LookArtTests.framework */; };
 		82475B963FC1B12832656815 /* Pods_LookArt_LookArtUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93554BAF47E3A1A1137CDD20 /* Pods_LookArt_LookArtUITests.framework */; };
+		E905DF37273904D800A5CF38 /* DevelopeActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = E905DF36273904D800A5CF38 /* DevelopeActivity.swift */; };
+		E905DF3B27391FA700A5CF38 /* DevelopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E905DF3927391FA700A5CF38 /* DevelopViewController.swift */; };
+		E905DF3C27391FA700A5CF38 /* DevelopViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E905DF3A27391FA700A5CF38 /* DevelopViewController.xib */; };
 		E918B5092714122100B72381 /* ThemeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E918B5072714122100B72381 /* ThemeViewController.swift */; };
 		E918B50C271413BE00B72381 /* ThemeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E918B50B271413BE00B72381 /* ThemeModel.swift */; };
 		E918B50E271415A500B72381 /* ThemeVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = E918B50D271415A500B72381 /* ThemeVM.swift */; };
@@ -214,6 +217,9 @@
 		93554BAF47E3A1A1137CDD20 /* Pods_LookArt_LookArtUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LookArt_LookArtUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		95FDA7E5EB63CCCF4650403A /* Pods-LookArtTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LookArtTests.release.xcconfig"; path = "Target Support Files/Pods-LookArtTests/Pods-LookArtTests.release.xcconfig"; sourceTree = "<group>"; };
 		BA026852061FDC8D7AA97B31 /* Pods_LookArtTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LookArtTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E905DF36273904D800A5CF38 /* DevelopeActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevelopeActivity.swift; sourceTree = "<group>"; };
+		E905DF3927391FA700A5CF38 /* DevelopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevelopViewController.swift; sourceTree = "<group>"; };
+		E905DF3A27391FA700A5CF38 /* DevelopViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DevelopViewController.xib; sourceTree = "<group>"; };
 		E918B5072714122100B72381 /* ThemeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeViewController.swift; sourceTree = "<group>"; };
 		E918B50B271413BE00B72381 /* ThemeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeModel.swift; sourceTree = "<group>"; };
 		E918B50D271415A500B72381 /* ThemeVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeVM.swift; sourceTree = "<group>"; };
@@ -407,6 +413,7 @@
 		28D41D2225D41683008696AC /* Code */ = {
 			isa = PBXGroup;
 			children = (
+				E905DF3827391F6A00A5CF38 /* Develop */,
 				E918B506271411D900B72381 /* Theme */,
 				282B7EC626AC108400C72A76 /* WebComponent */,
 				288DF8D026AB802E00767F15 /* Setting */,
@@ -530,6 +537,15 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		E905DF3827391F6A00A5CF38 /* Develop */ = {
+			isa = PBXGroup;
+			children = (
+				E905DF3927391FA700A5CF38 /* DevelopViewController.swift */,
+				E905DF3A27391FA700A5CF38 /* DevelopViewController.xib */,
+			);
+			path = Develop;
+			sourceTree = "<group>";
+		};
 		E918B506271411D900B72381 /* Theme */ = {
 			isa = PBXGroup;
 			children = (
@@ -548,6 +564,7 @@
 			children = (
 				E9DD1C28267CA2EA00586F26 /* SettingActivity.swift */,
 				288DF8CE26AB7B2200767F15 /* LookArtActivityController.swift */,
+				E905DF36273904D800A5CF38 /* DevelopeActivity.swift */,
 			);
 			path = Activity;
 			sourceTree = "<group>";
@@ -688,6 +705,7 @@
 				28D41CDA25D403CA008696AC /* Main.storyboard in Resources */,
 				286FF9D825EB239E00AC482A /* TabCell.xib in Resources */,
 				2836663E261A8DFB0094D707 /* PersonalFavoritesController.xib in Resources */,
+				E905DF3C27391FA700A5CF38 /* DevelopViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -818,6 +836,7 @@
 				28E5A98F25D63A3E00750E3B /* WKWebviewConfiguration_Extension.swift in Sources */,
 				288DF8CD26AB717D00767F15 /* UIActivity_Extension.swift in Sources */,
 				28E5A98C25D63A3E00750E3B /* UITextField_Extension.swift in Sources */,
+				E905DF37273904D800A5CF38 /* DevelopeActivity.swift in Sources */,
 				E9DD1C29267CA2EA00586F26 /* SettingActivity.swift in Sources */,
 				E92D2C0926E99AA00011B81D /* BaseProgressView.swift in Sources */,
 				28E5A9BA25D6468600750E3B /* WebConfig.swift in Sources */,
@@ -870,6 +889,7 @@
 				28366658261AD4E70094D707 /* WebSiteModel.swift in Sources */,
 				28E5A99C25D63A5D00750E3B /* BaseWebView.swift in Sources */,
 				E918B5092714122100B72381 /* ThemeViewController.swift in Sources */,
+				E905DF3B27391FA700A5CF38 /* DevelopViewController.swift in Sources */,
 				288DF8CF26AB7B2200767F15 /* LookArtActivityController.swift in Sources */,
 				283666AC264043640094D707 /* ContextMenuPreview.swift in Sources */,
 				28E5A99025D63A3E00750E3B /* FileManager_Extension.swift in Sources */,

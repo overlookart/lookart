@@ -19,8 +19,13 @@ class WebServer {
         }
         return webServer
     }()
-    func startServer() {
-        self.server.start(withPort: 8080, bonjourName: nil)
-        print("Visit \(server.serverURL) in your web browser")
+    
+    func start() {
+        self.server.start(withPort: 8088, bonjourName: nil)
+        print("Visit in your web browser:",server.serverURL?.absoluteString ?? "")
+    }
+    
+    func stop(){
+        self.server.stop()
     }
 }
