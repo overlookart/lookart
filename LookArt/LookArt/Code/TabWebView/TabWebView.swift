@@ -12,6 +12,8 @@ class TabWebView: BaseWebView {
     private(set) var configComponent: WebConfigComponent
     //脚本组件
     private(set) var scriptComponent: WebScriptComponent?
+    //web UI 组件
+    private(set) var webUIComponent: WebUIComponent?
     
     /// 开始拖动时的offset
     private(set) var scrollBeginDragOffset: CGPoint = CGPoint.zero
@@ -59,14 +61,18 @@ class TabWebView: BaseWebView {
     /// - Parameters:
     ///   - config: 配置组件
     ///   - script: 脚本组件
-    init(config: WebConfigComponent, script: WebScriptComponent? = nil) {
+    init(config: WebConfigComponent, script: WebScriptComponent? = nil, webUI: WebUIComponent? = nil) {
         self.configComponent = config
         self.scriptComponent = script
+        self.webUIComponent = webUI
         super.init(frame: CGRect.zero, configuration: config)
         if let _ = self.scriptComponent {
             //config script
             self.scriptComponent?.scripts.append(LAUserScript(fileName: "test_1", injectionTime: .atDocumentStart, forMainFrameOnly: false, messageName: "lookArt"))
             self.scriptComponent?.setupScripts(userContentController: self.configComponent.userContentController)
+        }
+        if let _ = self.webUIComponent {
+            self.uiDelegate = self.webUIComponent
         }
     }
     

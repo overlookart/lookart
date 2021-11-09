@@ -28,11 +28,6 @@ extension WebScriptComponent: WKScriptMessageHandler {
     }
 }
 
-// js alert, input,  UI 调用
-extension WebScriptComponent: WKUIDelegate {
-    
-}
-
 
 // 脚本协议
 protocol WebScriptProtocol {

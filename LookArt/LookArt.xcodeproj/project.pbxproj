@@ -91,6 +91,7 @@
 		E905DF37273904D800A5CF38 /* DevelopeActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = E905DF36273904D800A5CF38 /* DevelopeActivity.swift */; };
 		E905DF3B27391FA700A5CF38 /* DevelopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E905DF3927391FA700A5CF38 /* DevelopViewController.swift */; };
 		E905DF3C27391FA700A5CF38 /* DevelopViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E905DF3A27391FA700A5CF38 /* DevelopViewController.xib */; };
+		E905DF3E273A1BD900A5CF38 /* WebUIComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E905DF3D273A1BD900A5CF38 /* WebUIComponent.swift */; };
 		E918B5092714122100B72381 /* ThemeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E918B5072714122100B72381 /* ThemeViewController.swift */; };
 		E918B50C271413BE00B72381 /* ThemeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E918B50B271413BE00B72381 /* ThemeModel.swift */; };
 		E918B50E271415A500B72381 /* ThemeVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = E918B50D271415A500B72381 /* ThemeVM.swift */; };
@@ -220,6 +221,7 @@
 		E905DF36273904D800A5CF38 /* DevelopeActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevelopeActivity.swift; sourceTree = "<group>"; };
 		E905DF3927391FA700A5CF38 /* DevelopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevelopViewController.swift; sourceTree = "<group>"; };
 		E905DF3A27391FA700A5CF38 /* DevelopViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DevelopViewController.xib; sourceTree = "<group>"; };
+		E905DF3D273A1BD900A5CF38 /* WebUIComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebUIComponent.swift; sourceTree = "<group>"; };
 		E918B5072714122100B72381 /* ThemeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeViewController.swift; sourceTree = "<group>"; };
 		E918B50B271413BE00B72381 /* ThemeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeModel.swift; sourceTree = "<group>"; };
 		E918B50D271415A500B72381 /* ThemeVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeVM.swift; sourceTree = "<group>"; };
@@ -267,6 +269,7 @@
 			children = (
 				282B7EC726AC10C700C72A76 /* WebScriptComponent.swift */,
 				282B7EC926AC1A0200C72A76 /* WebConfigComponent.swift */,
+				E905DF3D273A1BD900A5CF38 /* WebUIComponent.swift */,
 			);
 			path = WebComponent;
 			sourceTree = "<group>";
@@ -871,6 +874,7 @@
 				E943FB5026A188B600B67C30 /* UIBaseConfig.swift in Sources */,
 				286FF9DD25EB364200AC482A /* TabLayout.swift in Sources */,
 				28E5A9AB25D63BE400750E3B /* TabWebView.swift in Sources */,
+				E905DF3E273A1BD900A5CF38 /* WebUIComponent.swift in Sources */,
 				282B7EBB26ABBF7F00C72A76 /* SettingModel.swift in Sources */,
 				28E5A98D25D63A3E00750E3B /* UIApplication_Extension.swift in Sources */,
 				28E5A98A25D63A3E00750E3B /* String_Extension.swift in Sources */,
