@@ -33,7 +33,13 @@ class PersonalFavoritesController: BaseViewController {
         self.collectionView.register(nibWithCellClass: PersonalFavoriteCell.self)
         personalFavoriteMV.bindDataSource(view: self.collectionView, disposeBag: disposeBag)
         self.collectionView.rx.modelSelected(WebSiteModel.self).subscribe(onNext: {websitemodel in
-            self.openWebSiteAction?(websitemodel.url)
+            if websitemodel.title == "本地服务" {
+                if WebServer.share.server.isRunning, let local = WebServer.share.server.serverURL?.absoluteString {
+                    self.openWebSiteAction?(local)
+                }
+            }else{
+                self.openWebSiteAction?(websitemodel.url)
+            }
         }).disposed(by: disposeBag)
         
         self.collectionView.rx.setDelegate(self).disposed(by: disposeBag)
