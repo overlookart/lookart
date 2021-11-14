@@ -6,33 +6,35 @@
 //
 
 import UIKit
-
+import RxSwift
 class TabController: UIViewController {
+    let tabControllerVM = TabControllerVM()
+    let disposeBag = DisposeBag()
+    private var currectWeb: TabModel!
     @IBAction func addTabAction(_ sender: Any) {
         addTab()
-        collectionView.insertItems(at: [IndexPath(item: webs.count-1, section: 0)])
     }
     @IBAction func completeAction(_ sender: Any) {
-        addChild(currectWeb)
-        view.addSubview(currectWeb.view)
+        self.present(currectWeb.webRoot, animated: true, completion: nil)
     }
     @IBOutlet weak var collectionView: UICollectionView!
-    private var webs: [WebNavigationController] = []
-    private var currectWeb: WebNavigationController!
+//    private var webs: [WebNavigationController] = []
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.backgroundColor = UIColor.random
         registerCellClasses()
-        addTab()
+        tabControllerVM.bindDataSource(view: collectionView, disposeBag: disposeBag)
         self.collectionView.setCollectionViewLayout(TabLayout(), animated: false)
         // Do any additional setup after loading the view.
-        if let firstweb = webs.first {
-            addChild(firstweb)
-            view.addSubview(firstweb.view)
+        if let firstweb = tabControllerVM.dataSource.first{
             currectWeb = firstweb
         }
         
+        collectionView.rx.modelSelected(TabModel.self).subscribe(onNext:{ model in
+            self.present(model.webRoot, animated: true, completion: nil)
+        }).disposed(by: disposeBag)
     }
 
     private func registerCellClasses() {
@@ -40,9 +42,7 @@ class TabController: UIViewController {
     }
     
     private func addTab() {
-        let nav = WebNavigationController()
-        nav.modalPresentationStyle = .fullScreen
-        self.webs.append(nav)
+        tabControllerVM.addData()
     }
 
     /*
@@ -55,48 +55,6 @@ class TabController: UIViewController {
     }
     */
 
-}
-
-
-
-
-
-extension TabController: UICollectionViewDelegate {
-    
-}
-
-extension TabController: UICollectionViewDataSource {
-    
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return webs.count
-    }
-    
-    
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withClass: TabCell.self, for: indexPath)
-        cell.contentView.backgroundColor = UIColor.random
-        cell.imgView.backgroundColor = UIColor.random
-        cell.closeAction = {
-            if let ide = collectionView.indexPath(for: cell) {
-                self.webs.remove(at: ide.item)
-                self.collectionView.deleteItems(at: [ide])
-            }
-            
-        }
-        return cell
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        currectWeb = webs[indexPath.row]
-        addChild(currectWeb)
-        view.addSubview(currectWeb.view)
-    }
-    
 }
 
 //MARK: - tool bar btn action

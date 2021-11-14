@@ -81,8 +81,7 @@ class WebNavigationController: BaseNavigationController {
             }).disposed(by: disposeBag)
             
             toolbar.tabmarkBtnItem.rx.tap.subscribe(onNext: {
-                self.view.removeFromSuperview()
-                self.removeFromParent()
+                self.dismiss(animated: true, completion: nil)
             }).disposed(by: disposeBag)
         }
         if let searchbar = self.navigationBar as? WebSearchBar {
