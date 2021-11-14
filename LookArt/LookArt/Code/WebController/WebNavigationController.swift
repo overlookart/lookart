@@ -72,7 +72,7 @@ class WebNavigationController: BaseNavigationController {
             }).disposed(by: disposeBag)
             
             toolbar.actionBtnItem.rx.tap.subscribe(onNext: {
-                let activity = LookArtActivityController(activityItems: []);
+                let activity = LookArtActivityController(activityItems: [""]);
                 self.present(activity, animated: true, completion: nil)
             }).disposed(by: disposeBag)
             
@@ -81,7 +81,8 @@ class WebNavigationController: BaseNavigationController {
             }).disposed(by: disposeBag)
             
             toolbar.tabmarkBtnItem.rx.tap.subscribe(onNext: {
-                
+                self.view.removeFromSuperview()
+                self.removeFromParent()
             }).disposed(by: disposeBag)
         }
         if let searchbar = self.navigationBar as? WebSearchBar {

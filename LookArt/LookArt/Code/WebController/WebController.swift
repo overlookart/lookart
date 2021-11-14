@@ -13,7 +13,7 @@ class WebController: BaseViewController {
     
 //    let searchBar: SearchBar = SearchBar()
     
-    let web: TabWebView = TabWebView(config: WebConfigComponent(), script: WebScriptComponent())
+    let web: TabWebView = TabWebView(config: WebConfigComponent(), script: WebScriptComponent(), webUI: WebUIComponent())
     
     override func viewDidLoad() {
         super.viewDidLoad()

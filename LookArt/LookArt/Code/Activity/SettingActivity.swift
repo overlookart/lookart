@@ -14,7 +14,7 @@ class SettingActivity: UIActivity {
     }
     // activity 类型
     override var activityType: UIActivity.ActivityType?{
-        return .lookartSetting
+        return .none
     }
     // activity 图标
     override var activityImage: UIImage?{
