@@ -35,6 +35,7 @@
 		286F23C2273F744C003CE4D9 /* website in Resources */ = {isa = PBXBuildFile; fileRef = 286F23C1273F744C003CE4D9 /* website */; };
 		286F23C427409DB2003CE4D9 /* TabControllerVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 286F23C327409DB2003CE4D9 /* TabControllerVM.swift */; };
 		286F23C627409F21003CE4D9 /* TabModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 286F23C527409F21003CE4D9 /* TabModel.swift */; };
+		286F23C827410230003CE4D9 /* TabGridLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 286F23C727410230003CE4D9 /* TabGridLayout.swift */; };
 		286FF9D725EB239E00AC482A /* TabCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 286FF9D525EB239E00AC482A /* TabCell.swift */; };
 		286FF9D825EB239E00AC482A /* TabCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 286FF9D625EB239E00AC482A /* TabCell.xib */; };
 		286FF9DD25EB364200AC482A /* TabLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 286FF9DC25EB364200AC482A /* TabLayout.swift */; };
@@ -158,6 +159,7 @@
 		286F23C1273F744C003CE4D9 /* website */ = {isa = PBXFileReference; lastKnownFileType = folder; path = website; sourceTree = "<group>"; };
 		286F23C327409DB2003CE4D9 /* TabControllerVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabControllerVM.swift; sourceTree = "<group>"; };
 		286F23C527409F21003CE4D9 /* TabModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabModel.swift; sourceTree = "<group>"; };
+		286F23C727410230003CE4D9 /* TabGridLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabGridLayout.swift; sourceTree = "<group>"; };
 		286FF9D525EB239E00AC482A /* TabCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabCell.swift; sourceTree = "<group>"; };
 		286FF9D625EB239E00AC482A /* TabCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TabCell.xib; sourceTree = "<group>"; };
 		286FF9DC25EB364200AC482A /* TabLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabLayout.swift; sourceTree = "<group>"; };
@@ -325,6 +327,7 @@
 				283F7B05260488860055FC7D /* TabController.swift */,
 				286F23C327409DB2003CE4D9 /* TabControllerVM.swift */,
 				286F23C527409F21003CE4D9 /* TabModel.swift */,
+				286F23C727410230003CE4D9 /* TabGridLayout.swift */,
 			);
 			path = TabController;
 			sourceTree = "<group>";
@@ -869,6 +872,7 @@
 				282B7EC826AC10C700C72A76 /* WebScriptComponent.swift in Sources */,
 				286FF9D725EB239E00AC482A /* TabCell.swift in Sources */,
 				288DF8D626AB875F00767F15 /* UIWindow_Extension.swift in Sources */,
+				286F23C827410230003CE4D9 /* TabGridLayout.swift in Sources */,
 				28E5A98B25D63A3E00750E3B /* WKWebView_Extension.swift in Sources */,
 				286F23C627409F21003CE4D9 /* TabModel.swift in Sources */,
 				E955AAF226DCE051005FE4EF /* UIProgressView_Rx.swift in Sources */,

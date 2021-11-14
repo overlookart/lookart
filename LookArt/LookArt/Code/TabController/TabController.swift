@@ -20,6 +20,16 @@ class TabController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
 //    private var webs: [WebNavigationController] = []
     
+    @IBAction func layoutAction(_ sender: Any) {
+        if let btn: UIButton = sender as? UIButton {
+            btn.isSelected = !btn.isSelected
+            if btn.isSelected {
+                collectionView.setCollectionViewLayout(TabGridLayout(), animated: true)
+            }else{
+                collectionView.setCollectionViewLayout(TabLayout(), animated: true)
+            }
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
