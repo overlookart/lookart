@@ -21,9 +21,24 @@ class TabGridLayout: UICollectionViewFlowLayout {
     }
     
     func defaultItemSettings(){
+        //垂直方向行间距
         minimumLineSpacing = 20
-        minimumInteritemSpacing = 20
-        itemSize = CGSize(width: 150, height: 200)
-        sectionInset = UIEdgeInsets(top: 10, left: 20, bottom: 20, right: 20)
+        //垂直方向列间距
+        minimumInteritemSpacing = 10
+        
+        let w = (UIScreen.ScreenWidth() - 30) / 2.0
+        let h = w / 9.0 * 16
+        itemSize = CGSize(width: w, height: h)
+        sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+    }
+    
+    override func prepare() {
+        super.prepare()
+        print("准备栅格布局")
+    }
+    
+    override func invalidateLayout() {
+        super.invalidateLayout()
+        print("栅格->重新检查布局信息")
     }
 }

@@ -18,6 +18,11 @@ class TabLayout: UICollectionViewFlowLayout {
         return min(6, dataSource.collectionView(view, numberOfItemsInSection: 0))
     }
     
+    override func prepare() {
+        super.prepare()
+        print("准备折页布局")
+    }
+    
     override var collectionViewContentSize: CGSize {
         guard let view = collectionView, let dataSource = view.dataSource else { return .zero }
         let itemCount = dataSource.collectionView(view, numberOfItemsInSection: 0)

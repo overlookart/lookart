@@ -33,7 +33,7 @@ class TabController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        collectionView.backgroundColor = UIColor.random
+//        collectionView.backgroundColor = UIColor.random
         registerCellClasses()
         tabControllerVM.bindDataSource(view: collectionView, disposeBag: disposeBag)
         self.collectionView.setCollectionViewLayout(TabLayout(), animated: false)

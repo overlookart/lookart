@@ -24,7 +24,7 @@ class TabControllerVM {
     }
     
     func addData(){
-        let model = TabModel(title: "起始页", image: UIImage(color: UIColor.random, size: CGSize(width: 1, height: 1)), webRoot: WebNavigationController())
+        let model = TabModel(title: "起始页", image: UIImage(color: UIColor.gray, size: CGSize(width: 1, height: 1)), webRoot: WebNavigationController())
         model.webRoot.modalPresentationStyle = .fullScreen
         dataSource.append(model)
         data.accept(dataSource)
