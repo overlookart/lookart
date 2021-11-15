@@ -32,6 +32,10 @@
 		283F7B07260488860055FC7D /* TabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 283F7B05260488860055FC7D /* TabController.swift */; };
 		28554D932609C357006CB16A /* WebNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28554D922609C357006CB16A /* WebNavigationController.swift */; };
 		286967EF26B0590400956BA1 /* test_1.js in Resources */ = {isa = PBXBuildFile; fileRef = 286967EE26B0590400956BA1 /* test_1.js */; };
+		286F23C2273F744C003CE4D9 /* website in Resources */ = {isa = PBXBuildFile; fileRef = 286F23C1273F744C003CE4D9 /* website */; };
+		286F23C427409DB2003CE4D9 /* TabControllerVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 286F23C327409DB2003CE4D9 /* TabControllerVM.swift */; };
+		286F23C627409F21003CE4D9 /* TabModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 286F23C527409F21003CE4D9 /* TabModel.swift */; };
+		286F23C827410230003CE4D9 /* TabGridLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 286F23C727410230003CE4D9 /* TabGridLayout.swift */; };
 		286FF9D725EB239E00AC482A /* TabCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 286FF9D525EB239E00AC482A /* TabCell.swift */; };
 		286FF9D825EB239E00AC482A /* TabCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 286FF9D625EB239E00AC482A /* TabCell.xib */; };
 		286FF9DD25EB364200AC482A /* TabLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 286FF9DC25EB364200AC482A /* TabLayout.swift */; };
@@ -152,6 +156,10 @@
 		283F7B05260488860055FC7D /* TabController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabController.swift; sourceTree = "<group>"; };
 		28554D922609C357006CB16A /* WebNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebNavigationController.swift; sourceTree = "<group>"; };
 		286967EE26B0590400956BA1 /* test_1.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = test_1.js; sourceTree = "<group>"; };
+		286F23C1273F744C003CE4D9 /* website */ = {isa = PBXFileReference; lastKnownFileType = folder; path = website; sourceTree = "<group>"; };
+		286F23C327409DB2003CE4D9 /* TabControllerVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabControllerVM.swift; sourceTree = "<group>"; };
+		286F23C527409F21003CE4D9 /* TabModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabModel.swift; sourceTree = "<group>"; };
+		286F23C727410230003CE4D9 /* TabGridLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabGridLayout.swift; sourceTree = "<group>"; };
 		286FF9D525EB239E00AC482A /* TabCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabCell.swift; sourceTree = "<group>"; };
 		286FF9D625EB239E00AC482A /* TabCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TabCell.xib; sourceTree = "<group>"; };
 		286FF9DC25EB364200AC482A /* TabLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabLayout.swift; sourceTree = "<group>"; };
@@ -317,6 +325,9 @@
 				286FF9DC25EB364200AC482A /* TabLayout.swift */,
 				286FF9EB25F6316000AC482A /* TabLayoutAttributes.swift */,
 				283F7B05260488860055FC7D /* TabController.swift */,
+				286F23C327409DB2003CE4D9 /* TabControllerVM.swift */,
+				286F23C527409F21003CE4D9 /* TabModel.swift */,
+				286F23C727410230003CE4D9 /* TabGridLayout.swift */,
 			);
 			path = TabController;
 			sourceTree = "<group>";
@@ -394,6 +405,7 @@
 		28D41D0525D403E9008696AC /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				286F23C1273F744C003CE4D9 /* website */,
 				28BA173925DDF67300861E62 /* test_html.html */,
 				282B7EC426AC0E5300C72A76 /* lookArt.js */,
 				286967EE26B0590400956BA1 /* test_1.js */,
@@ -686,6 +698,7 @@
 				28366645261A91E40094D707 /* PersonalFavoriteCell.xib in Resources */,
 				E918B512271415E500B72381 /* ThemeViewCell.xib in Resources */,
 				28D41D1525D40425008696AC /* user-script4.js in Resources */,
+				286F23C2273F744C003CE4D9 /* website in Resources */,
 				28E5A9A625D63B2B00750E3B /* WebController.xib in Resources */,
 				28D41D1325D40425008696AC /* user-script2.js in Resources */,
 				282B7EC526AC0E5400C72A76 /* lookArt.js in Resources */,
@@ -850,6 +863,7 @@
 				282B7EC226ABC6CC00C72A76 /* SettingViewCell.swift in Sources */,
 				28D41CD725D403CA008696AC /* ViewController.swift in Sources */,
 				E918B511271415E500B72381 /* ThemeViewCell.swift in Sources */,
+				286F23C427409DB2003CE4D9 /* TabControllerVM.swift in Sources */,
 				28366653261AD0F30094D707 /* PersonalFavoritesVM.swift in Sources */,
 				282B7EBF26ABC69800C72A76 /* BaseTableViewCell.swift in Sources */,
 				282B7EBD26ABC17B00C72A76 /* SettingVM.swift in Sources */,
@@ -858,7 +872,9 @@
 				282B7EC826AC10C700C72A76 /* WebScriptComponent.swift in Sources */,
 				286FF9D725EB239E00AC482A /* TabCell.swift in Sources */,
 				288DF8D626AB875F00767F15 /* UIWindow_Extension.swift in Sources */,
+				286F23C827410230003CE4D9 /* TabGridLayout.swift in Sources */,
 				28E5A98B25D63A3E00750E3B /* WKWebView_Extension.swift in Sources */,
+				286F23C627409F21003CE4D9 /* TabModel.swift in Sources */,
 				E955AAF226DCE051005FE4EF /* UIProgressView_Rx.swift in Sources */,
 				283F7B07260488860055FC7D /* TabController.swift in Sources */,
 				28D41CD325D403CA008696AC /* AppDelegate.swift in Sources */,

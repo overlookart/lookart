@@ -13,7 +13,7 @@ class DevelopeActivity: UIActivity {
     }
     
     override var activityType: UIActivity.ActivityType? {
-        return .lookartDevelop
+        return .none
     }
     
     override var activityImage: UIImage? {

@@ -22,6 +22,7 @@ extension WebUIComponent: WKUIDelegate {
     /// - Returns: 必须使用指定的配置创建返回的 Web 视图 WebKit 在返回的 Web 视图中加载请求
     func webView(_ webView: WKWebView, createWebViewWith configuration: WKWebViewConfiguration, for navigationAction: WKNavigationAction, windowFeatures: WKWindowFeatures) -> WKWebView? {
         print("创建 webview")
+        return WKWebView(frame: CGRect(x: 0, y: 0, width: 100, height: 100), configuration: configuration)
         return nil
     }
     
@@ -61,6 +62,9 @@ extension WebUIComponent: WKUIDelegate {
     ///   - frame: 有关其 JavaScript 进程发起此调用的框架的信息
     ///   - completionHandler: 在文本输入面板被关闭后调用的完成处理程序。 如果用户选择 OK，则传递输入的文本，否则 nil
     func webView(_ webView: WKWebView, runJavaScriptTextInputPanelWithPrompt prompt: String, defaultText: String?, initiatedByFrame frame: WKFrameInfo, completionHandler: @escaping (String?) -> Void) {
-        
+        print(prompt);
+        if prompt == "_ThemeConfig_" {
+            completionHandler("false==false==true==false")
+        }
     }
 }

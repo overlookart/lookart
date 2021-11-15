@@ -23,8 +23,11 @@ class TabCell: UICollectionViewCell {
     
     override func apply(_ layoutAttributes: UICollectionViewLayoutAttributes) {
         super.apply(layoutAttributes)
-        guard let attributes = layoutAttributes as? TabLayoutAttributes else { return }
-        self.layer.anchorPoint = attributes.anchorPoint
+        if let attributes = layoutAttributes as? TabLayoutAttributes {
+            self.layer.anchorPoint = attributes.anchorPoint
+        }else{
+            self.layer.anchorPoint = CGPoint(x: 0.5, y: 0.5)
+        }
     }
     
     @IBAction func closeBtnAction(_ sender: Any) {

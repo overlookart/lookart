@@ -64,7 +64,7 @@ class TabLayout: UICollectionViewFlowLayout {
         let translation = CATransform3DMakeTranslation(0.0, collectionBounds.height / -2, 0.0)
         attributes.transform3D = CATransform3DConcat(rotation, translation)
         attributes.anchorPoint = CGPoint(x: 0.5, y: 0.0)
-//        attributes
+
         return attributes
     }
     

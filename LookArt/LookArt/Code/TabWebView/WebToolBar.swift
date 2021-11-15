@@ -33,6 +33,9 @@ class WebToolBar: UIToolbar {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        if #available(iOS 15.0, *) {
+            self.scrollEdgeAppearance = self.standardAppearance
+        }
         self.allItems = [self.backBtnItem, createFlexibleSpaceItem(), self.forwardBtnItem, createFlexibleSpaceItem(), self.actionBtnItem, createFlexibleSpaceItem(), self.bookmarkBtnItem, createFlexibleSpaceItem(), self.tabmarkBtnItem]
     }
     
