@@ -15,6 +15,7 @@ class WebServer {
     lazy var server: GCDWebServer = {
         let webServer = GCDWebServer()
         webServer.addDefaultHandler(forMethod: "GET", request: GCDWebServerRequest.self) { (request) -> GCDWebServerResponse? in
+            
             return GCDWebServerDataResponse(html: "<html><body><p>Hello World</p></body></html>")
         }
         return webServer

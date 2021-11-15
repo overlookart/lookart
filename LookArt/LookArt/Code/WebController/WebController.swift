@@ -13,7 +13,7 @@ class WebController: BaseViewController {
     
 //    let searchBar: SearchBar = SearchBar()
     
-    let web: TabWebView = TabWebView(config: WebConfigComponent(), script: WebScriptComponent())
+    let web: TabWebView = TabWebView(config: WebConfigComponent(), script: WebScriptComponent(), webUI: WebUIComponent())
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -143,7 +143,8 @@ class WebController: BaseViewController {
         
 //        web.loadweb(urlStr: "http://172.20.10.2:8080/")
 //        web.loadweb(urlStr: "https://github.com/matteocrippa/awesome-swift")
-//        let h5Path = Bundle.main.path(forResource: "test_html", ofType: "html")
+        let h5Path = Bundle.main.path(forResource: "test_html", ofType: "html")
+        print(h5Path)
 //        web.loadFile(fileUrl: URL(fileURLWithPath: h5Path!))
     }
     
