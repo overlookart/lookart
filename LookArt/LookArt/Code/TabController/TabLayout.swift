@@ -63,7 +63,7 @@ class TabLayout: UICollectionViewFlowLayout {
         
         let tilt = ((collectionOffset.y - attributes.frame.minY) / collectionBounds.height)
         var perspective = CATransform3DIdentity
-        perspective.m34 = -1/1000
+        perspective.m34 = -2/1000
         
         let rotation = CATransform3DRotate(perspective, (tilt * variationAngle) - defaultAngle, 1.0, 0.0, 0.0)
         let translation = CATransform3DMakeTranslation(0.0, collectionBounds.height / -2, 0.0)
@@ -92,10 +92,12 @@ extension TabLayout {
         return max(Int(view.contentOffset.y / (view.height / CGFloat(tabCount))), 0)
     }
     
+    /// collection view bounds
     var collectionBounds: CGRect {
         return collectionView?.bounds ?? .zero
     }
     
+    /// collection view contentOffset
     var collectionOffset: CGPoint {
         return collectionView?.contentOffset ?? .zero
     }
