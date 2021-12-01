@@ -18,11 +18,22 @@ class TabLayout: UICollectionViewFlowLayout {
         return min(6, dataSource.collectionView(view, numberOfItemsInSection: 0))
     }
     
+    /// 当第一次加载布局或者布局失效的时候,会调用该方法,我们要在这里实现具体的布局计算
     override func prepare() {
         super.prepare()
         print("准备折页布局")
+        print("有几组分区",self.sectionCount)
+        for sectionIndex in 0 ..< self.sectionCount {
+            let sectionInset = sectionInset(for: sectionIndex)
+            let sectionMinimumLineSpacing = sectionMinimumLineSpacing(for: sectionIndex)
+            let sectionMinimumItemSpacing = sectionMinimumItemSpacing(for: sectionIndex)
+            
+        }
+        
+        
     }
     
+    /// 父类需要根据返回的contentsize大小,控制uicollectionview的显示
     override var collectionViewContentSize: CGSize {
         guard let view = collectionView, let dataSource = view.dataSource else { return .zero }
         let itemCount = dataSource.collectionView(view, numberOfItemsInSection: 0)
@@ -35,24 +46,26 @@ class TabLayout: UICollectionViewFlowLayout {
         return CGSize(width: view.width, height: CGFloat(itemCount) * (view.height / CGFloat(tabCount)))
     }
     
+    
+    /// 这个方法比较关键,
+    /// 我们需要将计算法的UICollectionViewLayoutAttributes数组返回给显示的rect,
+    /// 系统会根据属性数组来计算cell的复用和布局的显示.
+    /// - Parameter rect: <#rect description#>
+    /// - Returns: 属性数组
     override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
-        print("rect:\(rect)")
-        let firstVisibleItem = self.screenVisibleItem
-        let lastVisibleItem = min(firstVisibleItem + tabCount, itemsCount - 1)
-        if lastVisibleItem < firstVisibleItem {
-            let indexPath = IndexPath(item: lastVisibleItem, section: 0)
-            guard let cellAttributes = layoutAttributesForItem(at: indexPath) else { return nil }
-            return [cellAttributes]
+        guard let controllerView = self.collectionView, let attributes = super.layoutAttributesForElements(in: rect) else { return nil }
+        for attribute in attributes {
+            
         }
-        var attributes = [UICollectionViewLayoutAttributes]()
-        (firstVisibleItem ... lastVisibleItem).forEach { index in
-            let indexPath = IndexPath(item: index, section: 0)
-            guard let cellAttributes = layoutAttributesForItem(at: indexPath) else { return }
-            attributes.append(cellAttributes)
-        }
+        
         return attributes
     }
     
+    /// 计算每个item的布局属性,我们将要调用该方法去计算每个item的布局,
+    /// 在增加,刷新item的时候,该方法也会调用,
+    /// 如果我们需要实现自定义的动画效果,需要在计算中做些调整,下面讲到刷新和增加的时候会具体看一下方法的影响.
+    /// - Parameter indexPath: 下标索引
+    /// - Returns: 布局属性
     override public func layoutAttributesForItem(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
         print("layoutAttributesForItem")
         let collectionBounds = self.collectionBounds
@@ -86,6 +99,11 @@ extension TabLayout {
         return dataSource.collectionView(view, numberOfItemsInSection: 0)
     }
     
+    var sectionCount: Int {
+        guard let view = collectionView else {return 0}
+        return view.numberOfSections
+    }
+    
     /// 屏幕显示Item的数量
     var screenVisibleItem: Int {
         guard let view = collectionView else { return 0 }
@@ -102,10 +120,32 @@ extension TabLayout {
         return collectionView?.contentOffset ?? .zero
     }
     
+    /// 获取分组的上 下 左 右 边距
+    /// - Parameter section: 分组下标
+    /// - Returns: 边距
     func sectionInset(for section: Int) -> UIEdgeInsets {
-//        guard let view = collectionView, let insets = (view.delegate as? UICollectionViewDelegateFlowLayout)?.collectionView?(view, layout: self, insetForSectionAt: section) else { return collectionView?.contentInset ?? .zero }
-        let insets = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
+        guard let view = collectionView, let insets = (view.delegate as? UICollectionViewDelegateFlowLayout)?.collectionView?(view, layout: self, insetForSectionAt: section) else { return .zero }
         return insets
+    }
+    
+    /// 分组的最小(竖直行间距，水平列间距)
+    /// - Parameter section: 分组下标
+    /// - Returns: 最小间距
+    func sectionMinimumLineSpacing(for section: Int) -> CGFloat {
+        guard let view = collectionView, let space = (view.delegate as? UICollectionViewDelegateFlowLayout)?.collectionView?(view, layout: self, minimumLineSpacingForSectionAt: section) else {return 0}
+        return space
+    }
+    
+    /// 分组的最小(水平行间距，竖直列间距)
+    /// - Parameter section: 分组下标
+    /// - Returns: 最小间距
+    func sectionMinimumItemSpacing(for section: Int) -> CGFloat {
+        guard let view = collectionView, let space = (view.delegate as? UICollectionViewDelegateFlowLayout)?.collectionView?(view, layout: self, minimumInteritemSpacingForSectionAt: section) else { return 0 }
+        return space
+    }
+    
+    func sectionColum(for section: Int) -> Int {
+        return 0;
     }
     
     func frameForItem(at indexPath: IndexPath) -> CGRect {
