@@ -19,6 +19,9 @@ class TabControllerVM {
         data.bind(to: view.rx.items) {(collectionView, item, model) in
             let cell = collectionView.dequeueReusableCell(withClass: TabCell.self, for: IndexPath(item: item, section: 0))
             cell.imgView.image = model.image
+            cell.closeAction = {
+                self.deleteData(index: item)
+            }
             return cell
         }.disposed(by: disposeBag)
     }
@@ -27,6 +30,13 @@ class TabControllerVM {
         let model = TabModel(title: "起始页", image: UIImage(color: UIColor.gray, size: CGSize(width: 1, height: 1)), webRoot: WebNavigationController())
         model.webRoot.modalPresentationStyle = .fullScreen
         dataSource.append(model)
+        data.accept(dataSource)
+    }
+    
+    /// 删除一条数据
+    /// - Parameter index: 下标
+    func deleteData(index: Int){
+        dataSource.remove(at: index)
         data.accept(dataSource)
     }
 }
