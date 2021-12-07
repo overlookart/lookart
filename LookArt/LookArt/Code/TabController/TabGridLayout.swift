@@ -27,7 +27,7 @@ class TabGridLayout: UICollectionViewFlowLayout {
         minimumInteritemSpacing = 10
         
         let w = (UIScreen.ScreenWidth() - 30) / 2.0
-        let h = w / 9.0 * 16
+        let h = w / 3.0 * 4
         itemSize = CGSize(width: w, height: h)
         sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
     }
