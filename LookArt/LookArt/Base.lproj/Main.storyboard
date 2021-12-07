@@ -33,6 +33,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9Pg-db-fDl">
+                                <rect key="frame" x="0.0" y="-1" width="414" height="897"/>
+                            </imageView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="d46-LC-weg">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -78,29 +81,25 @@
                                     </barButtonItem>
                                 </items>
                             </toolbar>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2gD-M1-mWG">
-                                <rect key="frame" x="173" y="432" width="67" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
-                                <connections>
-                                    <action selector="layoutAction:" destination="6Md-jy-9Ga" eventType="touchUpInside" id="yV0-56-4Pq"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Hrb-4h-DZj"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="9Pg-db-fDl" firstAttribute="trailing" secondItem="Hrb-4h-DZj" secondAttribute="trailing" id="0Bs-hX-SnD"/>
+                            <constraint firstItem="9Pg-db-fDl" firstAttribute="top" secondItem="wRz-Og-HBS" secondAttribute="top" constant="-1" id="2xc-h7-fjg"/>
                             <constraint firstItem="d46-LC-weg" firstAttribute="leading" secondItem="Hrb-4h-DZj" secondAttribute="leading" id="Bvr-bn-Wlz"/>
                             <constraint firstItem="l9d-WS-GOb" firstAttribute="leading" secondItem="Hrb-4h-DZj" secondAttribute="leading" id="Fyz-GG-BVF"/>
                             <constraint firstItem="d46-LC-weg" firstAttribute="top" secondItem="wRz-Og-HBS" secondAttribute="top" id="HfM-Ks-AFr"/>
                             <constraint firstItem="d46-LC-weg" firstAttribute="trailing" secondItem="Hrb-4h-DZj" secondAttribute="trailing" id="IzG-zj-4Vx"/>
+                            <constraint firstAttribute="bottom" secondItem="9Pg-db-fDl" secondAttribute="bottom" id="Lq3-1C-5Og"/>
                             <constraint firstItem="l9d-WS-GOb" firstAttribute="trailing" secondItem="Hrb-4h-DZj" secondAttribute="trailing" id="bPs-0S-Jm9"/>
                             <constraint firstItem="l9d-WS-GOb" firstAttribute="bottom" secondItem="Hrb-4h-DZj" secondAttribute="bottom" id="cPl-Us-5ea"/>
+                            <constraint firstItem="9Pg-db-fDl" firstAttribute="leading" secondItem="Hrb-4h-DZj" secondAttribute="leading" id="ddV-8B-bMO"/>
                             <constraint firstAttribute="bottom" secondItem="d46-LC-weg" secondAttribute="bottom" id="mid-ns-4hP"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="bgImgView" destination="9Pg-db-fDl" id="8mQ-y1-h6k"/>
                         <outlet property="collectionView" destination="d46-LC-weg" id="bsr-aa-1Mh"/>
                     </connections>
                 </viewController>
