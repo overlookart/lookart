@@ -36,8 +36,7 @@ class WebNavigationController: BaseNavigationController {
         }
         //配置导航栏
         if let searchBar = self.navigationBar as? WebSearchBar {
-            print("search bar item",searchBar.topItem ?? "没有")
-            searchBar.setTitleView()
+        
         }
     }
     
@@ -91,6 +90,9 @@ class WebNavigationController: BaseNavigationController {
             searchbar.stoploadBtn.rx.tap.subscribe(onNext: { [self] in
                 webController.stopload()
                 print("\\\\\\web 是否加载",webController.web.isLoading)
+            }).disposed(by: disposeBag)
+            searchbar.titleItem.rx.tap.subscribe(onNext: {
+                self.present(WebSearchController(searchResultsController: nil), animated: true, completion: nil)
             }).disposed(by: disposeBag)
         }
     }

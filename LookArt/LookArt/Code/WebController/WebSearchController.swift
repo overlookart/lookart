@@ -14,7 +14,7 @@ class WebSearchController: UISearchController {
         self.searchBar.searchBarStyle = .default
         self.searchBar.placeholder = "搜索或输入网站名称"
         self.searchBar.barStyle = .default
-        self.searchBar.setPositionAdjustment(UIOffset(horizontal: 90, vertical: 0), for: .search)
+//        self.searchBar.setPositionAdjustment(UIOffset(horizontal: 90, vertical: 0), for: .search)
         self.searchBar.delegate = self
         self.obscuresBackgroundDuringPresentation = false
         self.hidesNavigationBarDuringPresentation = false
