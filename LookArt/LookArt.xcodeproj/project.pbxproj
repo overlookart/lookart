@@ -105,6 +105,10 @@
 		E92D2C0926E99AA00011B81D /* BaseProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92D2C0826E99AA00011B81D /* BaseProgressView.swift */; };
 		E943FB5026A188B600B67C30 /* UIBaseConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = E943FB4F26A188B600B67C30 /* UIBaseConfig.swift */; };
 		E955AAF226DCE051005FE4EF /* UIProgressView_Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = E955AAF126DCE051005FE4EF /* UIProgressView_Rx.swift */; };
+		E9CB1DA0276098C900E130DB /* LookArtModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E9CB1D9E276098C900E130DB /* LookArtModel.xcdatamodeld */; };
+		E9CB1DA327609EBB00E130DB /* WebSearchResultsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CB1DA127609EBB00E130DB /* WebSearchResultsController.swift */; };
+		E9CB1DA427609EBB00E130DB /* WebSearchResultsController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9CB1DA227609EBB00E130DB /* WebSearchResultsController.xib */; };
+		E9CB1DA62760A6D900E130DB /* CoreStoreController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CB1DA52760A6D900E130DB /* CoreStoreController.swift */; };
 		E9DD1C29267CA2EA00586F26 /* SettingActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9DD1C28267CA2EA00586F26 /* SettingActivity.swift */; };
 		E9DD1C2E2684173900586F26 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9DD1C2D2684173900586F26 /* SearchBar.swift */; };
 /* End PBXBuildFile section */
@@ -238,6 +242,10 @@
 		E92D2C0826E99AA00011B81D /* BaseProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseProgressView.swift; sourceTree = "<group>"; };
 		E943FB4F26A188B600B67C30 /* UIBaseConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIBaseConfig.swift; sourceTree = "<group>"; };
 		E955AAF126DCE051005FE4EF /* UIProgressView_Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIProgressView_Rx.swift; sourceTree = "<group>"; };
+		E9CB1D9F276098C900E130DB /* LookArtModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LookArtModel.xcdatamodel; sourceTree = "<group>"; };
+		E9CB1DA127609EBB00E130DB /* WebSearchResultsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebSearchResultsController.swift; sourceTree = "<group>"; };
+		E9CB1DA227609EBB00E130DB /* WebSearchResultsController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WebSearchResultsController.xib; sourceTree = "<group>"; };
+		E9CB1DA52760A6D900E130DB /* CoreStoreController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreStoreController.swift; sourceTree = "<group>"; };
 		E9DD1C28267CA2EA00586F26 /* SettingActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingActivity.swift; sourceTree = "<group>"; };
 		E9DD1C2D2684173900586F26 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -426,6 +434,7 @@
 		28D41D2225D41683008696AC /* Code */ = {
 			isa = PBXGroup;
 			children = (
+				E9CB1D9D2760988100E130DB /* CoreData */,
 				E905DF3827391F6A00A5CF38 /* Develop */,
 				E918B506271411D900B72381 /* Theme */,
 				282B7EC626AC108400C72A76 /* WebComponent */,
@@ -479,6 +488,8 @@
 				28554D922609C357006CB16A /* WebNavigationController.swift */,
 				28B6AB8E26194863008F73B2 /* WebSearchController.swift */,
 				28B6AB8F26194863008F73B2 /* WebSearchController.xib */,
+				E9CB1DA127609EBB00E130DB /* WebSearchResultsController.swift */,
+				E9CB1DA227609EBB00E130DB /* WebSearchResultsController.xib */,
 			);
 			path = WebController;
 			sourceTree = "<group>";
@@ -577,6 +588,15 @@
 				E918B510271415E500B72381 /* ThemeViewCell.xib */,
 			);
 			path = Theme;
+			sourceTree = "<group>";
+		};
+		E9CB1D9D2760988100E130DB /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				E9CB1D9E276098C900E130DB /* LookArtModel.xcdatamodeld */,
+				E9CB1DA52760A6D900E130DB /* CoreStoreController.swift */,
+			);
+			path = CoreData;
 			sourceTree = "<group>";
 		};
 		E9DD1C27267CA2B800586F26 /* Activity */ = {
@@ -725,6 +745,7 @@
 				28D41CDA25D403CA008696AC /* Main.storyboard in Resources */,
 				286FF9D825EB239E00AC482A /* TabCell.xib in Resources */,
 				2836663E261A8DFB0094D707 /* PersonalFavoritesController.xib in Resources */,
+				E9CB1DA427609EBB00E130DB /* WebSearchResultsController.xib in Resources */,
 				E905DF3C27391FA700A5CF38 /* DevelopViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -867,6 +888,7 @@
 				282B7EC226ABC6CC00C72A76 /* SettingViewCell.swift in Sources */,
 				28D41CD725D403CA008696AC /* ViewController.swift in Sources */,
 				E918B511271415E500B72381 /* ThemeViewCell.swift in Sources */,
+				E9CB1DA0276098C900E130DB /* LookArtModel.xcdatamodeld in Sources */,
 				286F23C427409DB2003CE4D9 /* TabControllerVM.swift in Sources */,
 				28366653261AD0F30094D707 /* PersonalFavoritesVM.swift in Sources */,
 				282B7EBF26ABC69800C72A76 /* BaseTableViewCell.swift in Sources */,
@@ -896,6 +918,7 @@
 				28E5A9AB25D63BE400750E3B /* TabWebView.swift in Sources */,
 				E905DF3E273A1BD900A5CF38 /* WebUIComponent.swift in Sources */,
 				282B7EBB26ABBF7F00C72A76 /* SettingModel.swift in Sources */,
+				E9CB1DA62760A6D900E130DB /* CoreStoreController.swift in Sources */,
 				28E5A98D25D63A3E00750E3B /* UIApplication_Extension.swift in Sources */,
 				28E5A98A25D63A3E00750E3B /* String_Extension.swift in Sources */,
 				28E5A9A525D63B2B00750E3B /* WebController.swift in Sources */,
@@ -912,6 +935,7 @@
 				E9DD1C2E2684173900586F26 /* SearchBar.swift in Sources */,
 				28366658261AD4E70094D707 /* WebSiteModel.swift in Sources */,
 				28E5A99C25D63A5D00750E3B /* BaseWebView.swift in Sources */,
+				E9CB1DA327609EBB00E130DB /* WebSearchResultsController.swift in Sources */,
 				E918B5092714122100B72381 /* ThemeViewController.swift in Sources */,
 				E905DF3B27391FA700A5CF38 /* DevelopViewController.swift in Sources */,
 				288DF8CF26AB7B2200767F15 /* LookArtActivityController.swift in Sources */,
@@ -1263,6 +1287,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		E9CB1D9E276098C900E130DB /* LookArtModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				E9CB1D9F276098C900E130DB /* LookArtModel.xcdatamodel */,
+			);
+			currentVersion = E9CB1D9F276098C900E130DB /* LookArtModel.xcdatamodel */;
+			path = LookArtModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 28D41CC725D403CA008696AC /* Project object */;
 }
