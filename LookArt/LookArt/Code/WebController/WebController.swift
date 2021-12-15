@@ -67,7 +67,7 @@ class WebController: BaseViewController {
         web.rx.title.subscribe(onNext: { (title) in
             print("webview_rx title: \(String(describing: title))")
             if let url = self.web.url {
-                CoreStoreController.share.insertHistory(url: url.absoluteString, title: title, domain: url.host ?? "", favicon: "favicon.ico")
+                RealmController.share.insertHistory(url: url, title: title)
             }
         }).disposed(by: disposeBag)
 
@@ -104,7 +104,7 @@ class WebController: BaseViewController {
         }.disposed(by: disposeBag)
         web.rx.didFinishNavigation.subscribe { (webview, navigation) in
             print("webview_rx:加载完成")
-            CoreStoreController.share.fetchHistory()
+            RealmController.share.fetchHistory()
         }.disposed(by: disposeBag)
         web.rx.didFailNavigation.subscribe { (webview, navigation, err) in
             print("webview_rx:导航期间发生错误")
@@ -150,7 +150,7 @@ class WebController: BaseViewController {
         let h5Path = Bundle.main.path(forResource: "test_html", ofType: "html")
         print(h5Path)
 //        web.loadFile(fileUrl: URL(fileURLWithPath: h5Path!))
-        CoreStoreController.share.configCoreStore()
+        RealmController.share.configCoreStore()
     }
     
     func gotoBack() {

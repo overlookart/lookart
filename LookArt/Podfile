@@ -13,7 +13,7 @@ target 'LookArt' do
   pod 'RxCocoa', '6.1.0'
   pod 'SwiftyJSON', '~> 4.0'
   pod 'PanModal'
-  pod 'CoreStore', '~> 8.0'
+  pod 'RealmSwift', '~>10'
   pod 'CryptoSwift', '~> 1.4.1'
   target 'LookArtTests' do
     inherit! :search_paths

@@ -108,7 +108,9 @@
 		E9CB1DA0276098C900E130DB /* LookArtModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E9CB1D9E276098C900E130DB /* LookArtModel.xcdatamodeld */; };
 		E9CB1DA327609EBB00E130DB /* WebSearchResultsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CB1DA127609EBB00E130DB /* WebSearchResultsController.swift */; };
 		E9CB1DA427609EBB00E130DB /* WebSearchResultsController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9CB1DA227609EBB00E130DB /* WebSearchResultsController.xib */; };
-		E9CB1DA62760A6D900E130DB /* CoreStoreController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CB1DA52760A6D900E130DB /* CoreStoreController.swift */; };
+		E9CB1DA62760A6D900E130DB /* RealmController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CB1DA52760A6D900E130DB /* RealmController.swift */; };
+		E9CB1DAB2769C36700E130DB /* WebSiteData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CB1DAA2769C36700E130DB /* WebSiteData.swift */; };
+		E9CB1DAD2769CE3000E130DB /* HistoryData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CB1DAC2769CE3000E130DB /* HistoryData.swift */; };
 		E9DD1C29267CA2EA00586F26 /* SettingActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9DD1C28267CA2EA00586F26 /* SettingActivity.swift */; };
 		E9DD1C2E2684173900586F26 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9DD1C2D2684173900586F26 /* SearchBar.swift */; };
 /* End PBXBuildFile section */
@@ -245,7 +247,9 @@
 		E9CB1D9F276098C900E130DB /* LookArtModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LookArtModel.xcdatamodel; sourceTree = "<group>"; };
 		E9CB1DA127609EBB00E130DB /* WebSearchResultsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebSearchResultsController.swift; sourceTree = "<group>"; };
 		E9CB1DA227609EBB00E130DB /* WebSearchResultsController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WebSearchResultsController.xib; sourceTree = "<group>"; };
-		E9CB1DA52760A6D900E130DB /* CoreStoreController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreStoreController.swift; sourceTree = "<group>"; };
+		E9CB1DA52760A6D900E130DB /* RealmController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmController.swift; sourceTree = "<group>"; };
+		E9CB1DAA2769C36700E130DB /* WebSiteData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebSiteData.swift; sourceTree = "<group>"; };
+		E9CB1DAC2769CE3000E130DB /* HistoryData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryData.swift; sourceTree = "<group>"; };
 		E9DD1C28267CA2EA00586F26 /* SettingActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingActivity.swift; sourceTree = "<group>"; };
 		E9DD1C2D2684173900586F26 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -434,7 +438,7 @@
 		28D41D2225D41683008696AC /* Code */ = {
 			isa = PBXGroup;
 			children = (
-				E9CB1D9D2760988100E130DB /* CoreData */,
+				E9CB1D9D2760988100E130DB /* RealmData */,
 				E905DF3827391F6A00A5CF38 /* Develop */,
 				E918B506271411D900B72381 /* Theme */,
 				282B7EC626AC108400C72A76 /* WebComponent */,
@@ -590,13 +594,15 @@
 			path = Theme;
 			sourceTree = "<group>";
 		};
-		E9CB1D9D2760988100E130DB /* CoreData */ = {
+		E9CB1D9D2760988100E130DB /* RealmData */ = {
 			isa = PBXGroup;
 			children = (
 				E9CB1D9E276098C900E130DB /* LookArtModel.xcdatamodeld */,
-				E9CB1DA52760A6D900E130DB /* CoreStoreController.swift */,
+				E9CB1DA52760A6D900E130DB /* RealmController.swift */,
+				E9CB1DAA2769C36700E130DB /* WebSiteData.swift */,
+				E9CB1DAC2769CE3000E130DB /* HistoryData.swift */,
 			);
-			path = CoreData;
+			path = RealmData;
 			sourceTree = "<group>";
 		};
 		E9DD1C27267CA2B800586F26 /* Activity */ = {
@@ -889,6 +895,7 @@
 				28D41CD725D403CA008696AC /* ViewController.swift in Sources */,
 				E918B511271415E500B72381 /* ThemeViewCell.swift in Sources */,
 				E9CB1DA0276098C900E130DB /* LookArtModel.xcdatamodeld in Sources */,
+				E9CB1DAD2769CE3000E130DB /* HistoryData.swift in Sources */,
 				286F23C427409DB2003CE4D9 /* TabControllerVM.swift in Sources */,
 				28366653261AD0F30094D707 /* PersonalFavoritesVM.swift in Sources */,
 				282B7EBF26ABC69800C72A76 /* BaseTableViewCell.swift in Sources */,
@@ -918,7 +925,7 @@
 				28E5A9AB25D63BE400750E3B /* TabWebView.swift in Sources */,
 				E905DF3E273A1BD900A5CF38 /* WebUIComponent.swift in Sources */,
 				282B7EBB26ABBF7F00C72A76 /* SettingModel.swift in Sources */,
-				E9CB1DA62760A6D900E130DB /* CoreStoreController.swift in Sources */,
+				E9CB1DA62760A6D900E130DB /* RealmController.swift in Sources */,
 				28E5A98D25D63A3E00750E3B /* UIApplication_Extension.swift in Sources */,
 				28E5A98A25D63A3E00750E3B /* String_Extension.swift in Sources */,
 				28E5A9A525D63B2B00750E3B /* WebController.swift in Sources */,
@@ -933,6 +940,7 @@
 				2836668A2631C6390094D707 /* WKWebview_Rx.swift in Sources */,
 				2836663D261A8DFB0094D707 /* PersonalFavoritesController.swift in Sources */,
 				E9DD1C2E2684173900586F26 /* SearchBar.swift in Sources */,
+				E9CB1DAB2769C36700E130DB /* WebSiteData.swift in Sources */,
 				28366658261AD4E70094D707 /* WebSiteModel.swift in Sources */,
 				28E5A99C25D63A5D00750E3B /* BaseWebView.swift in Sources */,
 				E9CB1DA327609EBB00E130DB /* WebSearchResultsController.swift in Sources */,

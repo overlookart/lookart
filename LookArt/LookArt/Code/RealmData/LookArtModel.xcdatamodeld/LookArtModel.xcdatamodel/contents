@@ -9,9 +9,10 @@
         <attribute name="favicon" optional="YES" attributeType="String"/>
         <attribute name="title" optional="YES" attributeType="String"/>
         <attribute name="url" optional="YES" attributeType="String"/>
+        <attribute name="urlMD5" optional="YES" attributeType="String"/>
     </entity>
     <elements>
-        <element name="WebSite" positionX="-63" positionY="-18" width="128" height="103"/>
         <element name="History" positionX="254.4991455078125" positionY="-34.98675537109375" width="128" height="73"/>
+        <element name="WebSite" positionX="-63" positionY="-18" width="128" height="104"/>
     </elements>
 </model>
