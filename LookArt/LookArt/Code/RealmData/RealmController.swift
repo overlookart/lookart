@@ -8,6 +8,7 @@
 import Foundation
 import RealmSwift
 import CryptoSwift
+import SwiftyJSON
 class RealmController {
     private static let instance = RealmController()
     class var share: RealmController {
@@ -17,7 +18,7 @@ class RealmController {
    
     let localRealm = try! Realm()
     func configCoreStore() {
-        
+//        Realm.Configuration(fileURL: <#T##URL?#>, inMemoryIdentifier: <#T##String?#>, syncConfiguration: <#T##SyncConfiguration?#>, encryptionKey: <#T##Data?#>, readOnly: <#T##Bool#>, schemaVersion: <#T##UInt64#>, migrationBlock: <#T##MigrationBlock?##MigrationBlock?##(_ migration: Migration, _ oldSchemaVersion: UInt64) -> Void#>, deleteRealmIfMigrationNeeded: <#T##Bool#>, shouldCompactOnLaunch: <#T##((Int, Int) -> Bool)?##((Int, Int) -> Bool)?##(Int, Int) -> Bool#>, objectTypes: <#T##[ObjectBase.Type]?#>)
     }
     
 }
@@ -59,6 +60,7 @@ extension RealmController {
             try! self.localRealm.write({
                 history.openTime = Date()
                 history.website?.update(url: url, title: title,  favicon: "")
+                
             })
             
         }else{
@@ -72,7 +74,11 @@ extension RealmController {
     
     func fetchHistory(){
         let histories = self.localRealm.objects(HistoryData.self)
-        print(histories)
+        
+        
+        let h =  histories.objects(at: IndexSet())
+        let json = JSON(histories)
+        print(json)
     }
     
     func fetchOneHistory(url: String, success: @escaping(Any)->(), failure: @escaping(Error)->()){

@@ -110,6 +110,7 @@
 		E9CB1DA62760A6D900E130DB /* RealmController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CB1DA52760A6D900E130DB /* RealmController.swift */; };
 		E9CB1DAB2769C36700E130DB /* WebSiteData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CB1DAA2769C36700E130DB /* WebSiteData.swift */; };
 		E9CB1DAD2769CE3000E130DB /* HistoryData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CB1DAC2769CE3000E130DB /* HistoryData.swift */; };
+		E9CB1DB227702F4100E130DB /* BaseDataMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CB1DB127702F4100E130DB /* BaseDataMap.swift */; };
 		E9DD1C29267CA2EA00586F26 /* SettingActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9DD1C28267CA2EA00586F26 /* SettingActivity.swift */; };
 		E9DD1C2E2684173900586F26 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9DD1C2D2684173900586F26 /* SearchBar.swift */; };
 /* End PBXBuildFile section */
@@ -248,6 +249,7 @@
 		E9CB1DA52760A6D900E130DB /* RealmController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmController.swift; sourceTree = "<group>"; };
 		E9CB1DAA2769C36700E130DB /* WebSiteData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebSiteData.swift; sourceTree = "<group>"; };
 		E9CB1DAC2769CE3000E130DB /* HistoryData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryData.swift; sourceTree = "<group>"; };
+		E9CB1DB127702F4100E130DB /* BaseDataMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseDataMap.swift; sourceTree = "<group>"; };
 		E9DD1C28267CA2EA00586F26 /* SettingActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingActivity.swift; sourceTree = "<group>"; };
 		E9DD1C2D2684173900586F26 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -598,6 +600,7 @@
 				E9CB1DA52760A6D900E130DB /* RealmController.swift */,
 				E9CB1DAA2769C36700E130DB /* WebSiteData.swift */,
 				E9CB1DAC2769CE3000E130DB /* HistoryData.swift */,
+				E9CB1DB127702F4100E130DB /* BaseDataMap.swift */,
 			);
 			path = RealmData;
 			sourceTree = "<group>";
@@ -892,6 +895,7 @@
 				28D41CD725D403CA008696AC /* ViewController.swift in Sources */,
 				E918B511271415E500B72381 /* ThemeViewCell.swift in Sources */,
 				E9CB1DAD2769CE3000E130DB /* HistoryData.swift in Sources */,
+				E9CB1DB227702F4100E130DB /* BaseDataMap.swift in Sources */,
 				286F23C427409DB2003CE4D9 /* TabControllerVM.swift in Sources */,
 				28366653261AD0F30094D707 /* PersonalFavoritesVM.swift in Sources */,
 				282B7EBF26ABC69800C72A76 /* BaseTableViewCell.swift in Sources */,
