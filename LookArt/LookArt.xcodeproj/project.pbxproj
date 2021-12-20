@@ -105,7 +105,6 @@
 		E92D2C0926E99AA00011B81D /* BaseProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92D2C0826E99AA00011B81D /* BaseProgressView.swift */; };
 		E943FB5026A188B600B67C30 /* UIBaseConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = E943FB4F26A188B600B67C30 /* UIBaseConfig.swift */; };
 		E955AAF226DCE051005FE4EF /* UIProgressView_Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = E955AAF126DCE051005FE4EF /* UIProgressView_Rx.swift */; };
-		E9CB1DA0276098C900E130DB /* LookArtModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E9CB1D9E276098C900E130DB /* LookArtModel.xcdatamodeld */; };
 		E9CB1DA327609EBB00E130DB /* WebSearchResultsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CB1DA127609EBB00E130DB /* WebSearchResultsController.swift */; };
 		E9CB1DA427609EBB00E130DB /* WebSearchResultsController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9CB1DA227609EBB00E130DB /* WebSearchResultsController.xib */; };
 		E9CB1DA62760A6D900E130DB /* RealmController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CB1DA52760A6D900E130DB /* RealmController.swift */; };
@@ -244,7 +243,6 @@
 		E92D2C0826E99AA00011B81D /* BaseProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseProgressView.swift; sourceTree = "<group>"; };
 		E943FB4F26A188B600B67C30 /* UIBaseConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIBaseConfig.swift; sourceTree = "<group>"; };
 		E955AAF126DCE051005FE4EF /* UIProgressView_Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIProgressView_Rx.swift; sourceTree = "<group>"; };
-		E9CB1D9F276098C900E130DB /* LookArtModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LookArtModel.xcdatamodel; sourceTree = "<group>"; };
 		E9CB1DA127609EBB00E130DB /* WebSearchResultsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebSearchResultsController.swift; sourceTree = "<group>"; };
 		E9CB1DA227609EBB00E130DB /* WebSearchResultsController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WebSearchResultsController.xib; sourceTree = "<group>"; };
 		E9CB1DA52760A6D900E130DB /* RealmController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmController.swift; sourceTree = "<group>"; };
@@ -597,7 +595,6 @@
 		E9CB1D9D2760988100E130DB /* RealmData */ = {
 			isa = PBXGroup;
 			children = (
-				E9CB1D9E276098C900E130DB /* LookArtModel.xcdatamodeld */,
 				E9CB1DA52760A6D900E130DB /* RealmController.swift */,
 				E9CB1DAA2769C36700E130DB /* WebSiteData.swift */,
 				E9CB1DAC2769CE3000E130DB /* HistoryData.swift */,
@@ -894,7 +891,6 @@
 				282B7EC226ABC6CC00C72A76 /* SettingViewCell.swift in Sources */,
 				28D41CD725D403CA008696AC /* ViewController.swift in Sources */,
 				E918B511271415E500B72381 /* ThemeViewCell.swift in Sources */,
-				E9CB1DA0276098C900E130DB /* LookArtModel.xcdatamodeld in Sources */,
 				E9CB1DAD2769CE3000E130DB /* HistoryData.swift in Sources */,
 				286F23C427409DB2003CE4D9 /* TabControllerVM.swift in Sources */,
 				28366653261AD0F30094D707 /* PersonalFavoritesVM.swift in Sources */,
@@ -1295,19 +1291,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		E9CB1D9E276098C900E130DB /* LookArtModel.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				E9CB1D9F276098C900E130DB /* LookArtModel.xcdatamodel */,
-			);
-			currentVersion = E9CB1D9F276098C900E130DB /* LookArtModel.xcdatamodel */;
-			path = LookArtModel.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 28D41CC725D403CA008696AC /* Project object */;
 }
