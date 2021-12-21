@@ -9,6 +9,7 @@ import Foundation
 import RealmSwift
 import CryptoSwift
 import SwiftyJSON
+import ObjectMapper
 class RealmController {
     private static let instance = RealmController()
     class var share: RealmController {
@@ -45,6 +46,11 @@ extension RealmController {
         
     }
     
+    func fetchObjects(type: BaseDataMap.Type) -> Results<BaseDataMap>{
+        let result =  self.localRealm.objects(type)
+        return result
+    }
+    
 }
 
 
@@ -72,13 +78,9 @@ extension RealmController {
         
     }
     
-    func fetchHistory(){
-        let histories = self.localRealm.objects(HistoryData.self)
-        
-        
-        let h =  histories.objects(at: IndexSet())
-        let json = JSON(histories)
-        print(json)
+    func fetchHistory()->[HistoryData]{
+        let t =  self.fetchObjects(type: HistoryData.self)
+        return []
     }
     
     func fetchOneHistory(url: String, success: @escaping(Any)->(), failure: @escaping(Error)->()){

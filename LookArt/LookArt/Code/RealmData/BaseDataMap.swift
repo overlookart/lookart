@@ -8,17 +8,10 @@
 import Foundation
 import ObjectMapper
 import RealmSwift
-class BaseDataMap: Object, Mappable {
+class BaseDataMap: Object {
+    @Persisted var defStr: String? = ""
     
     override init() {
         
-    }
-    
-    required init?(map: ObjectMapper.Map) {
-
-    }
-    
-    func mapping(map: ObjectMapper.Map) {
-
     }
 }

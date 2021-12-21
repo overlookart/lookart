@@ -14,6 +14,7 @@ class WebSiteData:BaseDataMap {
     @Persisted var urlMD5: String
     @Persisted var domain: String
     @Persisted var favicon: String
+    
     convenience init(url: URL, title: String?=nil, favicon: String){
         self.init()
         self.urlStr = url.absoluteString
@@ -29,17 +30,6 @@ class WebSiteData:BaseDataMap {
         self.domain = url.host ?? ""
         self.favicon = ((url.scheme ?? "") + "://" + self.domain) + "/favicon.ico"
         self.title = title
-    }
-    required init?(map: ObjectMapper.Map) {
-        super.init(map: map)
-    }
-    override func mapping(map: ObjectMapper.Map) {
-        super.mapping(map: map)
-        title <- map["title"]
-        urlStr <- map["urlStr"]
-        urlMD5 <- map["urlMD5"]
-        domain <- map["domain"]
-        favicon <- map["favicon"]
     }
 }
 

@@ -11,15 +11,10 @@ import ObjectMapper
 class HistoryData: BaseDataMap {
     @Persisted var openTime: Date
     @Persisted var website: WebSiteData?
+
     convenience init(time: Date, website: WebSiteData){
         self.init()
         self.openTime = time
         self.website = website
-    }
-    
-    override func mapping(map: ObjectMapper.Map){
-        super.mapping(map: map)
-        openTime <- map["openTime"]
-        website <- map["website"]
     }
 }
