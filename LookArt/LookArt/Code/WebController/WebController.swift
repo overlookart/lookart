@@ -104,7 +104,6 @@ class WebController: BaseViewController {
         }.disposed(by: disposeBag)
         web.rx.didFinishNavigation.subscribe { (webview, navigation) in
             print("webview_rx:加载完成")
-            RealmController.share.fetchHistory()
         }.disposed(by: disposeBag)
         web.rx.didFailNavigation.subscribe { (webview, navigation, err) in
             print("webview_rx:导航期间发生错误")
@@ -150,7 +149,11 @@ class WebController: BaseViewController {
         let h5Path = Bundle.main.path(forResource: "test_html", ofType: "html")
         print(h5Path)
 //        web.loadFile(fileUrl: URL(fileURLWithPath: h5Path!))
-        RealmController.share.configCoreStore()
+        if RealmController.configRealm() {
+            print("数据库配置成功")
+        }else{
+            print("数据库配置失败")
+        }
     }
     
     func gotoBack() {

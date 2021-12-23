@@ -28,3 +28,10 @@ class WebSearchResultsController: BaseViewController {
     */
 
 }
+
+extension WebSearchResultsController: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        let data =  RealmController.share.fetchHistory()
+        print("搜索结果",data)
+    }
+}

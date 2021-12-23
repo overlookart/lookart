@@ -9,17 +9,14 @@ import UIKit
 
 class WebSearchController: UISearchController {
     
+    init() {
+        super.init(searchResultsController: WebSearchResultsController())
+        setUp()
+    }
+    
     override init(searchResultsController: UIViewController?) {
         super.init(searchResultsController: searchResultsController)
-        self.searchBar.searchBarStyle = .default
-        self.searchBar.placeholder = "搜索或输入网站名称"
-        self.searchBar.barStyle = .default
-//        self.searchBar.setPositionAdjustment(UIOffset(horizontal: 90, vertical: 0), for: .search)
-        self.searchBar.delegate = self
-        self.obscuresBackgroundDuringPresentation = false
-        self.hidesNavigationBarDuringPresentation = false
-        self.delegate = self
-    
+        setUp()
     }
     
     required init?(coder: NSCoder) {
@@ -37,6 +34,20 @@ class WebSearchController: UISearchController {
         
     }
 
+    private func setUp() {
+        self.searchBar.searchBarStyle = .default
+        self.searchBar.placeholder = "搜索或输入网站名称"
+        self.searchBar.barStyle = .default
+//        self.searchBar.setPositionAdjustment(UIOffset(horizontal: 90, vertical: 0), for: .search)
+        self.searchBar.delegate = self
+        self.obscuresBackgroundDuringPresentation = false
+        self.hidesNavigationBarDuringPresentation = false
+        self.delegate = self
+        if let resultVC = self.searchResultsController as? WebSearchResultsController {
+            self.searchResultsUpdater = resultVC
+        }
+    }
+    
     /*
     // MARK: - Navigation
 
@@ -49,7 +60,7 @@ class WebSearchController: UISearchController {
 
 }
 
-extension WebSearchController: UISearchBarDelegate, UISearchControllerDelegate {
+extension WebSearchController:UISearchBarDelegate {
     func searchBarShouldEndEditing(_ searchBar: UISearchBar) -> Bool {
         return true
     }
@@ -68,15 +79,18 @@ extension WebSearchController: UISearchBarDelegate, UISearchControllerDelegate {
         
     }
     
+    
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         print("取消按钮点击")
         self.setEditing(false, animated: true)
     }
-    
+}
+
+extension WebSearchController: UISearchControllerDelegate {
     
     
     func willPresentSearchController(_ searchController: UISearchController) {
-//        self.setNavigationBarVisible(Visible: true)
+        print("将要进入搜索控制器")
     }
     
     func didPresentSearchController(_ searchController: UISearchController) {
@@ -84,7 +98,7 @@ extension WebSearchController: UISearchBarDelegate, UISearchControllerDelegate {
     }
     
     func willDismissSearchController(_ searchController: UISearchController) {
-        
+        print("将要离开搜索控制器")
     }
     
     func didDismissSearchController(_ searchController: UISearchController) {

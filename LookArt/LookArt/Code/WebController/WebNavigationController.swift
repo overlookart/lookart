@@ -92,7 +92,7 @@ class WebNavigationController: BaseNavigationController {
                 print("\\\\\\web 是否加载",webController.web.isLoading)
             }).disposed(by: disposeBag)
             searchbar.titleItem.rx.tap.subscribe(onNext: {
-                self.present(WebSearchController(searchResultsController: nil), animated: true, completion: nil)
+                self.present(WebSearchController(), animated: true, completion: nil)
             }).disposed(by: disposeBag)
         }
     }
