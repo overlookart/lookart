@@ -221,7 +221,7 @@ extension RealmController {
     /// - Returns: 数组
     private func results<object: Object>(_ results: Results<object>) -> [object] {
         if results.count > 0 {
-            let indexset = IndexSet(integer: results.count-1)
+            let indexset = IndexSet(integersIn: results.startIndex ..< results.endIndex)
             return results.objects(at: indexset)
         }else{
             return []
