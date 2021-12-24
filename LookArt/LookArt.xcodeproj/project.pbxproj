@@ -111,6 +111,11 @@
 		E9CB1DAB2769C36700E130DB /* WebSiteData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CB1DAA2769C36700E130DB /* WebSiteData.swift */; };
 		E9CB1DAD2769CE3000E130DB /* HistoryData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CB1DAC2769CE3000E130DB /* HistoryData.swift */; };
 		E9CB1DB227702F4100E130DB /* BaseDataMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CB1DB127702F4100E130DB /* BaseDataMap.swift */; };
+		E9CB1DB52775631E00E130DB /* WebSearchResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CB1DB32775631E00E130DB /* WebSearchResultCell.swift */; };
+		E9CB1DB62775631E00E130DB /* WebSearchResultCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9CB1DB42775631E00E130DB /* WebSearchResultCell.xib */; };
+		E9CB1DB82775A42A00E130DB /* WebSearchResultVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CB1DB72775A42A00E130DB /* WebSearchResultVM.swift */; };
+		E9CB1DBD2775A8B300E130DB /* BaseDataVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CB1DBC2775A8B300E130DB /* BaseDataVM.swift */; };
+		E9CB1DBF2775A98300E130DB /* ModelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CB1DBE2775A98300E130DB /* ModelData.swift */; };
 		E9DD1C29267CA2EA00586F26 /* SettingActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9DD1C28267CA2EA00586F26 /* SettingActivity.swift */; };
 		E9DD1C2E2684173900586F26 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9DD1C2D2684173900586F26 /* SearchBar.swift */; };
 /* End PBXBuildFile section */
@@ -250,6 +255,11 @@
 		E9CB1DAA2769C36700E130DB /* WebSiteData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebSiteData.swift; sourceTree = "<group>"; };
 		E9CB1DAC2769CE3000E130DB /* HistoryData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryData.swift; sourceTree = "<group>"; };
 		E9CB1DB127702F4100E130DB /* BaseDataMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseDataMap.swift; sourceTree = "<group>"; };
+		E9CB1DB32775631E00E130DB /* WebSearchResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebSearchResultCell.swift; sourceTree = "<group>"; };
+		E9CB1DB42775631E00E130DB /* WebSearchResultCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WebSearchResultCell.xib; sourceTree = "<group>"; };
+		E9CB1DB72775A42A00E130DB /* WebSearchResultVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebSearchResultVM.swift; sourceTree = "<group>"; };
+		E9CB1DBC2775A8B300E130DB /* BaseDataVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseDataVM.swift; sourceTree = "<group>"; };
+		E9CB1DBE2775A98300E130DB /* ModelData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelData.swift; sourceTree = "<group>"; };
 		E9DD1C28267CA2EA00586F26 /* SettingActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingActivity.swift; sourceTree = "<group>"; };
 		E9DD1C2D2684173900586F26 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -300,7 +310,6 @@
 				28366642261A91E40094D707 /* PersonalFavoriteCell.swift */,
 				28366643261A91E40094D707 /* PersonalFavoriteCell.xib */,
 				28366652261AD0F30094D707 /* PersonalFavoritesVM.swift */,
-				28366657261AD4E70094D707 /* WebSiteModel.swift */,
 				283666AB264043640094D707 /* ContextMenuPreview.swift */,
 				283666B02640438E0094D707 /* ContextMenuPreview.xib */,
 			);
@@ -438,6 +447,7 @@
 		28D41D2225D41683008696AC /* Code */ = {
 			isa = PBXGroup;
 			children = (
+				E9CB1DB92775A5FE00E130DB /* ModelData */,
 				E9CB1D9D2760988100E130DB /* RealmData */,
 				E905DF3827391F6A00A5CF38 /* Develop */,
 				E918B506271411D900B72381 /* Theme */,
@@ -494,6 +504,9 @@
 				28B6AB8F26194863008F73B2 /* WebSearchController.xib */,
 				E9CB1DA127609EBB00E130DB /* WebSearchResultsController.swift */,
 				E9CB1DA227609EBB00E130DB /* WebSearchResultsController.xib */,
+				E9CB1DB32775631E00E130DB /* WebSearchResultCell.swift */,
+				E9CB1DB42775631E00E130DB /* WebSearchResultCell.xib */,
+				E9CB1DB72775A42A00E130DB /* WebSearchResultVM.swift */,
 			);
 			path = WebController;
 			sourceTree = "<group>";
@@ -603,6 +616,16 @@
 				E9CB1DB127702F4100E130DB /* BaseDataMap.swift */,
 			);
 			path = RealmData;
+			sourceTree = "<group>";
+		};
+		E9CB1DB92775A5FE00E130DB /* ModelData */ = {
+			isa = PBXGroup;
+			children = (
+				E9CB1DBE2775A98300E130DB /* ModelData.swift */,
+				28366657261AD4E70094D707 /* WebSiteModel.swift */,
+				E9CB1DBC2775A8B300E130DB /* BaseDataVM.swift */,
+			);
+			path = ModelData;
 			sourceTree = "<group>";
 		};
 		E9DD1C27267CA2B800586F26 /* Activity */ = {
@@ -753,6 +776,7 @@
 				2836663E261A8DFB0094D707 /* PersonalFavoritesController.xib in Resources */,
 				E9CB1DA427609EBB00E130DB /* WebSearchResultsController.xib in Resources */,
 				E905DF3C27391FA700A5CF38 /* DevelopViewController.xib in Resources */,
+				E9CB1DB62775631E00E130DB /* WebSearchResultCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -883,6 +907,7 @@
 				28E5A98F25D63A3E00750E3B /* WKWebviewConfiguration_Extension.swift in Sources */,
 				288DF8CD26AB717D00767F15 /* UIActivity_Extension.swift in Sources */,
 				28E5A98C25D63A3E00750E3B /* UITextField_Extension.swift in Sources */,
+				E9CB1DBD2775A8B300E130DB /* BaseDataVM.swift in Sources */,
 				E905DF37273904D800A5CF38 /* DevelopeActivity.swift in Sources */,
 				E9DD1C29267CA2EA00586F26 /* SettingActivity.swift in Sources */,
 				E92D2C0926E99AA00011B81D /* BaseProgressView.swift in Sources */,
@@ -919,6 +944,7 @@
 				2836669726402B5E0094D707 /* UIScreen_Extension.swift in Sources */,
 				2836666B261C9A480094D707 /* UICollectionView_Rx.swift in Sources */,
 				28E5A96C25D618B000750E3B /* WebServer.swift in Sources */,
+				E9CB1DB52775631E00E130DB /* WebSearchResultCell.swift in Sources */,
 				28E5A99125D63A3E00750E3B /* UIViewController_Extension.swift in Sources */,
 				E943FB5026A188B600B67C30 /* UIBaseConfig.swift in Sources */,
 				286FF9DD25EB364200AC482A /* TabLayout.swift in Sources */,
@@ -930,6 +956,7 @@
 				28E5A98A25D63A3E00750E3B /* String_Extension.swift in Sources */,
 				28E5A9A525D63B2B00750E3B /* WebController.swift in Sources */,
 				28E5A99D25D63A5D00750E3B /* BaseViewController.swift in Sources */,
+				E9CB1DB82775A42A00E130DB /* WebSearchResultVM.swift in Sources */,
 				28E5A99E25D63A5D00750E3B /* BaseNavigationController.swift in Sources */,
 				282B7ECA26AC1A0200C72A76 /* WebConfigComponent.swift in Sources */,
 				E92D2C0726E1BAA90011B81D /* WebToolBar.swift in Sources */,
@@ -939,6 +966,7 @@
 				E918B50E271415A500B72381 /* ThemeVM.swift in Sources */,
 				2836668A2631C6390094D707 /* WKWebview_Rx.swift in Sources */,
 				2836663D261A8DFB0094D707 /* PersonalFavoritesController.swift in Sources */,
+				E9CB1DBF2775A98300E130DB /* ModelData.swift in Sources */,
 				E9DD1C2E2684173900586F26 /* SearchBar.swift in Sources */,
 				E9CB1DAB2769C36700E130DB /* WebSiteData.swift in Sources */,
 				28366658261AD4E70094D707 /* WebSiteModel.swift in Sources */,

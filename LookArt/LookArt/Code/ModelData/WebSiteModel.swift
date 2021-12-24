@@ -9,9 +9,10 @@ import Foundation
 class WebSiteModel {
     var title: String
     var url: String
-    
-    init(title: String, url: String) {
+    var favicon: String
+    init(title: String, url: String, favicon: String = "") {
         self.title = title
         self.url = url
+        self.favicon = favicon
     }
 }
