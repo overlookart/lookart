@@ -17,6 +17,7 @@ target 'LookArt' do
   pod 'RealmSwift', '~>10'
   pod 'CryptoSwift', '~> 1.4.1'
   pod 'Kingfisher', '~> 7.0'
+  pod 'Cache'
   target 'LookArtTests' do
     inherit! :search_paths
     # Pods for testing
