@@ -2,7 +2,7 @@
 //  HistoryData.swift
 //  LookArt
 //
-//  Created by CaiGou on 2021/12/15.
+//  Created by xzh on 2021/12/15.
 //
 
 import Foundation

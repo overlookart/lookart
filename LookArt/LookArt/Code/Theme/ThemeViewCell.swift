@@ -2,7 +2,7 @@
 //  ThemeViewCell.swift
 //  LookArt
 //
-//  Created by CaiGou on 2021/10/11.
+//  Created by xzh on 2021/10/11.
 //
 
 import UIKit

@@ -38,10 +38,13 @@ class WebSearchController: UISearchController {
         self.searchBar.searchBarStyle = .default
         self.searchBar.placeholder = "搜索或输入网站名称"
         self.searchBar.barStyle = .default
+        self.searchBar.showsSearchResultsButton = true
+        self.searchBar.showsCancelButton = true
 //        self.searchBar.setPositionAdjustment(UIOffset(horizontal: 90, vertical: 0), for: .search)
         self.searchBar.delegate = self
         self.obscuresBackgroundDuringPresentation = false
         self.hidesNavigationBarDuringPresentation = false
+        self.showsSearchResultsController = true
         self.delegate = self
         if let resultVC = self.searchResultsController as? WebSearchResultsController {
             self.searchResultsUpdater = resultVC
@@ -76,7 +79,7 @@ extension WebSearchController:UISearchBarDelegate {
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        
+        print("开始搜索")
     }
     
     

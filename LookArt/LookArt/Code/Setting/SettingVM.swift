@@ -8,7 +8,10 @@
 import Foundation
 import RxSwift
 class SettingVM {
-    let data = Observable.just([SettingModel(title: "主题", defaltImg: "face.dashed.fill")])
+    let data = Observable.just([SettingModel(title: "主题", defaltImg: "face.dashed.fill",
+                                             keyString: "Theme", valueString: ""),
+                                SettingModel(title: "搜索引擎", defaltImg: "opticaldisc",
+                                             keyString:"Engine", valueString: "")])
     
     
     /// 绑定数据

@@ -14,8 +14,14 @@ class SettingModel{
     // 默认图标
     var defaltImg: String? = ""
     
-    init(title: String?, defaltImg: String?) {
+    var keyString: String
+    
+    var valueString: String
+    
+    init(title: String?, defaltImg: String?, keyString: String, valueString: String) {
         self.title = title
         self.defaltImg = defaltImg
+        self.keyString = keyString
+        self.valueString = valueString
     }
 }

@@ -2,7 +2,7 @@
 //  BaseDataMap.swift
 //  LookArt
 //
-//  Created by CaiGou on 2021/12/20.
+//  Created by xzh on 2021/12/20.
 //
 
 import Foundation
