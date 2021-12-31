@@ -24,7 +24,7 @@ class SettingViewController: BaseViewController {
                 self.navigationController?.pushViewController(ThemeViewController(), animated: true)
             }
         }).disposed(by: disposeBag)
-
+        settingMV.updateDataSource()
     }
 
 

@@ -7,23 +7,30 @@
 
 import Foundation
 import RxSwift
-class SettingVM {
-    let data = Observable.just([SettingModel(title: "主题", defaltImg: "face.dashed.fill",
-                                             keyString: "Theme", valueString: ""),
-                                SettingModel(title: "搜索引擎", defaltImg: "opticaldisc",
-                                             keyString:"Engine", valueString: "")])
+import UIKit
+class SettingVM: BaseDataVM<SettingData> {
+    
     
     
     /// 绑定数据
     /// - Parameters:
     ///   - view: tableview
     ///   - disposeBag: 回收站
-    func bindDataSource(view: UITableView, disposeBag: DisposeBag) {
-        data.bind(to: view.rx.items){(tableview, index, model) in
-            let cell = tableview.dequeueReusableCell(withClass: SettingViewCell.self)
-            cell.titleLab.text = model.title
-            cell.imageView?.image = UIImage(systemName: model.defaltImg ?? "")
+    override func bindDataSource(view: UIScrollView, disposeBag: DisposeBag) {
+        guard let tableView = view as? UITableView else { return }
+        data.bind(to: tableView.rx.items) {(view, index, model) in
+            let cell = view.dequeueReusableCell(withClass: SettingViewCell.self)
+            cell.imgView.image = UIImage(systemName: model.type.dateil.defaultIcon)
+            cell.titleLab.text = model.type.dateil.defaultName
             return cell
         }.disposed(by: disposeBag)
     }
+    
+    
+    override func updateDataSource() {
+        self.datasource.append(contentsOf: LookArtData.defaultSetting())
+        data.accept(self.datasource)
+    }
+    
+    
 }

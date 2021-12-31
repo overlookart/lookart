@@ -18,6 +18,7 @@ target 'LookArt' do
   pod 'CryptoSwift', '~> 1.4.1'
   pod 'Kingfisher', '~> 7.0'
   pod 'Cache'
+  pod 'Moya', '~> 15.0'
   target 'LookArtTests' do
     inherit! :search_paths
     # Pods for testing

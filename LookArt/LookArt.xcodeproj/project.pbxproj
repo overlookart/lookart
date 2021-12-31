@@ -119,6 +119,7 @@
 		E9CB1DC2277AE1D800E130DB /* SettingDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CB1DC0277AE1D600E130DB /* SettingDetailViewController.swift */; };
 		E9CB1DC3277AE1D800E130DB /* SettingDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9CB1DC1277AE1D600E130DB /* SettingDetailViewController.xib */; };
 		E9CB1DC5277AE59C00E130DB /* SettingDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CB1DC4277AE59C00E130DB /* SettingDetailModel.swift */; };
+		E9CB1DC7277AF4E300E130DB /* LookArtData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CB1DC6277AF4E300E130DB /* LookArtData.swift */; };
 		E9DD1C29267CA2EA00586F26 /* SettingActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9DD1C28267CA2EA00586F26 /* SettingActivity.swift */; };
 		E9DD1C2E2684173900586F26 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9DD1C2D2684173900586F26 /* SearchBar.swift */; };
 /* End PBXBuildFile section */
@@ -266,6 +267,7 @@
 		E9CB1DC0277AE1D600E130DB /* SettingDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingDetailViewController.swift; sourceTree = "<group>"; };
 		E9CB1DC1277AE1D600E130DB /* SettingDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingDetailViewController.xib; sourceTree = "<group>"; };
 		E9CB1DC4277AE59C00E130DB /* SettingDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingDetailModel.swift; sourceTree = "<group>"; };
+		E9CB1DC6277AF4E300E130DB /* LookArtData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LookArtData.swift; sourceTree = "<group>"; };
 		E9DD1C28267CA2EA00586F26 /* SettingActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingActivity.swift; sourceTree = "<group>"; };
 		E9DD1C2D2684173900586F26 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -633,6 +635,7 @@
 				E9CB1DBE2775A98300E130DB /* ModelData.swift */,
 				28366657261AD4E70094D707 /* WebSiteModel.swift */,
 				E9CB1DBC2775A8B300E130DB /* BaseDataVM.swift */,
+				E9CB1DC6277AF4E300E130DB /* LookArtData.swift */,
 			);
 			path = ModelData;
 			sourceTree = "<group>";
@@ -988,6 +991,7 @@
 				288DF8CF26AB7B2200767F15 /* LookArtActivityController.swift in Sources */,
 				283666AC264043640094D707 /* ContextMenuPreview.swift in Sources */,
 				E9CB1DC2277AE1D800E130DB /* SettingDetailViewController.swift in Sources */,
+				E9CB1DC7277AF4E300E130DB /* LookArtData.swift in Sources */,
 				28E5A99025D63A3E00750E3B /* FileManager_Extension.swift in Sources */,
 				2836664B261A94BB0094D707 /* Importlibrary.swift in Sources */,
 				28366644261A91E40094D707 /* PersonalFavoriteCell.swift in Sources */,
