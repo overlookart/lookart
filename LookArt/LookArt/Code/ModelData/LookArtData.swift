@@ -23,14 +23,12 @@ class LookArtData {
 }
 
 extension LookArtData {
-    static func themeList() -> [ThemeData] {
-        return [ThemeData(type: .Normal), ThemeData(type: .Night),
-                ThemeData(type: .Green), ThemeData(type: .Dark)]
+    static func themeList() -> [ThemeType] {
+        return [.Normal, .Night, .Green, .Dark]
     }
     
-    static func engineList() -> [EngineData] {
-        return [EngineData(type: .Ecosia),EngineData(type: .Bing),
-                EngineData(type: .Sougo),EngineData(type: .Jianshu)]
+    static func engineList() -> [EngineType] {
+        return [.Ecosia, .Bing, .Sougo, .Jianshu]
     }
     
     static func defaultSetting() -> [SettingData] {
@@ -38,13 +36,7 @@ extension LookArtData {
     }
 }
 
-struct ThemeData: Codable {
-    var type: ThemeType
-}
 
-struct EngineData: Codable{
-    var type: EngineType
-}
 
 protocol SettingDetailData{
     var defaultName: String { get }
@@ -126,13 +118,13 @@ extension ThemeType: SettingDetailData {
     var title: String {
         switch self {
             case .Normal:
-                return ""
+                return "默认"
             case .Night:
-                return ""
+                return "夜间"
             case .Green:
-                return ""
+                return "绿色"
             case .Dark:
-                return ""
+                return "暗黑"
         }
     }
     
@@ -172,9 +164,9 @@ extension SettingType: Codable {
     var dateil: SettingDetailData {
         switch self {
             case .Theme:
-                return ThemeData(type: .Normal).type
+                return ThemeType.Normal
             case .Engine:
-                return EngineData(type: .Ecosia).type
+                return EngineType.Ecosia
         }
     }
 }

@@ -1,18 +1,19 @@
 //
-//  BaseTableViewCell.swift
+//  SettingDetailCell.swift
 //  LookArt
 //
-//  Created by xzh on 2021/7/24.
+//  Created by CaiGou on 2021/12/31.
 //
 
 import UIKit
 
-class BaseTableViewCell: UITableViewCell {
+class SettingDetailCell: BaseTableViewCell {
 
+    @IBOutlet weak var imgView: UIImageView!
+    @IBOutlet weak var titleLab: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        setup()
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -20,9 +21,8 @@ class BaseTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    
-    func setup(){
+
+    override func setup() {
         
     }
-    
 }

@@ -6,14 +6,25 @@
 //
 
 import UIKit
-
+import RxSwift
 class SettingDetailViewController: BaseViewController {
-
+    var type: SettingType = .Theme
+    let settingDetailVM = SettingDetailVM()
+    let disposeBag = DisposeBag()
     @IBOutlet weak var mainTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        mainTableView.register(nibWithCellClass: SettingDetailCell.self)
+        settingDetailVM.bindDataSource(view: mainTableView, disposeBag: disposeBag)
+        switch type {
+            case .Theme:
+                settingDetailVM.datasource.append(contentsOf: LookArtData.themeList())
+            case .Engine:
+                settingDetailVM.datasource.append(contentsOf: LookArtData.engineList())
+        }
+        settingDetailVM.updateDataSource()
     }
 
 
