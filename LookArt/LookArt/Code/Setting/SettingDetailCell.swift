@@ -23,6 +23,6 @@ class SettingDetailCell: BaseTableViewCell {
     }
 
     override func setup() {
-        
+        imgView.backgroundColor = UIColor.random
     }
 }

@@ -16,7 +16,7 @@ class SettingViewController: BaseViewController {
         super.viewDidLoad()
         self.title = "设置"
         // Do any additional setup after loading the view.
-        
+        self.tableView.delegate = self
         self.tableView.register(nibWithCellClass: SettingViewCell.self)
         settingMV.bindDataSource(view: self.tableView, disposeBag: self.disposeBag)
         self.tableView.rx.modelSelected(SettingData.self).subscribe(onNext: {settingData in
@@ -25,6 +25,9 @@ class SettingViewController: BaseViewController {
             self.navigationController?.pushViewController(settingDetailVC, animated: true)
         }).disposed(by: disposeBag)
         settingMV.updateDataSource()
+        tableView.separatorInset = UIEdgeInsets(top: 0, left: 55, bottom: 0, right: 0)
+        tableView.separatorInsetReference = .fromAutomaticInsets
+        tableView.separatorStyle = .singleLine
     }
 
 
@@ -47,5 +50,11 @@ extension SettingViewController: PanModalPresentable {
     
     var shortFormHeight: PanModalHeight{
         return .contentHeight(300)
+    }
+}
+
+extension SettingViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 60
     }
 }
