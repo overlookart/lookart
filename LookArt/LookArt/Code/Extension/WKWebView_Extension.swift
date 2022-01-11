@@ -29,4 +29,17 @@ extension WKWebView {
         self.loadFileURL(fileUrl, allowingReadAccessTo: fileUrl)
     }
     
+    
+    /// 配置 user agent
+    /// - Parameter str: 自定义的内容
+    /// - Returns: 结果
+    func configUserAgent(str: String) -> String {
+        var userAgent = self.configuration.applicationNameForUserAgent
+        if let _ = userAgent {
+            userAgent = userAgent?.appending(str)
+            return userAgent!
+        }
+        return "无法获取 configuration.applicationNameForUserAgent"
+    }
+    
 }
