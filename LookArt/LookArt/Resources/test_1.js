@@ -140,9 +140,9 @@
             }else{
                 if ("Night" == currentThemeName) {
                     (function() {
-                        docElement.head.removeEventListener("DOMNodeRemoved", removedNodeHandle);
-                        docElement.documentElement.removeEventListener("DOMNodeRemoved", removedNodeHandle);
-                        var e = docElement.getElementById("take_theme_id");
+                        document.head.removeEventListener("DOMNodeRemoved", removedNodeHandle);
+                        document.documentElement.removeEventListener("DOMNodeRemoved", removedNodeHandle);
+                        var e = document.getElementById("take_theme_id");
                         if (e && e.parentNode){
                             e.parentNode.removeChild(e);
                         }
