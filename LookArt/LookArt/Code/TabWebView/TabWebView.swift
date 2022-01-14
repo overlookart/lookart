@@ -74,10 +74,14 @@ class TabWebView: BaseWebView {
         if let _ = self.webUIComponent {
             self.uiDelegate = self.webUIComponent
         }
+        NotificationCenter.default.addObserver(self, selector: #selector(forceUpdateTheme), name: NSNotification.Name.LookArtThemeDidChange, object: nil)
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
 }
 
@@ -224,5 +228,12 @@ extension TabWebView: WKNavigationDelegate {
         guard let didTerminate = navigationDelegates?.DidTerminate else { return }
         didTerminate()
     }
+    
+    
+    @objc func forceUpdateTheme(){
+        self.evaluateJavaScript("window.__firefox__.forceUpdateTheme()", completionHandler: nil)
+    }
+    
+    
 }
 

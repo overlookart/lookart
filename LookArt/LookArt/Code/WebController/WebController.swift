@@ -219,4 +219,7 @@ class WebController: BaseViewController {
     }
     */
 
+    deinit {
+        
+    }
 }

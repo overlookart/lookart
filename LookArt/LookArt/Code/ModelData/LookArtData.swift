@@ -20,7 +20,7 @@ class LookArtData {
 
 extension LookArtData {
     static func themeList() -> [ThemeType] {
-        return [.Normal, .Night, .Green, .Dark]
+        return [.Normal, .Night, .Green, .Dark, .NigthDark]
     }
     
     static func engineList() -> [EngineType] {
@@ -108,6 +108,7 @@ enum ThemeType {
     case Night
     case Green
     case Dark
+    case NigthDark
 }
 
 extension ThemeType: SettingDetailData {
@@ -130,6 +131,8 @@ extension ThemeType: SettingDetailData {
                 return "绿色"
             case .Dark:
                 return "暗黑"
+            case .NigthDark:
+                return "深夜"
         }
     }
     
@@ -143,6 +146,8 @@ extension ThemeType: SettingDetailData {
                 return ""
             case .Dark:
                 return ""
+            case .NigthDark:
+                return ""
         }
     }
     
@@ -155,6 +160,8 @@ extension ThemeType: SettingDetailData {
             case .Green:
                 return ""
             case .Dark:
+                return ""
+            case .NigthDark:
                 return ""
         }
     }

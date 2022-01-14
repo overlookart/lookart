@@ -64,7 +64,10 @@ extension WebUIComponent: WKUIDelegate {
     func webView(_ webView: WKWebView, runJavaScriptTextInputPanelWithPrompt prompt: String, defaultText: String?, initiatedByFrame frame: WKFrameInfo, completionHandler: @escaping (String?) -> Void) {
         print(prompt);
         if prompt == "_ThemeConfig_" {
-            completionHandler("false==false==true==false")
+            let theme = LookArtData.settingTheme()
+            let themestr = "\(theme == ThemeType.Night)==\(theme == ThemeType.NigthDark)==\(theme == ThemeType.Green)==\(theme == ThemeType.Dark)"
+            print(themestr)
+            completionHandler(themestr)
         }
     }
 }

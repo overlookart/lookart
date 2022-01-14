@@ -30,7 +30,24 @@ class SettingDetailViewController: BaseViewController {
         }
         settingDetailVM.updateDataSource()
         mainTableView.rx.modelSelected(SettingDetailData.self).subscribe(onNext: {data in
-            LookArtData.saveSettingData(data: data)
+            var isShouldSave = false
+            switch data.type {
+                case .Theme:
+                    if LookArtData.settingTheme() != data as! ThemeType {
+                        isShouldSave = true
+                    }
+                    
+                case .Engine:
+                    if LookArtData.settingEngine() != data as! EngineType {
+                        isShouldSave = true
+                    }
+            }
+            if isShouldSave {
+                LookArtData.saveSettingData(data: data)
+                NotificationCenter.default.post(name: Notification.Name.LookArtThemeDidChange, object: nil)
+                
+            }
+            
         }).disposed(by: disposeBag)
         mainTableView.rx.willDisplayCell.subscribe(onNext: {event in
             //1.更新选中状态
