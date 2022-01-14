@@ -6,18 +6,14 @@
 //
 
 import Foundation
-import Cache
-import SwiftUI
+import Disk
 class LookArtData {
-    private static let instance = RealmController()
-    class var share: RealmController {
+    private static let instance = LookArtData()
+    class var share: LookArtData {
         return instance
     }
     
     func config(){
-        let diskConfig = DiskConfig(name: "LookArt.Setting")
-        let memoryConfig = MemoryConfig(expiry: .never, countLimit: 10, totalCostLimit: 10)
-        let storage = try? Storage<String, [SettingData]>(diskConfig: diskConfig, memoryConfig: memoryConfig, transformer: TransformerFactory.forCodable(ofType:Array<SettingData>.self))
         
     }
 }
@@ -31,22 +27,145 @@ extension LookArtData {
         return [.Ecosia, .Bing, .Sougo, .Jianshu]
     }
     
-    static func defaultSetting() -> [SettingData] {
-        return [SettingData(type: .Theme), SettingData(type: .Engine)]
+    
+    
+    
+    /// 储存主题数据
+    /// - Parameter theme: 主题
+    static func saveSettingTheme(theme: ThemeType){
+        do {
+            try Disk.save(theme , to: .caches, as: "Setting/theme.json")
+        } catch let err {
+            print(err)
+        }
+    }
+    
+    /// 储存搜索引擎数据
+    /// - Parameter engine: 搜索引擎
+    static func saveSettingEngine(engine: EngineType) {
+        try! Disk.save(engine, to: .caches, as: "Setting/engine.json")
+    }
+    
+    /// 存储设置数据
+    /// - Parameter data: 设置数据
+    static func saveSettingData(data: SettingDetailData) {
+        switch data.type {
+            case .Theme:
+                LookArtData.saveSettingTheme(theme: data as! ThemeType)
+            case .Engine:
+                LookArtData.saveSettingEngine(engine: data as! EngineType)
+        }
+    }
+    
+    /// 获取设置主题数据
+    /// - Returns: 主题
+    static func settingTheme() -> ThemeType {
+        if let theme = try? Disk.retrieve("Setting/theme.json", from: .caches, as: ThemeType.self) {
+            return theme
+        }else{
+            return ThemeType.Normal
+        }
+    }
+    
+    /// 获取设置搜索引擎数据
+    /// - Returns: 搜索引擎
+    static func settingEngine() -> EngineType {
+        if let engine = try? Disk.retrieve("Setting/engine.json", from: .caches, as: EngineType.self) {
+            return engine
+        }else{
+            return EngineType.Ecosia
+        }
+    }
+    
+    
+    /// 获取设置列表数据
+    /// - Returns: 设置数据
+    static func SettingList() -> [SettingDetailData] {
+        var list: [SettingDetailData] = []
+        list.append(LookArtData.settingTheme())
+        list.append(LookArtData.settingEngine())
+        return list
     }
 }
 
 
 
-protocol SettingDetailData{
+protocol SettingDetailData: Codable{
     var defaultName: String { get }
     var defaultIcon: String { get }
+    var type: SettingType { get }
     var title: String { get }
     var value: String { get }
     var icon: String  { get }
 }
 
-enum EngineType: Codable {
+
+
+// MARK: - theme data core
+
+enum ThemeType {
+    case Normal
+    case Night
+    case Green
+    case Dark
+}
+
+extension ThemeType: SettingDetailData {
+    var defaultName: String {
+        return "主题"
+    }
+    var defaultIcon: String {
+        return "face.dashed.fill"
+    }
+    var type: SettingType {
+        return .Theme
+    }
+    var title: String {
+        switch self {
+            case .Normal:
+                return "默认"
+            case .Night:
+                return "夜间"
+            case .Green:
+                return "绿色"
+            case .Dark:
+                return "暗黑"
+        }
+    }
+    
+    var value: String {
+        switch self {
+            case .Normal:
+                return ""
+            case .Night:
+                return ""
+            case .Green:
+                return ""
+            case .Dark:
+                return ""
+        }
+    }
+    
+    var icon: String {
+        switch self {
+            case .Normal:
+                return ""
+            case .Night:
+                return ""
+            case .Green:
+                return ""
+            case .Dark:
+                return ""
+        }
+    }
+}
+
+
+
+
+// MARK: - engine data core
+
+enum EngineType {
     case Ecosia
     case Bing
     case Sougo
@@ -59,6 +178,9 @@ extension EngineType: SettingDetailData {
     }
     var defaultIcon: String {
         return "opticaldisc"
+    }
+    var type: SettingType {
+        return .Engine
     }
     var title: String {
         switch self {
@@ -100,77 +222,13 @@ extension EngineType: SettingDetailData {
     }
 }
 
-enum ThemeType: Codable {
-    case Normal
-    case Night
-    case Green
-    case Dark
-}
 
-extension ThemeType: SettingDetailData {
-    var defaultName: String {
-        return "主题"
-    }
-    var defaultIcon: String {
-        return "face.dashed.fill"
-    }
-    
-    var title: String {
-        switch self {
-            case .Normal:
-                return "默认"
-            case .Night:
-                return "夜间"
-            case .Green:
-                return "绿色"
-            case .Dark:
-                return "暗黑"
-        }
-    }
-    
-    var value: String {
-        switch self {
-            case .Normal:
-                return ""
-            case .Night:
-                return ""
-            case .Green:
-                return ""
-            case .Dark:
-                return ""
-        }
-    }
-    
-    var icon: String {
-        switch self {
-            case .Normal:
-                return ""
-            case .Night:
-                return ""
-            case .Green:
-                return ""
-            case .Dark:
-                return ""
-        }
-    }
-}
+
+// MARK: - setting data core
 
 enum SettingType {
     case Theme
     case Engine
 }
 
-extension SettingType: Codable {
-    var dateil: SettingDetailData {
-        switch self {
-            case .Theme:
-                return ThemeType.Normal
-            case .Engine:
-                return EngineType.Ecosia
-        }
-    }
-}
 
-struct SettingData: Codable {
-    var type: SettingType
-}

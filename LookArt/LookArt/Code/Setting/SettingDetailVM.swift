@@ -14,7 +14,7 @@ class SettingDetailVM: BaseDataVM<SettingDetailData> {
         guard let tableView = view as? UITableView else { return }
         data.bind(to: tableView.rx.items){(view, index, model) in
             let cell = view.dequeueReusableCell(withClass: SettingDetailCell.self)
-            cell.titleLab.text = model.title
+            cell.setdata(data: model)
             return cell
         }.disposed(by: disposeBag)
     }

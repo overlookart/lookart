@@ -8,7 +8,7 @@
 import Foundation
 import RxSwift
 import UIKit
-class SettingVM: BaseDataVM<SettingData> {
+class SettingVM: BaseDataVM<SettingDetailData> {
     
     
     
@@ -20,15 +20,15 @@ class SettingVM: BaseDataVM<SettingData> {
         guard let tableView = view as? UITableView else { return }
         data.bind(to: tableView.rx.items) {(view, index, model) in
             let cell = view.dequeueReusableCell(withClass: SettingViewCell.self)
-            cell.imgView.image = UIImage(systemName: model.type.dateil.defaultIcon)
-            cell.titleLab.text = model.type.dateil.defaultName
+            cell.imgView.image = UIImage(systemName: model.defaultIcon)
+            cell.titleLab.text = model.defaultName
             return cell
         }.disposed(by: disposeBag)
     }
     
     
     override func updateDataSource() {
-        self.datasource.append(contentsOf: LookArtData.defaultSetting())
+        self.datasource.append(contentsOf: LookArtData.SettingList())
         data.accept(self.datasource)
     }
     

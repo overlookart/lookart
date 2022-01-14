@@ -19,8 +19,8 @@ class SettingViewController: BaseViewController {
         self.tableView.delegate = self
         self.tableView.register(nibWithCellClass: SettingViewCell.self)
         settingMV.bindDataSource(view: self.tableView, disposeBag: self.disposeBag)
-        self.tableView.rx.modelSelected(SettingData.self).subscribe(onNext: {settingData in
-            let settingDetailVC = SettingDetailViewController()
+        self.tableView.rx.modelSelected(SettingDetailData.self).subscribe(onNext: {settingData in
+            let settingDetailVC = SettingDetailViewController() 
             settingDetailVC.type = settingData.type
             self.navigationController?.pushViewController(settingDetailVC, animated: true)
         }).disposed(by: disposeBag)

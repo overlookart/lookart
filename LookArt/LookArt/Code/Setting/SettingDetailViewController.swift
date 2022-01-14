@@ -7,6 +7,7 @@
 
 import UIKit
 import RxSwift
+import RxCocoa
 class SettingDetailViewController: BaseViewController {
     var type: SettingType = .Theme
     let settingDetailVM = SettingDetailVM()
@@ -16,6 +17,9 @@ class SettingDetailViewController: BaseViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        mainTableView.allowsSelection = true
+        mainTableView.allowsMultipleSelection = false
+        mainTableView.delegate = self
         mainTableView.register(nibWithCellClass: SettingDetailCell.self)
         settingDetailVM.bindDataSource(view: mainTableView, disposeBag: disposeBag)
         switch type {
@@ -25,6 +29,17 @@ class SettingDetailViewController: BaseViewController {
                 settingDetailVM.datasource.append(contentsOf: LookArtData.engineList())
         }
         settingDetailVM.updateDataSource()
+        mainTableView.rx.modelSelected(SettingDetailData.self).subscribe(onNext: {data in
+            LookArtData.saveSettingData(data: data)
+        }).disposed(by: disposeBag)
+        mainTableView.rx.willDisplayCell.subscribe(onNext: {event in
+            //1.更新选中状态
+            if let cell = event.cell as? SettingDetailCell {
+                if cell.isDefaultSelected() {
+                    self.mainTableView.selectRow(at: event.indexPath, animated: true, scrollPosition: .none)
+                }
+            }
+        }).disposed(by: disposeBag)
     }
 
 
@@ -38,4 +53,11 @@ class SettingDetailViewController: BaseViewController {
     }
     */
 
+}
+
+
+extension SettingDetailViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+
+    }
 }
