@@ -22,12 +22,14 @@ class SettingVM: BaseDataVM<SettingDetailData> {
             let cell = view.dequeueReusableCell(withClass: SettingViewCell.self)
             cell.imgView.image = UIImage(systemName: model.defaultIcon)
             cell.titleLab.text = model.defaultName
+            cell.detailLab.text = model.title
             return cell
         }.disposed(by: disposeBag)
     }
     
     
     override func updateDataSource() {
+        self.datasource.removeAll()
         self.datasource.append(contentsOf: LookArtData.SettingList())
         data.accept(self.datasource)
     }

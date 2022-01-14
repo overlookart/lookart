@@ -30,7 +30,11 @@ class SettingViewController: BaseViewController {
         tableView.separatorStyle = .singleLine
     }
 
-
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        settingMV.updateDataSource()
+    }
+    
     /*
     // MARK: - Navigation
 

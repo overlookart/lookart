@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -30,16 +30,25 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MLs-DO-kjI">
+                        <rect key="frame" x="262" y="19.5" width="42" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
                     <constraint firstItem="FPu-CC-xwG" firstAttribute="leading" secondItem="waR-Yl-Uza" secondAttribute="trailing" constant="8" id="BmQ-pW-PNb"/>
+                    <constraint firstItem="MLs-DO-kjI" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="EG3-Gt-l16"/>
                     <constraint firstItem="FPu-CC-xwG" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="JqB-Hv-7mD"/>
+                    <constraint firstAttribute="trailing" secondItem="MLs-DO-kjI" secondAttribute="trailing" constant="16" id="YY5-2E-uuf"/>
                     <constraint firstItem="waR-Yl-Uza" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="YYY-d6-Vxt"/>
                     <constraint firstItem="waR-Yl-Uza" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="aYV-lY-yEZ"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="detailLab" destination="MLs-DO-kjI" id="kVa-15-TWP"/>
                 <outlet property="imgView" destination="waR-Yl-Uza" id="Ecf-KX-ith"/>
                 <outlet property="titleLab" destination="FPu-CC-xwG" id="cDR-Rd-8K9"/>
             </connections>

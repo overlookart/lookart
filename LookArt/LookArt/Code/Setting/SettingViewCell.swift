@@ -10,6 +10,7 @@ import UIKit
 class SettingViewCell: BaseTableViewCell {
     @IBOutlet weak var imgView: UIImageView!
     @IBOutlet weak var titleLab: UILabel!
+    @IBOutlet weak var detailLab: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
