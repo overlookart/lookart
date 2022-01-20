@@ -2,14 +2,14 @@
  * @Author: 丫丫的刀了 
  * @Date: 2021-07-31 06:51:27 
  * @Last Modified by: 丫丫的刀了
- * @Last Modified time: 2021-08-25 12:00:08
+ * @Last Modified time: 2022-01-18 16:31:07
  */
 
 !function() {
     console.log("主题脚本---开始");
     "use strict";
     /**
-     * 当前窗口是否为最顶层的窗口 o()
+     * 当前窗口是否为最顶层的窗口 o()
      * @returns isTop
      */
     function isTopWindow() {
@@ -329,9 +329,15 @@
         }(t) : null
     }
     function B() {
-        document.addEventListener("DOMNodeInserted", insertedNodeHandle, !1);
-        for (var e = (document.body ? document.body : document).getElementsByTagName("*"), t = 0; t < e.length; t++)
-            setupTakeThemeAttribute(e[t])
+        //添加插入子节点事件的监听
+        document.addEventListener("DOMNodeInserted", insertedNodeHandle, false);
+        //获取文档节点
+        var docElement = document.body ? document.body : document;
+        //获取所有元素
+        var elements = docElement.getElementsByTagName("*");
+        for (var t = 0; t < elements.length; t++){
+            setupTakeThemeAttribute(elements[t]);
+        }
     }
 
     /**

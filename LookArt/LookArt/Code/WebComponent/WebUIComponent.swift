@@ -65,7 +65,22 @@ extension WebUIComponent: WKUIDelegate {
         print(prompt);
         if prompt == "_ThemeConfig_" {
             let theme = LookArtData.settingTheme()
-            let themestr = "\(theme == ThemeType.Night)==\(theme == ThemeType.NigthDark)==\(theme == ThemeType.Green)==\(theme == ThemeType.Dark)"
+            var isNight = "false"
+            var isNightDark = "false"
+            var isDark = "false"
+            if theme == .Dark {
+                isNight = "true"
+                isNightDark = "true"
+                isDark = "true"
+            }
+            if theme == .NigthDark {
+                isNightDark = "true"
+                isNight = "true"
+            }
+            if theme == .Night {
+                isNight = "true"
+            }
+            let themestr = "\(isNight)==\(isNightDark)==\(theme == ThemeType.Green)==\(isDark)"
             print(themestr)
             completionHandler(themestr)
         }
