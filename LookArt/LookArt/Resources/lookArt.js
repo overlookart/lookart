@@ -9,6 +9,7 @@
     if (!window.lookart){
         window.lookart = {};
     }
+    
     //颜色正则表达式
     //匹配透明颜色
     let rgba_0_Regex  = /rgba\(\s*?\d+?\s*?,\s*?\d+?\s*?,\s*?\d+?\s*?,\s*?0\s*?\)/i;
@@ -69,10 +70,10 @@
     }
 
     /**
-     * 当前窗口是否为最顶层的窗口 o()
+     * 当前窗口是否为根窗口 o()
      * @returns isTop
      */
-     function isTopWindow() {
+     function isRootWindow() {
         try {
             return window.self === window.top;
         } catch (e) {
@@ -504,23 +505,30 @@
         var isNight = "true" == t[0];
         updateTheme(isNight);
     }
-    //脚本所在的window是否是根window
-    if (isTopWindow()) {
-        
-        window.lookart.forceUpdateTheme = function() {
-            clientThemeConfig();
-            if (isTopWindow()){
-                var frams = window.frames;
-                console.log('遍历 frams ',frams.length);
-                for (var t = 0; t < frams.length; t++){
-                    console.log('为 fram 发送更新主题的 message');
-                    frams[t].postMessage('{"alookUpdateTheme":1}', "*");
-                }  
-            }
+    
+    /**
+     * 由客户端发起更新 web 主题
+     */
+  
+    function forceUpdateTheme() {
+        clientThemeConfig();
+        if (isRootWindow()){
+            var frams = window.frames;
+            console.log('遍历 frams ',frams.length);
+            //遍历所有 frams 对其发送更新主题的 message 事件，frame监听到该事件后更新主题
+            for (var t = 0; t < frams.length; t++){
+                console.log('为 fram 发送更新主题的 message');
+                frams[t].postMessage('{"alookUpdateTheme":1}', "*");
+            }  
         }
+    }
+
+    //脚本所在的window是否是根window
+    if (isRootWindow()) {
+        window.lookart.forceUpdateTheme = forceUpdateTheme;
     }else{
         //非根window时，当前window添加messag监听
-        console.log('为 window 添加 message 监听')
+        console.log('为 frams 添加 message 监听')
         window.addEventListener("message", function(event) {
             console.log('收到 message>>>>',event.data);
             if ("string" == typeof(event.data) && -1 != event.data.indexOf("alookUpdateTheme")) {
