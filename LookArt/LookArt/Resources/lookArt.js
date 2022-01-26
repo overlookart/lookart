@@ -140,10 +140,10 @@
         }
      }
      /**
-     * 
+     * 设置主题名称 f()
      * @param {String} themeName 主题名称 
      */
-    function f(themeName) {
+    function setUpThemeName(themeName) {
         console.log('主题---------', themeName);
         width_08 = .8 * window.innerWidth;
         if(currentThemeName != themeName){
@@ -157,7 +157,7 @@
                 var docElement = document.head ? document.head : document.documentElement;
                 docElement.appendChild(nightStyleElement);
                 docElement.addEventListener("DOMNodeRemoved", removedNodeHandle, false);
-                loadStateEventHandle(B);
+                loadStateEventHandle(addTakeThemeAttribute);
             }else{
                 if ("Night" == currentThemeName) {
                     (function() {
@@ -169,7 +169,7 @@
                         }
                     })();
                     if (document.body && document.body.clientWidth){
-                        loadStateEventHandle(L);
+                        loadStateEventHandle(removeTakeThemeAttribute);
                     }
                 }
                 if ("Green" == themeName){
@@ -248,12 +248,41 @@
         }
     }
 
-    function _(e) {
-        if (!e || e.nodeType == Node.TEXT_NODE || e.nodeType == Node.COMMENT_NODE)
+    /**
+     *                 _(e)
+     * @param {Element} element 
+     * @returns 
+     */
+    function _(element) {
+        if (!element || e.nodeType == Node.TEXT_NODE || e.nodeType == Node.COMMENT_NODE) {
             return null;
-        if (tag_sub.test(e.tagName))
+        }
+        if (tag_sub.test(element.tagName)) {
             return null;
+        }
         //方法用于获取指定元素的 CSS 样式
+        var style = window.getComputedStyle(element,null);
+        if (style) {
+            return function(e){
+                //宽度
+                var width = parseInt(e.width, 0);
+                //高度
+                var height = parseInt(e.height, 0);
+                //背景色是否透明
+                var isBgColorAlpha = rgba_0_Regex.test(e.backgroundColor);
+                var a = false;
+                if (rgb_200_regex.test(e.borderColor) || rgb_160_regex.test(e.borderColor)) {
+                    a = true;
+                }
+                
+            }(style)
+        }else{
+            return null;
+        }
+
+
+
+
         var t = window.getComputedStyle(e, null);
         return t ? function(e) {
             var t = parseInt(e.width, 0),
@@ -280,8 +309,11 @@
             return a && (u += " TakeNightModeReplaceBorder"), u
         }(t) : null
     }
-
-    function B() {
+    
+    /**
+     * 为所有元素添加 TakeTheme 属性 B()
+     */
+    function addTakeThemeAttribute() {
         //添加插入子节点事件的监听
         document.addEventListener("DOMNodeInserted", insertedNodeHandle, false);
         //获取文档节点
@@ -359,9 +391,9 @@
     }
 
     /**
-     * 移除 TakeTheme 属性
+     * 移除 TakeTheme 属性 L()
      */
-     function L() {
+     function removeTakeThemeAttribute() {
         //移除 插入元素节点的监听事件
         document.removeEventListener("DOMNodeInserted", insertedNodeHandle, false);
         for (var domElements = document.getElementsByTagName("*"), o = 0; o < domElements.length; ++o) {
@@ -456,9 +488,9 @@
         console.log('------->更新主题样式');
         function t() {
             if (window.lookart.isNightMode) {
-                f("Night");
+                setUpThemeName("Night");
             }else{
-                f(isGreen ?  "Green" : "Normal");
+                setUpThemeName(isGreen ?  "Green" : "Normal");
             }
         }
         
