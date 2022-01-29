@@ -274,7 +274,47 @@
                 if (rgb_200_regex.test(e.borderColor) || rgb_160_regex.test(e.borderColor)) {
                     a = true;
                 }
-                
+                var i = false;
+                var r = false;
+                var d = false;
+                if ("" !== e.backgroundImage && "none" != e.backgroundImage) {
+                    var m = e.backgroundImage;
+                    if (-1 == m.indexOf("url(") && color_key_regex.test(m)) {
+                        i = true;
+                    }else{
+                        var c = e.backgroundRepeat;
+                        if("no-repeat" != c && "repeat" == c && (width_08 < width || 100 < height)){
+                            r = true
+                        }
+                    }
+                }else{
+                    if(isBgColorAlpha && !rgb_200_regex.test(e.backgroundColor) && !rgba_255_regex.test(e.backgroundColor)){
+                        d = true;
+                    }
+                }
+                var u = "";
+                if (isBgColorAlpha) {
+                    if (i) {
+                        u = u + "TakeNightModeReplaceBgLinear";
+                    }else{
+                        if(r){
+                            u = u + " TakeNightDarkBgImage TakeNightModeTransBg";
+                        }else{
+                            u = u + " TakeNightModeTransBg";
+                        }
+                    }
+                }else{
+                    if(i){
+                        u = u + " TakeNightModeReplaceBgLinear";
+                    }else{
+                        if(r){
+                            u = u + " TakeNightModeBackground";
+                        }
+                    }
+                }
+                if(d && (-1 != location.host.indexOf("google.com") && location)){
+
+                }
             }(style)
         }else{
             return null;
