@@ -249,7 +249,7 @@
     }
 
     /**
-     *                 _(e)
+     *  获取特定的主题配置 _(e)
      * @param {Element} element 
      * @returns 
      */
@@ -312,9 +312,19 @@
                         }
                     }
                 }
-                if(d && (-1 != location.host.indexOf("google.com") && location)){
-
+                if(d && (-1 != location.host.indexOf("google.com") && location.search && -1 != location.search.indexOf("tbm=isch"))){
+                    u = u + " TakeNightModeTransBg";
+                }else{
+                    if (width < width_08 && height < 100 && "visible" == e.visibility) {
+                        u = u + "TakeNightModeReplaceBgColorLight";
+                    }else{
+                        u = u + " TakeNightModeReplaceBgColor";
+                    }
                 }
+                if (a) {
+                    u = u + " TakeNightModeReplaceBorder";
+                }
+                return u;
             }(style)
         }else{
             return null;
