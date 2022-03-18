@@ -71,7 +71,7 @@ class WebNavigationController: BaseNavigationController {
             }).disposed(by: disposeBag)
             
             toolbar.actionBtnItem.rx.tap.subscribe(onNext: {
-                let activity = LookArtActivityController(activityItems: [""]);
+                let activity = LookArtActivityController(activityItems: []);
                 self.present(activity, animated: true, completion: nil)
             }).disposed(by: disposeBag)
             

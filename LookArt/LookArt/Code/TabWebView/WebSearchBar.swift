@@ -78,13 +78,6 @@ class WebSearchBar: UINavigationBar {
             make.bottom.equalTo(0)
             make.height.equalTo(40)
         }
-        searchBarBGView.addSubview(progressBar)
-        progressBar.snp.makeConstraints { make in
-            make.bottom.equalTo(0)
-            make.left.equalTo(0)
-            make.right.equalTo(0)
-            make.height.equalTo(2)
-        }
         
         searchBarBGView.addSubview(leftBtn)
         leftBtn.snp.makeConstraints { make in
@@ -114,6 +107,14 @@ class WebSearchBar: UINavigationBar {
             make.right.equalTo(refreshBtn.snp.left)
             make.height.equalTo(40)
             make.centerY.equalTo(searchBarBGView)
+        }
+        
+        searchBarBGView.addSubview(progressBar)
+        progressBar.snp.makeConstraints { make in
+            make.bottom.equalTo(0)
+            make.left.equalTo(0)
+            make.right.equalTo(0)
+            make.height.equalTo(2)
         }
     }
 }
