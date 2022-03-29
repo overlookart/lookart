@@ -123,6 +123,7 @@
 		E9CB1DC7277AF4E300E130DB /* LookArtData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CB1DC6277AF4E300E130DB /* LookArtData.swift */; };
 		E9DD1C29267CA2EA00586F26 /* SettingActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9DD1C28267CA2EA00586F26 /* SettingActivity.swift */; };
 		E9DD1C2E2684173900586F26 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9DD1C2D2684173900586F26 /* SearchBar.swift */; };
+		E9E1A7A827F31B2700B6C566 /* UITabBarController_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E1A7A727F31B2700B6C566 /* UITabBarController_Extension.swift */; };
 		E9EFC7BE2786EAC9006D2752 /* UITableview_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9EFC7BD2786EAC9006D2752 /* UITableview_Extension.swift */; };
 		E9EFC7C827914CFE006D2752 /* NotifiactionName_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9EFC7C727914CFE006D2752 /* NotifiactionName_Extension.swift */; };
 /* End PBXBuildFile section */
@@ -274,6 +275,7 @@
 		E9CB1DC6277AF4E300E130DB /* LookArtData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LookArtData.swift; sourceTree = "<group>"; };
 		E9DD1C28267CA2EA00586F26 /* SettingActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingActivity.swift; sourceTree = "<group>"; };
 		E9DD1C2D2684173900586F26 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
+		E9E1A7A727F31B2700B6C566 /* UITabBarController_Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITabBarController_Extension.swift; sourceTree = "<group>"; };
 		E9EFC7BD2786EAC9006D2752 /* UITableview_Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableview_Extension.swift; sourceTree = "<group>"; };
 		E9EFC7C727914CFE006D2752 /* NotifiactionName_Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotifiactionName_Extension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -534,6 +536,7 @@
 			children = (
 				28366669261C9A170094D707 /* Rx */,
 				28E5A98025D63A3E00750E3B /* String_Extension.swift */,
+				E9E1A7A727F31B2700B6C566 /* UITabBarController_Extension.swift */,
 				2836669626402B5E0094D707 /* UIScreen_Extension.swift */,
 				28E5A98125D63A3E00750E3B /* WKWebView_Extension.swift */,
 				28E5A98225D63A3E00750E3B /* UITextField_Extension.swift */,
@@ -960,6 +963,7 @@
 				286F23C627409F21003CE4D9 /* TabModel.swift in Sources */,
 				E955AAF226DCE051005FE4EF /* UIProgressView_Rx.swift in Sources */,
 				283F7B07260488860055FC7D /* TabController.swift in Sources */,
+				E9E1A7A827F31B2700B6C566 /* UITabBarController_Extension.swift in Sources */,
 				28D41CD325D403CA008696AC /* AppDelegate.swift in Sources */,
 				28BA173425DCB8DB00861E62 /* UINavigationBar_Extension.swift in Sources */,
 				28E5A98E25D63A3E00750E3B /* CollectionView_Extension.swift in Sources */,
