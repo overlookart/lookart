@@ -25,8 +25,15 @@ extension UINavigationController {
     /// 设置NavigationBar的背景色 beat
     /// - Parameter color: 颜色
     func setNavigationBar(BackgroundColor color: UIColor ) {
-        self.navigationBar.backgroundColor = color
-        self.navigationBar.barTintColor = color
+        if #available(iOS 13.0, *) {
+            let appearance = self.navigationBar.standardAppearance
+            appearance.backgroundColor = color
+            appearance.backgroundEffect = nil
+            self.navigationBar.standardAppearance = appearance
+            self.navigationBar.scrollEdgeAppearance = appearance
+        }else{
+            self.navigationBar.backgroundColor = color
+        }
     }
     
     /// 设置是否开启NavigationBar的大标题
