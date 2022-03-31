@@ -124,6 +124,7 @@
 		E9DD1C29267CA2EA00586F26 /* SettingActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9DD1C28267CA2EA00586F26 /* SettingActivity.swift */; };
 		E9DD1C2E2684173900586F26 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9DD1C2D2684173900586F26 /* SearchBar.swift */; };
 		E9E1A7A827F31B2700B6C566 /* UITabBarController_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E1A7A727F31B2700B6C566 /* UITabBarController_Extension.swift */; };
+		E9E1A7B527F5CCE800B6C566 /* AppDebug.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E1A7B427F5CCE800B6C566 /* AppDebug.swift */; };
 		E9EFC7BE2786EAC9006D2752 /* UITableview_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9EFC7BD2786EAC9006D2752 /* UITableview_Extension.swift */; };
 		E9EFC7C827914CFE006D2752 /* NotifiactionName_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9EFC7C727914CFE006D2752 /* NotifiactionName_Extension.swift */; };
 /* End PBXBuildFile section */
@@ -276,6 +277,7 @@
 		E9DD1C28267CA2EA00586F26 /* SettingActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingActivity.swift; sourceTree = "<group>"; };
 		E9DD1C2D2684173900586F26 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		E9E1A7A727F31B2700B6C566 /* UITabBarController_Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITabBarController_Extension.swift; sourceTree = "<group>"; };
+		E9E1A7B427F5CCE800B6C566 /* AppDebug.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDebug.swift; sourceTree = "<group>"; };
 		E9EFC7BD2786EAC9006D2752 /* UITableview_Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableview_Extension.swift; sourceTree = "<group>"; };
 		E9EFC7C727914CFE006D2752 /* NotifiactionName_Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotifiactionName_Extension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -467,6 +469,7 @@
 		28D41D2225D41683008696AC /* Code */ = {
 			isa = PBXGroup;
 			children = (
+				E9E1A7B327F5CCCD00B6C566 /* AppDebug */,
 				E9CB1DB92775A5FE00E130DB /* ModelData */,
 				E9CB1D9D2760988100E130DB /* RealmData */,
 				E905DF3827391F6A00A5CF38 /* Develop */,
@@ -660,6 +663,14 @@
 				E905DF36273904D800A5CF38 /* DevelopeActivity.swift */,
 			);
 			path = Activity;
+			sourceTree = "<group>";
+		};
+		E9E1A7B327F5CCCD00B6C566 /* AppDebug */ = {
+			isa = PBXGroup;
+			children = (
+				E9E1A7B427F5CCE800B6C566 /* AppDebug.swift */,
+			);
+			path = AppDebug;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -991,6 +1002,7 @@
 				28B6AB9026194863008F73B2 /* WebSearchController.swift in Sources */,
 				28E5A99F25D63A5D00750E3B /* BaseView.swift in Sources */,
 				28554D932609C357006CB16A /* WebNavigationController.swift in Sources */,
+				E9E1A7B527F5CCE800B6C566 /* AppDebug.swift in Sources */,
 				E918B50E271415A500B72381 /* ThemeVM.swift in Sources */,
 				2836668A2631C6390094D707 /* WKWebview_Rx.swift in Sources */,
 				2836663D261A8DFB0094D707 /* PersonalFavoritesController.swift in Sources */,

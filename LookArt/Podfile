@@ -19,6 +19,7 @@ target 'LookArt' do
   pod 'Kingfisher', '~> 7.0'
   pod 'Disk'
   pod 'Moya', '~> 15.0'
+  pod 'CocoaDebug', :configurations => ['Debug']
   target 'LookArtTests' do
     inherit! :search_paths
     # Pods for testing
