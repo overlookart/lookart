@@ -7,6 +7,7 @@
 
 import UIKit
 import RxSwift
+import Pastel
 class TabController: UIViewController {
     let tabControllerVM = TabControllerVM()
     let disposeBag = DisposeBag()
@@ -36,12 +37,22 @@ class TabController: UIViewController {
         super.viewDidLoad()
 //        collectionView.backgroundColor = UIColor.random
         collectionView.backgroundColor = UIColor.clear
-        self.backgroundImage()
+//        self.backgroundImage()
+        self.bgImgView.backgroundColor = UIColor.clear
+        let bview = backgroundView()
+        self.view.insertSubview(bview, at: 0)
+        bview.snp.makeConstraints { make in
+            make.top.equalToSuperview()
+            make.left.equalToSuperview()
+            make.right.equalToSuperview()
+            make.bottom.equalToSuperview()
+        }
+        bview.startAnimation()
         registerCellClasses()
         tabControllerVM.bindDataSource(view: collectionView, disposeBag: disposeBag)
         self.collectionView.setCollectionViewLayout(TabGridLayout(), animated: false)
         // Do any additional setup after loading the view.
-        if let firstweb = tabControllerVM.dataSource.first{
+        if let firstweb = tabControllerVM.datasource.first{
             currectWeb = firstweb
         }
 //        collectionView.delegate = self
@@ -55,7 +66,7 @@ class TabController: UIViewController {
     }
     
     private func addTab() {
-        tabControllerVM.addData()
+        tabControllerVM.addModel(TabModel(title: "起始页", image: UIImage(color: .gray, size: CGSize(width: 1, height: 1)), webRoot: WebNavigationController()))
     }
 
     /*
@@ -84,6 +95,13 @@ extension TabController {
         guard let img = UIGraphicsGetImageFromCurrentImageContext() else { return }
         UIGraphicsEndImageContext()
         self.bgImgView.image = img
+    }
+    
+    func backgroundView() -> PastelView{
+        let view = PastelView(frame: .zero)
+        view.animationDuration = 3.0
+        view.setColors([UIColor.random, UIColor.random, UIColor.random, UIColor.random, UIColor.random])
+        return view
     }
 }
 

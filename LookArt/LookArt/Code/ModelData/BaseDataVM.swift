@@ -24,6 +24,32 @@ class BaseDataVM<Model> {
         
     }
     
+    /// 添加一条数据模型
+    /// - Parameter model: 数据模型 泛型
+    func addModel(_ model: Model){
+        
+    }
+    
+    /// 添加一组数据模型
+    /// - Parameter models: 数据模型数组 泛型
+    func addModels(_ models: [Model]){
+        
+    }
+    
+    
+    /// 移除一条数据模型
+    /// - Parameter model: 数据模型 泛型
+    func removeModel(_ model: Model) {
+        
+    }
+    
+    
+    /// 移除一组数据模型
+    /// - Parameter models: 数据模型数组 泛型
+    func removeModels(_ models: [Model]) {
+        
+    }
+    
     /// 更新数据源
     func updateDataSource(){
         

@@ -8,35 +8,29 @@
 import Foundation
 import RxCocoa
 import RxSwift
-class TabControllerVM {
-    private(set) var dataSource: [TabModel] = []
-    let data: BehaviorRelay<[TabModel]>
-    init() {
-        data = BehaviorRelay(value: dataSource)
-        addData()
-    }
+class TabControllerVM: BaseDataVM<TabModel> {
+    
     func bindDataSource(view: UICollectionView, disposeBag: DisposeBag) {
         data.bind(to: view.rx.items) {(collectionView, item, model) in
             let cell = collectionView.dequeueReusableCell(withClass: TabCell.self, for: IndexPath(item: item, section: 0))
             cell.imgView.image = model.image
             cell.closeAction = {
-                self.deleteData(index: item)
+                self.removeModel(model)
             }
             return cell
         }.disposed(by: disposeBag)
     }
     
-    func addData(){
-        let model = TabModel(title: "起始页", image: UIImage(color: UIColor.gray, size: CGSize(width: 1, height: 1)), webRoot: WebNavigationController())
+    override func addModel(_ model: TabModel) {
         model.webRoot.modalPresentationStyle = .fullScreen
-        dataSource.append(model)
-        data.accept(dataSource)
+        datasource.append(model)
+        data.accept(datasource)
     }
     
-    /// 删除一条数据
-    /// - Parameter index: 下标
-    func deleteData(index: Int){
-        dataSource.remove(at: index)
-        data.accept(dataSource)
+    
+    override func removeModel(_ model: TabModel) {
+        datasource.removeAll { m in m == model }
+        data.accept(datasource)
     }
+    
 }
