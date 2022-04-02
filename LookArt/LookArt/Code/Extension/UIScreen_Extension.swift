@@ -25,34 +25,6 @@ extension UIScreen {
         return UIScreen.Bounds().size.height
     }
     
-    //是否为iPhoneX 刘海屏设备
-    class func iPhoneX() -> Bool {
-        if (Int((ScreenHeight()/ScreenWidth())*100) == 216 ||  Int((ScreenWidth()/ScreenHeight())*100) == 216){
-            return true
-        }else {
-            return false
-        }
-        
-    }
-    
-    
-    /// 状态栏高度
-    class func StateBarHeight() -> CGFloat {
-        if iPhoneX() {
-            return 34
-        }else{
-            return 20
-        }
-    }
-    
-    /// 底部安全区域
-    class func BottomSafeHeight() -> CGFloat {
-        if iPhoneX() {
-            return 34
-        }else{
-            return 0
-        }
-    }
     
 //    class func SafeTop() -> CGFloat{
 //        

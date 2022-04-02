@@ -27,6 +27,33 @@ extension UIApplication {
         return UIDevice.current.identifierForVendor?.uuidString
     }
     
+    /// 状态栏高度
+    var stateBarHeight: CGFloat {
+        var height: CGFloat = 0
+        if #available(iOS 13.0, *) {
+            let keyWindow = connectedScenes.map { scene in
+                scene as? UIWindowScene
+            }.compactMap { scene in
+                scene
+            }.first?.windows.first
+            height = keyWindow?.windowScene?.statusBarManager?.statusBarFrame.height ?? 0
+        }else{
+            height = statusBarFrame.height
+        }
+        return height
+    }
+    
+    
+    //是否为iPhoneX 刘海屏设备
+    var iPhoneX: Bool {
+        if stateBarHeight > 20 {
+            return true
+        }else{
+            return false
+        }
+        
+    }
+    
     // 网络mac地址
     var mac: String? {
         if let cfas: NSArray = CNCopySupportedInterfaces() {
