@@ -7,7 +7,6 @@
 
 import UIKit
 import RxSwift
-import Pastel
 class TabController: UIViewController {
     let tabControllerVM = TabControllerVM()
     let disposeBag = DisposeBag()
@@ -37,17 +36,7 @@ class TabController: UIViewController {
         super.viewDidLoad()
 //        collectionView.backgroundColor = UIColor.random
         collectionView.backgroundColor = UIColor.clear
-//        self.backgroundImage()
-        self.bgImgView.backgroundColor = UIColor.clear
-        let bview = backgroundView()
-        self.view.insertSubview(bview, at: 0)
-        bview.snp.makeConstraints { make in
-            make.top.equalToSuperview()
-            make.left.equalToSuperview()
-            make.right.equalToSuperview()
-            make.bottom.equalToSuperview()
-        }
-        bview.startAnimation()
+        self.backgroundImage()
         registerCellClasses()
         tabControllerVM.bindDataSource(view: collectionView, disposeBag: disposeBag)
         self.collectionView.setCollectionViewLayout(TabGridLayout(), animated: false)
@@ -95,13 +84,6 @@ extension TabController {
         guard let img = UIGraphicsGetImageFromCurrentImageContext() else { return }
         UIGraphicsEndImageContext()
         self.bgImgView.image = img
-    }
-    
-    func backgroundView() -> PastelView{
-        let view = PastelView(frame: .zero)
-        view.animationDuration = 3.0
-        view.setColors([UIColor.random, UIColor.random, UIColor.random, UIColor.random, UIColor.random])
-        return view
     }
 }
 
