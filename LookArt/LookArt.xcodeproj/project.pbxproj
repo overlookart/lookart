@@ -94,6 +94,12 @@
 		E905DF3B27391FA700A5CF38 /* DevelopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E905DF3927391FA700A5CF38 /* DevelopViewController.swift */; };
 		E905DF3C27391FA700A5CF38 /* DevelopViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E905DF3A27391FA700A5CF38 /* DevelopViewController.xib */; };
 		E905DF3E273A1BD900A5CF38 /* WebUIComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = E905DF3D273A1BD900A5CF38 /* WebUIComponent.swift */; };
+		E90BA84A2811008D007FA287 /* Rx_MoyaObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90BA8492811008D007FA287 /* Rx_MoyaObject.swift */; };
+		E90BA85128110144007FA287 /* JcttNetWork.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90BA84C28110144007FA287 /* JcttNetWork.swift */; };
+		E90BA85228110144007FA287 /* CheckConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90BA84D28110144007FA287 /* CheckConnection.swift */; };
+		E90BA85328110144007FA287 /* JcttCustomPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90BA84E28110144007FA287 /* JcttCustomPlugin.swift */; };
+		E90BA85428110144007FA287 /* JcaittService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90BA84F28110144007FA287 /* JcaittService.swift */; };
+		E90BA85528110144007FA287 /* JcttCachePlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90BA85028110144007FA287 /* JcttCachePlugin.swift */; };
 		E918B5092714122100B72381 /* ThemeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E918B5072714122100B72381 /* ThemeViewController.swift */; };
 		E918B50C271413BE00B72381 /* ThemeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E918B50B271413BE00B72381 /* ThemeModel.swift */; };
 		E918B50E271415A500B72381 /* ThemeVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = E918B50D271415A500B72381 /* ThemeVM.swift */; };
@@ -247,6 +253,12 @@
 		E905DF3927391FA700A5CF38 /* DevelopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DevelopViewController.swift; sourceTree = "<group>"; };
 		E905DF3A27391FA700A5CF38 /* DevelopViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DevelopViewController.xib; sourceTree = "<group>"; };
 		E905DF3D273A1BD900A5CF38 /* WebUIComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebUIComponent.swift; sourceTree = "<group>"; };
+		E90BA8492811008D007FA287 /* Rx_MoyaObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Rx_MoyaObject.swift; sourceTree = "<group>"; };
+		E90BA84C28110144007FA287 /* JcttNetWork.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JcttNetWork.swift; sourceTree = "<group>"; };
+		E90BA84D28110144007FA287 /* CheckConnection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckConnection.swift; sourceTree = "<group>"; };
+		E90BA84E28110144007FA287 /* JcttCustomPlugin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JcttCustomPlugin.swift; sourceTree = "<group>"; };
+		E90BA84F28110144007FA287 /* JcaittService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JcaittService.swift; sourceTree = "<group>"; };
+		E90BA85028110144007FA287 /* JcttCachePlugin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JcttCachePlugin.swift; sourceTree = "<group>"; };
 		E918B5072714122100B72381 /* ThemeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeViewController.swift; sourceTree = "<group>"; };
 		E918B50B271413BE00B72381 /* ThemeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeModel.swift; sourceTree = "<group>"; };
 		E918B50D271415A500B72381 /* ThemeVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeVM.swift; sourceTree = "<group>"; };
@@ -469,6 +481,7 @@
 		28D41D2225D41683008696AC /* Code */ = {
 			isa = PBXGroup;
 			children = (
+				E90BA84B28110144007FA287 /* NetWork */,
 				E9E1A7B327F5CCCD00B6C566 /* AppDebug */,
 				E9CB1DB92775A5FE00E130DB /* ModelData */,
 				E9CB1D9D2760988100E130DB /* RealmData */,
@@ -620,6 +633,18 @@
 			path = website;
 			sourceTree = "<group>";
 		};
+		E90BA84B28110144007FA287 /* NetWork */ = {
+			isa = PBXGroup;
+			children = (
+				E90BA84C28110144007FA287 /* JcttNetWork.swift */,
+				E90BA84D28110144007FA287 /* CheckConnection.swift */,
+				E90BA84E28110144007FA287 /* JcttCustomPlugin.swift */,
+				E90BA84F28110144007FA287 /* JcaittService.swift */,
+				E90BA85028110144007FA287 /* JcttCachePlugin.swift */,
+			);
+			path = NetWork;
+			sourceTree = "<group>";
+		};
 		E918B506271411D900B72381 /* Theme */ = {
 			isa = PBXGroup;
 			children = (
@@ -647,6 +672,7 @@
 		E9CB1DB92775A5FE00E130DB /* ModelData */ = {
 			isa = PBXGroup;
 			children = (
+				E90BA8492811008D007FA287 /* Rx_MoyaObject.swift */,
 				E9CB1DBE2775A98300E130DB /* ModelData.swift */,
 				28366657261AD4E70094D707 /* WebSiteModel.swift */,
 				E9CB1DBC2775A8B300E130DB /* BaseDataVM.swift */,
@@ -978,6 +1004,7 @@
 				E9CB1DAD2769CE3000E130DB /* HistoryData.swift in Sources */,
 				E9CB1DB227702F4100E130DB /* BaseDataMap.swift in Sources */,
 				286F23C427409DB2003CE4D9 /* TabControllerVM.swift in Sources */,
+				E90BA85428110144007FA287 /* JcaittService.swift in Sources */,
 				28366653261AD0F30094D707 /* PersonalFavoritesVM.swift in Sources */,
 				282B7EBF26ABC69800C72A76 /* BaseTableViewCell.swift in Sources */,
 				282B7EBD26ABC17B00C72A76 /* SettingVM.swift in Sources */,
@@ -994,6 +1021,7 @@
 				283F7B07260488860055FC7D /* TabController.swift in Sources */,
 				E9E1A7A827F31B2700B6C566 /* UITabBarController_Extension.swift in Sources */,
 				28D41CD325D403CA008696AC /* AppDelegate.swift in Sources */,
+				E90BA85128110144007FA287 /* JcttNetWork.swift in Sources */,
 				28BA173425DCB8DB00861E62 /* UINavigationBar_Extension.swift in Sources */,
 				28E5A98E25D63A3E00750E3B /* CollectionView_Extension.swift in Sources */,
 				28D41CD525D403CA008696AC /* SceneDelegate.swift in Sources */,
@@ -1006,17 +1034,20 @@
 				28E5A99125D63A3E00750E3B /* UIViewController_Extension.swift in Sources */,
 				E943FB5026A188B600B67C30 /* UIBaseConfig.swift in Sources */,
 				286FF9DD25EB364200AC482A /* TabLayout.swift in Sources */,
+				E90BA84A2811008D007FA287 /* Rx_MoyaObject.swift in Sources */,
 				28E5A9AB25D63BE400750E3B /* TabWebView.swift in Sources */,
 				E905DF3E273A1BD900A5CF38 /* WebUIComponent.swift in Sources */,
 				E9CB1DA62760A6D900E130DB /* RealmController.swift in Sources */,
 				28E5A98D25D63A3E00750E3B /* UIApplication_Extension.swift in Sources */,
 				28E5A98A25D63A3E00750E3B /* String_Extension.swift in Sources */,
 				28E5A9A525D63B2B00750E3B /* WebController.swift in Sources */,
+				E90BA85528110144007FA287 /* JcttCachePlugin.swift in Sources */,
 				28E5A99D25D63A5D00750E3B /* BaseViewController.swift in Sources */,
 				E9CB1DB82775A42A00E130DB /* WebSearchResultVM.swift in Sources */,
 				28E5A99E25D63A5D00750E3B /* BaseNavigationController.swift in Sources */,
 				282B7ECA26AC1A0200C72A76 /* WebConfigComponent.swift in Sources */,
 				E92D2C0726E1BAA90011B81D /* WebToolBar.swift in Sources */,
+				E90BA85328110144007FA287 /* JcttCustomPlugin.swift in Sources */,
 				28B6AB9026194863008F73B2 /* WebSearchController.swift in Sources */,
 				28E5A99F25D63A5D00750E3B /* BaseView.swift in Sources */,
 				28554D932609C357006CB16A /* WebNavigationController.swift in Sources */,
@@ -1033,6 +1064,7 @@
 				E9CB1DA327609EBB00E130DB /* WebSearchResultsController.swift in Sources */,
 				E918B5092714122100B72381 /* ThemeViewController.swift in Sources */,
 				E905DF3B27391FA700A5CF38 /* DevelopViewController.swift in Sources */,
+				E90BA85228110144007FA287 /* CheckConnection.swift in Sources */,
 				E9BE9A08277ED59400338F6C /* SettingDetailVM.swift in Sources */,
 				288DF8CF26AB7B2200767F15 /* LookArtActivityController.swift in Sources */,
 				283666AC264043640094D707 /* ContextMenuPreview.swift in Sources */,

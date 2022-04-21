@@ -18,7 +18,9 @@ target 'LookArt' do
   pod 'CryptoSwift', '~> 1.4.1'
   pod 'Kingfisher', '~> 7.0'
   pod 'Disk'
-  pod 'Moya', '~> 15.0'
+  pod 'Moya/RxSwift', '~> 15.0'
+  pod 'ReachabilitySwift'
+  pod 'SVProgressHUD'
   pod 'CocoaDebug', :configurations => ['Debug']
   
   target 'LookArtTests' do
