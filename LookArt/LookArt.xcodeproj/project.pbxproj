@@ -152,6 +152,29 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		E90B5A3728125837001F32CC /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E90B5A4828125AC5001F32CC /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		03C4276F12A968BE493CD376 /* Pods-LookArt.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LookArt.debug.xcconfig"; path = "Target Support Files/Pods-LookArt/Pods-LookArt.debug.xcconfig"; sourceTree = "<group>"; };
 		15EF7115A5E5522A72F64341 /* Pods-LookArt-LookArtUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LookArt-LookArtUITests.debug.xcconfig"; path = "Target Support Files/Pods-LookArt-LookArtUITests/Pods-LookArt-LookArtUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -711,6 +734,8 @@
 				28D41CCC25D403CA008696AC /* Frameworks */,
 				28D41CCD25D403CA008696AC /* Resources */,
 				11175C05886B5F100D63D684 /* [CP] Embed Pods Frameworks */,
+				E90B5A3728125837001F32CC /* Embed Frameworks */,
+				E90B5A4828125AC5001F32CC /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
@@ -767,7 +792,7 @@
 		28D41CC725D403CA008696AC /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1230;
+				LastSwiftUpdateCheck = 1310;
 				LastUpgradeCheck = 1230;
 				TargetAttributes = {
 					28D41CCE25D403CA008696AC = {
@@ -1182,6 +1207,7 @@
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				RUN_DOCUMENTATION_COMPILER = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OBJC_BRIDGING_HEADER = "LookArt/LookArt-Bridging-Header.h";
@@ -1237,6 +1263,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
+				RUN_DOCUMENTATION_COMPILER = YES;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OBJC_BRIDGING_HEADER = "LookArt/LookArt-Bridging-Header.h";
@@ -1261,6 +1288,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = zhx.LookArt;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				RUN_DOCUMENTATION_COMPILER = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "LookArt/LookArt-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1283,6 +1311,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = zhx.LookArt;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				RUN_DOCUMENTATION_COMPILER = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "LookArt/LookArt-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

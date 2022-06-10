@@ -2,7 +2,7 @@
  * @Author: 丫丫的刀了 
  * @Date: 2021-07-31 06:51:27 
  * @Last Modified by: 丫丫的刀了
- * @Last Modified time: 2022-01-18 16:31:07
+ * @Last Modified time: 2022-06-10 15:25:19
  */
 
 !function() {
@@ -22,29 +22,19 @@
     window.__firefox__ || (window.__firefox__ = {}),
     window.__firefox__.isNightMode = false;
     
-    /**
-     * 匹配透明颜色 (g)
-     */
+    /* 匹配透明颜色 (g) */
     var rgba_0_Regex = /rgba\(\s*?\d+?\s*?,\s*?\d+?\s*?,\s*?\d+?\s*?,\s*?0\s*?\)/i;
     
-    /**
-     * 匹配 rgb 值为200以上的颜色 (l)
-     */
+    /* 匹配 rgb 值为200以上的颜色 (l) */
     var rgb_200_regex = /rgb\(\s*?2\d{2}\s*?,\s*?2\d{2}\s*?,\s*?2\d{2}\s*?\)/i;
     
-    /**
-     * 匹配 rgb 值为160以上的颜色 (s)
-     */
+    /* 匹配 rgb 值为160以上的颜色 (s) */
     var rgb_160_regex = /rgb\(\s*?1(6|7|8|9)\d\s*?,\s*?1(6|7|8|9)\d\s*?,\s*?1(6|7|8|9)\d\s*?\)/i;
     
-    /**
-     * 匹配 rgb 值为255 白色 (T)
-     */
+    /*匹配 rgb 值为255 白色透明 (T)*/
     var rgba_255_regex = /rgba\(255\, 255\, 255\,/i;
     
-    /**
-     * 匹配颜色关键词 (h)
-     */
+    /* 匹配颜色关键词 (h) */
     var color_key_regex = /rgb|-webkit-gradient/i;
     
     /**
@@ -52,7 +42,7 @@
      * canvas, img, iframe, br, script, noscript, style, meta, link, title
      */
     var tag_key = /\bCANVAS\b|\bIMG\b|\bIFRAME\b|\bBR\b|\bSCRIPT\b|\bNOSCRIPT\b|\bSTYLE\b|\bMETA\b|\bLINK\b|\bTITLE\b/;
-    // (m)
+    
     /**
      * 匹配标签 (m)
      * canvas, img, iframe, br, script
@@ -67,21 +57,14 @@
     // 当前主题名称 (i)
     var currentThemeName = "Normal";
     // r b c 客户端的主题配置
-    /**
-     * 是否为深夜主题 r
-     */
+    /* 是否为深夜主题 r */
     var isNigthDark = false;
-    /**
-     * 是否为绿色主题 b
-     */
+    /* 是否为绿色主题 b */
     var isGreen = false; 
-    /**
-     * 是否为深色主题 c
-     */
+    /* 是否为深色主题 c */
     var isDark = false;
-    /**
-     * document 是否加载结束 u
-     */
+
+    /* document 是否加载结束 u */
     var isLoaded = false;
 
     /**
@@ -95,10 +78,10 @@
     var nightStyleElement = null;
 
     /**
-     * 颜色灰度
-     * @param {*} r 
-     * @param {*} g 
-     * @param {*} b 
+     * > 如果红色、绿色和蓝色值的总和大于 192，则颜色为浅色。不然天黑
+     * @param r - 红色
+     * @param g - 绿色
+     * @param b - 蓝色
      */
     function colorLuma(r, g, b) {
         if(r*0.299 + g*0.578 + b*0.114 >= 192){ 

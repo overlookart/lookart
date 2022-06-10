@@ -47,6 +47,7 @@ class TabController: UIViewController {
 //        collectionView.delegate = self
         collectionView.rx.modelSelected(TabModel.self).subscribe(onNext:{ model in
             self.present(model.webRoot, animated: true, completion: nil)
+            self.currectWeb = model
         }).disposed(by: disposeBag)
     }
 
