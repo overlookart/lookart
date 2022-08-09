@@ -131,6 +131,7 @@
 		E9DD1C2E2684173900586F26 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9DD1C2D2684173900586F26 /* SearchBar.swift */; };
 		E9E1A7A827F31B2700B6C566 /* UITabBarController_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E1A7A727F31B2700B6C566 /* UITabBarController_Extension.swift */; };
 		E9E1A7B527F5CCE800B6C566 /* AppDebug.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E1A7B427F5CCE800B6C566 /* AppDebug.swift */; };
+		E9E6FEC228A1F76600D5209B /* UIImage_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E6FEC128A1F76600D5209B /* UIImage_Extension.swift */; };
 		E9EFC7BE2786EAC9006D2752 /* UITableview_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9EFC7BD2786EAC9006D2752 /* UITableview_Extension.swift */; };
 		E9EFC7C827914CFE006D2752 /* NotifiactionName_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9EFC7C727914CFE006D2752 /* NotifiactionName_Extension.swift */; };
 /* End PBXBuildFile section */
@@ -313,6 +314,7 @@
 		E9DD1C2D2684173900586F26 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		E9E1A7A727F31B2700B6C566 /* UITabBarController_Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITabBarController_Extension.swift; sourceTree = "<group>"; };
 		E9E1A7B427F5CCE800B6C566 /* AppDebug.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDebug.swift; sourceTree = "<group>"; };
+		E9E6FEC128A1F76600D5209B /* UIImage_Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage_Extension.swift; sourceTree = "<group>"; };
 		E9EFC7BD2786EAC9006D2752 /* UITableview_Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableview_Extension.swift; sourceTree = "<group>"; };
 		E9EFC7C727914CFE006D2752 /* NotifiactionName_Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotifiactionName_Extension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -592,6 +594,7 @@
 				282B7ECB26AC223000C72A76 /* WKUserScript_Extension.swift */,
 				E9EFC7BD2786EAC9006D2752 /* UITableview_Extension.swift */,
 				E9EFC7C727914CFE006D2752 /* NotifiactionName_Extension.swift */,
+				E9E6FEC128A1F76600D5209B /* UIImage_Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -1049,6 +1052,7 @@
 				E90BA85128110144007FA287 /* JcttNetWork.swift in Sources */,
 				28BA173425DCB8DB00861E62 /* UINavigationBar_Extension.swift in Sources */,
 				28E5A98E25D63A3E00750E3B /* CollectionView_Extension.swift in Sources */,
+				E9E6FEC228A1F76600D5209B /* UIImage_Extension.swift in Sources */,
 				28D41CD525D403CA008696AC /* SceneDelegate.swift in Sources */,
 				282B7ECC26AC223000C72A76 /* WKUserScript_Extension.swift in Sources */,
 				2836668F263D87FC0094D707 /* Extension_Rx.swift in Sources */,
