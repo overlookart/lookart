@@ -14,6 +14,7 @@ class TabController: UIViewController {
     @IBAction func addTabAction(_ sender: Any) {
         addTab()
     }
+    
     @IBAction func completeAction(_ sender: Any) {
         self.present(currectWeb.webRoot, animated: true, completion: nil)
     }
@@ -21,6 +22,9 @@ class TabController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
 //    private var webs: [WebNavigationController] = []
     
+    
+    /// 切换 layout 按钮事件
+    /// - Parameter sender: <#sender description#>
     @IBAction func layoutAction(_ sender: Any) {
         if let btn: UIButton = sender as? UIButton {
             btn.isSelected = !btn.isSelected
@@ -34,7 +38,6 @@ class TabController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        collectionView.backgroundColor = UIColor.random
         collectionView.backgroundColor = UIColor.clear
         self.backgroundImage()
         registerCellClasses()
@@ -44,7 +47,7 @@ class TabController: UIViewController {
         if let firstweb = tabControllerVM.datasource.first{
             currectWeb = firstweb
         }
-//        collectionView.delegate = self
+
         collectionView.rx.modelSelected(TabModel.self).subscribe(onNext:{ model in
             self.present(model.webRoot, animated: true, completion: nil)
             self.currectWeb = model
@@ -55,8 +58,12 @@ class TabController: UIViewController {
         self.collectionView.register(nibWithCellClass: TabCell.self)
     }
     
+    /// 添加一个新的标签 并且打开该标签
     private func addTab() {
-        tabControllerVM.addModel(TabModel(title: "起始页", image: UIImage(color: .gray, size: CGSize(width: 1, height: 1)), webRoot: WebNavigationController()))
+        let newTabModel = TabModel(title: "起始页", image: UIImage(color: UIColor.random, size: CGSize(width: 1, height: 1)), webRoot: WebNavigationController())
+        tabControllerVM.addModel(newTabModel)
+        currectWeb = newTabModel
+        present(currectWeb.webRoot, animated: true)
     }
 
     /*
