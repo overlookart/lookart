@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="6Md-jy-9Ga">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="6Md-jy-9Ga">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -36,10 +36,10 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9Pg-db-fDl">
                                 <rect key="frame" x="0.0" y="-1" width="414" height="897"/>
                             </imageView>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="d46-LC-weg">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" contentInsetAdjustmentBehavior="always" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="d46-LC-weg">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="818"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="d1c-4F-hgG">
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Enf-eP-U0o">
                                     <size key="itemSize" width="128" height="128"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -92,10 +92,10 @@
                             <constraint firstItem="d46-LC-weg" firstAttribute="top" secondItem="wRz-Og-HBS" secondAttribute="top" id="HfM-Ks-AFr"/>
                             <constraint firstItem="d46-LC-weg" firstAttribute="trailing" secondItem="Hrb-4h-DZj" secondAttribute="trailing" id="IzG-zj-4Vx"/>
                             <constraint firstAttribute="bottom" secondItem="9Pg-db-fDl" secondAttribute="bottom" id="Lq3-1C-5Og"/>
+                            <constraint firstItem="l9d-WS-GOb" firstAttribute="top" secondItem="d46-LC-weg" secondAttribute="bottom" id="WVt-JM-51Q"/>
                             <constraint firstItem="l9d-WS-GOb" firstAttribute="trailing" secondItem="Hrb-4h-DZj" secondAttribute="trailing" id="bPs-0S-Jm9"/>
                             <constraint firstItem="l9d-WS-GOb" firstAttribute="bottom" secondItem="Hrb-4h-DZj" secondAttribute="bottom" id="cPl-Us-5ea"/>
                             <constraint firstItem="9Pg-db-fDl" firstAttribute="leading" secondItem="Hrb-4h-DZj" secondAttribute="leading" id="ddV-8B-bMO"/>
-                            <constraint firstAttribute="bottom" secondItem="d46-LC-weg" secondAttribute="bottom" id="mid-ns-4hP"/>
                         </constraints>
                     </view>
                     <connections>

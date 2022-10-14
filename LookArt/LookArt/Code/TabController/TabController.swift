@@ -7,6 +7,7 @@
 
 import UIKit
 import RxSwift
+import CollectionViewPagingLayout
 class TabController: UIViewController {
     let tabControllerVM = TabControllerVM()
     let disposeBag = DisposeBag()
@@ -42,7 +43,10 @@ class TabController: UIViewController {
         self.backgroundImage()
         registerCellClasses()
         tabControllerVM.bindDataSource(view: collectionView, disposeBag: disposeBag)
-        self.collectionView.setCollectionViewLayout(TabGridLayout(), animated: false)
+        let layout = CollectionViewPagingLayout()
+        
+        layout.scrollDirection = .vertical
+        self.collectionView.setCollectionViewLayout(layout, animated: false)
         // Do any additional setup after loading the view.
         if let firstweb = tabControllerVM.datasource.first{
             currectWeb = firstweb

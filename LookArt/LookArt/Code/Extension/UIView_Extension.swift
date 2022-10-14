@@ -46,4 +46,26 @@ extension UIView {
             completion?(true)
         }
     }
+    
+    
+    func layerAnim(){
+        
+    }
+    
+    
+    /// 暂停 Layer 层动画
+    func pausedLayerAnim(){
+        let pausedTime = layer.convertTime(CACurrentMediaTime(), from: nil)
+        layer.timeOffset = pausedTime
+        layer.speed = 0
+    }
+    
+    /// 开始 Layer 层动画
+    func startLayerAnim(){
+        if let keys = layer.animationKeys(), keys.count > 0  {
+            
+        }else{
+            debugPrint("无 Layer层动画")
+        }
+    }
 }

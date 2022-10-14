@@ -34,5 +34,9 @@ class TabCell: UICollectionViewCell {
         closeAction?()
     }
     
+    override func preferredLayoutAttributesFitting(_ layoutAttributes: UICollectionViewLayoutAttributes) -> UICollectionViewLayoutAttributes {
+        debugPrint("")
+        return super.preferredLayoutAttributesFitting(layoutAttributes)
+    }
 
 }

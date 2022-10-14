@@ -25,15 +25,16 @@ class TabLayout: UICollectionViewFlowLayout {
     /// 当第一次加载布局或者布局失效的时候,会调用该方法,我们要在这里实现具体的布局计算
     override func prepare() {
         super.prepare()
-        print("准备折页布局")
+        debugPrint("准备折页布局")
         self.scrollDirection = .vertical
         print("有几组分区",self.sectionCount)
         print("item Size",self.itemSize)
-        self.itemSize = CGSize(width: 250, height: 450)
+        self.itemSize = CGSize(width: UIScreen.ScreenWidth(), height: 300)
+        
         for sectionIndex in 0 ..< self.sectionCount {
             let sectionInset = sectionInset(for: sectionIndex)
             let sectionMinimumLineSpacing = sectionMinimumLineSpacing(for: sectionIndex)
-            let sectionMinimumItemSpacing = sectionMinimumItemSpacing(for: sectionIndex)
+            let minimumInteritemSpacing = minimumInteritemSpacing(for: sectionIndex)
             
         }
         
@@ -69,13 +70,26 @@ class TabLayout: UICollectionViewFlowLayout {
     /// - Returns: 属性数组
     override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
         guard let controllerView = self.collectionView, let attributes = super.layoutAttributesForElements(in: rect) else { return nil }
+        //
         print("准备好的item",attributes.count)
+        
+        // 滑动偏移 到 collectionView 原点的位置
+        let center = CGPoint(x: controllerView.contentOffset.x + controllerView.width / 2, y: controllerView.contentOffset.y + controllerView.height / 2)
+        
         for attribute in attributes {
-            var perspective = CATransform3DIdentity
-            perspective.m34 = 1/1000
-            //延x轴旋转
-            let rotation = CATransform3DRotate(perspective, RotateAngle*90, 2, 0, 0.0)
-            attribute.transform3D = CATransform3DConcat(rotation, CATransform3DMakeTranslation(0, -10, 0))
+//            var perspective = CATransform3DIdentity
+//            perspective.m34 = 1/1000
+//            //延x轴旋转
+//            let rotation = CATransform3DRotate(perspective, RotateAngle*90, 2, 0, 0.0)
+//            attribute.transform3D = CATransform3DConcat(rotation, CATransform3DMakeTranslation(0, -10, 0))
+            //获取cell中心 到 View 中心位置 距离的绝对值。
+            let distance = CGPoint(x: abs(attribute.center.x - center.x), y: abs(attribute.center.y - center.y))
+            
+            let aprtScale = CGPoint(x: distance.x / controllerView.width, y: distance.y / controllerView.height / 2)
+            
+            let scale = CGPoint(x: abs(cos(aprtScale.x * CGFloat(Double.pi/4))), y: abs(cos(aprtScale.y * CGFloat(Double.pi/4))))
+            
+            attribute.transform = CGAffineTransform(scaleX: scale.x, y: scale.y)
         }
         
         return attributes
@@ -92,22 +106,36 @@ class TabLayout: UICollectionViewFlowLayout {
         let collectionOffset = self.collectionOffset
         
         let attributes = TabLayoutAttributes(forCellWith: indexPath)
-//        attributes.frame = frameForItem(at: indexPath)
+        attributes.frame = frameForItem(at: indexPath)
         
-//        let tilt = ((collectionOffset.y - attributes.frame.minY) / collectionBounds.height)
-//        var perspective = CATransform3DIdentity
-//        perspective.m34 = -2/1000
-//
-//        let rotation = CATransform3DRotate(perspective, (tilt * variationAngle) - defaultAngle, 1.0, 0.0, 0.0)
-//        let translation = CATransform3DMakeTranslation(0.0, collectionBounds.height / -2, 0.0)
-//        attributes.transform3D = CATransform3DConcat(rotation, translation)
-//        attributes.anchorPoint = CGPoint(x: 0.5, y: 0.0)
+        let tilt = ((collectionOffset.y - attributes.frame.minY) / collectionBounds.height)
+        var perspective = CATransform3DIdentity
+        perspective.m34 = -2/1000
 
+        let rotation = CATransform3DRotate(perspective, (tilt * variationAngle) - defaultAngle, 1.0, 0.0, 0.0)
+        let translation = CATransform3DMakeTranslation(0.0, collectionBounds.height / -2, 0.0)
+        attributes.transform3D = CATransform3DConcat(rotation, translation)
         return attributes
     }
     
     public override func shouldInvalidateLayout(forBoundsChange newBounds: CGRect) -> Bool {
         return true
+    }
+    
+    
+    //此方法用来表示 执行的Action和操作的indexPath
+    override func prepare(forCollectionViewUpdates updateItems: [UICollectionViewUpdateItem]) {
+        
+    }
+    
+    //一般用来做insetItem的动画的
+    override func initialLayoutAttributesForAppearingItem(at itemIndexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
+        return super.initialLayoutAttributesForAppearingItem(at: itemIndexPath)
+    }
+    
+    // 一般用来做deleteItem的动画的
+    override func finalLayoutAttributesForDisappearingItem(at itemIndexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
+        return super.finalLayoutAttributesForDisappearingItem(at: itemIndexPath)
     }
     
 }
@@ -119,6 +147,7 @@ extension TabLayout {
         return dataSource.collectionView(view, numberOfItemsInSection: 0)
     }
     
+    /// 分组的数量
     var sectionCount: Int {
         guard let view = collectionView else {return 0}
         return view.numberOfSections
@@ -159,7 +188,7 @@ extension TabLayout {
     /// 分组的最小(水平行间距，竖直列间距)
     /// - Parameter section: 分组下标
     /// - Returns: 最小间距
-    func sectionMinimumItemSpacing(for section: Int) -> CGFloat {
+    func minimumInteritemSpacing(for section: Int) -> CGFloat {
         guard let view = collectionView, let space = (view.delegate as? UICollectionViewDelegateFlowLayout)?.collectionView?(view, layout: self, minimumInteritemSpacingForSectionAt: section) else { return 0 }
         return space
     }

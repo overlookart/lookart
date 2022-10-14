@@ -21,6 +21,7 @@ target 'LookArt' do
   pod 'Moya/RxSwift', '~> 15.0'
   pod 'ReachabilitySwift'
   pod 'SVProgressHUD'
+  pod 'CollectionViewPagingLayout'
   pod 'CocoaDebug', :configurations => ['Debug']
   
   target 'LookArtTests' do

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -11,7 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="TabCell" customModule="LookArt" customModuleProvider="target">
+        <collectionViewCell opaque="NO" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="TabCell" customModule="LookArt" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="100" height="200"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -62,11 +62,21 @@
                         </constraints>
                         <blurEffect style="light"/>
                     </visualEffectView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p2H-Ko-DiJ">
+                        <rect key="frame" x="-200" y="99.5" width="500" height="1"/>
+                        <color key="backgroundColor" systemColor="systemRedColor"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="500" id="rfD-Jp-mbZ"/>
+                            <constraint firstAttribute="height" constant="1" id="xvs-As-xJH"/>
+                        </constraints>
+                    </view>
                 </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <constraints>
+                <constraint firstItem="p2H-Ko-DiJ" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="5PI-t8-W31"/>
                 <constraint firstAttribute="bottom" secondItem="NEH-ZZ-Ko3" secondAttribute="bottom" id="Bkb-Qs-bp9"/>
+                <constraint firstItem="p2H-Ko-DiJ" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="Ew7-xY-IcR"/>
                 <constraint firstAttribute="trailing" secondItem="NmX-Md-s4v" secondAttribute="trailing" id="IJg-Tb-ek3"/>
                 <constraint firstAttribute="trailing" secondItem="NEH-ZZ-Ko3" secondAttribute="trailing" id="L8V-ge-4Pk"/>
                 <constraint firstItem="NmX-Md-s4v" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="QBo-uq-eSB"/>
@@ -86,6 +96,9 @@
         <image name="xmark" catalog="system" width="128" height="113"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
