@@ -29,11 +29,6 @@ class TabController: UIViewController {
     @IBAction func layoutAction(_ sender: Any) {
         if let btn: UIButton = sender as? UIButton {
             btn.isSelected = !btn.isSelected
-            if btn.isSelected {
-                collectionView.setCollectionViewLayout(TabGridLayout(), animated: true)
-            }else{
-                collectionView.setCollectionViewLayout(TabLayout(), animated: true)
-            }
         }
     }
     
@@ -44,14 +39,13 @@ class TabController: UIViewController {
         registerCellClasses()
         tabControllerVM.bindDataSource(view: collectionView, disposeBag: disposeBag)
         let layout = CollectionViewPagingLayout()
-        
-        layout.scrollDirection = .vertical
+        layout.scrollDirection = .horizontal
         self.collectionView.setCollectionViewLayout(layout, animated: false)
         // Do any additional setup after loading the view.
         if let firstweb = tabControllerVM.datasource.first{
             currectWeb = firstweb
         }
-
+        
         collectionView.rx.modelSelected(TabModel.self).subscribe(onNext:{ model in
             self.present(model.webRoot, animated: true, completion: nil)
             self.currectWeb = model
@@ -67,7 +61,11 @@ class TabController: UIViewController {
         let newTabModel = TabModel(title: "起始页", image: UIImage(color: UIColor.random, size: CGSize(width: 1, height: 1)), webRoot: WebNavigationController())
         tabControllerVM.addModel(newTabModel)
         currectWeb = newTabModel
-        present(currectWeb.webRoot, animated: true)
+        if let layout = collectionView.collectionViewLayout as? CollectionViewPagingLayout {
+            layout.setCurrentPage(tabControllerVM.datasource.count - 1)
+        }
+        
+//        present(currectWeb.webRoot, animated: true)
     }
 
     /*

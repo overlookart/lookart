@@ -33,11 +33,8 @@
 		286967EF26B0590400956BA1 /* test_1.js in Resources */ = {isa = PBXBuildFile; fileRef = 286967EE26B0590400956BA1 /* test_1.js */; };
 		286F23C427409DB2003CE4D9 /* TabControllerVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 286F23C327409DB2003CE4D9 /* TabControllerVM.swift */; };
 		286F23C627409F21003CE4D9 /* TabModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 286F23C527409F21003CE4D9 /* TabModel.swift */; };
-		286F23C827410230003CE4D9 /* TabGridLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 286F23C727410230003CE4D9 /* TabGridLayout.swift */; };
 		286FF9D725EB239E00AC482A /* TabCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 286FF9D525EB239E00AC482A /* TabCell.swift */; };
 		286FF9D825EB239E00AC482A /* TabCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 286FF9D625EB239E00AC482A /* TabCell.xib */; };
-		286FF9DD25EB364200AC482A /* TabLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 286FF9DC25EB364200AC482A /* TabLayout.swift */; };
-		286FF9EC25F6316000AC482A /* TabLayoutAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 286FF9EB25F6316000AC482A /* TabLayoutAttributes.swift */; };
 		288DF8CD26AB717D00767F15 /* UIActivity_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288DF8CC26AB717D00767F15 /* UIActivity_Extension.swift */; };
 		288DF8CF26AB7B2200767F15 /* LookArtActivityController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288DF8CE26AB7B2200767F15 /* LookArtActivityController.swift */; };
 		288DF8D326AB806100767F15 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288DF8D126AB806100767F15 /* SettingViewController.swift */; };
@@ -206,11 +203,8 @@
 		286967EE26B0590400956BA1 /* test_1.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = test_1.js; sourceTree = "<group>"; };
 		286F23C327409DB2003CE4D9 /* TabControllerVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabControllerVM.swift; sourceTree = "<group>"; };
 		286F23C527409F21003CE4D9 /* TabModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabModel.swift; sourceTree = "<group>"; };
-		286F23C727410230003CE4D9 /* TabGridLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabGridLayout.swift; sourceTree = "<group>"; };
 		286FF9D525EB239E00AC482A /* TabCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabCell.swift; sourceTree = "<group>"; };
 		286FF9D625EB239E00AC482A /* TabCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TabCell.xib; sourceTree = "<group>"; };
-		286FF9DC25EB364200AC482A /* TabLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabLayout.swift; sourceTree = "<group>"; };
-		286FF9EB25F6316000AC482A /* TabLayoutAttributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabLayoutAttributes.swift; sourceTree = "<group>"; };
 		288DF8CC26AB717D00767F15 /* UIActivity_Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIActivity_Extension.swift; sourceTree = "<group>"; };
 		288DF8CE26AB7B2200767F15 /* LookArtActivityController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LookArtActivityController.swift; sourceTree = "<group>"; };
 		288DF8D126AB806100767F15 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
@@ -396,12 +390,9 @@
 			children = (
 				286FF9D525EB239E00AC482A /* TabCell.swift */,
 				286FF9D625EB239E00AC482A /* TabCell.xib */,
-				286FF9DC25EB364200AC482A /* TabLayout.swift */,
-				286FF9EB25F6316000AC482A /* TabLayoutAttributes.swift */,
 				283F7B05260488860055FC7D /* TabController.swift */,
 				286F23C327409DB2003CE4D9 /* TabControllerVM.swift */,
 				286F23C527409F21003CE4D9 /* TabModel.swift */,
-				286F23C727410230003CE4D9 /* TabGridLayout.swift */,
 			);
 			path = TabController;
 			sourceTree = "<group>";
@@ -1023,7 +1014,6 @@
 				28E5A9BA25D6468600750E3B /* WebConfig.swift in Sources */,
 				288DF8D326AB806100767F15 /* SettingViewController.swift in Sources */,
 				28E5A99325D63A3E00750E3B /* UIView_Extension.swift in Sources */,
-				286FF9EC25F6316000AC482A /* TabLayoutAttributes.swift in Sources */,
 				28E5A99225D63A3E00750E3B /* UINavigationController_Extension.swift in Sources */,
 				282B7EC226ABC6CC00C72A76 /* SettingViewCell.swift in Sources */,
 				28D41CD725D403CA008696AC /* ViewController.swift in Sources */,
@@ -1041,7 +1031,6 @@
 				282B7EC826AC10C700C72A76 /* WebScriptComponent.swift in Sources */,
 				286FF9D725EB239E00AC482A /* TabCell.swift in Sources */,
 				288DF8D626AB875F00767F15 /* UIWindow_Extension.swift in Sources */,
-				286F23C827410230003CE4D9 /* TabGridLayout.swift in Sources */,
 				E9EFC7BE2786EAC9006D2752 /* UITableview_Extension.swift in Sources */,
 				28E5A98B25D63A3E00750E3B /* WKWebView_Extension.swift in Sources */,
 				286F23C627409F21003CE4D9 /* TabModel.swift in Sources */,
@@ -1062,7 +1051,6 @@
 				E9CB1DB52775631E00E130DB /* WebSearchResultCell.swift in Sources */,
 				28E5A99125D63A3E00750E3B /* UIViewController_Extension.swift in Sources */,
 				E943FB5026A188B600B67C30 /* UIBaseConfig.swift in Sources */,
-				286FF9DD25EB364200AC482A /* TabLayout.swift in Sources */,
 				E90BA84A2811008D007FA287 /* Rx_MoyaObject.swift in Sources */,
 				28E5A9AB25D63BE400750E3B /* TabWebView.swift in Sources */,
 				E905DF3E273A1BD900A5CF38 /* WebUIComponent.swift in Sources */,

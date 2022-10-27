@@ -6,10 +6,12 @@
 //
 
 import UIKit
-
-class TabCell: UICollectionViewCell {
+import CollectionViewPagingLayout
+class TabCell: UICollectionViewCell{
 
     var closeAction: (() -> Void)?
+    
+    
     
     @IBOutlet weak var titleLab: UILabel!
     @IBOutlet weak var imgView: UIImageView!
@@ -18,25 +20,38 @@ class TabCell: UICollectionViewCell {
         super.awakeFromNib()
         // Initialization code
         self.contentView.cornerRadius = 8
-        
     }
     
     override func apply(_ layoutAttributes: UICollectionViewLayoutAttributes) {
         super.apply(layoutAttributes)
-//        if let attributes = layoutAttributes as? TabLayoutAttributes {
-//            self.layer.anchorPoint = attributes.anchorPoint
-//        }else{
-//            self.layer.anchorPoint = CGPoint(x: 0.5, y: 0.5)
-//        }
+
     }
     
     @IBAction func closeBtnAction(_ sender: Any) {
         closeAction?()
+
     }
     
     override func preferredLayoutAttributesFitting(_ layoutAttributes: UICollectionViewLayoutAttributes) -> UICollectionViewLayoutAttributes {
-        debugPrint("")
         return super.preferredLayoutAttributesFitting(layoutAttributes)
     }
-
 }
+
+
+
+// MARK: - CollectionViewPagingLayout
+extension TabCell: ScaleTransformView{
+    
+    var selectableView: UIView? {
+        return nil
+    }
+    
+    var scalableView: UIView {
+        return contentView
+    }
+    
+    var scaleOptions: ScaleTransformViewOptions{
+        return .layout(.coverFlow)
+    }
+}
+
