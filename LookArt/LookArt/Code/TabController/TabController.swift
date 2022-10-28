@@ -40,16 +40,23 @@ class TabController: UIViewController {
         tabControllerVM.bindDataSource(view: collectionView, disposeBag: disposeBag)
         let layout = CollectionViewPagingLayout()
         layout.scrollDirection = .horizontal
-        self.collectionView.setCollectionViewLayout(layout, animated: false)
+        collectionView.setCollectionViewLayout(layout, animated: false)
+        collectionView.isPagingEnabled = true
         // Do any additional setup after loading the view.
         if let firstweb = tabControllerVM.datasource.first{
             currectWeb = firstweb
         }
         
         collectionView.rx.modelSelected(TabModel.self).subscribe(onNext:{ model in
-            self.present(model.webRoot, animated: true, completion: nil)
-            self.currectWeb = model
+//            self.currectWeb = model
+//            self.present(model.webRoot, animated: true, completion: nil)
+            debugPrint("CollectionView Rx modelSelected")
         }).disposed(by: disposeBag)
+        
+        collectionView.rx.itemSelected.subscribe(onNext: {indexPath in
+            debugPrint("CollectionView Rx itemSelected")
+        }).disposed(by: disposeBag)
+        
     }
 
     private func registerCellClasses() {
@@ -59,12 +66,15 @@ class TabController: UIViewController {
     /// 添加一个新的标签 并且打开该标签
     private func addTab() {
         let newTabModel = TabModel(title: "起始页", image: UIImage(color: UIColor.random, size: CGSize(width: 1, height: 1)), webRoot: WebNavigationController())
-        tabControllerVM.addModel(newTabModel)
-        currectWeb = newTabModel
-        if let layout = collectionView.collectionViewLayout as? CollectionViewPagingLayout {
-            layout.setCurrentPage(tabControllerVM.datasource.count - 1)
+        collectionView.performBatchUpdates {
+            tabControllerVM.addModel(newTabModel)
+        } completion: { isFinish in
+            if let layout = self.collectionView.collectionViewLayout as? CollectionViewPagingLayout {
+                layout.setCurrentPage(self.tabControllerVM.datasource.count - 1)
+            }
         }
-        
+
+        currectWeb = newTabModel
 //        present(currectWeb.webRoot, animated: true)
     }
 

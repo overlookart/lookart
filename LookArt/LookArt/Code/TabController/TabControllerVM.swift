@@ -20,7 +20,16 @@ class TabControllerVM: BaseDataVM<TabModel> {
             let cell = collectionView.dequeueReusableCell(withClass: TabCell.self, for: indexPath)
             cell.imgView.image = model.image
             cell.closeAction = {
-                self.removeModel(model)
+                
+                
+                self.collectionView?.performBatchUpdates({
+                    self.removeModel(model)
+                }, completion: { isFinish in
+                    if let layout = self.collectionView?.collectionViewLayout as? CollectionViewPagingLayout {
+                        layout.invalidateLayoutInBatchUpdate()
+                    }
+                })
+                
             }
             return cell
         }.disposed(by: disposeBag)
@@ -36,15 +45,8 @@ class TabControllerVM: BaseDataVM<TabModel> {
     override func removeModel(_ model: TabModel) {
         guard let removeIndex = datasource.firstIndex(of: model) else { return }
         debugPrint(removeIndex)
-        
         self.datasource.removeAll { m in m == model }
         self.data.accept(self.datasource)
-        DispatchQueue.main.async {
-            if let layout = self.collectionView?.collectionViewLayout as? CollectionViewPagingLayout {
-                layout.invalidateLayoutInBatchUpdate(invalidateOffset: true)
-            }
-        }
-        
     }
     
 }
