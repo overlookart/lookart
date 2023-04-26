@@ -12,9 +12,14 @@ class LookArtActivityController: UIActivityViewController {
     private let setting = SettingActivity()
     private let develop = DevelopeActivity()
     
-    init(activityItems: [Any]) {
-        super.init(activityItems: activityItems, applicationActivities: [setting,develop])
+    init() {
+        super.init(activityItems: [], applicationActivities: [setting,develop])
     }
+    
+    override init(activityItems: [Any], applicationActivities: [UIActivity]?) {
+        super.init(activityItems: activityItems, applicationActivities: applicationActivities)
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()

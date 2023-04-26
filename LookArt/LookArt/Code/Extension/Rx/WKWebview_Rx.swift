@@ -49,13 +49,6 @@ extension Reactive where Base: WKWebView {
             let action = try castOrThrow(WKNavigationAction.self, args[1])
             let closureObject = args[2] as AnyObject
             
-//            var mutableArgs = args
-//            mutableArgs.withUnsafeMutableBufferPointer { ptr in
-//                closureObject = ptr[2] as AnyObject
-//
-//            }
-//            let __actionBlockPtr = UnsafeRawPointer(Unmanaged<AnyObject>.passUnretained(closureObject).toOpaque())
-            
             // block 与 closure 的转化
             typealias Block_ActionHandler = @convention(block) (WKNavigationActionPolicy) -> ()
             let actionHandler = unsafeBitCast(closureObject, to: Block_ActionHandler.self)

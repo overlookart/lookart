@@ -76,7 +76,9 @@ class WebController: BaseViewController {
 //            self.searchBar.updateHost(host: url?.host);
         }).disposed(by: disposeBag)
 
-
+        web.rx.didCommit.subscribe { event in
+            
+        }.disposed(by: disposeBag)
         
         web.rx.decidePolicyForNavigationAction.subscribe { (webview, action, handler) in
             print("webview_rx:是否允许导航")
