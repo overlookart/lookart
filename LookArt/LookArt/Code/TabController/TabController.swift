@@ -48,8 +48,8 @@ class TabController: UIViewController {
         }
         
         collectionView.rx.modelSelected(TabModel.self).subscribe(onNext:{ model in
-//            self.currectWeb = model
-//            self.present(model.webRoot, animated: true, completion: nil)
+            self.currectWeb = model
+            self.present(model.webRoot, animated: true, completion: nil)
             debugPrint("CollectionView Rx modelSelected")
         }).disposed(by: disposeBag)
         
@@ -66,13 +66,15 @@ class TabController: UIViewController {
     /// 添加一个新的标签 并且打开该标签
     private func addTab() {
         let newTabModel = TabModel(title: "起始页", image: UIImage(color: UIColor.random, size: CGSize(width: 1, height: 1)), webRoot: WebNavigationController())
-        collectionView.performBatchUpdates {
-            tabControllerVM.addModel(newTabModel)
-        } completion: { isFinish in
-            if let layout = self.collectionView.collectionViewLayout as? CollectionViewPagingLayout {
-                layout.setCurrentPage(self.tabControllerVM.datasource.count - 1)
-            }
+        tabControllerVM.addModel(newTabModel)
+        if let layout = self.collectionView.collectionViewLayout as? CollectionViewPagingLayout {
+            layout.setCurrentPage(self.tabControllerVM.datasource.count - 1)
         }
+//        collectionView.performBatchUpdates {
+//            tabControllerVM.addModel(newTabModel)
+//        } completion: { isFinish in
+            
+//        }
 
         currectWeb = newTabModel
 //        present(currectWeb.webRoot, animated: true)

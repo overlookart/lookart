@@ -20,15 +20,15 @@ class TabControllerVM: BaseDataVM<TabModel> {
             let cell = collectionView.dequeueReusableCell(withClass: TabCell.self, for: indexPath)
             cell.imgView.image = model.image
             cell.closeAction = {
-                
-                
-                self.collectionView?.performBatchUpdates({
-                    self.removeModel(model)
-                }, completion: { isFinish in
-                    if let layout = self.collectionView?.collectionViewLayout as? CollectionViewPagingLayout {
-                        layout.invalidateLayoutInBatchUpdate()
-                    }
-                })
+                self.removeModel(model)
+                if let layout = self.collectionView?.collectionViewLayout as? CollectionViewPagingLayout {
+                    layout.invalidateLayoutInBatchUpdate()
+                }
+//                self.collectionView?.performBatchUpdates({
+//                    
+//                }, completion: { isFinish in
+//                    
+//                })
                 
             }
             return cell
