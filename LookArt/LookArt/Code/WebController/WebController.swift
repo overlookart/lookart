@@ -64,20 +64,25 @@ class WebController: BaseViewController {
         },CanGoForward:{(forward) in
             print("web can go forward: \(forward)")
         })*/
-        web.rx.title.subscribe(onNext: { (title) in
+        
+        web.rx.title.subscribe { title in
             print("webview_rx title: \(String(describing: title))")
             if let url = self.web.url {
                 RealmController.share.insertHistory(url: url, title: title)
             }
-        }).disposed(by: disposeBag)
-
-        web.rx.url.subscribe(onNext: {(url) in
+        }.disposed(by: disposeBag)
+        
+        web.rx.url.subscribe { url in
             print("webview_rx url: \(String(describing: url))")
-//            self.searchBar.updateHost(host: url?.host);
-        }).disposed(by: disposeBag)
-
-        web.rx.didCommit.subscribe { event in
+        }.disposed(by: disposeBag)
+        
+        web.rx.serverTrust.subscribe { serverTrust in
+            print("webview_rx serverTrust: \(serverTrust)")
             
+        }.disposed(by: disposeBag)
+        
+        web.rx.hasOnlySecureContent.subscribe { hasOnlySecureContent in
+            print("webview_rx hasOnlySecureContent: \(hasOnlySecureContent)")
         }.disposed(by: disposeBag)
         
         web.rx.decidePolicyForNavigationAction.subscribe { (webview, action, handler) in
@@ -87,38 +92,43 @@ class WebController: BaseViewController {
             self.setToolBarVisible(Visible: true)
             handler(.allow)
         } .disposed(by: disposeBag)
-        web.rx.didStartProvisionalNavigation.subscribe { (webview, navigation) in
+        
+        web.rx.didStartLoad.subscribe { event in
             print("webview_rx:开始加载")
         }.disposed(by: disposeBag)
         web.rx.decidePolicyForNavigationResponse.subscribe { (webview, navigationResponse, decisionHandler) in
             print("webview_rx:收到响应后是否允许导航")
             decisionHandler(.allow)
         }.disposed(by: disposeBag)
-        web.rx.didCommitNavigation.subscribe { (webview, navigation) in
+        
+        web.rx.didCommit.subscribe { event in
             print("webview_rx:开始接收内容")
         }.disposed(by: disposeBag)
-        web.rx.didReceiveServerRedirect.subscribe { (webview, navigation) in
+        
+        web.rx.didReceiveServerRedirect.subscribe { event in
             print("webview_rx:服务器重定向")
         }.disposed(by: disposeBag)
+        
         web.rx.didReceiveChallenge.subscribe { (webview, challenge, completionHandler) in
             print("webview_rx:需要响应身份验证")
             completionHandler(.rejectProtectionSpace, nil)
         }.disposed(by: disposeBag)
-        web.rx.didFinishNavigation.subscribe { (webview, navigation) in
+        
+        web.rx.didFinishLoad.subscribe { event in
             print("webview_rx:加载完成")
         }.disposed(by: disposeBag)
-        web.rx.didFailNavigation.subscribe { (webview, navigation, err) in
+        
+        web.rx.didFailLoad.subscribe { event in
             print("webview_rx:导航期间发生错误")
         }.disposed(by: disposeBag)
-        web.rx.didFailProvisionalNavigation.subscribe { (webview, navigation, err) in
+        
+        web.rx.didFailProvisional.subscribe { event in
             print("webview_rx:加载内容时发生错误")
         }.disposed(by: disposeBag)
-        web.rx.didTerminateContentProcess.subscribe { (webview) in
+        
+        web.rx.didTerminate.subscribe { event in
             print("webview_rx:内容终止")
         }.disposed(by: disposeBag)
-
-
-
         
         
         /*
@@ -184,31 +194,7 @@ class WebController: BaseViewController {
     
     func updateSearchBar(height: CGFloat) {
         print("---",height)
-        //search bar 最大高度 49
-        //search bar 最小高度 19
-        //navigition 最大高度 96
-        //navigation 最小高度 66
-        //iPhone X   顶部安全 47
-//        66 96 30
-//        19 49 30
-//        66 47 19
-        
-//        self.searchBar.snp.updateConstraints { make in
-//            make.top.equalTo(self.view)
-//            make.leading.equalTo(0)
-//            make.trailing.equalTo(0)
-//            make.bottom.equalTo(self.web.snp.top);
-//        }
-//        if (self.searchBar.isFold && height != 30) || (!self.searchBar.isFold && height != 0) {
-//            self.searchBar.updateHeight(height: height);
-//            self.web.snp.updateConstraints { make in
-//                make.trailing.equalTo(0)
-//                make.leading.equalTo(0)
-//                make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(SearchBarHeight-height)
-//                make.bottom.equalTo(0)
-//            }
-//        }
-        
+          
     }
     
     /*
@@ -224,4 +210,11 @@ class WebController: BaseViewController {
     deinit {
         
     }
+}
+
+extension WebController: WKNavigationDelegate {
+    func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction) async -> WKNavigationActionPolicy {
+        return .allow
+    }
+    
 }

@@ -13,27 +13,35 @@ import WebKit
 /// WKWebView Observer Property 监听 wkwebview 属性
 extension Reactive where Base: WKWebView {
     public var title: Observable<String> {
-        return self.observeWeakly(String.self, "title").map{$0 ?? ""}
+        self.observeWeakly(String.self, "title").map{$0 ?? ""}
     }
     
     public var loading: Observable<Bool> {
-        return self.observeWeakly(Bool.self, "loading").map{$0 ?? false}
+        self.observeWeakly(Bool.self, "loading").map{$0 ?? false}
     }
     
     public var progress: Observable<Float> {
-        return self.observeWeakly(Double.self, "estimatedProgress").map { Float($0 ?? 0.0) }
+        self.observeWeakly(Double.self, "estimatedProgress").map { Float($0 ?? 0.0) }
     }
     
     public var url: Observable<URL?> {
-        return self.observeWeakly(URL.self, "URL")
+        self.observeWeakly(URL.self, "URL")
     }
     
     public var canGoBack: Observable<Bool> {
-        return self.observeWeakly(Bool.self, "canGoBack").map{ $0 ?? false}
+        self.observeWeakly(Bool.self, "canGoBack").map{ $0 ?? false}
     }
     
     public var canGoForward: Observable<Bool> {
-        return self.observeWeakly(Bool.self, "canGoForward").map { $0 ?? false }
+        self.observeWeakly(Bool.self, "canGoForward").map { $0 ?? false }
+    }
+    
+    public var serverTrust: Observable<SecTrust?> {
+        self.observeWeakly(SecTrust.self, "serverTrust")
+    }
+    
+    public var hasOnlySecureContent: Observable<Bool?> {
+        self.observeWeakly(Bool.self, "hasOnlySecureContent")
     }
 }
 
@@ -57,16 +65,6 @@ extension Reactive where Base: WKWebView {
         return ControlEvent(events: event)
     }
     
-    public typealias WKNavigationEvent = (webView: WKWebView, navigation: WKNavigation)
-    var didStartProvisionalNavigation:ControlEvent<WKNavigationEvent> {
-        let event = navigationDelegate.methodInvoked(.didStartProvisionalNavigation).map { (args) -> WKNavigationEvent in
-            let view = try castOrThrow(WKWebView.self, args[0])
-            let navigation = try castOrThrow(WKNavigation.self, args[1])
-            return (view, navigation)
-        }
-        return ControlEvent(events: event)
-    }
-    
     public typealias WKNavigationResponseHandler = (WKNavigationResponsePolicy) -> Void
     public typealias WKNavigationResponsePolicyEvent = ( webView: WKWebView, reponse: WKNavigationResponse, decisionHandler: WKNavigationResponseHandler)
     var decidePolicyForNavigationResponse:ControlEvent<WKNavigationResponsePolicyEvent>{
@@ -81,23 +79,8 @@ extension Reactive where Base: WKWebView {
         return ControlEvent(events: event)
     }
     
-    
-    var didCommitNavigation: ControlEvent<WKNavigationEvent> {
-        let event = navigationDelegate.methodInvoked(.didCommitNavigation).map { (args) -> WKNavigationEvent in
-            let view = try castOrThrow(WKWebView.self, args[0])
-            let navigation = try castOrThrow(WKNavigation.self, args[1])
-            return (view, navigation)
-        }
-        return ControlEvent(events: event)
-    }
-    
-    var didReceiveServerRedirect: ControlEvent<WKNavigationEvent> {
-        let event = navigationDelegate.methodInvoked(.didReceiveServerRedirect).map { (args) -> WKNavigationEvent in
-            let view = try castOrThrow(WKWebView.self, args[0])
-            let navigation = try castOrThrow(WKNavigation.self, args[1])
-            return (view, navigation)
-        }
-        return ControlEvent(events: event)
+    public var didReceiveServerRedirect: Observable<WKNavigation> {
+        navigationDelegate.methodInvoked(#selector(WKNavigationDelegate.webView(_:didReceiveServerRedirectForProvisionalNavigation:))).map{ a in try castOrThrow(WKNavigation.self, a[1])}
     }
     
     public typealias ChallengeHandler = (URLSession.AuthChallengeDisposition, URLCredential?) -> Void
@@ -114,44 +97,20 @@ extension Reactive where Base: WKWebView {
         return ControlEvent(events: event)
     }
     
-    var didFinishNavigation: ControlEvent<WKNavigationEvent> {
-        let event = navigationDelegate.methodInvoked(.didFinishNavigation).map { (args) -> WKNavigationEvent in
-            let view = try castOrThrow(WKWebView.self, args[0])
-            let navigation = try castOrThrow(WKNavigation.self, args[1])
-            return (view, navigation)
+    
+    public var didFailProvisional: Observable<(WKNavigation, Error)> {
+        navigationDelegate.methodInvoked(#selector(WKNavigationDelegate.webView(_:didFailProvisionalNavigation:withError:))).map{ a in
+            (
+                try castOrThrow(WKNavigation.self, a[1]),
+                try castOrThrow(Error.self, a[2])
+            )
         }
-        return ControlEvent(events: event)
     }
     
-    
-    public typealias WKNavigationFailEvent = (webView: WKWebView, navigation: WKNavigation, error: Error)
-    
-    var didFailNavigation: ControlEvent<WKNavigationFailEvent> {
-        let event = navigationDelegate.methodInvoked(.didFailNavigation).map { (args) -> WKNavigationFailEvent in
-            let view = try castOrThrow(WKWebView.self, args[0])
-            let navigation = try castOrThrow(WKNavigation.self, args[1])
-            let err = try castOrThrow(Error.self, args[2])
-            return (view, navigation, err)
+    public var didTerminate: Observable<WKWebView> {
+        navigationDelegate.methodInvoked(#selector(WKNavigationDelegate.webViewWebContentProcessDidTerminate(_:))).map{ a in
+            try castOrThrow(WKWebView.self, a[0])
         }
-        return ControlEvent(events: event)
-    }
-    
-    var didFailProvisionalNavigation: ControlEvent<WKNavigationFailEvent> {
-        let event = navigationDelegate.methodInvoked(.didFailProvisionalNavigation).map { (args) -> WKNavigationFailEvent in
-            let view = try castOrThrow(WKWebView.self, args[0])
-            let navigation = try castOrThrow(WKNavigation.self, args[1])
-            let err = try castOrThrow(Error.self, args[2])
-            return (view, navigation, err)
-        }
-        return ControlEvent(events: event)
-    }
-    
-    var didTerminateContentProcess: ControlEvent<WKWebView> {
-        let event = navigationDelegate.methodInvoked(.didTerminateContentProcess).map { (args) -> WKWebView in
-            let view = try castOrThrow(WKWebView.self, args[0])
-            return view
-        }
-        return ControlEvent(events: event)
     }
     
     
@@ -169,19 +128,6 @@ extension Selector {
     static let decidePolicyForNavigationResponse = #selector(WKNavigationDelegate.webView(_:decidePolicyFor:decisionHandler:) as ((WKNavigationDelegate) -> (WKWebView, WKNavigationResponse, @escaping(WKNavigationResponsePolicy) -> Void) -> Void)?)
 #endif
     
-    static let didStartProvisionalNavigation = #selector(WKNavigationDelegate.webView(_:didStartProvisionalNavigation:))
-    
-    static let didCommitNavigation = #selector(WKNavigationDelegate.webView(_:didCommit:))
-    
-    static let didReceiveServerRedirect = #selector(WKNavigationDelegate.webView(_:didReceiveServerRedirectForProvisionalNavigation:))
-    
     static let didReceiveChallenge = #selector(WKNavigationDelegate.webView(_:didReceive:completionHandler:))
     
-    static let didFinishNavigation = #selector(WKNavigationDelegate.webView(_:didFinish:))
-    
-    static let didFailNavigation = #selector(WKNavigationDelegate.webView(_:didFail:withError:))
-    
-    static let didFailProvisionalNavigation = #selector(WKNavigationDelegate.webView(_:didFailProvisionalNavigation:withError:))
-    
-    static let didTerminateContentProcess = #selector(WKNavigationDelegate.webViewWebContentProcessDidTerminate(_:))
 }

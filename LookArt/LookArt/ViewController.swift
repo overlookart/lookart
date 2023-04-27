@@ -29,10 +29,7 @@ class ViewController: UIViewController {
 
     @objc private func btnAction() {
         let webc = WebController()
-//        webc.modalPresentationStyle = .fullScreen
         let navc = UINavigationController(rootViewController: webc)
-        
-        
         navc.setViewControllers([webc], animated: false)
         navc.modalPresentationStyle = .fullScreen
 //        nav.hidesBarsOnSwipe = true
