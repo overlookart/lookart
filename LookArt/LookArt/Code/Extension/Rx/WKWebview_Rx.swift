@@ -48,55 +48,36 @@ extension Reactive where Base: WKWebView {
 
 extension Reactive where Base: WKWebView {
     
-    public typealias WKNavigationActionHandler = (WKNavigationActionPolicy) -> Void
-    public typealias WKNavigationActionPolicyEvent = ( webView: WKWebView, action: WKNavigationAction, decisionHandler: WKNavigationActionHandler)
-    var decidePolicyForNavigationAction: ControlEvent<WKNavigationActionPolicyEvent> {
-        
-        let event = navigationDelegate.methodInvoked(.decidePolicyNavigationAction).map { args -> WKNavigationActionPolicyEvent in
-            let view = try castOrThrow(WKWebView.self, args[0])
-            let action = try castOrThrow(WKNavigationAction.self, args[1])
-            let closureObject = args[2] as AnyObject
-            
-            // block 与 closure 的转化
-            typealias Block_ActionHandler = @convention(block) (WKNavigationActionPolicy) -> ()
-            let actionHandler = unsafeBitCast(closureObject, to: Block_ActionHandler.self)
-            return (view, action, actionHandler)
+    var decidePolicyAction: Observable<(WKNavigationAction, (WKNavigationActionPolicy) -> Void)>{
+        navigationDelegate.methodInvoked(.decidePolicyNavigationAction).map{ a in
+            let action = try castOrThrow(WKNavigationAction.self, a[1])
+            typealias block = @convention(block) (WKNavigationActionPolicy) -> Void
+            let handler = unsafeBitCast(a[2] as AnyObject, to: block.self)
+            return (action, handler)
         }
-        return ControlEvent(events: event)
     }
     
-    public typealias WKNavigationResponseHandler = (WKNavigationResponsePolicy) -> Void
-    public typealias WKNavigationResponsePolicyEvent = ( webView: WKWebView, reponse: WKNavigationResponse, decisionHandler: WKNavigationResponseHandler)
-    var decidePolicyForNavigationResponse:ControlEvent<WKNavigationResponsePolicyEvent>{
-        let event = navigationDelegate.methodInvoked(.decidePolicyForNavigationResponse).map { (args) -> WKNavigationResponsePolicyEvent in
-            let view = try castOrThrow(WKWebView.self, args[0])
-            let navigationResponse = try castOrThrow(WKNavigationResponse.self, args[1])
-            let closureObject = args[2] as AnyObject
-            typealias Block_Handler = @convention(block) (WKNavigationResponsePolicy) -> ()
-            let handler = unsafeBitCast(closureObject, to: Block_Handler.self)
-            return (view, navigationResponse, handler)
+    public var decidePolicyResponse: Observable<(WKNavigationResponse, (WKNavigationResponsePolicy) -> ())>{
+        navigationDelegate.methodInvoked(.decidePolicyForNavigationResponse).map{ args in
+            let response = try castOrThrow(WKNavigationResponse.self, args[1])
+            typealias block = @convention(block) (WKNavigationResponsePolicy) -> ()
+            let handler = unsafeBitCast(args[2] as AnyObject, to: block.self)
+            return (response, handler)
         }
-        return ControlEvent(events: event)
     }
     
     public var didReceiveServerRedirect: Observable<WKNavigation> {
         navigationDelegate.methodInvoked(#selector(WKNavigationDelegate.webView(_:didReceiveServerRedirectForProvisionalNavigation:))).map{ a in try castOrThrow(WKNavigation.self, a[1])}
     }
     
-    public typealias ChallengeHandler = (URLSession.AuthChallengeDisposition, URLCredential?) -> Void
-    public typealias WKNavigationChallengeEvent = (webView: WKWebView, challenge: URLAuthenticationChallenge, handler: ChallengeHandler)
-    var didReceiveChallenge: ControlEvent<WKNavigationChallengeEvent> {
-        let event = navigationDelegate.methodInvoked(.didReceiveChallenge).map { (args) -> WKNavigationChallengeEvent in
-            let view = try castOrThrow(WKWebView.self, args[0])
-            let challenge = try castOrThrow(URLAuthenticationChallenge.self, args[1])
-            let closureObject = args[2] as AnyObject
-            typealias Block_Handler =  @convention(block) (URLSession.AuthChallengeDisposition, URLCredential?) -> Void
-            let handler = unsafeBitCast(closureObject, to: Block_Handler.self)
-            return (view, challenge, handler)
+    public var didReceive: Observable<(URLAuthenticationChallenge, (URLSession.AuthChallengeDisposition, URLCredential?) -> Void)> {
+        navigationDelegate.methodInvoked(#selector(WKNavigationDelegate.webView(_:didReceive:completionHandler:))).map{ a in
+            let challenge = try castOrThrow(URLAuthenticationChallenge.self, a[1])
+            typealias block =  @convention(block) (URLSession.AuthChallengeDisposition, URLCredential?) -> Void
+            let handler = unsafeBitCast(a[2] as AnyObject, to: block.self)
+            return (challenge, handler)
         }
-        return ControlEvent(events: event)
     }
-    
     
     public var didFailProvisional: Observable<(WKNavigation, Error)> {
         navigationDelegate.methodInvoked(#selector(WKNavigationDelegate.webView(_:didFailProvisionalNavigation:withError:))).map{ a in
@@ -113,9 +94,6 @@ extension Reactive where Base: WKWebView {
         }
     }
     
-    
-    
-    
 }
 
 // 扩展 Selector 支持 WKNavigationDelegate 的方法
@@ -127,7 +105,5 @@ extension Selector {
     static let decidePolicyNavigationAction = #selector(WKNavigationDelegate.webView(_: decidePolicyFor: decisionHandler:) as ((WKNavigationDelegate) -> (WKWebView, WKNavigationAction, @escaping(WKNavigationActionPolicy) -> Void) -> Void)?)
     static let decidePolicyForNavigationResponse = #selector(WKNavigationDelegate.webView(_:decidePolicyFor:decisionHandler:) as ((WKNavigationDelegate) -> (WKWebView, WKNavigationResponse, @escaping(WKNavigationResponsePolicy) -> Void) -> Void)?)
 #endif
-    
-    static let didReceiveChallenge = #selector(WKNavigationDelegate.webView(_:didReceive:completionHandler:))
     
 }

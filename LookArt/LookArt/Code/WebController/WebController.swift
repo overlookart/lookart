@@ -85,20 +85,20 @@ class WebController: BaseViewController {
             print("webview_rx hasOnlySecureContent: \(hasOnlySecureContent)")
         }.disposed(by: disposeBag)
         
-        web.rx.decidePolicyForNavigationAction.subscribe { (webview, action, handler) in
+        web.rx.decidePolicyAction.subscribe { action, handler in
             print("webview_rx:是否允许导航")
-            //开始导航时 导航栏与工具栏显示
             self.setNavigationBarVisible(Visible: true)
             self.setToolBarVisible(Visible: true)
             handler(.allow)
-        } .disposed(by: disposeBag)
+        }.disposed(by: disposeBag)
         
         web.rx.didStartLoad.subscribe { event in
             print("webview_rx:开始加载")
         }.disposed(by: disposeBag)
-        web.rx.decidePolicyForNavigationResponse.subscribe { (webview, navigationResponse, decisionHandler) in
+        
+        web.rx.decidePolicyResponse.subscribe { (response, handler) in
             print("webview_rx:收到响应后是否允许导航")
-            decisionHandler(.allow)
+            handler(.allow)
         }.disposed(by: disposeBag)
         
         web.rx.didCommit.subscribe { event in
@@ -109,7 +109,7 @@ class WebController: BaseViewController {
             print("webview_rx:服务器重定向")
         }.disposed(by: disposeBag)
         
-        web.rx.didReceiveChallenge.subscribe { (webview, challenge, completionHandler) in
+        web.rx.didReceive.subscribe { (challenge, completionHandler) in
             print("webview_rx:需要响应身份验证")
             completionHandler(.rejectProtectionSpace, nil)
         }.disposed(by: disposeBag)
@@ -177,7 +177,6 @@ class WebController: BaseViewController {
     func gotoForward() {
         if self.web.canGoForward {
             self.web.goForward()
-            
         }
     }
     
