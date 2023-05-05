@@ -17,7 +17,7 @@ class TabController: UIViewController {
     }
     
     @IBAction func completeAction(_ sender: Any) {
-        self.present(currectWeb.webRoot, animated: true, completion: nil)
+        self.present(currectWeb.webNavigationVC, animated: true, completion: nil)
     }
     @IBOutlet weak var bgImgView: UIImageView!
     @IBOutlet weak var collectionView: UICollectionView!
@@ -49,7 +49,7 @@ class TabController: UIViewController {
         
         collectionView.rx.modelSelected(TabModel.self).subscribe(onNext:{ model in
             self.currectWeb = model
-            self.present(model.webRoot, animated: true, completion: nil)
+            self.present(model.webNavigationVC, animated: true, completion: nil)
             debugPrint("CollectionView Rx modelSelected")
         }).disposed(by: disposeBag)
         
@@ -58,6 +58,11 @@ class TabController: UIViewController {
         }).disposed(by: disposeBag)
         
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        collectionView.reloadData()
+    }
 
     private func registerCellClasses() {
         self.collectionView.register(nibWithCellClass: TabCell.self)
@@ -65,7 +70,7 @@ class TabController: UIViewController {
     
     /// 添加一个新的标签 并且打开该标签
     private func addTab() {
-        let newTabModel = TabModel(title: "起始页", image: UIImage(color: UIColor.random, size: CGSize(width: 1, height: 1)), webRoot: WebNavigationController())
+        let newTabModel = TabModel(title: "起始页", image: UIImage(color: UIColor.random, size: CGSize(width: 1, height: 1)), webNavigationVC: WebNavigationController())
         tabControllerVM.addModel(newTabModel)
         if let layout = self.collectionView.collectionViewLayout as? CollectionViewPagingLayout {
             layout.setCurrentPage(self.tabControllerVM.datasource.count - 1)

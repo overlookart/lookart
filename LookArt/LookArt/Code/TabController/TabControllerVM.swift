@@ -18,7 +18,7 @@ class TabControllerVM: BaseDataVM<TabModel> {
         data.bind(to: view.rx.items) {(collectionView, item, model) in
             let indexPath = IndexPath(item: item, section: 0)
             let cell = collectionView.dequeueReusableCell(withClass: TabCell.self, for: indexPath)
-            cell.imgView.image = model.image
+            cell.imgView.image = model.webNavigationVC.snapshotImg
             cell.closeAction = {
                 self.removeModel(model)
                 if let layout = self.collectionView?.collectionViewLayout as? CollectionViewPagingLayout {
@@ -36,7 +36,7 @@ class TabControllerVM: BaseDataVM<TabModel> {
     }
     
     override func addModel(_ model: TabModel) {
-        model.webRoot.modalPresentationStyle = .fullScreen
+        model.webNavigationVC.modalPresentationStyle = .fullScreen
         datasource.append(model)
         data.accept(datasource)
     }

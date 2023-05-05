@@ -9,6 +9,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 class WebNavigationController: BaseNavigationController {
+    private(set) var snapshotImg: UIImage?
     private(set) var webController = WebController()
     let disposeBag = DisposeBag()
     init() {
@@ -29,6 +30,14 @@ class WebNavigationController: BaseNavigationController {
         bindAction()
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        Task {
+            snapshotImg = await webController.web.viewpointSnapshot()
+        }
+        
+    }
+    
     private func setupUI(){
         //配置工具栏
         if let toolbar = self.toolbar as? WebToolBar {
@@ -45,6 +54,7 @@ class WebNavigationController: BaseNavigationController {
         self.removeFromParent()
     }
     
+    /// 绑定 webview 的一些属性
     private func bindWeb() {
         if let toolbar = self.toolbar as? WebToolBar {
             webController.web.rx.canGoBack.bind(to: toolbar.canBack).disposed(by: disposeBag)
@@ -60,7 +70,10 @@ class WebNavigationController: BaseNavigationController {
         }
     }
     
+    
+    /// 绑定搜索栏和工具栏的操作事件
     private func bindAction() {
+        // 工具栏的操作事件
         if let toolbar = self.toolbar as? WebToolBar {
             toolbar.backBtnItem.rx.tap.subscribe(onNext: { [self] in
                 webController.gotoBack()
@@ -83,6 +96,7 @@ class WebNavigationController: BaseNavigationController {
                 self.dismiss(animated: true, completion: nil)
             }).disposed(by: disposeBag)
         }
+        // 搜索栏的操作事件
         if let searchbar = self.navigationBar as? WebSearchBar {
             searchbar.refreshBtn.rx.tap.subscribe(onNext: { [self] in
                 webController.refresh()

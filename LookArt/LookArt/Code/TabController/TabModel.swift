@@ -9,5 +9,5 @@ import Foundation
 struct TabModel: Equatable, Hashable {
     var title: String
     var image: UIImage
-    var webRoot: WebNavigationController
+    var webNavigationVC: WebNavigationController
 }
