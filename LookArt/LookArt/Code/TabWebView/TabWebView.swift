@@ -239,10 +239,6 @@ extension TabWebView: WKNavigationDelegate {
 }
 
 extension TabWebView {
-    override func takeSnapshot(with snapshotConfiguration: WKSnapshotConfiguration?, completionHandler: @escaping (UIImage?, Error?) -> Void) {
-        
-    }
-    
     public func viewpointSnapshot() async -> UIImage? {
         let config = WKSnapshotConfiguration()
         config.rect = frame

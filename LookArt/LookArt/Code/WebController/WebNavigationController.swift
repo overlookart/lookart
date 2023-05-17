@@ -13,6 +13,7 @@ class WebNavigationController: BaseNavigationController {
     private(set) var webController = WebController()
     let disposeBag = DisposeBag()
     init() {
+        // 初始化的时候配置统一的 navigationBar 和 toolbar
         super.init(navigationBarClass: WebSearchBar.self, toolbarClass: WebToolBar.self)
         self.setViewControllers([self.webController], animated: false)
         

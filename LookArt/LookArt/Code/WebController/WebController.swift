@@ -210,10 +210,3 @@ class WebController: BaseViewController {
         
     }
 }
-
-extension WebController: WKNavigationDelegate {
-    func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction) async -> WKNavigationActionPolicy {
-        return .allow
-    }
-    
-}
