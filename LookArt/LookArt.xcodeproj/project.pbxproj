@@ -97,6 +97,7 @@
 		E90BA85328110144007FA287 /* JcttCustomPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90BA84E28110144007FA287 /* JcttCustomPlugin.swift */; };
 		E90BA85428110144007FA287 /* JcaittService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90BA84F28110144007FA287 /* JcaittService.swift */; };
 		E90BA85528110144007FA287 /* JcttCachePlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90BA85028110144007FA287 /* JcttCachePlugin.swift */; };
+		E9105FC42A31C49B00BB4DE9 /* WebSiteModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E9105FC22A31C49B00BB4DE9 /* WebSiteModel.xcdatamodeld */; };
 		E918B5092714122100B72381 /* ThemeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E918B5072714122100B72381 /* ThemeViewController.swift */; };
 		E918B50C271413BE00B72381 /* ThemeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E918B50B271413BE00B72381 /* ThemeModel.swift */; };
 		E918B50E271415A500B72381 /* ThemeVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = E918B50D271415A500B72381 /* ThemeVM.swift */; };
@@ -277,6 +278,7 @@
 		E90BA84E28110144007FA287 /* JcttCustomPlugin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JcttCustomPlugin.swift; sourceTree = "<group>"; };
 		E90BA84F28110144007FA287 /* JcaittService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JcaittService.swift; sourceTree = "<group>"; };
 		E90BA85028110144007FA287 /* JcttCachePlugin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JcttCachePlugin.swift; sourceTree = "<group>"; };
+		E9105FC32A31C49B00BB4DE9 /* WebSiteModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WebSiteModel.xcdatamodel; sourceTree = "<group>"; };
 		E918B5072714122100B72381 /* ThemeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeViewController.swift; sourceTree = "<group>"; };
 		E918B50B271413BE00B72381 /* ThemeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeModel.swift; sourceTree = "<group>"; };
 		E918B50D271415A500B72381 /* ThemeVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeVM.swift; sourceTree = "<group>"; };
@@ -439,6 +441,7 @@
 		28D41CD125D403CA008696AC /* LookArt */ = {
 			isa = PBXGroup;
 			children = (
+				E9105FC22A31C49B00BB4DE9 /* WebSiteModel.xcdatamodeld */,
 				28D41D2225D41683008696AC /* Code */,
 				28D41D0525D403E9008696AC /* Resources */,
 				28D41CD225D403CA008696AC /* AppDelegate.swift */,
@@ -1009,6 +1012,7 @@
 				28E5A98C25D63A3E00750E3B /* UITextField_Extension.swift in Sources */,
 				E9CB1DBD2775A8B300E130DB /* BaseDataVM.swift in Sources */,
 				E905DF37273904D800A5CF38 /* DevelopeActivity.swift in Sources */,
+				E9105FC42A31C49B00BB4DE9 /* WebSiteModel.xcdatamodeld in Sources */,
 				E9DD1C29267CA2EA00586F26 /* SettingActivity.swift in Sources */,
 				E92D2C0926E99AA00011B81D /* BaseProgressView.swift in Sources */,
 				28E5A9BA25D6468600750E3B /* WebConfig.swift in Sources */,
@@ -1271,14 +1275,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 7MM2ZZHFF5;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = LookArt/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = sdk10018;
+				PRODUCT_BUNDLE_IDENTIFIER = lookart;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				RUN_DOCUMENTATION_COMPILER = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "LookArt/LookArt-Bridging-Header.h";
@@ -1294,14 +1298,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 7MM2ZZHFF5;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = LookArt/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = sdk10018;
+				PRODUCT_BUNDLE_IDENTIFIER = lookart;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				RUN_DOCUMENTATION_COMPILER = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "LookArt/LookArt-Bridging-Header.h";
@@ -1438,6 +1442,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		E9105FC22A31C49B00BB4DE9 /* WebSiteModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				E9105FC32A31C49B00BB4DE9 /* WebSiteModel.xcdatamodel */,
+			);
+			currentVersion = E9105FC32A31C49B00BB4DE9 /* WebSiteModel.xcdatamodel */;
+			path = WebSiteModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 28D41CC725D403CA008696AC /* Project object */;
 }

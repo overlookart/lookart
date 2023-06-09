@@ -6,11 +6,20 @@
 //
 
 import UIKit
-
+import CoreData
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-
+    /// CoreData 持久存储容器
+    private(set) lazy var persistentContainer: NSPersistentContainer = {
+        let container = NSPersistentContainer(name: "DataStore")
+        container.loadPersistentStores { description, error in
+            if let error = error {
+                fatalError("Unable to load persistent stores: \(error)")
+            }
+        }
+        return container
+    }()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
