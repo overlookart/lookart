@@ -97,7 +97,8 @@
 		E90BA85328110144007FA287 /* JcttCustomPlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90BA84E28110144007FA287 /* JcttCustomPlugin.swift */; };
 		E90BA85428110144007FA287 /* JcaittService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90BA84F28110144007FA287 /* JcaittService.swift */; };
 		E90BA85528110144007FA287 /* JcttCachePlugin.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90BA85028110144007FA287 /* JcttCachePlugin.swift */; };
-		E9105FC42A31C49B00BB4DE9 /* WebSiteModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E9105FC22A31C49B00BB4DE9 /* WebSiteModel.xcdatamodeld */; };
+		E9105FC72A36F9FD00BB4DE9 /* PersistentContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9105FC62A36F9FD00BB4DE9 /* PersistentContainer.swift */; };
+		E9105FCA2A37047600BB4DE9 /* AppDataStore.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E9105FC82A37047600BB4DE9 /* AppDataStore.xcdatamodeld */; };
 		E918B5092714122100B72381 /* ThemeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E918B5072714122100B72381 /* ThemeViewController.swift */; };
 		E918B50C271413BE00B72381 /* ThemeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E918B50B271413BE00B72381 /* ThemeModel.swift */; };
 		E918B50E271415A500B72381 /* ThemeVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = E918B50D271415A500B72381 /* ThemeVM.swift */; };
@@ -278,7 +279,8 @@
 		E90BA84E28110144007FA287 /* JcttCustomPlugin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JcttCustomPlugin.swift; sourceTree = "<group>"; };
 		E90BA84F28110144007FA287 /* JcaittService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JcaittService.swift; sourceTree = "<group>"; };
 		E90BA85028110144007FA287 /* JcttCachePlugin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JcttCachePlugin.swift; sourceTree = "<group>"; };
-		E9105FC32A31C49B00BB4DE9 /* WebSiteModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WebSiteModel.xcdatamodel; sourceTree = "<group>"; };
+		E9105FC62A36F9FD00BB4DE9 /* PersistentContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistentContainer.swift; sourceTree = "<group>"; };
+		E9105FC92A37047600BB4DE9 /* AppDataStore.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = AppDataStore.xcdatamodel; sourceTree = "<group>"; };
 		E918B5072714122100B72381 /* ThemeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeViewController.swift; sourceTree = "<group>"; };
 		E918B50B271413BE00B72381 /* ThemeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeModel.swift; sourceTree = "<group>"; };
 		E918B50D271415A500B72381 /* ThemeVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeVM.swift; sourceTree = "<group>"; };
@@ -441,7 +443,6 @@
 		28D41CD125D403CA008696AC /* LookArt */ = {
 			isa = PBXGroup;
 			children = (
-				E9105FC22A31C49B00BB4DE9 /* WebSiteModel.xcdatamodeld */,
 				28D41D2225D41683008696AC /* Code */,
 				28D41D0525D403E9008696AC /* Resources */,
 				28D41CD225D403CA008696AC /* AppDelegate.swift */,
@@ -500,6 +501,7 @@
 		28D41D2225D41683008696AC /* Code */ = {
 			isa = PBXGroup;
 			children = (
+				E9105FC52A36F9B600BB4DE9 /* CoreData */,
 				E90BA84B28110144007FA287 /* NetWork */,
 				E9E1A7B327F5CCCD00B6C566 /* AppDebug */,
 				E9CB1DB92775A5FE00E130DB /* ModelData */,
@@ -663,6 +665,15 @@
 				E90BA85028110144007FA287 /* JcttCachePlugin.swift */,
 			);
 			path = NetWork;
+			sourceTree = "<group>";
+		};
+		E9105FC52A36F9B600BB4DE9 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				E9105FC62A36F9FD00BB4DE9 /* PersistentContainer.swift */,
+				E9105FC82A37047600BB4DE9 /* AppDataStore.xcdatamodeld */,
+			);
+			path = CoreData;
 			sourceTree = "<group>";
 		};
 		E918B506271411D900B72381 /* Theme */ = {
@@ -1012,7 +1023,6 @@
 				28E5A98C25D63A3E00750E3B /* UITextField_Extension.swift in Sources */,
 				E9CB1DBD2775A8B300E130DB /* BaseDataVM.swift in Sources */,
 				E905DF37273904D800A5CF38 /* DevelopeActivity.swift in Sources */,
-				E9105FC42A31C49B00BB4DE9 /* WebSiteModel.xcdatamodeld in Sources */,
 				E9DD1C29267CA2EA00586F26 /* SettingActivity.swift in Sources */,
 				E92D2C0926E99AA00011B81D /* BaseProgressView.swift in Sources */,
 				28E5A9BA25D6468600750E3B /* WebConfig.swift in Sources */,
@@ -1073,6 +1083,7 @@
 				28E5A99F25D63A5D00750E3B /* BaseView.swift in Sources */,
 				28554D932609C357006CB16A /* WebNavigationController.swift in Sources */,
 				E9E1A7B527F5CCE800B6C566 /* AppDebug.swift in Sources */,
+				E9105FCA2A37047600BB4DE9 /* AppDataStore.xcdatamodeld in Sources */,
 				E918B50E271415A500B72381 /* ThemeVM.swift in Sources */,
 				2836668A2631C6390094D707 /* WKWebview_Rx.swift in Sources */,
 				2836663D261A8DFB0094D707 /* PersonalFavoritesController.swift in Sources */,
@@ -1087,6 +1098,7 @@
 				E905DF3B27391FA700A5CF38 /* DevelopViewController.swift in Sources */,
 				E90BA85228110144007FA287 /* CheckConnection.swift in Sources */,
 				E9BE9A08277ED59400338F6C /* SettingDetailVM.swift in Sources */,
+				E9105FC72A36F9FD00BB4DE9 /* PersistentContainer.swift in Sources */,
 				288DF8CF26AB7B2200767F15 /* LookArtActivityController.swift in Sources */,
 				283666AC264043640094D707 /* ContextMenuPreview.swift in Sources */,
 				E9CB1DC2277AE1D800E130DB /* SettingDetailViewController.swift in Sources */,
@@ -1274,6 +1286,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = LookArt/Info.plist;
@@ -1297,6 +1310,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = LookArt/Info.plist;
@@ -1444,13 +1458,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		E9105FC22A31C49B00BB4DE9 /* WebSiteModel.xcdatamodeld */ = {
+		E9105FC82A37047600BB4DE9 /* AppDataStore.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				E9105FC32A31C49B00BB4DE9 /* WebSiteModel.xcdatamodel */,
+				E9105FC92A37047600BB4DE9 /* AppDataStore.xcdatamodel */,
 			);
-			currentVersion = E9105FC32A31C49B00BB4DE9 /* WebSiteModel.xcdatamodel */;
-			path = WebSiteModel.xcdatamodeld;
+			currentVersion = E9105FC92A37047600BB4DE9 /* AppDataStore.xcdatamodel */;
+			path = AppDataStore.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

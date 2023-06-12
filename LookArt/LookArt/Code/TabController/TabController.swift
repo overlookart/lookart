@@ -6,9 +6,11 @@
 //
 
 import UIKit
+import CoreData
 import RxSwift
 import CollectionViewPagingLayout
 class TabController: UIViewController {
+    var container: NSPersistentContainer!
     let tabControllerVM = TabControllerVM()
     let disposeBag = DisposeBag()
     private var currectWeb: TabModel!
@@ -32,8 +34,16 @@ class TabController: UIViewController {
         }
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        guard container != nil else {
+            fatalError("This view needs a persistent container.")
+        }
+        AppLog("持久容器可用")
         collectionView.backgroundColor = UIColor.clear
         self.backgroundImage()
         registerCellClasses()
