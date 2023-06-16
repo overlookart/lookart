@@ -10,6 +10,8 @@ import WebKit
 class WebScriptComponent: NSObject {
     var scripts: [LAUserScript] = []
     
+    /// 配置脚本
+    /// - Parameter userContentController: userContentController description
     func setupScripts(userContentController: WKUserContentController) {
         for script in scripts {
             userContentController.addUserScript(script)
@@ -18,6 +20,12 @@ class WebScriptComponent: NSObject {
                 userContentController.add(self, name: messageName)
             }
         }
+    }
+    
+    /// 删除所有用户脚本
+    /// - Parameter userContentControll: userContentControll description
+    func removeAllScripts(userContentControll: WKUserContentController) {
+        userContentControll.removeAllUserScripts()
     }
 }
 
