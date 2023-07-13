@@ -109,6 +109,7 @@
 		E92D2C0926E99AA00011B81D /* BaseProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92D2C0826E99AA00011B81D /* BaseProgressView.swift */; };
 		E943FB5026A188B600B67C30 /* UIBaseConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = E943FB4F26A188B600B67C30 /* UIBaseConfig.swift */; };
 		E955AAF226DCE051005FE4EF /* UIProgressView_Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = E955AAF126DCE051005FE4EF /* UIProgressView_Rx.swift */; };
+		E9BB3A032A53AA500099A6AE /* DispatchFunc.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9BB3A022A53AA500099A6AE /* DispatchFunc.swift */; };
 		E9BE9A08277ED59400338F6C /* SettingDetailVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9BE9A07277ED59400338F6C /* SettingDetailVM.swift */; };
 		E9BE9A0B277EE37B00338F6C /* SettingDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9BE9A09277EE37B00338F6C /* SettingDetailCell.swift */; };
 		E9BE9A0C277EE37B00338F6C /* SettingDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9BE9A0A277EE37B00338F6C /* SettingDetailCell.xib */; };
@@ -291,6 +292,7 @@
 		E92D2C0826E99AA00011B81D /* BaseProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseProgressView.swift; sourceTree = "<group>"; };
 		E943FB4F26A188B600B67C30 /* UIBaseConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIBaseConfig.swift; sourceTree = "<group>"; };
 		E955AAF126DCE051005FE4EF /* UIProgressView_Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIProgressView_Rx.swift; sourceTree = "<group>"; };
+		E9BB3A022A53AA500099A6AE /* DispatchFunc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DispatchFunc.swift; sourceTree = "<group>"; };
 		E9BE9A07277ED59400338F6C /* SettingDetailVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingDetailVM.swift; sourceTree = "<group>"; };
 		E9BE9A09277EE37B00338F6C /* SettingDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingDetailCell.swift; sourceTree = "<group>"; };
 		E9BE9A0A277EE37B00338F6C /* SettingDetailCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingDetailCell.xib; sourceTree = "<group>"; };
@@ -501,6 +503,7 @@
 		28D41D2225D41683008696AC /* Code */ = {
 			isa = PBXGroup;
 			children = (
+				E9BB3A012A53AA130099A6AE /* PublicFunc */,
 				E9105FC52A36F9B600BB4DE9 /* CoreData */,
 				E90BA84B28110144007FA287 /* NetWork */,
 				E9E1A7B327F5CCCD00B6C566 /* AppDebug */,
@@ -687,6 +690,14 @@
 				E918B510271415E500B72381 /* ThemeViewCell.xib */,
 			);
 			path = Theme;
+			sourceTree = "<group>";
+		};
+		E9BB3A012A53AA130099A6AE /* PublicFunc */ = {
+			isa = PBXGroup;
+			children = (
+				E9BB3A022A53AA500099A6AE /* DispatchFunc.swift */,
+			);
+			path = PublicFunc;
 			sourceTree = "<group>";
 		};
 		E9CB1D9D2760988100E130DB /* RealmData */ = {
@@ -1023,6 +1034,7 @@
 				28E5A98C25D63A3E00750E3B /* UITextField_Extension.swift in Sources */,
 				E9CB1DBD2775A8B300E130DB /* BaseDataVM.swift in Sources */,
 				E905DF37273904D800A5CF38 /* DevelopeActivity.swift in Sources */,
+				E9BB3A032A53AA500099A6AE /* DispatchFunc.swift in Sources */,
 				E9DD1C29267CA2EA00586F26 /* SettingActivity.swift in Sources */,
 				E92D2C0926E99AA00011B81D /* BaseProgressView.swift in Sources */,
 				28E5A9BA25D6468600750E3B /* WebConfig.swift in Sources */,

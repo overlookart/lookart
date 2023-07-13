@@ -16,6 +16,13 @@ extension String {
         return digest.reduce("") { $0 + String(format:"%02X", $1) }
     }
     
+    /// base64 解码
+    var encodedBase64: String {
+        guard let data = Data(base64Encoded: self) else { return "" }
+        guard let str = String(data:data , encoding: .utf8) else { return "" }
+        return str
+    }
+    
     /// 交换字符
     /// - Parameters:
     ///   - index1: 字符下标1
